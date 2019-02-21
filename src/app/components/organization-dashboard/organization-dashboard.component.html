@@ -1,0 +1,61 @@
+<app-organizationheader></app-organizationheader>
+<div class="inner-ban">
+    <img src="assets/images/inner-ban.jpg" alt="">
+</div>
+<section class="orgdashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>dashboard</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-sec">
+                    <h3>your profile</h3>
+                    <img id="imgElem" alt="">
+                    <ul *ngIf="organizationList">
+                        <li>{{organizationList.name}}</li>
+                        <li>{{organizationList.website}}</li>
+                        <li>{{organizationList.address}}</li>
+                        <li><a routerLink="/edit/">Edit</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="profile-decp">
+                    <h3>your events</h3>
+                    <h4>select Fest to edit <span><a routerLink="/fest-upload-form/">+create new fest</a></span></h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>no</th>
+                                <th>fest</th>
+                                <th>start date</th>
+                                <th>end date</th>
+                                <th>select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of  organizationFestList ; let i=index;" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                                <td> {{i+1}}</td>
+                                <td> {{data.name}}</td>
+                                <td> {{data.start_date}}</td>
+                                <td> {{data.end_date}}</td>
+                                <td>
+                                    <input type="checkbox" class="chk" (change)="gettingSelectedValue($event)">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                   <!--<div class="well well-lg">
+                        Selected Row : <strong>{{selectedRow}}</strong>
+                    </div>--> 
+                    <button (click)="delete()" class="del">delete</button>
+                    <button (click)="edit()" class="edit">edit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

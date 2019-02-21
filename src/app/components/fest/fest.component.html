@@ -1,0 +1,279 @@
+<div *ngIf="this.authenticationService.orgExist">
+    <app-organizationheader></app-organizationheader>
+</div>
+<div *ngIf=" this.authenticationService.userExist">
+    <app-userheader></app-userheader>
+</div>
+
+<div *ngIf=" this.authenticationService.userExist == undefined &&  this.authenticationService.orgExist == undefined">
+    <app-header></app-header>
+</div>
+
+<div class="inner-ban">
+    <img src="assets/images/inner-ban.jpg" alt="">
+</div>
+<section class="fest-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button class="filter-button" data-filter="all">All events</button>
+                <button class="filter-button" data-filter="university">University</button>
+                <button class="filter-button" data-filter="pre-university">Pre-University</button>
+                <button class="filter-button" data-filter="youth">Youth</button>
+                <button class="filter-button" data-filter="science">Science</button>
+                <button class="filter-button" data-filter="arts">Arts</button>
+                <button class="filter-button" data-filter="commerce">Commerce</button>
+                <button class="filter-button" data-filter="engineering">Engineering</button>
+                <button class="filter-button" data-filter="arch">Arch</button>
+            </div>
+            <div *ngIf="this.university">
+                <div *ngFor="let universityList of  this.university ;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter university">
+                        <div class="item">
+                            <div class="show-image">
+                                <!-- <a role="button" (click)="authenticationService.festDetailsWithspecific(universityList.fest_id)">-->
+                                <div class="img-wrap">
+                                    <img [src]="universityList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
+                                    <div class="overlay">
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(universityList.fest_id)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>{{universityList.org_name}}</h4>
+                                <h4>{{universityList.fest_start_date|date:'d-M-y' }}</h4>
+                                <h4 style="font-weight:900">{{universityList.fest_name}}</h4>
+                                <!--</a>-->
+                            </div>
+                            <div class="col-md-1 like-sec">
+                                <span>{{universityList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{universityList.fest_id}} (click)="authenticationService.getLikesNo(universityList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.engineering">
+                <div *ngFor="let engineeringList of  this.engineering ;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter engineering">
+                        <div class="item">
+                            <div class="show-image">
+                                <!--<a role="button" (click)="authenticationService.festDetailsWithspecific(engineeringList.fest_id)">-->
+                                <div class="img-wrap">
+                                    <img [src]="engineeringList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
+                                    <div class="overlay">
+
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(engineeringList.fest_id)" />
+                                    </div>
+                                </div>
+
+                                <!-- <h4> <span></span><span></span></h4> -->
+                                <div class="col-md-9">
+                                <h4>{{engineeringList.org_name}}</h4>
+                                <h4>{{engineeringList.fest_start_date}}</h4>
+                                <h4 style="font-weight:900">{{engineeringList.fest_name}}</h4>
+                                <!--</a> -->
+                                </div>
+                            </div>
+                            <div class="col-md-1 like-sec">
+                                <span>{{engineeringList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{engineeringList.fest_id}} (click)="authenticationService.getLikesNo(engineeringList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.commerce">
+                <div *ngFor="let commerceList of  this.commerce;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter commerce">
+                        <div class="item">
+                            <div class="show-image">
+                                <!-- <a role="button" (click)="authenticationService.festDetailsWithspecific(engineeringList.fest_id)">-->
+                                <div class="img-wrap">
+                                    <img [src]="commerceList.fest_image" alt="" style="position: relative;float: left;width: 100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
+                                    <div class="overlay">
+
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(commerceList.fest_id)" />
+                                    </div>
+                                </div>
+
+                                <!-- <h4> <span></span><span></span></h4> -->
+                                <div class="col-md-9">
+                                <h4>{{commerceList.org_name}}</h4>
+                                <h4>{{commerceList.fest_name}}</h4>
+                                <h4 style="font-weight:900">{{commerceList.fest_start_date}}</h4>
+                                <!--</a> -->
+                                </div>
+                            </div>
+                            <div class="col-md-1 like-sec">
+                                <span>{{commerceList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{engineeringList.fest_id}} (click)="authenticationService.getLikesNo(commerceList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.arch">
+                <div *ngFor="let archList of  this.arch;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter arch">
+                        <div class="item">
+                            <div class="show-image">
+                                <!-- <a role="button" (click)="authenticationService.festDetailsWithspecific(archList.fest_id)"> -->
+                                <div class="img-wrap">
+                                    <img [src]="archList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
+                                    <div class="overlay">
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(archList.fest_id)" />
+                                    </div>
+                                </div>
+
+                                <!-- <h4> <span></span><span></span></h4> -->
+                                <div class="col-md-9">
+                                <h4>{{archList.org_name}}</h4>
+                                <h4>{{archList.fest_name}}</h4>
+                                <h4 style="font-weight:900">{{archList.fest_start_date}}</h4>
+                                <!--</a> -->
+                            </div>
+                            </div>
+                            <div class="col-md-2 like-sec">
+                                <span>{{archList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{archList.fest_id}} (click)="authenticationService.getLikesNo(archList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.preuniversity">
+                <div *ngFor="let preuniversityList of  this.preuniversity;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter pre-university">
+                        <div class="item">
+                            <div class="show-image">
+                                <!--<a role="button" (click)="authenticationService.festDetailsWithspecific(preuniversityList.fest_id)"> -->
+                                <div class="img-wrap">
+                                    <img [src]="preuniversityList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
+                                    <div class="overlay">
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(preuniversityList.fest_id)" />
+                                    </div>
+                                </div>
+
+                                <!-- <h4> <span></span><span></span></h4> -->
+                                <div class="col-md-9">
+                                <h4>{{preuniversityList.org_name}}</h4>
+                                <h4>{{preuniversityList.fest_start_date}}</h4>
+                                <h4 style="font-weight:900">{{preuniversityList.fest_name}}</h4>
+                                <!--</a> -->
+                            </div>
+                            </div>
+                            <div class="col-md-1 like-sec">
+                                <span> {{preuniversityList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{preuniversityList.fest_id}} (click)="authenticationService.getLikesNo(preuniversityList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.arts">
+                <div *ngFor="let artsList of  this.arts ;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter arts">
+                        <div class="item">
+                            <div class="show-image">
+                                <!--<a role="button" (click)="authenticationService.festDetailsWithspecific(artsList.fest_id)">-->
+                                <div class="img-wrap">
+                                    <img [src]="artsList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
+                                    <div class="overlay">
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(artsList.fest_id)" />
+                                    </div>
+                                </div>
+
+                                <!-- <h4> <span></span><span></span></h4> -->
+                                <div class="col-md-9">
+                                <h4>{{artsList.org_name}}</h4>
+                                <h4>{{artsList.fest_start_date}}</h4>
+                                <h4 style="font-weight:900">{{artsList.fest_name}}</h4>
+                                <!--</a> -->
+                            </div>
+                            </div>
+                            <div class="col-md-1 like-sec">
+                                <span>{{artsList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{artsList.fest_id}} (click)="authenticationService.getLikesNo(artsList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.science">
+                <div *ngFor="let scienceList of  this.science ;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter science">
+                        <div class="item">
+                            <div class="show-image">
+                                <!--<a role="button" (click)="authenticationService.festDetailsWithspecific(scienceList.fest_id)"> -->
+                                <div class="img-wrap">
+                                    <img [src]="scienceList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size: cover;">
+                                    <div class="overlay">
+                                        <!-- <h4> <span></span><span></span></h4> -->
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(scienceList.fest_id)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                <h4>{{scienceList.org_name}}</h4>
+                                <h4>{{scienceList.fest_name}}</h4>
+                                <h4 style="font-weight:900">{{scienceList.fest_start_date}}</h4>
+                                <!--</a> -->
+                                </div>
+                            </div>
+                            <div class="col-md-1 like-sec">
+                                <span>{{scienceList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{scienceList.fest_id}} (click)="authenticationService.getLikesNo(scienceList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.youth">
+                <div *ngFor="let youthList of  this.youth ;let i=index">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter youth">
+                        <div class="item">
+                            <div class="show-image">
+                                <!-- <a role="button" (click)="authenticationService.festDetailsWithspecific(youthList.fest_id)"> -->
+                                <div class="img-wrap">
+                                    <img [src]="youthList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
+                                    <div class="overlay">
+                                        <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(youthList.fest_id)" />
+                                    </div>
+                                </div>
+
+                                <!-- <h4> <span></span><span></span></h4> -->
+                                <div class="col-md-9">
+                                    <h4>{{youthList.org_name}}</h4>
+                                    <h4>{{youthList.fest_name}}</h4>
+                                    <h4 style="font-weight:900">{{youthList.fest_start_date}}</h4>
+                                    <!--</a> -->
+                                </div>
+                            </div>
+                            <div class="col-md-1 like-sec">
+                                <span>{{youthList.total_likes}}</span>
+                            </div>
+                            <div class="col-md-1 like-sec2 pull-right">
+                                <a role="button" class="heart" id={{youthList.fest_id}} (click)="authenticationService.getLikesNo(youthList,$event)"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

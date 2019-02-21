@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "festspecific.component.sass"
+    ],
+    "names": [],
+    "file": "festspecific.component.css"
+}
