@@ -40,9 +40,9 @@ export class RegistrationComponent implements OnInit {
       sub_coordinator_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
       // sub_coordinator_phone: ['', [Validators.required]],
       sub_coordinator_email: ['', [Validators.required]],
-      team: ['', [Validators.required]],
-      manager_name: ['', [Validators.required]],
-      manager_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
+      // team: ['', [Validators.required]],
+      // manager_name: ['', [Validators.required]],
+      // manager_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
       recaptchaReactive: new FormControl(null,[Validators.required])
     });
   }

@@ -13,15 +13,15 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { OrganizationsComponent } from './components/organizations/organizations.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import {  FestUploadFormComponent} from './components/fest-upload-form/fest-upload-form.component';
+import { FestUploadFormComponent } from './components/fest-upload-form/fest-upload-form.component';
 import { GrdFilterPipe } from './components/organizations/grd-filter.pipe';
 
 // import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,
 // } from "angular-6-social-login-v2";
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-import { GoogleLoginProvider, FacebookLoginProvider} from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
-import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { RecaptchaFormsModule  } from 'ng-recaptcha/forms';

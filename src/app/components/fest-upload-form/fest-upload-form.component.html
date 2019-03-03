@@ -5,7 +5,7 @@
 <div class="registraion-page">
     <div class="container">
         <div class="col-md-12 text-center">
-            <h2>fest upload form</h2>
+            <h2>upload your fest</h2>
         </div>
         <div class="col-md-6"></div>
         <div class="col-md-6"></div>
@@ -13,15 +13,20 @@
         <form [formGroup]="festForm" (ngSubmit)="onFestSubmit()">
             <div class="form-group">
                 <div class="col-md-4">
-                    <label>Name of Fest * </label>
+                    <label>Name of Fest *</label>
                 </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" placeholder="Enter Fest Name" formControlName="name"
-                        [ngClass]="{ 'is-invalid': submitted && e.name.errors }" required />
-                    <div *ngIf="submitted && e.name.errors" class="invalid-feedback">
-                        <div *ngIf="e.name.errors.required">Name is required</div>
+                <!-- <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Enter Fest Name" formControlName="name" required minlength="4"/>
+                    <div class="invalid-feedback">
+                        <div>Name is required</div>
                     </div>
-                </div>
+                </div> -->
+                <div class="col-md-8">
+                        <input type="text" class="form-control" placeholder="Enter Fest Name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && e.name.errors }"/>
+                        <div *ngIf="submitted && e.name.errors" class="invalid-feedback">
+                            <div *ngIf="e.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group">
@@ -35,6 +40,44 @@
                     <canvas width="300" id="display" height="300" style="display: none;"></canvas>
                     <div *ngIf="submitted && e.image.errors" class="invalid-feedback">
                         <div *ngIf="e.image.errors.required">Fest Pic Upload is Required</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>Fest Type</label>
+                </div>
+                <div class="col-md-8">
+                    <select placeholder="Select Fest Type" formControlName="fest_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.fest_type.errors }" required>
+                        <option value="" disabled selected hidden>Select Your Fest Type</option>
+                        <option value="Annual">Annual</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Literary">Literary</option>
+                        <option value="Media">Media</option>
+                        <option value="Mun">Mun</option>
+                    </select>
+                    <div *ngIf="submitted && r.type.errors" class="invalid-feedback">
+                        <div *ngIf="r.fest_type.errors.required">Fest type is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>Description *</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Enter Description" formControlName="description"
+                        [ngClass]="{ 'is-invalid': submitted && e.description.errors }" required />
+                    <div *ngIf="submitted && e.description.errors" class="invalid-feedback">
+                        <div *ngIf="e.description.errors.required">Description is required</div>
                     </div>
                 </div>
             </div>
@@ -82,10 +125,6 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-
-            <div class="col-md-12">
-                <h5>add new field button</h5>
-            </div>
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="">Upload Promo Video (optional)</label>
@@ -109,51 +148,138 @@
                 </div>
             </div>
             <div class="clearfix"></div>
+            <div class="col-md-12">
+                <h5>Events</h5>
+            </div>
+
             <div class="form-group" formArrayName="event">
                 <div *ngFor="let ctrl of festForm.get('event').controls; let pointIndex=index" [formGroupName]="pointIndex">
-                    <div class="col-md-2">
-                        <label>Enter event, rules and ticket price *</label>
+                    <div class="col-md-2 " *ngIf="pointIndex>0">
+                            <button class="eve" type="button" (click)="deleteEventPoint(pointIndex)">-Remove Event</button>
+                            <h4> <span></span><span></span></h4>
+                            <hr>
                     </div>
-                    <div class="col-md-2">
-                            <button class="eve" type="button" (click)="addEventPoint()">+Add Event</button>
-                        </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" placeholder="Enter Event Name" formControlName="eventName"
-                            [ngClass]="{ 'is-invalid': submitted && e.eventName.errors }" />
-                        <div *ngIf="submitted && e.eventName.errors" class="invalid-feedback">
-                            <div *ngIf="e.eventName.errors.required"> Event Name is required</div>
-                        </div>
+                    <div class="col-md-12">
+                            
+                                <div class="col-md-2">
+                                    <label>Enter event details *</label>
+                                </div>
+                                
+                                <div class="col-md-2">
+                                    <select placeholder="Select Event Type" formControlName="event_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.event_type.errors }" required>
+                                        <option value="" disabled selected hidden>Select Your Event Type</option>
+                                        <option value="Music">Music</option>
+                                        <option value="Dance'">Dance</option>
+                                        <option value="Theater">Theater</option>
+                                        <option value="Mad Ads">Mad Ads</option>
+                                        <option value="Debate">Debate</option>
+                                        <option value="Hackathon">Hackathon</option>
+                                        <option value="Ted Talk">Ted Talk</option>
+                                        <option value="Quiz">Quiz</option>
+                                        <option value="Treasure Hunt">Treasure Hunt</option>
+                                        <option value="Literary">Literary</option>
+                                        <option value="Art and Craft">Art and Craft</option>
+                                        <option value="Cooking">Cooking</option>
+                                        <option value="Conference">Conference</option>
+                                        <option value="Fashion">Fashion</option>
+                                        <option value="Singing">Singing</option>
+                                        <option value="Entrepreneurship">Entrepreneurship</option>
+                                        <option value="Coding">Coding</option>
+                                        <option value="Photography">Photography</option>
+                                        <option value="Air Crash">Air Crash</option>
+                                        <option value="Personality">Personality</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Gaming">Gaming</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div *ngIf="submitted && r.type.errors" class="invalid-feedback">
+                                        <div *ngIf="r.event_type.errors.required">Event type is required</div>
+                                    </div>
+                                </div>                    
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" placeholder="Enter Event Name" formControlName="eventName"
+                                        [ngClass]="{ 'is-invalid': submitted && e.eventName.errors }" />
+                                    <div *ngIf="submitted && e.eventName.errors" class="invalid-feedback">
+                                        <div *ngIf="e.eventName.errors.required"> Event Name is required</div>
+                                    </div>
 
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder=" Enter Event Rule" formControlName="rule"
-                            [ngClass]="{ 'is-invalid': submitted && e.rule.errors }" />
-                        <div *ngIf="submitted && e.rule.errors" class="invalid-feedback">
-                            <div *ngIf="e.rule.errors.required"> Event Name is required</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" placeholder="Enter Ticket Price " formControlName="ticket_price"
-                            [ngClass]="{ 'is-invalid': submitted && e.ticket_price.errors }" />
-                        <div *ngIf="submitted && e.ticket_price.errors" class="invalid-feedback">
-                            <div *ngIf="e.ticket_price.errors.required"> Event Name is required</div>
-                        </div>
-                    </div>
-                    
-
+                                </div>
+                                <div class="col-md-2">
+                                        <input type="date" class="form-control" style="line-height: 1em;" (keydown)="onKeydown($event)"  placeholder="Enter Date" formControlName="event_date"
+                                            [ngClass]="{ 'is-invalid': submitted && e.event_date.errors }" required/>
+                                        <div *ngIf="submitted && e.event_date.errors" class="invalid-feedback">
+                                            <div *ngIf="e.event_date.errors.required"> Event Date is required</div>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                        <input type="text" class="form-control" placeholder="Enter Time" formControlName="event_time"
+                                            [ngClass]="{ 'is-invalid': submitted && e.event_time.errors }" />
+                                        <div *ngIf="submitted && e.event_time.errors" class="invalid-feedback">
+                                            <div *ngIf="e.event_time.errors.required"> Event Time is required</div>
+                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" placeholder="Enter Ticket Price " formControlName="ticket_price"
+                                        [ngClass]="{ 'is-invalid': submitted && e.ticket_price.errors }" />
+                                    <div *ngIf="submitted && e.ticket_price.errors" class="invalid-feedback">
+                                        <div *ngIf="e.ticket_price.errors.required"> Event Price is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-xs-12 pull-right">
+                                    <input type="text" class="form-control" placeholder="Enter Coordinator's name and phone number" formControlName="event_coordinator"
+                                        [ngClass]="{ 'is-invalid': submitted && e.event_coordinator.errors }" />
+                                    <div *ngIf="submitted && e.event_coordinator.errors" class="invalid-feedback">
+                                        <div *ngIf="e.event_coordinator.errors.required"> Event Coordinator's name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-xs-12 pull-right">
+                                <textarea rows="5" class="form-control" placeholder="Enter Description and Rules" formControlName="event_description"
+                                    [ngClass]="{ 'is-invalid': submitted && e.event_description.errors }" ></textarea>
+                                <div *ngIf="submitted && e.event_description.errors" class="invalid-feedback">
+                                    <div *ngIf="e.event_description.errors.required"> Event Description is required</div>
+                                </div>
+                                </div>
+                                </div>
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                                <button class="eve" type="button" (click)="addEventPoint()">+Add Event</button>
+                                        </div>
+                                        
+                                    </div>
                 </div>
             </div>
+                    
+                    
+                    
+
+                    
+                    
+                    <!-- <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder=" Enter Event Rules" formControlName="rule"
+                                [ngClass]="{ 'is-invalid': submitted && e.rule.errors }" />
+                            <div *ngIf="submitted && e.rule.errors" class="invalid-feedback">
+                                <div *ngIf="e.rule.errors.required"> Event Rule is required</div>
+                            </div>
+                        </div> -->
+                    
+                    
+                    
+                    
+
+            
             <div class="clearfix"></div>
+            <div class="col-md-12">
+                <h5>Sponsors</h5>
+            </div>
             <div class="form-group" formArrayName="event_sponser" style="padding:0 15px;">
                 <div *ngFor="let ctrlspon of festForm.get('event_sponser').controls; let pointIndex=index"
                     [formGroupName]="pointIndex">
                     <div class="form-group row">
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <label>Enter Sponsor Name and Picture</label>
                         </div>
-                        <div class="col-md-2">
-                                <button class="eve" type="button" (click)="addSponsorEventPoint()">+Add Sponsor </button>
-                        </div>
+                        
+                        
                         <div class="col-md-4">
                             <input type="text" class="form-control" placeholder="Enter Event Sponser Name" formControlName="evtSpnName" />
                             <canvas width="300" height="300" id={{pointIndex}} style="display: none;"></canvas>
@@ -167,19 +293,27 @@
                         <div class="col-md-4">
                                         <label>Caption (optional)</label>
                         </div>
+                        
                         <div class="col-md-8">
                                 <input type="text" class="form-control" name="caption" formControlName="caption"/>
                         </div>
                     </div>
-                    
-                    
+                    <div class="form-group row"> 
+                    <div class="col-md-2">
+                            <button class="eve" type="button" (click)="addSponsorEventPoint()">+Add Sponsor </button>
+                    </div>
+                    <div class="col-md-2">
+                            <button class="eve" type="button" *ngIf="pointIndex>0" (click)="deleteSponsorEventPoint(pointIndex)">-Remove</button>
+                    </div>
+                    </div>
+                
                 </div>
             </div>
 
 
             <div class="clearfix"></div>
             <div class="col-md-12">
-                <h5>Fest Manager Details</h5>
+                <h5>Fest Manager</h5>
             </div>
             <div class="form-group">
                 <div class="col-md-4">
@@ -251,7 +385,7 @@
             </div>
             <div class="clearfix"></div>
             <div class="col-md-12">
-                <h5>account details of manager for payment</h5>
+                <h5>account details of manager</h5>
             </div>
 
             <div class="form-group">
@@ -295,7 +429,7 @@
 
             <div class="clearfix"></div>
             <div class="col-md-12">
-                <h5>confirm account detailes</h5>
+                <h5>confirm account details</h5>
             </div>
 
             <div class="form-group">
@@ -325,7 +459,7 @@
             </div>
 
             <div class="col-md-12">
-                <p>i have read and agree to the <a href="#">terms & conditions</a>
+                <p>I have read and agreed to the <a href="#">terms & conditions</a>
                     <input class="form-control" type="checkbox" formControlName="checkbox" [ngClass]="{ 'is-invalid': submitted && e.checkbox.errors }"
                         required>
                 </p>

@@ -18,8 +18,8 @@ declare var $: any;
 })
 export class AuthenticationService {
 
-  private _organizationUrl = "http://www.festify.in:8000/api/";
-  //private _organizationUrl = "http://localhost:8000/api/";
+  // private _organizationUrl = "http://www.festify.in:8000/api/";
+  private _organizationUrl = "http://localhost:8000/api/";
   isClick = false;
   orgExist: string;
   userExist: string;
@@ -66,7 +66,7 @@ export class AuthenticationService {
     this.orgExist = undefined;
     this.userExist = undefined;
     localStorage.clear();
-    alert("Successfully logout")
+    // alert("Successfully logout")
     this._router.navigate(['home']);
   }
   socialmediaLogOut() {
@@ -77,7 +77,7 @@ export class AuthenticationService {
     this.orgExist = undefined;
     this.userExist = undefined;
     localStorage.clear();
-    alert("Successfully logout")
+    // alert("Successfully logout")
     this._router.navigate(['home']);
   }
 
@@ -147,7 +147,7 @@ export class AuthenticationService {
       this.http.post(`${this._organizationUrl}fest/liked/`, likeData, requestOptions).subscribe();
 
     } else {
-      alert("Please Login to do like or You don't have permission to do this");
+      alert("Login to like");
     }
   }
 

@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               this.youth.push(x);
             } else if (x.org_type == "pre-university") {
               this.preuniversity.push(x);
-            } else if (x.org_type == "university") {
+            } else { //if (x.org_type == "university") 
               this.university.push(x);
             }
           });
@@ -111,7 +111,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     $(document).ready(function () {
       var owl = $('.slider');
       owl.owlCarousel({
-        autoPlay: 3000, //Set AutoPlay to 3 seconds
+        autoPlay: 4000, //Set AutoPlay to 4 seconds
         items: 1,
         itemsMobile: [568, 1],
         itemsTablet: [768, 1],
@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       var owl1 = $('.tab-cara');
       owl1.owlCarousel({
-        autoPlay: 3000, //Set AutoPlay to 3 seconds
+        autoPlay: 4000, //Set AutoPlay to 4 seconds
         items: 3,
         itemsMobile: [568, 1],
         itemsTablet: [768, 1],
@@ -137,7 +137,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       var owl2 = $('.partner');
       owl2.owlCarousel({
-        autoPlay: 3000, //Set AutoPlay to 3 seconds
+        autoPlay: 4000, //Set AutoPlay to 4 seconds
         items: 5,
         itemsMobile: [568, 1],
         itemsTablet: [768, 1],
@@ -149,7 +149,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       });
       var owl3 = $('.team');
       owl3.owlCarousel({
-        autoPlay: 3000, //Set AutoPlay to 3 seconds
+        autoPlay: 4000, //Set AutoPlay to 4 seconds
         items: 5,
         itemsMobile: [568, 1],
         itemsTablet: [768, 1],
