@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 
 export class RegistrationComponent implements OnInit {
-
+  submitted = false;
   registerForm: FormGroup;
   
   public version = VERSION.full;
@@ -36,7 +36,7 @@ export class RegistrationComponent implements OnInit {
       main_coordinator_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
       // main_coordinator_phone: ['', [Validators.required]],
       main_coordinator_email: ['', [Validators.required]],
-      sub_coordinator_name: [''],
+      sub_coordinator_name: ['', [Validators.required]],
       sub_coordinator_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
       // sub_coordinator_phone: ['', [Validators.required]],
       sub_coordinator_email: ['', [Validators.required]],
@@ -73,6 +73,7 @@ export class RegistrationComponent implements OnInit {
  
 
   onRegistrationSubmit() {
+    this.submitted = true;
     var myCanvas = <HTMLCanvasElement> document.getElementById('mycanvas');
     this.mydataURL=myCanvas.toDataURL('image/jpeg');
     for (let item in this.registerForm.value) {
@@ -82,7 +83,7 @@ export class RegistrationComponent implements OnInit {
     }
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      alert("Please enter 10 digit mobile no and Filled all values properly");
+      // alert("Please enter 10 digit mobile no and Filled all values properly");
       return;
     } else {
       this.appService.createOrganization(this.registerForm)
@@ -90,7 +91,8 @@ export class RegistrationComponent implements OnInit {
           if (data == undefined) {
             this.router.navigate(['home']);
           } else {
-            alert('Registration Successful');
+            // alert('Registration Successful');
+            this.router.navigate(['organization-dashboard']);
             this.registerForm.reset();
           }
         });

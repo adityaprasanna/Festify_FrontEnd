@@ -22,10 +22,10 @@ import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { RecaptchaFormsModule  } from 'ng-recaptcha/forms';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 //service
 import { AppService } from "./app.service";
 import { AuthGuardService } from './auth-guard.service';
@@ -103,9 +103,9 @@ export function getAuthServiceConfigs() {
     RecaptchaFormsModule,
     HttpModule,
     HttpClientModule,
-    SlickCarouselModule
-   
-  
+    SlickCarouselModule,
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
   ],
   
   providers: [{

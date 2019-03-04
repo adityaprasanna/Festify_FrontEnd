@@ -9,7 +9,6 @@ body {
   color: #ccc;
   font-family: 'Roboto', sans-serif;
 }
-
 img {
   max-width: 100%;
 }
@@ -1345,7 +1344,22 @@ section.sup-sec a {
   font-weight: 600;
   padding: 9px 27px;
 }
-
+/* .fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+} */
 .registraion-page {
   padding: 60px 0;
 }
@@ -1385,15 +1399,17 @@ section.sup-sec a {
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-  border-radius: 0;
+  border-radius: 5px;
   margin-bottom: 10px;
   height: auto;
-  padding: 12px;
+  padding: 7px;
   color: #333;
 }
 
 .registraion-page input[type=file] {
-  padding: 11px !important;
+  padding: 7px !important;
+  margin-top: 10px;
+  border: dotted 3px lightgray;
 }
 
 .registraion-page textarea {
@@ -1409,17 +1425,17 @@ section.sup-sec a {
   margin-right: 15px;
 }
 
-.registraion-page button {
+.registraion-page button.eve {
   display: inline-block;
   margin: 25px auto 0;
   background: #f71769;
   color: #fff;
-  border-radius: 0;
+  border-radius: 15px;
   border: none;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
-  padding: 12px 37px;
+  padding: 12px 20px;
   margin-left: 15px;
 }
 

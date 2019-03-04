@@ -11,6 +11,7 @@
         <div class="col-md-6"></div>
         <div class="clearfix"></div>
         <form [formGroup]="registerForm" (ngSubmit)="onRegistrationSubmit()">
+         
             <div class="form-group">
                 <div class="col-md-4">
                     <label>Type</label>
@@ -25,7 +26,7 @@
 
                     </select>
                     <div *ngIf="submitted && r.type.errors" class="invalid-feedback">
-                        <div *ngIf="r.type.errors.required">Organization Type</div>
+                        <div *ngIf="r.type.errors.required" class="alert alert-danger">Organization Type is required</div>
                     </div>
                 </div>
             </div>
@@ -50,7 +51,7 @@
                         <option value="youth">Liberal Arts</option>
                     </select>
                     <div *ngIf="submitted && r.type.errors" class="invalid-feedback">
-                        <div *ngIf="r.org_category.errors.required">Organization Category is required</div>
+                        <div *ngIf="r.org_category.errors.required" class="alert alert-danger">Organization Category is required</div>
                     </div>
                 </div>
             </div>
@@ -62,7 +63,7 @@
                 <div class="col-md-8">
                     <input type="text" formControlName="org_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.org_id.errors }" />
                     <div *ngIf="submitted && r.org_id.errors" class="invalid-feedback">
-                        <div *ngIf="r.org_id.errors.required">Organization User ID</div>
+                        <div *ngIf="r.org_id.errors.required" class="alert alert-danger">Organization User ID is required</div>
                     </div>
                 </div>
             </div>
@@ -74,7 +75,7 @@
                 <div class="col-md-8">
                     <input type="password" formControlName="org_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.org_password.errors }" />
                     <div *ngIf="submitted && r.org_password.errors" class="invalid-feedback">
-                        <div *ngIf="r.org_password.errors.required">Organization User Password</div>
+                        <div *ngIf="r.org_password.errors.required" class="alert alert-danger">Organization User Password is required</div>
                     </div>
                 </div>
             </div>
@@ -87,7 +88,7 @@
                 <div class="col-md-8">
                     <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.name.errors }" />
                     <div *ngIf="submitted && r.name.errors" class="invalid-feedback">
-                        <div *ngIf="r.name.errors.required">Organization Name</div>
+                        <div *ngIf="r.name.errors.required" class="alert alert-danger">Organization Name is required</div>
                     </div>
                 </div>
             </div>
@@ -99,7 +100,7 @@
                 <div class="col-md-8">
                     <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.address.errors }" />
                     <div *ngIf="submitted && r.address.errors" class="invalid-feedback">
-                        <div *ngIf="r.address.errors.required">Address</div>
+                        <div *ngIf="r.address.errors.required" class="alert alert-danger">Address is required</div>
                     </div>
                 </div>
             </div>
@@ -112,7 +113,7 @@
                     <input type="file" accept="image/x-png,image/gif,image/jpeg" formControlName="image"  name="image" (change)="fileChange($event)" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.image.errors }" />
                     <canvas width="300" height="300" id="mycanvas" style="display: none;"></canvas>
                     <div *ngIf="submitted && r.image.errors" class="invalid-feedback">
-                        <div *ngIf="r.image.errors.required">College Pic Upload</div>
+                        <div *ngIf="r.image.errors.required" class="alert alert-danger">College Picture is required</div>
                     </div>
                 </div>
             </div>
@@ -124,7 +125,7 @@
                 <div class="col-md-8">
                     <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.description.errors }" />
                     <div *ngIf="submitted && r.description.errors" class="invalid-feedback">
-                        <div *ngIf="r.description.errors.required">Description</div>
+                        <div *ngIf="r.description.errors.required" class="alert alert-danger">Description is required</div>
                     </div>
                 </div>
             </div>
@@ -136,8 +137,8 @@
                 <div class="col-md-8">
                     <input type="text" formControlName="website" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.website.errors }" />
                     <div *ngIf="submitted && r.website.errors" class="invalid-feedback">
-                        <div *ngIf="r.website.errors.required">Website</div>
-                        <div *ngIf="r.website.errors.email">Website must be a valid email address</div>
+                        <div *ngIf="r.website.errors.required" class="alert alert-danger">Website is required</div>
+                        <div *ngIf="r.website.errors.email" class="alert alert-danger">Website must be a valid email address</div>
                     </div>
                 </div>
             </div>
@@ -158,7 +159,7 @@
                     <div class="col-md-4">
                         <input type="text" formControlName="main_coordinator_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.main_coordinator_name.errors }" />
                         <div *ngIf="submitted && r.main_coordinator_name.errors" class="invalid-feedback">
-                            <div *ngIf="r.main_coordinator_name.errors.required">Name is required</div>
+                            <div *ngIf="r.main_coordinator_name.errors.required" class="alert alert-danger">Name is required</div>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -167,8 +168,8 @@
                     <div class="col-md-4">
                         <input type="text" formControlName="main_coordinator_phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.main_coordinator_phone.errors }" />
                         <div *ngIf="submitted && r.main_coordinator_phone.errors" class="invalid-feedback">
-                            <div *ngIf="r.main_coordinator_phone.errors.required">Mobileno is required</div>
-                            <div *ngIf="r.main_coordinator_phone.errors.phone">Mobile No Must be a valid Mobile No</div>
+                            <div *ngIf="r.main_coordinator_phone.errors.required" class="alert alert-danger">Mobile No. is required</div>
+                            <div *ngIf="r.main_coordinator_phone.errors.phone" class="alert alert-danger">Mobile No Must be a valid Mobile No</div>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -177,7 +178,7 @@
                     <div class="col-md-10">
                         <input type="text" formControlName="main_coordinator_email" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.main_coordinator_email.errors }" />
                         <div *ngIf="submitted && r.main_coordinator_email.errors" class="invalid-feedback">
-                            <div *ngIf="r.main_coordinator_email.errors.required">Email is required</div>
+                            <div *ngIf="r.main_coordinator_email.errors.required" class="alert alert-danger">Email is required</div>
                             <div *ngIf="r.main_coordinator_email.errors.email">Email must be a valid email address</div>
                         </div>
                     </div>
@@ -195,7 +196,7 @@
                     <div class="col-md-4">
                         <input type="text" formControlName="sub_coordinator_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.sub_coordinator_name.errors }" />
                         <div *ngIf="submitted && r.sub_coordinator_name.errors" class="invalid-feedback">
-                            <div *ngIf="r.sub_coordinator_name.errors.required">Name</div>
+                            <div *ngIf="r.sub_coordinator_name.errors.required" class="alert alert-danger">Name is required</div>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -204,7 +205,7 @@
                     <div class="col-md-4">
                         <input type="text" formControlName="sub_coordinator_phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.sub_coordinator_phone.errors }" />
                         <div *ngIf="submitted && r.sub_coordinator_phone.errors" class="invalid-feedback">
-                            <div *ngIf="r.sub_coordinator_phone.errors.required">Mobile Number</div>
+                            <div *ngIf="r.sub_coordinator_phone.errors.required"class="alert alert-danger">Mobile No. is required</div>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -213,7 +214,7 @@
                     <div class="col-md-10">
                         <input type="text" formControlName="sub_coordinator_email" class="form-control" [ngClass]="{ 'is-invalid': submitted && r.sub_coordinator_email.errors }" />
                         <div *ngIf="submitted && r.sub_coordinator_email.errors" class="invalid-feedback">
-                            <div *ngIf="r.sub_coordinator_email.errors.required">Email</div>
+                            <div *ngIf="r.sub_coordinator_email.errors.required" class="alert alert-danger">Email is required</div>
                             <div *ngIf="r.sub_coordinator_email.errors.email">Email must be a valid email address</div>
                         </div>
                     </div>
