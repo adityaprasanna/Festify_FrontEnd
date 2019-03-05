@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication.service';
-
+import { Router } from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   };
   likedFest: any;
 
-  constructor(private authenticationService: AuthenticationService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private authenticationService: AuthenticationService, @Inject(PLATFORM_ID) private platformId: Object, private router: Router) {
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
     this.authenticationService.userExist = sessionStorage.getItem('userData');
     this.authenticationService.festDetails().subscribe(
@@ -96,6 +96,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   }
 
+  createEvent() {
+    this.router.navigate(['signup']);
+  }
   mouseHovering() {
     this.isHovering = true;
   }

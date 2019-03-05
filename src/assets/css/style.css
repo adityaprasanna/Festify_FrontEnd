@@ -510,7 +510,20 @@ footer.footer-bottom ul.ft-menu li a {
   font-size: 16px;
   letter-spacing: 0.5px;
 }
-
+section.body-cont10 .container{
+  background: url('../images/organizer.png');
+  padding: 80px 0;
+  background-size: cover;
+  width: 100%;
+}
+section.body-cont10 .container .btn{
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+section.body-cont10 .container h2{
+  color: rgba(174, 95, 179, 1)
+}
 section.body-cont1 {
   background: #efefef;
   padding: 0 0 60px;
