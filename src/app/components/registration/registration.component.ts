@@ -3,8 +3,6 @@ import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms'
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -88,8 +86,35 @@ export class RegistrationComponent implements OnInit {
     } else {
       this.appService.createOrganization(this.registerForm)
       .subscribe(data => {
-          if (data == undefined) {
-            this.router.navigate(['home']);
+        console.log(data, this.registerForm.value);
+          if (data) {
+            // this.router.navigate(['home']);
+            // 1st solution
+            // alert('You are registered! Please login to continue now. ');
+            // $('#myModal2').modal('show');
+            // 2nd solution
+            const modal = document.getElementById('myModal2');
+            const input = modal.getElementsByTagName('input');
+            // userID
+            input[0].innerText = this.registerForm.value.org_id;
+            // password
+            input[1].innerText = this.registerForm.value.org_password;
+            // click login button
+            // document.getElementById('loginModalButton').click();
+            const postParams = {
+              value: {
+                email: this.registerForm.value.org_id,
+                password: this.registerForm.value.org_password
+              }
+            };
+            this.appService.organizationLogin(postParams).subscribe(
+              resp => {
+                if (resp) {
+                  sessionStorage.setItem('currentUserId', JSON.stringify(postParams));
+                  sessionStorage.setItem('currentUser', JSON.stringify(resp));
+                  this.router.navigate(['orgdashboard']);
+                }
+              });
           } else {
             // alert('Registration Successful');
             this.router.navigate(['organization-dashboard']);

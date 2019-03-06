@@ -46,7 +46,7 @@ export class AppService {
   organizationList() {
     //  let headerOptions = new Headers({ 'Content-Type': 'application/json'});
     //  let requestOptions = new RequestOptions({ method: RequestMethod.Post, headers: headerOptions });
-    return this.http.get(`${this._organizationUrl}organization/list/`).pipe(map(x => x.json()));;
+    return this.http.get(`${this._organizationUrl}organization/list/`).pipe(map(x => x.json()));
   }
   specificOrganizationList() {
     // let headerOptions = new Headers({ 'Content-Type': 'application/json'});
