@@ -1,75 +1,87 @@
 <style>
-    .current-clikable-item {
-        color: #f71769!important;
-    }
+  .current-clikable-item {
+    color: #f71769 !important;
+  }
 </style>
 <header>
-    <div class="top-part">
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-6 col-xs-6">
-                            <ul class="top-socila">
-                                <li><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 col-xs-6 log-in text-right">
-                                <div class="dropdown">
-                                        <span><i class="fa fa-user-circle" style="font-size:24px;" *ngIf="organizationList"><span style="font-size:20px;vertical-align:middle;font-family:Arial, Helvetica, sans-serif;"><b>&nbsp;&nbsp;Hi, {{ organizationList.name }}</b></span></i></span>
-                                        <div class="dropdown-content dropdown-menu-right">
-                                                <li class="dd-item">
-                                                    <a class="nav-link" routerLink="/orgdashboard/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
-                                                </li>
-                                                <li class="dd-item">
-                                                    <a class="nav-link" routerLink="/fest-upload-form/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Create Fest</a>
-                                                </li>
-                                                <li class="dd-item">
-                                                    <a href="javascript:void(0);" class="nav-link"  routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}" (click)="this.authenticationService.logout()">Logout</a>
-                                                </li>
-                                        </div>
-                                      </div>
-                        </div>
-        
-            </div>
+  <div class="top-part">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-6">
+          <ul class="top-socila">
+            <li><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
+          </ul>
         </div>
-    </div>
-    <div class="logo-sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-xs-4 col-sm-2 logo-part">
-                    <a routerLink="/"><img src="assets/images/logo2.png" alt=""></a>
-                </div>
-                <div class="col-md-9 text-right">
-                    <div id="navigation">
-                        <nav>
-                            <div class="collapse navbar-collapse justify-content-end" id="nav-content">
-                                <ul class="navbar-nav navbar-right" id="nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink="/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Home</a>
-                                    </li>
-                                     <!-- <li class="nav-item">
-                                        <a class="nav-link" routerLink="/orgdashboard/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink="/fest-upload-form/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Create Fest</a>
-                                    </li> -->
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink="/fest/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Fests</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink="/organizations/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">organizations</a>
-                                    </li>
-                                    <li class="nav-item"><a href="#contact">contact us</a></li>
-                                    <li class="nav-item"><a href="#map-sec">location</a></li>
-                                     <!-- <li class="nav-item"><a href="javascript:void(0);" class="nav-link"  routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}" (click)="this.authenticationService.logout()">Logout</a></li> -->
-                                    </ul>
-                                    </div>
-                                </nav>
-                    </div>
-                </div>
-               
+        <div class="col-md-6 col-xs-6 log-in text-right">
+          <div class="dropdown">
+            <div style="display: flex;align-items: center;">
+              <i class="fa fa-user-circle" style="font-size:24px;" *ngIf="organizationList"></i>
+              <span
+              style="font-size:20px;vertical-align:middle;font-family:Arial, Helvetica, sans-serif;">
+                <b>&nbsp;&nbsp;Hi, {{ organizationList.name }}</b>
+              </span>
             </div>
+            <div class="dropdown-content dropdown-menu-right">
+              <li class="dd-item">
+                <a class="nav-link" routerLink="/orgdashboard/" routerLinkActive="current-clikable-item"
+                   [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
+              </li>
+              <li class="dd-item">
+                <a class="nav-link" routerLink="/fest-upload-form/" routerLinkActive="current-clikable-item"
+                   [routerLinkActiveOptions]="{exact:true}">Create Fest</a>
+              </li>
+              <li class="dd-item">
+                <a href="javascript:void(0);" class="nav-link" routerLinkActive="current-clikable-item"
+                   [routerLinkActiveOptions]="{exact:true}" (click)="this.authenticationService.logout()">Logout</a>
+              </li>
+            </div>
+          </div>
         </div>
+
+      </div>
     </div>
+  </div>
+  <div class="logo-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-xs-4 col-sm-2 logo-part">
+          <a routerLink="/"><img src="assets/images/logo2.png" alt=""></a>
+        </div>
+        <div class="col-md-9 text-right">
+          <div id="navigation">
+            <nav>
+              <div class="collapse navbar-collapse justify-content-end" id="nav-content">
+                <ul class="navbar-nav navbar-right" id="nav">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/" routerLinkActive="current-clikable-item"
+                       [routerLinkActiveOptions]="{exact:true}">Home</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                     <a class="nav-link" routerLink="/orgdashboard/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" routerLink="/fest-upload-form/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Create Fest</a>
+                 </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/fest/" routerLinkActive="current-clikable-item"
+                       [routerLinkActiveOptions]="{exact:true}">Fests</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/organizations/" routerLinkActive="current-clikable-item"
+                       [routerLinkActiveOptions]="{exact:true}">organizations</a>
+                  </li>
+                  <li class="nav-item"><a href="#contact">contact us</a></li>
+                  <li class="nav-item"><a href="#map-sec">location</a></li>
+                  <!-- <li class="nav-item"><a href="javascript:void(0);" class="nav-link"  routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}" (click)="this.authenticationService.logout()">Logout</a></li> -->
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </header>
