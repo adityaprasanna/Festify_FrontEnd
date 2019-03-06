@@ -101,7 +101,7 @@ export class RegistrationComponent implements OnInit {
             this.appService.organizationLogin(postParams).subscribe(
               resp => {
                 if (resp) {
-                  sessionStorage.setItem('currentUserId', JSON.stringify(postParams));
+                  sessionStorage.setItem('currentUserId', JSON.stringify(postParams.value));
                   sessionStorage.setItem('currentUser', JSON.stringify(resp));
                   this.router.navigate(['orgdashboard']);
                 }
