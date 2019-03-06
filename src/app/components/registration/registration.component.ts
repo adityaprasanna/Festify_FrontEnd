@@ -92,15 +92,6 @@ export class RegistrationComponent implements OnInit {
             // 1st solution
             // alert('You are registered! Please login to continue now. ');
             // $('#myModal2').modal('show');
-            // 2nd solution
-            const modal = document.getElementById('myModal2');
-            const input = modal.getElementsByTagName('input');
-            // userID
-            input[0].innerText = this.registerForm.value.org_id;
-            // password
-            input[1].innerText = this.registerForm.value.org_password;
-            // click login button
-            // document.getElementById('loginModalButton').click();
             const postParams = {
               value: {
                 email: this.registerForm.value.org_id,
