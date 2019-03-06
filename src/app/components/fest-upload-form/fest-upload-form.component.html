@@ -91,7 +91,7 @@
                     </div>
                 </div> -->
                 <div class="col-md-3">
-                    <input type="text" class="form-control" (keydown)="onKeydown($event)" placeholder="Enter Date" [(ngModel)]="model" bsDatepicker [bsConfig]="bsConfig"
+                    <input type="text" class="form-control" (keydown)="onKeydown($event)" placeholder="Enter Date" bsDatepicker [bsConfig]="bsConfig"
                         formControlName="start_date" [ngClass]="{ 'is-invalid': submitted && e.start_date.errors }"
                         required />
                     <div *ngIf="submitted && e.start_date.errors" class="invalid-feedback">
@@ -102,7 +102,7 @@
                     <label>to * </label>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" (keydown)="onKeydown($event)" placeholder="Enter Date" [(ngModel)]="model" bsDatepicker [bsConfig]="bsConfig"
+                    <input type="text" class="form-control" (keydown)="onKeydown($event)" placeholder="Enter Date" bsDatepicker [bsConfig]="bsConfig"
                         formControlName="end_date" [ngClass]="{ 'is-invalid': submitted && e.end_date.errors }"
                         required />
                     <div *ngIf="submitted && e.end_date.errors" class="invalid-feedback">
@@ -208,7 +208,7 @@
 
                                 </div>
                                 <div class="col-md-2">
-                                        <input type="text" class="form-control" style="line-height: 1.4em;" (keydown)="onKeydown($event)"  placeholder="Enter Date" formControlName="event_date"  [(ngModel)]="model" bsDatepicker [bsConfig]="bsConfig"
+                                        <input type="text" class="form-control" style="line-height: 1.4em;" (keydown)="onKeydown($event)"  placeholder="Enter Date" formControlName="event_date" bsDatepicker [bsConfig]="bsConfig"
                                             [ngClass]="{ 'is-invalid': submitted && e.event_date?.errors }" required/>
                                         <div *ngIf="submitted && e.event_date?.errors" class="invalid-feedback">
                                             <div *ngIf="e.event_date?.errors.required" class="alert alert-danger"> Event Date is required</div>
