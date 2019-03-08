@@ -13,8 +13,8 @@ import { Observable, throwError } from 'rxjs';
 
 export class AppService {
 
-  // private _organizationUrl = "http://www.festify.in:8000/api/";
-  private _organizationUrl = "http://localhost:8000/api/";
+  private _organizationUrl = "http://www.festify.in:8000/api/";
+  // private _organizationUrl = "http://localhost:8000/api/";
 
   constructor(private http: Http, private _router: Router) { }
 
