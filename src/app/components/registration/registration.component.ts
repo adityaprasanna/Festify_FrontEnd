@@ -3,8 +3,6 @@ import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms'
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -13,7 +11,7 @@ import { Router } from '@angular/router';
 
 
 export class RegistrationComponent implements OnInit {
-
+  submitted = false;
   registerForm: FormGroup;
   
   public version = VERSION.full;
@@ -34,15 +32,13 @@ export class RegistrationComponent implements OnInit {
       website: ['', [Validators.required]],
       main_coordinator_name: ['', [Validators.required]],
       main_coordinator_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
-      // main_coordinator_phone: ['', [Validators.required]],
       main_coordinator_email: ['', [Validators.required]],
-      sub_coordinator_name: [''],
+      sub_coordinator_name: ['', [Validators.required]],
       sub_coordinator_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
-      // sub_coordinator_phone: ['', [Validators.required]],
       sub_coordinator_email: ['', [Validators.required]],
-      team: ['', [Validators.required]],
-      manager_name: ['', [Validators.required]],
-      manager_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
+      // team: ['', [Validators.required]],
+      // manager_name: ['', [Validators.required]],
+      // manager_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
       recaptchaReactive: new FormControl(null,[Validators.required])
     });
   }
@@ -73,6 +69,7 @@ export class RegistrationComponent implements OnInit {
  
 
   onRegistrationSubmit() {
+    this.submitted = true;
     var myCanvas = <HTMLCanvasElement> document.getElementById('mycanvas');
     this.mydataURL=myCanvas.toDataURL('image/jpeg');
     for (let item in this.registerForm.value) {
@@ -82,15 +79,34 @@ export class RegistrationComponent implements OnInit {
     }
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      alert("Please enter 10 digit mobile no and Filled all values properly");
+      // alert("Please enter 10 digit mobile no and Filled all values properly");
       return;
     } else {
       this.appService.createOrganization(this.registerForm)
       .subscribe(data => {
-          if (data == undefined) {
-            this.router.navigate(['home']);
+        console.log(data, this.registerForm.value);
+          if (data) {
+            // this.router.navigate(['home']);
+            // 1st solution
+            // alert('You are registered! Please login to continue now. ');
+            // $('#myModal2').modal('show');
+            const postParams = {
+              value: {
+                email: this.registerForm.value.org_id,
+                password: this.registerForm.value.org_password
+              }
+            };
+            this.appService.organizationLogin(postParams).subscribe(
+              resp => {
+                if (resp) {
+                  sessionStorage.setItem('currentUserId', JSON.stringify(postParams.value));
+                  sessionStorage.setItem('currentUser', JSON.stringify(resp));
+                  this.router.navigate(['orgdashboard']);
+                }
+              });
           } else {
-            alert('Registration Successful');
+            // alert('Registration Successful');
+            this.router.navigate(['organization-dashboard']);
             this.registerForm.reset();
           }
         });

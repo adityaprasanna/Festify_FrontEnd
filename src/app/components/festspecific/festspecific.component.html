@@ -30,8 +30,10 @@
                             <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
                                 <ul>
                                     <li *ngIf="sponsorDetails.sponsor_name" >
-                                        <h5>Name: <span>{{sponsorDetails.sponsor_name}}</span></h5></li>
+                                        <h5><span>{{sponsorDetails.sponsor_name}}</span></h5></li>
                                     <img [src]="sponsorDetails.sponsor_picture" alt="">
+                                    <li *ngIf="sponsorDetails.caption" >
+                                        <h5><span>{{sponsorDetails.caption}}</span></h5></li>
                                 </ul>
                             </div>
                         </div>
@@ -40,12 +42,23 @@
             </div>
             <div class="col-md-9" *ngIf="this.festDetails">
                 <div class="fest-decp">
-                    <h2>{{this.festDetails.name}}</h2>
-                    <!-- <h3>venue: </h3>
-                   <div class="sec1">
-            <h4>description</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi illum reprehenderit, placeat perferendis ipsum architecto numquam dolores sit mollitia incidunt impedit iusto harum similique, laborum iure delectus vero voluptatum repellendus?</p>
-          </div>-->
+                    <h2>{{this.festDetails.name}}, {{this.festDetails.fest_type}}</h2>
+                    <div class="sec1">
+                        <h4>description</h4>
+                        <p>{{this.festDetails.description}}</p>
+                    </div>
+                    <div class="sec2">
+                        <h4>Contact Details</h4>
+                        <div class="col-md-6">
+                        <p>{{this.festDetails.manager_name}}</p>
+                        <p>{{this.festDetails.manager_phone}}</p>
+                        <p>{{this.festDetails.manager_email}}</p>
+                        </div>
+                        <div class="col-md-6">
+                        <p>{{this.festDetails.sec_manager_name}}</p>
+                        <p>{{this.festDetails.sec_manager_phone}}</p>
+                        </div>
+                    </div>
                     <!--<div class="sec2">
             <h4>update</h4>
           </div>-->
@@ -61,13 +74,19 @@
                                 <div class="pricingTable">
                                     <div class="pricingTable-header">
                                         <span class="heading">
-                                            <h3>name :{{eventDetails.event_name}} </h3>
+                                            <h3>{{eventDetails.event_name}}, {{eventDetails.event_type}} </h3>
                                         </span>
                                     </div>
                                     <div class="pricingContent">
-                                        <h5>Rules:</h5>
                                         <ul>
-                                            <li>{{eventDetails.event_rules}}</li>
+                                            <li>{{eventDetails.event_date}}, {{eventDetails.event_time}}</li>
+                                        </ul>
+                                        <h5>Description:</h5>
+                                        <ul>
+                                            <li>{{eventDetails.event_description}}</li>
+                                        </ul>
+                                        <ul>
+                                            <li>{{eventDetails.event_coordinator}}</li>
                                         </ul>
                                         <h5>Price:</h5>
                                         <ul>
@@ -75,8 +94,7 @@
                                         </ul>
                                     </div>
                                     <div class="pricingTable-sign-up">
-                                        <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book
-                                            now</a>
+                                        <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>
                                     </div>
                                     <!-- BUTTON BOX-->
                                 </div>

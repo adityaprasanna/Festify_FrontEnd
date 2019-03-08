@@ -9,7 +9,6 @@ body {
   color: #ccc;
   font-family: 'Roboto', sans-serif;
 }
-
 img {
   max-width: 100%;
 }
@@ -511,7 +510,20 @@ footer.footer-bottom ul.ft-menu li a {
   font-size: 16px;
   letter-spacing: 0.5px;
 }
-
+section.body-cont10 .container{
+  background: url('../images/organizer.png');
+  padding: 80px 0;
+  background-size: cover;
+  width: 100%;
+}
+section.body-cont10 .container .btn{
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+section.body-cont10 .container h2{
+  color: rgba(174, 95, 179, 1)
+}
 section.body-cont1 {
   background: #efefef;
   padding: 0 0 60px;
@@ -1345,7 +1357,22 @@ section.sup-sec a {
   font-weight: 600;
   padding: 9px 27px;
 }
-
+/* .fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+} */
 .registraion-page {
   padding: 60px 0;
 }
@@ -1385,15 +1412,17 @@ section.sup-sec a {
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-  border-radius: 0;
+  border-radius: 5px;
   margin-bottom: 10px;
   height: auto;
-  padding: 12px;
+  padding: 7px;
   color: #333;
 }
 
 .registraion-page input[type=file] {
-  padding: 11px !important;
+  padding: 7px !important;
+  margin-top: 10px;
+  border: dotted 3px lightgray;
 }
 
 .registraion-page textarea {
@@ -1409,17 +1438,17 @@ section.sup-sec a {
   margin-right: 15px;
 }
 
-.registraion-page button {
+.registraion-page button.eve {
   display: inline-block;
   margin: 25px auto 0;
   background: #f71769;
   color: #fff;
-  border-radius: 0;
+  border-radius: 15px;
   border: none;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
-  padding: 12px 37px;
+  padding: 12px 20px;
   margin-left: 15px;
 }
 
@@ -1586,7 +1615,23 @@ section.orgdashboard .profile-decp {
   width: 100%;
   padding-bottom: 15px;
 }
-
+section.orgdashboard .profile-decp ul{
+  font-size: 0;
+}
+section.orgdashboard .profile-decp ul li{
+  display: inline-block;
+}
+section.orgdashboard .profile-decp ul li a{
+  display: table;
+  background: #333;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 12px 25px;
+}
+section.orgdashboard .profile-decp ul li.active a{
+  background: #f71769;
+}
 section.orgdashboard .profile-decp h3 {
   margin: 0;
   background: #f71769;
@@ -1910,19 +1955,19 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingTable-header 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading {
   display: block;
   padding: 20px 0;
-  background: #f71769;
+  background: #fff;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading > h3 {
   margin: 0 0 12px 0;
   text-transform: uppercase;
   font-weight: bold;
-  color: #fff;
+  color: #111;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading > h4 {
   margin: 0;
-  color: #fff;
+  color: #111;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading > i {
@@ -1964,14 +2009,14 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul 
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul > li {
-  border-top: 1px solid #f71769;
+  /* border-top: 1px solid #66535a; */
   padding: 10px 0;
   position: relative;
   z-index: 1;
   overflow: hidden;
   color: #111;
-  text-transform: uppercase;
-  font-style: italic;
+  /* text-transform: uppercase; */
+  /* font-style: italic; */
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul > li:hover {
@@ -2005,8 +2050,8 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up >
   font-size: 16px;
   font-weight: bold;
   border-radius: 0px;
-  border: 1px solid #f71769;
-  color: #f71769;
+  /* border: 1px solid #f71769; */
+  color: #5f376b;
   background: #e6e6e6;
   position: relative;
   -webkit-transition: all 0.6s ease 0s;
@@ -2043,7 +2088,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up >
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up > .btn-block:hover:before, section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up > .btn-block:hover:after {
-  background: #f71769;
+  background: #5f376b;
   height: 50%;
 }
 
@@ -2054,7 +2099,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up >
 }
 
 #contact .card:hover i, #contact .card:hover h4 {
-  color: #f71769;
+  color: #5f376b;
 }
 
 section#contact {
@@ -2164,9 +2209,9 @@ button.eve {
 }
 
 .slick-slide {
-  border: 4px solid #eee;
+  border: 3px solid #eee;
+  border-radius: 10px;
   margin: 0 8px;
-  padding-bottom: 9px;
 }
 
 .slick-slide img {

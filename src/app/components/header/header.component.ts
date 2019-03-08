@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
             $('#myModal2').modal('hide');
             sessionStorage.setItem('currentUserId', JSON.stringify(this.loginForm.value));
             sessionStorage.setItem('currentUser', JSON.stringify(data));
-            alert('login Successful');
+            // alert('login Successful');
             this.router.navigate(['orgdashboard']);
           } else {
             alert('login UnSuccessful');

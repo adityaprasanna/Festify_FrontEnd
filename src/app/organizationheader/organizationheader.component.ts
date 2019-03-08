@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 
@@ -9,10 +10,23 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class OrganizationheaderComponent implements OnInit {
 
-  constructor(private authenticationService:AuthenticationService) { }
+  organizationList: any;
+
+  constructor(private appService: AppService, private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
+    this.gettingFestData();
   }
  
+  gettingFestData(){
+    this.appService.specificOrganizationList().subscribe(data => {
+      if (data == undefined) {
+        // this.router.navigate(['home']);
+      } else {
 
+        this.organizationList = data["organization"];
+        localStorage.setItem('organization', JSON.stringify(this.organizationList));
+      }
+    });
+  }
 }
