@@ -1,0 +1,56 @@
+.accordion1 > li {
+    list-style: outside none none;
+    margin-bottom: 10px;
+    border: 1px solid #464646;
+}
+.accordion-trigger {
+     color: #f26539;
+    display: block;
+    padding: 9px 12px;
+    position: relative;
+    text-decoration: none;
+    background: #f9f9f9;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 50px;
+
+}
+.accordion-trigger:hover, .accordion-trigger:focus{
+  color: #464646;
+  text-decoration: none;
+}
+
+.accordion-trigger:after {
+  display: block;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+}
+
+.accordion-trigger.expanded:after { content: "-"; }
+
+.accordion-trigger.collapsed:after { content: "+"; }
+
+.accordion-content {
+  overflow: hidden;
+  -webkit-transition: height 0.25s;
+  -moz-transition: height 0.25s;
+  transition: height 0.25s;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.accordion-content.expanded { height: auto; }
+
+.accordion-content.collapsed { height: 0; }
+
+.accordion-content p {   color: #464646;
+    font-size: 16px;
+    font-weight: lighter;
+    line-height: 26px;
+    margin-bottom: 25px;
+    padding: 0; }

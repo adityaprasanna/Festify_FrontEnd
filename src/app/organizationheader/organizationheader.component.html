@@ -18,8 +18,7 @@
           <div class="dropdown">
             <div style="display: flex;align-items: center;">
               <i class="fa fa-user-circle" style="font-size:24px;" *ngIf="organizationList"></i>
-              <span
-              style="font-size:20px;vertical-align:middle;font-family:Arial, Helvetica, sans-serif;">
+              <span style="font-size:20px;">
                 <b>&nbsp;&nbsp;Hi, {{ organizationList.name }}</b>
               </span>
             </div>
@@ -58,12 +57,6 @@
                     <a class="nav-link" routerLink="/" routerLinkActive="current-clikable-item"
                        [routerLinkActiveOptions]="{exact:true}">Home</a>
                   </li>
-                  <!-- <li class="nav-item">
-                     <a class="nav-link" routerLink="/orgdashboard/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" routerLink="/fest-upload-form/" routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Create Fest</a>
-                 </li> -->
                   <li class="nav-item">
                     <a class="nav-link" routerLink="/fest/" routerLinkActive="current-clikable-item"
                        [routerLinkActiveOptions]="{exact:true}">Fests</a>
@@ -74,7 +67,6 @@
                   </li>
                   <li class="nav-item"><a href="#contact">contact us</a></li>
                   <li class="nav-item"><a href="#map-sec">location</a></li>
-                  <!-- <li class="nav-item"><a href="javascript:void(0);" class="nav-link"  routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}" (click)="this.authenticationService.logout()">Logout</a></li> -->
                 </ul>
               </div>
             </nav>

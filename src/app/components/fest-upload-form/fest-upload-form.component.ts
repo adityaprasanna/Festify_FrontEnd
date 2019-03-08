@@ -18,6 +18,7 @@ export class FestUploadFormComponent implements OnInit {
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   constructor(private formBuilder: FormBuilder, private appService: AppService, private router: Router) { // this.createForm();
     this.bsConfig.containerClass = 'theme-red';
+    this.bsConfig.dateInputFormat = "YYYY-MM-DD";
   }
 
   ngOnInit() {
@@ -26,14 +27,14 @@ export class FestUploadFormComponent implements OnInit {
       image: ['', [Validators.required]],
       fest_type: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      start_date: ['', [Validators.required]],
-      end_date: ['', [Validators.required]],
+      start_date: new FormControl(Date, [Validators.required]),
+      end_date: new FormControl(Date, [Validators.required]),
       website: new FormControl(null),
       social_media_pages: new FormControl(null),
       promo_video: new FormControl(null),
       promo_video_thumbnail: new FormControl(null),
 
-      event: this.formBuilder.array([this.formBuilder.group({eventName: new FormControl('', [Validators.required]), ticket_price: ['', [Validators.required]], event_description: ['', [Validators.required]], event_coordinator: ['', [Validators.required]], event_date: ['', [Validators.required]], event_time: ['', [Validators.required]], event_type: ['', [Validators.required]] })]),
+      event: this.formBuilder.array([this.formBuilder.group({eventName: new FormControl('', [Validators.required]), ticket_price: ['', [Validators.required]], event_description: ['', [Validators.required]], event_coordinator: ['', [Validators.required]], event_date: new FormControl(Date, [Validators.required]), event_time: ['', [Validators.required]], event_type: ['', [Validators.required]] })]),
       
       manager_name: ['', [Validators.required]], 
       manager_phone: ['', [Validators.required]], 
@@ -87,6 +88,24 @@ export class FestUploadFormComponent implements OnInit {
           let imageUrl = myCanvas.toDataURL('image/jpeg');
           this.festForm.value[item] = imageUrl;
         }
+      } else if(item == "start_date"){
+        if (this.festForm.value[item] != null) {
+          var stringDateOne = new Date(this.festForm.value[item]);
+          let modifiedDateOne = stringDateOne.getFullYear()+'-' + (stringDateOne.getMonth()+1) + '-'+stringDateOne.getDate();
+          this.festForm.value[item] = modifiedDateOne;
+        }
+      } else if(item == "end_date"){
+        if (this.festForm.value[item] != null) {
+          var stringDateTwo = new Date(this.festForm.value[item]);
+          let modifiedDateTwo = stringDateTwo.getFullYear()+'-' + (stringDateTwo.getMonth()+1) + '-'+stringDateTwo.getDate();
+          this.festForm.value[item] = modifiedDateTwo;
+        }
+      } else if(item == "event_date"){
+        if (this.festForm.value[item] != null) {
+          var stringDateTwo = new Date(this.festForm.value[item]);
+          let modifiedDateTwo = stringDateTwo.getFullYear()+'-' + (stringDateTwo.getMonth()+1) + '-'+stringDateTwo.getDate();
+          this.festForm.value[item] = modifiedDateTwo;
+        }
       } else if (item == "event_sponser") {
         // for (let pic in this.festForm.value[item]) {
         this.festForm.value[item].map(x => {
@@ -110,7 +129,7 @@ export class FestUploadFormComponent implements OnInit {
         this.router.navigate(['home']);
       } else {
         // alert('Registration Successful');
-        this.router.navigate(['organization-dashboard']);
+        this.router.navigate(['orgdashboard']);
         this.festForm.reset();
       }
     });
@@ -192,9 +211,9 @@ export class FestUploadFormComponent implements OnInit {
   }
 
 
-  // onKeydown(e) {
-  //   e.preventDefault();
-  // }
+  onKeydown(e) {
+    e.preventDefault();
+  }
   
   get eventPoints() {
     return this.festForm.get('event') as FormArray;
