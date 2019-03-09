@@ -18,8 +18,8 @@ declare var $: any;
 })
 export class AuthenticationService {
 
-  private _organizationUrl = "http://www.festify.in:8000/api/";
-  // private _organizationUrl = "http://localhost:8000/api/";
+  // private _organizationUrl = "http://www.festify.in:8000/api/";
+  private _organizationUrl = "http://localhost:8000/api/";
   isClick = false;
   orgExist: string;
   userExist: string;

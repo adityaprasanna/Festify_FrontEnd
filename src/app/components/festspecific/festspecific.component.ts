@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-festspecific',
   templateUrl: './festspecific.component.html',
-  styleUrls: ['./festspecific.component.sass']
+  styleUrls: ['./festspecific.component.scss']
 })
 export class FestspecificComponent implements OnInit {
   festDetails: any;
@@ -20,15 +20,17 @@ export class FestspecificComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
       this.festDetails = (data[0]);
-      if (this.festDetails.image) {
-        let imgae = document.getElementById("festImg");
-        imgae.setAttribute('src', this.festDetails.image);
-      }
+      // if (this.festDetails.image) {
+      //   let imgae = document.getElementById("festImg");
+      //   imgae.setAttribute('src', this.festDetails.image);
+      // }
       if(this.festDetails.events.length >= 1) {
         this.festDetails.events.map(x=>{
           if(x.ticket_price){
             x.ticket_price=parseFloat(x.ticket_price).toFixed(2);
           }
+          const date = new Date(x.event_date);
+          x.event_date = date.getDate() + ' - ' + date.getMonth() + ' - ' + date.getFullYear();
         })
        }
     });

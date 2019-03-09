@@ -1,111 +1,164 @@
 <div *ngIf="this.authenticationService.orgExist">
-    <app-organizationheader></app-organizationheader>
+  <app-organizationheader></app-organizationheader>
 </div>
 <div *ngIf=" this.authenticationService.userExist">
-    <app-userheader></app-userheader>
+  <app-userheader></app-userheader>
 </div>
 
 <div *ngIf=" this.authenticationService.userExist == undefined &&  this.authenticationService.orgExist == undefined">
-    <app-header></app-header>
+  <app-header></app-header>
 </div>
 <div class="inner-ban">
-    <img src="assets/images/inner-ban.jpg" alt="">
+  <img src="assets/images/inner-ban.jpg" alt="">
 </div>
 
-<section class="festspecific-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="left-sec">
-                    <!--<img src="https://festevents.org/files/cache/c8c82a059994675fc46fb69d5ffbd02e_f3570.jpg" alt="">-->
-                    <img id="festImg" alt="">
-                    <div *ngIf="this.festDetails">
-                        <ul>
-                            <li>Date: {{this.festDetails.start_date}}</li>
-                            <li>name: {{this.festDetails.name}}</li>
-                            <li>website:{{this.festDetails.website}}</li>
-                        </ul>
-                        <h3>sponsors</h3>
-                        <div class="spon-img">
-                            <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
-                                <ul>
-                                    <li *ngIf="sponsorDetails.sponsor_name" >
-                                        <h5><span>{{sponsorDetails.sponsor_name}}</span></h5></li>
-                                    <img [src]="sponsorDetails.sponsor_picture" alt="">
-                                    <li *ngIf="sponsorDetails.caption" >
-                                        <h5><span>{{sponsorDetails.caption}}</span></h5></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!--<section class="festspecific-page">-->
+<section class="festSpecificPage">
+  <div style="display: none" class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="left-sec">
+          <!--<img src="https://festevents.org/files/cache/c8c82a059994675fc46fb69d5ffbd02e_f3570.jpg" alt="">-->
+          <!--<img id="festImg" alt="">-->
+          <div *ngIf="this.festDetails">
+            <ul>
+              <li>Date: {{this.festDetails.start_date}}</li>
+              <li>name: {{this.festDetails.name}}</li>
+              <li>website:{{this.festDetails.website}}</li>
+            </ul>
+            <h3>sponsors</h3>
+            <div class="spon-img">
+              <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
+                <ul>
+                  <li *ngIf="sponsorDetails.sponsor_name">
+                    <h5><span>{{sponsorDetails.sponsor_name}}</span></h5></li>
+                  <img [src]="sponsorDetails.sponsor_picture" alt="">
+                  <li *ngIf="sponsorDetails.caption">
+                    <h5><span>{{sponsorDetails.caption}}</span></h5></li>
+                </ul>
+              </div>
             </div>
-            <div class="col-md-9" *ngIf="this.festDetails">
-                <div class="fest-decp">
-                    <h2>{{this.festDetails.name}}, {{this.festDetails.fest_type}}</h2>
-                    <div class="sec1">
-                        <h4>description</h4>
-                        <p>{{this.festDetails.description}}</p>
-                    </div>
-                    <div class="sec2">
-                        <h4>Contact Details</h4>
-                        <div class="col-md-6">
-                        <p>{{this.festDetails.manager_name}}</p>
-                        <p>{{this.festDetails.manager_phone}}</p>
-                        <p>{{this.festDetails.manager_email}}</p>
-                        </div>
-                        <div class="col-md-6">
-                        <p>{{this.festDetails.sec_manager_name}}</p>
-                        <p>{{this.festDetails.sec_manager_phone}}</p>
-                        </div>
-                    </div>
-                    <!--<div class="sec2">
-            <h4>update</h4>
-          </div>-->
-                    <!-- <div class="sec3">
-            <img src="http://sckana.net/New%20Images/events.jpg" alt="">
-            <h4>Name</h4>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, necessitatibus quos. Impedit quae harum, omnis, ut, ex hic cupiditate voluptatem ab esse eaque eum libero asperiores dolorum et distinctio molestias.</p>
-          </div>-->
-                    <div class="sec4">
-                        <h4>events</h4>
-                        <div *ngFor="let eventDetails of this.festDetails.events">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="pricingTable">
-                                    <div class="pricingTable-header">
-                                        <span class="heading">
-                                            <h3>{{eventDetails.event_name}}, {{eventDetails.event_type}} </h3>
-                                        </span>
-                                    </div>
-                                    <div class="pricingContent">
-                                        <ul>
-                                            <li>{{eventDetails.event_date}}, {{eventDetails.event_time}}</li>
-                                        </ul>
-                                        <h5>Description:</h5>
-                                        <ul>
-                                            <li>{{eventDetails.event_description}}</li>
-                                        </ul>
-                                        <ul>
-                                            <li>{{eventDetails.event_coordinator}}</li>
-                                        </ul>
-                                        <h5>Price:</h5>
-                                        <ul>
-                                            <li>{{eventDetails.ticket_price}}</li>
-                                        </ul>
-                                    </div>
-                                    <div class="pricingTable-sign-up">
-                                        <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>
-                                    </div>
-                                    <!-- BUTTON BOX-->
-                                </div>
-                            </div>
-                            <!-- <div class="clearfix"></div> -->
-                        </div>
-                    </div>
-                    <!--end event-->
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-md-9" *ngIf="this.festDetails">
+        <div class="fest-decp">
+          <h2>{{this.festDetails.name}}, {{this.festDetails.fest_type}}</h2>
+          <div class="sec1">
+            <h4>description</h4>
+            <p>{{this.festDetails.description}}</p>
+          </div>
+          <div class="sec2">
+            <h4>Contact Details</h4>
+            <div class="col-md-6">
+              <p>{{this.festDetails.manager_name}}</p>
+              <p>{{this.festDetails.manager_phone}}</p>
+              <p>{{this.festDetails.manager_email}}</p>
+            </div>
+            <div class="col-md-6">
+              <p>{{this.festDetails.sec_manager_name}}</p>
+              <p>{{this.festDetails.sec_manager_phone}}</p>
+            </div>
+          </div>
+          <!--<div class="sec2">
+  <h4>update</h4>
+</div>-->
+          <!-- <div class="sec3">
+  <img src="http://sckana.net/New%20Images/events.jpg" alt="">
+  <h4>Name</h4>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, necessitatibus quos. Impedit quae harum, omnis, ut, ex hic cupiditate voluptatem ab esse eaque eum libero asperiores dolorum et distinctio molestias.</p>
+</div>-->
+          <div class="sec4">
+            <h4>events</h4>
+            <div *ngFor="let eventDetails of this.festDetails.events">
+              <div class="col-md-6 col-sm-6">
+                <div class="pricingTable">
+                  <div class="pricingTable-header">
+                                              <span class="heading">
+                                                  <h3>{{eventDetails.event_name}}, {{eventDetails.event_type}} </h3>
+                                              </span>
+                  </div>
+                  <div class="pricingContent">
+                    <ul>
+                      <li>{{eventDetails.event_date}}, {{eventDetails.event_time}}</li>
+                    </ul>
+                    <h5>Description:</h5>
+                    <ul>
+                      <li>{{eventDetails.event_description}}</li>
+                    </ul>
+                    <ul>
+                      <li>{{eventDetails.event_coordinator}}</li>
+                    </ul>
+                    <h5>Price:</h5>
+                    <ul>
+                      <li>{{eventDetails.ticket_price}}</li>
+                    </ul>
+                  </div>
+                  <div class="pricingTable-sign-up">
+                    <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>
+                  </div>
+                  <!-- BUTTON BOX-->
+                </div>
+              </div>
+              <!-- <div class="clearfix"></div> -->
+            </div>
+          </div>
+          <!--end event-->
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="container">
+    <div class="row" *ngIf="festDetails">
+      <div class="col-md-8">
+        <img alt="" [src]="festDetails.image">
+        <section class="festDetails">
+          <div class="about">
+            <h3>About</h3>
+            <p>{{festDetails.description}}</p>
+          </div>
+          <div class="eventHighlights">
+            <h3>Events</h3>
+            <div class="row" *ngFor="let event of festDetails.events">
+              <div class="col-md-12"><h5 class="eventHeader">{{event.event_name}} | {{event.event_type}}</h5></div>
+              <dt class="col-md-4 col-sm-4 col-xs-12">Description</dt>
+              <dd class="col-md-8 col-sm-8 col-xs-12">{{event.event_description}}</dd>
+
+              <dt class="col-md-4 col-sm-4 col-xs-12">Date & Time</dt>
+              <dd class="col-md-8 col-sm-8 col-xs-12">{{event.event_date}}, {{event.event_time.slice(0, -3)}}</dd>
+
+              <dt class="col-md-4 col-sm-4 col-xs-12">Ticket Price</dt>
+              <dd class="col-md-8 col-sm-8 col-xs-12"> &#8377;{{event.ticket_price}}</dd>
+
+              <dt class="col-md-4 col-sm-4 col-xs-12">Coordinator</dt>
+              <dd class="col-md-8 col-sm-8 col-xs-12">{{event.event_coordinator}}</dd>
+            </div>
+          </div>
+          <div class="venue">
+            <h3>Venue</h3>
+            <p>{{festDetails.venue}}</p>
+          </div>
+          <div class="sponsors">
+            <h3>Sponsors</h3>
+            <div *ngFor="let sponsor of festDetails.sponsor">
+              <div class="sponsorDetails">
+                <img [src]="sponsor.sponsor_picture" alt="" class="sponsorPicture">
+                <p class="text-center sponsorName">{{sponsor.sponsor_name}}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-4 festOverview">
+        <h3 class="festName">{{festDetails.name}}</h3>
+        <div class="festRecap">
+          <dt class="col-md-4 col-sm-4 col-xs-12">Venue</dt>
+          <dd class="col-md-8 col-sm-8 col-xs-12">{{festDetails.venue}} |</dd>
+          <dt class="col-md-4 col-sm-4 col-xs-12">Website</dt>
+          <dd class="col-md-8 col-sm-8 col-xs-12"><a [href]="festDetails.website">{{festDetails.website}}</a></dd>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <app-footer></app-footer>
