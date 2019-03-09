@@ -409,11 +409,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppService = /** @class */ (function () {
-    // private _organizationUrl = "http://localhost:8000/api/";
     function AppService(http, _router) {
         this.http = http;
         this._router = _router;
-        this._organizationUrl = "https://www.festify.in:8000/api/";
+        // private _organizationUrl = "https://www.festify.in:8000/api/";
+        this._organizationUrl = "http://localhost:8000/api/";
     }
     AppService.prototype.handleError = function (error) {
         if (error.error instanceof ErrorEvent) {
@@ -551,8 +551,8 @@ var AuthenticationService = /** @class */ (function () {
         this.http = http;
         this._router = _router;
         this.authServiceConfig = authServiceConfig;
-        this._organizationUrl = "https://www.festify.in:8000/api/";
-        // private _organizationUrl = "http://localhost:8000/api/";
+        // private _organizationUrl = "https://www.festify.in:8000/api/";
+        this._organizationUrl = "http://localhost:8000/api/";
         this.isClick = false;
     }
     AuthenticationService.prototype.updateOrganization = function (members) {
