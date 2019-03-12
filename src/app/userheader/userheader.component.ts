@@ -7,10 +7,11 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./userheader.component.sass']
 })
 export class UserheaderComponent implements OnInit {
-
+  socialData: any;
   constructor(private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
+    let data = sessionStorage.getItem('userData');
+    this.socialData = JSON.parse(data);
   }
-
 }

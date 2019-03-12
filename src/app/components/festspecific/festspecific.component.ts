@@ -17,6 +17,11 @@ export class FestspecificComponent implements OnInit {
    
   }
 
+  getReadableDate(dateStr) {
+      const dateModified = new Date(dateStr.toString());
+      return dateModified.getDate() + '-' + (1 + dateModified.getMonth()) + '-' + dateModified.getFullYear();
+  }
+
   ngOnInit() {
     this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
       this.festDetails = (data[0]);
@@ -24,8 +29,10 @@ export class FestspecificComponent implements OnInit {
         let imgae = document.getElementById("festImg");
         imgae.setAttribute('src', this.festDetails.image);
       }
+      this.festDetails.start_date = this.getReadableDate(this.festDetails.start_date);
       if(this.festDetails.events.length >= 1) {
         this.festDetails.events.map(x=>{
+          x.event_date = this.getReadableDate(x.event_date);
           if(x.ticket_price){
             x.ticket_price=parseFloat(x.ticket_price).toFixed(2);
           }
@@ -34,6 +41,7 @@ export class FestspecificComponent implements OnInit {
     });
   }
   festDeatils(e) {
+    console.log("Not getting used I think");
     let data = JSON.stringify(e);
     localStorage.setItem('festPaymentDeatils', data);
     this.router.navigate(['/payment'])

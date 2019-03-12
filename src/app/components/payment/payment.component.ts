@@ -55,7 +55,6 @@ export class PaymentComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private formBuilder: FormBuilder) {
     let ipData: any;
-    debugger
     this.eventData = JSON.parse(localStorage.getItem('festPaymentDeatils'));
     this.authenticationService.getIP()
       .subscribe(data => {
@@ -131,6 +130,7 @@ export class PaymentComponent implements OnInit {
               this.posted.PG = data[0].posted.PG,
               setTimeout(() => {
                 this.submitForm();
+                debugger
               }, 1000);
           }
           else {

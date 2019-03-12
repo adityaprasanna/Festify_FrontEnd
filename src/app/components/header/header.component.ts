@@ -60,6 +60,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  
   organizationSignUp() {
     $('#myModal2').modal('hide');
     this.router.navigate(['signup']);

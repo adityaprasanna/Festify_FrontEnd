@@ -8,9 +8,9 @@
 <div *ngIf=" this.authenticationService.userExist == undefined &&  this.authenticationService.orgExist == undefined">
     <app-header></app-header>
 </div>
-<div class="inner-ban">
+<!-- <div class="inner-ban">
     <img src="assets/images/inner-ban.jpg" alt="">
-</div>
+</div> -->
 
 <section class="festspecific-page">
     <div class="container">
@@ -26,7 +26,7 @@
                             <li>website:{{this.festDetails.website}}</li>
                         </ul>
                         <h3>sponsors</h3>
-                        <div class="spon-img">
+                        <div class="spon-img text-center">
                             <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
                                 <ul>
                                     <li *ngIf="sponsorDetails.sponsor_name" >
@@ -43,20 +43,31 @@
             <div class="col-md-9" *ngIf="this.festDetails">
                 <div class="fest-decp">
                     <h2>{{this.festDetails.name}}, {{this.festDetails.fest_type}}</h2>
-                    <div class="sec1">
-                        <h4>description</h4>
-                        <p>{{this.festDetails.description}}</p>
+                    <div class="sec2">
+                        <div class="row text-center">
+                            <!-- <div class="col-md-9"> -->
+                            <h4>description</h4>
+                            <p></p>
+                            <p>{{this.festDetails.description}}</p>
+                        </div>
                     </div>
                     <div class="sec2">
-                        <h4>Contact Details</h4>
-                        <div class="col-md-6">
-                        <p>{{this.festDetails.manager_name}}</p>
-                        <p>{{this.festDetails.manager_phone}}</p>
-                        <p>{{this.festDetails.manager_email}}</p>
-                        </div>
-                        <div class="col-md-6">
-                        <p>{{this.festDetails.sec_manager_name}}</p>
-                        <p>{{this.festDetails.sec_manager_phone}}</p>
+                        <div class="row text-center">
+                            <h4>Contact Details</h4>
+                            <p></p>
+                            <div class="col-md-6">
+                                <h4>Main Coordinator</h4>
+                                <p></p>
+                                <p>{{this.festDetails.manager_name}}</p>
+                                <p>{{this.festDetails.manager_phone}}</p>
+                                <p>{{this.festDetails.manager_email}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Secondary Coordinator</h4>
+                                <p></p>
+                                <p>{{this.festDetails.sec_manager_name}}</p>
+                                <p>{{this.festDetails.sec_manager_phone}}</p>
+                            </div>
                         </div>
                     </div>
                     <!--<div class="sec2">
@@ -95,6 +106,7 @@
                                     </div>
                                     <div class="pricingTable-sign-up">
                                         <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>
+
                                     </div>
                                     <!-- BUTTON BOX-->
                                 </div>
