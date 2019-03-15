@@ -60,6 +60,9 @@
                             <button (click)="edit()" class="edit">edit</button>
                         </div>
                         <div id="pro-2" class="tab-pane fade">
+                            <div  *ngFor="let tickets of paymentList; let i=index;">
+                            <h3>{{ tickets.first_name }}</h3>
+                            </div>
                         </div>
                     </div>
                     

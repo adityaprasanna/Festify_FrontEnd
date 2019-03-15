@@ -17,7 +17,7 @@ export class OrganizationDashboardComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
   organizationList: any;
-
+  paymentList: any;
 
   constructor(private appService: AppService, private router: Router, private authenticationService: AuthenticationService) {
     this.setClickedRow = function (index) {
@@ -27,9 +27,19 @@ export class OrganizationDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.gettingFestData();
+    this.gettingPaymentData();
   }
 
-
+  gettingPaymentData(){
+    this.appService.paymentList().subscribe(data => {
+      if (data == undefined) {
+        // this.router.navigate(['home']);
+      } else {
+        this.paymentList = data["payment"];
+        localStorage.setItem('payment', JSON.stringify(this.paymentList));
+      }
+    });
+  }
   gettingFestData(){
     this.appService.specificOrganizationList().subscribe(data => {
       if (data == undefined) {
