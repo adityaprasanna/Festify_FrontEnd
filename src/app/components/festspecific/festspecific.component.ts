@@ -10,11 +10,15 @@ import { Router } from '@angular/router';
 export class FestspecificComponent implements OnInit {
   festDetails: any;
   festID: string;
+  public orgExist_global;
+  public userExist_global;
+
   constructor(private authenticationService: AuthenticationService, private router: Router) {
     this.festID = localStorage.getItem('festID');
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
+    this.orgExist_global = this.authenticationService.orgExist;
     this.authenticationService.userExist = sessionStorage.getItem('userData');
-   
+    this.userExist_global = this.authenticationService.userExist;
   }
 
   ngOnInit() {
@@ -33,6 +37,11 @@ export class FestspecificComponent implements OnInit {
        }
     });
   }
+
+  get authenticationServicefn() {
+    return this.authenticationService;
+  }
+  
   festDeatils(e) {
     let data = JSON.stringify(e);
     localStorage.setItem('festPaymentDeatils', data);

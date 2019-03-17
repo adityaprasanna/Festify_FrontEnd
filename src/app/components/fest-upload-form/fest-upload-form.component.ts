@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormControl, EmailValida
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-
+import { RecaptchaFormsModule  } from 'ng-recaptcha/forms';
 
 @Component({
   selector: 'app-fest-upload-form',
@@ -13,7 +13,8 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 export class FestUploadFormComponent implements OnInit {
   festForm: FormGroup;
   submitted = false;
-  
+  loading = false;
+  model = new Date();
  
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   constructor(private formBuilder: FormBuilder, private appService: AppService, private router: Router) { // this.createForm();
@@ -157,8 +158,6 @@ export class FestUploadFormComponent implements OnInit {
 
   
 
-  
-
   onChange(e) {
     switch (e.target.name) {
       case "image":
@@ -192,9 +191,9 @@ export class FestUploadFormComponent implements OnInit {
   }
 
 
-  // onKeydown(e) {
-  //   e.preventDefault();
-  // }
+  onKeydown(e) {
+     e.preventDefault();
+  }
   
   get eventPoints() {
     return this.festForm.get('event') as FormArray;

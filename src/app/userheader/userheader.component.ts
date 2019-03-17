@@ -10,6 +10,10 @@ export class UserheaderComponent implements OnInit {
 
   constructor(private authenticationService:AuthenticationService) { }
 
+  get authenticationServiceFn(){
+  	return this.authenticationService;
+  }
+
   ngOnInit() {
   }
 

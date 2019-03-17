@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       });
   }
-
+  
   ngOnInit() {
     this.runCaraosalHeader();
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
@@ -93,7 +93,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
           }
     }, 2000);
    }
+  }
 
+  get authenticationServicefn() {
+    return this.authenticationService;
   }
 
   mouseHovering() {

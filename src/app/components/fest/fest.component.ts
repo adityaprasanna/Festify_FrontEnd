@@ -20,8 +20,6 @@ export class FestComponent implements OnInit, AfterViewInit {
   commerse: any = [];
   likedFest:any;
 
-
-
   constructor(private authenticationService: AuthenticationService,private router:Router) {
     this.authenticationService.festDetails().subscribe(
       data => {
@@ -50,10 +48,7 @@ export class FestComponent implements OnInit, AfterViewInit {
           })
 
         }
-      });
-
-
-   
+      });  
   }
 
   ngOnInit() {
@@ -75,6 +70,10 @@ export class FestComponent implements OnInit, AfterViewInit {
     }, 5000);
    }
    
+  }
+
+  get authenticationServicefn() {
+    return this.authenticationService;
   }
 
   ngAfterViewInit(): void {

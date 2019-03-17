@@ -13,7 +13,10 @@ export class OrganizationheaderComponent implements OnInit {
   organizationList: any;
 
   constructor(private appService: AppService, private authenticationService:AuthenticationService) { }
-
+  
+  get authenticationServiceFn() {
+    return this.authenticationService;
+  }
   ngOnInit() {
     this.gettingFestData();
   }
@@ -23,7 +26,6 @@ export class OrganizationheaderComponent implements OnInit {
       if (data == undefined) {
         // this.router.navigate(['home']);
       } else {
-
         this.organizationList = data["organization"];
         localStorage.setItem('organization', JSON.stringify(this.organizationList));
       }

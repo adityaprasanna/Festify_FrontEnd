@@ -17,6 +17,8 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
 
   loginForm: FormGroup;
+  submitted = false;
+
   constructor(private formBuilder: FormBuilder, private socialAuthService: AuthService,
     private router: Router, private appService: AppService, private authenticationService: AuthenticationService) {
     this.loginForm = this.formBuilder.group({
@@ -36,6 +38,10 @@ export class HeaderComponent implements OnInit {
     return this.loginForm.controls; 
   }
 
+  // Added Getter for easy access in html
+  get authenticationServiceFn() {
+    return this.authenticationService;
+  }
 
   onLoginSubmit() {
     // stop here if form is invalid
