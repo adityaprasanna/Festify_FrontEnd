@@ -1,128 +1,90 @@
 <app-userheader></app-userheader>
 <div class="inner-ban">
-    <img src="assets/images/inner-ban.jpg" alt="">
+  <img src="assets/images/inner-ban.jpg" alt="">
 </div>
 <section class="orgdashboard">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>dashboard</h2>
-            </div>
-            <div class="col-md-4">
-                <div class="profile-sec">
-                    <h3>your profile (Name)</h3>
-                    <img id="googleImg" alt="">
-                    <ul>
-                        <li>{{this.socialData.email}}</li>
-                        <li>{{this.socialData.firstName}}</li>
-                        <li>{{this.socialData.lastName}}</li>
-                        <!--<li><a href="#">Edit</a></li>-->
-                    </ul>
-                </div>
-
-            </div>
-            <div class="col-md-8">
-                <div class="profile-decp2">
-                    <ul>
-                        <li class="active"><a data-toggle="tab" href="#pro-1">Booked Tickets </a></li>
-                        <li><a data-toggle="tab" href="#pro-2">liked events</a></li>
-                    </ul>
-                    <div class="tab-content eventDetails">
-                        <div id="pro-1" class="tab-pane fade in active bookedTickets">
-                            <!--<h3>your tickets</h3>-->
-                            <!--<div *ngIf="bookedEvents">-->
-                            <div>
-                                <!--<div *ngFor="let bookFest of []">-->
-                                <div>
-                                    <!--<div class="sec-1">-->
-                                        <!--<div class="col-md-3">-->
-                                            <!--<h2>event name</h2>-->
-                                            <!--<h4>{{bookFest.name}} </h4>-->
-                                        <!--</div>-->
-                                        <!--<div class="col-md-3 text-center">-->
-                                            <!--<h2>Ticket Id </h2>-->
-                                            <!--<h4>{{bookFest.ticket_id}}</h4>-->
-                                        <!--</div>-->
-                                        <!--<div class="col-md-3 text-right">-->
-                                            <!--<h2>date/time  </h2> <h4 >{{bookFest.booking_date}}  </h4>-->
-                                        <!--</div>-->
-                                        <!--<div class="col-md-3 text-right">-->
-                                            <!--<h2>price  </h2><h4 >{{bookFest.ticket_price}}</h4>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <div class="row eventDetailsCard">
-                                        <div class="col-md-5 text-center">
-                                            <img width="150" src="https://cdn4.iconfinder.com/data/icons/let-s-party/756/dance_party_drunk_disco_birthday_celebrate_pub-512.png" alt="404">
-                                            <div>
-                                                <!--<h2>{{bookFest.name}}</h2>-->
-                                                <h3>Event Name, Type</h3>
-                                                <p class="eventDateVenue">SJBIT, Jayanagar 6th Block,Bangalore on {{bookFest.booking_date}}</p>
-                                                <p class="eventTime">at 7:00 a.m.</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7 eventFesterDetails">
-                                          <h1 class="col-md-12">Swapnil Kumar</h1>
-                                          <dt class="col-md-6 col-sm-6 col-xs-6">Paid</dt>
-                                          <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; 20{{event.ticket_price}}</dd>
-
-                                          <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
-                                          <dd class="col-md-6 col-sm-6 col-xs-6">1523</dd>
-
-                                          <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
-                                          <dd class="col-md-6 col-sm-6 col-xs-6">Raghav, 910863783</dd>
-
-                                          <dt class="col-md-6 col-sm-6 col-xs-6">Others</dt>
-                                          <dd class="col-md-6 col-sm-6 col-xs-6">Bla bL bal </dd>
-                                        </div>
-                                    </div>
-                                  <div class="row eventDetailsCard">
-                                    <div class="col-md-5 text-center">
-                                      <img width="150" src="https://cdn4.iconfinder.com/data/icons/let-s-party/756/dance_party_drunk_disco_birthday_celebrate_pub-512.png" alt="404">
-                                      <div>
-                                        <!--<h2>{{bookFest.name}}</h2>-->
-                                        <h3>Event Name, Type</h3>
-                                        <p class="eventDateVenue">SJBIT, Jayanagar 6th Block,Bangalore on {{bookFest.booking_date}}</p>
-                                        <p class="eventTime">at 7:00 a.m.</p>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-7 eventFesterDetails">
-                                      <h1 class="col-md-12">Swapnil Kumar</h1>
-                                      <dt class="col-md-6 col-sm-6 col-xs-6">Paid</dt>
-                                      <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; 20{{event.ticket_price}}</dd>
-
-                                      <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
-                                      <dd class="col-md-6 col-sm-6 col-xs-6">1523</dd>
-
-                                      <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
-                                      <dd class="col-md-6 col-sm-6 col-xs-6">Raghav, 910863783</dd>
-
-                                      <dt class="col-md-6 col-sm-6 col-xs-6">Others</dt>
-                                      <dd class="col-md-6 col-sm-6 col-xs-6">Bla bL bal </dd>
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="pro-2" class="tab-pane fade">
-                            <h3>liked events</h3>
-                            <div *ngIf="likedFest">
-                                <div *ngFor="let likeFest of likedFest">
-                                    <div class="sec-1">
-                                    <div class="col-md-4">
-                                        <h2>Fest Name  </h2><h4>{{likeFest.name}} </h4>
-                                        </div>
-                                        <div class="col-md-4 text-right">
-                                        <h2>Start Date  </h2> <h4> {{likeFest.date}}</h4>
-                                       </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>dashboard</h2>
+      </div>
+      <div class="col-md-4">
+        <div class="profile-sec">
+          <h3>your profile (Name)</h3>
+          <img id="googleImg" alt="">
+          <ul>
+            <li>{{socialData.email}}</li>
+            <li>{{socialData.firstName}}</li>
+            <li>{{socialData.lastName}}</li>
+            <!--<li><a href="#">Edit</a></li>-->
+          </ul>
         </div>
+
+      </div>
+      <div class="col-md-8">
+        <div class="profile-decp2">
+          <ul>
+            <li class="active"><a data-toggle="tab" href="#pro-1">Booked Tickets </a></li>
+            <li><a data-toggle="tab" href="#pro-2">liked events</a></li>
+          </ul>
+          <div class="tab-content eventDetails">
+            <div id="pro-1" class="tab-pane fade in active bookedTickets">
+              <!--<h3>your tickets</h3>-->
+              <div *ngIf="bookedEvents">
+                <div>
+                  <div *ngFor="let bookFest of bookedEvents">
+                    <div>
+                      <div class="row eventDetailsCard">
+                        <div class="col-md-5 text-center">
+                          <img width="150"
+                               src="https://cdn4.iconfinder.com/data/icons/let-s-party/756/dance_party_drunk_disco_birthday_celebrate_pub-512.png"
+                               alt="404">
+                          <div>
+                            <h3>{{bookFest.name}}</h3>
+                            <p class="eventDateVenue">SJBIT, Jayanagar 6th Block,Bangalore
+                              on {{bookFest.booking_date}}</p>
+                            <p class="eventTime">at 7:00 a.m.</p>
+                          </div>
+                        </div>
+                        <div class="col-md-7 eventFesterDetails">
+                          <h1 class="col-md-12">Swapnil Kumar</h1>
+                          <dt class="col-md-6 col-sm-6 col-xs-6">Paid</dt>
+                          <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; {{bookFest.ticket_price}}</dd>
+
+                          <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
+                          <dd class="col-md-6 col-sm-6 col-xs-6">1523</dd>
+
+                          <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
+                          <dd class="col-md-6 col-sm-6 col-xs-6">Raghav, 910863783</dd>
+
+                          <dt class="col-md-6 col-sm-6 col-xs-6">Others</dt>
+                          <dd class="col-md-6 col-sm-6 col-xs-6">Bla bL bal</dd>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="pro-2" class="tab-pane fade">
+                  <h3>liked events</h3>
+                  <div *ngIf="likedFest">
+                    <div *ngFor="let likeFest of likedFest">
+                      <div class="sec-1">
+                        <div class="col-md-4">
+                          <h2>Fest Name </h2><h4>{{likeFest.name}} </h4>
+                        </div>
+                        <div class="col-md-4 text-right">
+                          <h2>Start Date </h2> <h4> {{likeFest.date}}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 <app-footer></app-footer>

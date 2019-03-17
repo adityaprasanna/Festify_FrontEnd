@@ -30,29 +30,20 @@ export class OrganizationDashboardComponent implements OnInit {
     this.gettingPaymentData();
   }
 
-  gettingPaymentData(){
+  gettingPaymentData() {
     this.appService.paymentList().subscribe(data => {
-      if (data == undefined) {
-        // this.router.navigate(['home']);
-      } else {
-        this.paymentList = data["payment"];
-        localStorage.setItem('payment', JSON.stringify(this.paymentList));
-      }
+      this.paymentList = data;
+      localStorage.setItem('payment', JSON.stringify(this.paymentList));
     });
   }
-  gettingFestData(){
+  gettingFestData() {
     this.appService.specificOrganizationList().subscribe(data => {
-      if (data == undefined) {
-        // this.router.navigate(['home']);
-      } else {
-
-        this.organizationList = data["organization"];
-        this.organizationFestList = data["fest"];
-        localStorage.setItem('organization', JSON.stringify(this.organizationList));
-        localStorage.setItem('fest', JSON.stringify(this.organizationFestList));
-        let imgae = document.getElementById("imgElem");
-        imgae.setAttribute('src', this.organizationList.image);
-      }
+      this.organizationList = data['organization'];
+      this.organizationFestList = data['fest'];
+      localStorage.setItem('organization', JSON.stringify(this.organizationList));
+      localStorage.setItem('fest', JSON.stringify(this.organizationFestList));
+      const image = document.getElementById('imgElem');
+      image.setAttribute('src', this.organizationList.image);
     });
   }
 

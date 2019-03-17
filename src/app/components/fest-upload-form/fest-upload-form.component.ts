@@ -129,8 +129,8 @@ export class FestUploadFormComponent implements OnInit {
         this.router.navigate(['home']);
       } else {
         // alert('Registration Successful');
-        this.router.navigate(['organization-dashboard']);
         this.festForm.reset();
+        this.router.navigate(['orgdashboard']);
       }
     });
     //this.festFormData.push()
