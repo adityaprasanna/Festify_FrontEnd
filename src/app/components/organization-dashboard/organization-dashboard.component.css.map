@@ -2,7 +2,7 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "organization-dashboard.component.sass"
+        "organization-dashboard.component.scss"
     ],
     "names": [],
     "file": "organization-dashboard.component.css"
