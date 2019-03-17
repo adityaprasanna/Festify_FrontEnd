@@ -1,0 +1,157 @@
+ul.social_profiles li a {
+  display: block;
+  padding: 10px 15px;
+  color: #808080;
+}
+
+ul.social_profiles li:hover {
+  background: #262626;
+}
+
+ul.social_profiles li:hover a {
+  color: #fff;
+}
+
+ul.social_profiles li:last-child {
+  border-bottom: 0px solid #E6E6E6;
+  padding-bottom: 5px;
+}
+
+/* Portfolio CSS */
+.maincontent_area {
+  background: #eee;
+}
+
+/* Homepage WIdgets CSS */
+.welcome_widgets {
+  margin-bottom: 80px;
+  overflow: hidden;
+}
+
+.post {
+  background: none repeat scroll 0 0 #FFFFFF;
+  padding: 20px 0;
+  padding-top: 0;
+}
+
+.post img {
+  width: 100%;
+}
+
+.post img,
+.post a,
+.post p,
+.post h2 {
+  padding: 0 20px;
+}
+
+.post h2 {
+  color: #000000;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 15px 15px 5px 20px;
+  text-align: left;
+  clear: both;
+  margin-top: 0;
+}
+
+.post h2 a {
+  color: #212121;
+  padding: 0;
+  text-decoration: none;
+}
+
+.post hr {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.post p.post_meta {
+  color: #2c2c2c;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.post p.post_meta .fa {
+  margin-right: 8px;
+}
+
+.post p {
+  color: #333;
+    font-size: 15px;
+    line-height: 23px;
+    margin-bottom: 0;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.post a.readmore:hover {
+  color: #000;
+}
+
+.post a.post_featured_link {
+  padding: 0
+}
+
+.post a.post_featured_link iframe,
+.post a.post_featured_link img {
+  padding: 0;
+  float: left
+}
+
+#fullwidth_blog {
+  margin-top: 70px;
+  overflow: hidden;
+}
+
+#fullwidth_blog .post {
+  margin-bottom: 30px;
+}
+
+.readmore {
+  color: #212121;
+  text-decoration: none;
+}
+.single_sidebar{
+   background: #fff none repeat scroll 0 0;
+    float: left;
+    margin-bottom: 30px;
+    position: relative;
+    width: 100%;
+}
+.single_sidebar h1 {
+       background: #000 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 19px;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    margin-top: 0;
+    padding: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.single_sidebar li a {
+    color: #212121;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+.single_sidebar li {
+    list-style: outside none none;
+    margin-bottom: 10px;
+}
+.single_sidebar ul {
+   margin-bottom: 30px;
+    margin-top: 18px;
+    padding: 0 15px;
+}
+.single_sidebar .fa{
+    float: left;
+    margin-right: 14px;
+    margin-top: 4px;
+    position: relative;
+        color: #000;
+}
