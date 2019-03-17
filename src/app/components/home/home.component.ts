@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               this.university.push(x);
             }
           });
-          localStorage.setItem('festDetails', data);
+          localStorage.setItem('festDetails', JSON.stringify(data));
         }
       });
   }

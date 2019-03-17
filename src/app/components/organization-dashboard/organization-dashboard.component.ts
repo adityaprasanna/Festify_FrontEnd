@@ -32,12 +32,8 @@ export class OrganizationDashboardComponent implements OnInit {
 
   gettingPaymentData(){
     this.appService.paymentList().subscribe(data => {
-      if (data == undefined) {
-        // this.router.navigate(['home']);
-      } else {
-        this.paymentList = data["payment"];
-        localStorage.setItem('payment', JSON.stringify(this.paymentList));
-      }
+      this.paymentList = data;
+      localStorage.setItem('payment', JSON.stringify(this.paymentList));
     });
   }
   gettingFestData(){
