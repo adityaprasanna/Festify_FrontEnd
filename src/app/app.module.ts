@@ -18,8 +18,8 @@ import { GrdFilterPipe } from './components/organizations/grd-filter.pipe';
 
 // import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,
 // } from "angular-6-social-login-v2";
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
@@ -49,21 +49,19 @@ import { PrivatePolicyComponent } from './components/private-policy/private-poli
 import { AftersuccessComponent } from './components/aftersuccess/aftersuccess.component';
 
 
-
 export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
-      [
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("541589206326432")
-        },
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider("394569857573-fl3pfejivfi6nvj2289u6s67o7ki3n1u.apps.googleusercontent.com")
-        },
-      ]
+  return new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('541589206326432')
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('394569857573-fl3pfejivfi6nvj2289u6s67o7ki3n1u.apps.googleusercontent.com')
+      },
+    ]
   );
-  return config;
 }
 
 @NgModule({
