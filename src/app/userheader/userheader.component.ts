@@ -10,6 +10,10 @@ export class UserheaderComponent implements OnInit {
   socialData: any;
   constructor(private authenticationService:AuthenticationService) { }
 
+  get authenticationServiceFn(){
+  	return this.authenticationService;
+  }
+
   ngOnInit() {
     let data = sessionStorage.getItem('userData');
     this.socialData = JSON.parse(data);

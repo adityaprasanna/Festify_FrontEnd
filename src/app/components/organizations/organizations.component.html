@@ -1,11 +1,11 @@
-<div *ngIf=" this.authenticationService.orgExist">
+<div *ngIf=" this.authenticationServicefn.orgExist">
     <app-organizationheader></app-organizationheader>
 </div>
-<div *ngIf=" this.authenticationService.userExist">
+<div *ngIf=" this.authenticationServicefn.userExist">
     <app-userheader></app-userheader>
 </div>
 
-<div *ngIf=" this.authenticationService.userExist == undefined &&  this.authenticationService.orgExist == undefined">
+<div *ngIf=" this.authenticationServicefn.userExist == undefined &&  this.authenticationServicefn.orgExist == undefined">
     <app-header></app-header>
 </div>
 

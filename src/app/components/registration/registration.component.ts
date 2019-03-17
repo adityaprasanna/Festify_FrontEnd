@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
+  loading = false;
   
   public version = VERSION.full;
   mydataURL: any;

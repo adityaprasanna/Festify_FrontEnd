@@ -10,11 +10,15 @@ import { AuthenticationService } from 'src/app/authentication.service';
 export class OrganizationsComponent implements OnInit {
 organizationList:any=[];
 public searchText : string;
+
   constructor(private appService:AppService,private authenticationService :AuthenticationService) { 
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
     this.authenticationService.userExist = sessionStorage.getItem('userData');
-}
-
+  }
+  
+  get authenticationServicefn() {
+    return this.authenticationService;
+  }
   ngOnInit() {
     this.appService.organizationList().subscribe(data => {
       if (data == undefined) {
