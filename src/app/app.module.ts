@@ -33,7 +33,7 @@ import { AuthGuardService } from './auth-guard.service';
 
 import { HttpModule } from '@angular/http'; 
 import { HttpClientModule } from '@angular/common/http';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileSelectDirective, FileUploadModule  } from 'ng2-file-upload';
 import { OrganizationDashboardComponent } from './components/organization-dashboard/organization-dashboard.component';
 import { FestComponent } from './components/fest/fest.component';
 import { UserheaderComponent } from './userheader/userheader.component';
@@ -75,7 +75,6 @@ export function getAuthServiceConfigs() {
     PagenotfoundComponent,
     HeaderComponent,
     FooterComponent,
-    FileSelectDirective,
     FestUploadFormComponent,
     OrganizationsComponent,
     GrdFilterPipe,
@@ -106,6 +105,7 @@ export function getAuthServiceConfigs() {
     SlickCarouselModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    FileUploadModule
   ],
   
   providers: [{
