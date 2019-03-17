@@ -1814,7 +1814,7 @@ section.festspecific-page .left-sec h3 {
   background: #f71769;
   text-align: center;
   color: #fff;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 9px;
   font-size: 18px;
   letter-spacing: 1px;
@@ -1834,13 +1834,17 @@ section.festspecific-page .fest-decp {
   -webkit-box-shadow: 0 0 7px #ddd;
           box-shadow: 0 0 7px #ddd;
   padding: 15px;
+  font-family: 'Roboto', sans-serif;
 }
 
+section.festspecific-page .fest-decp p{
+  font-size: 1.5em;
+}
 section.festspecific-page .fest-decp h2 {
-  margin: 0 0 20px;
+  margin: 5px 0 20px;
   text-align: center;
   color: #111;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: bold;
 }
 
@@ -1848,9 +1852,39 @@ section.festspecific-page .fest-decp h3 {
   color: #333;
   text-align: center;
   margin: 0 0 20px;
+  padding-bottom: 4px;
   text-transform: capitalize;
+  text-decoration: underline;
+  text-decoration-color: red;
+  letter-spacing: 1px;
+  font-weight: 400;
   font-size: 18px;
 }
+
+section.festspecific-page .fest-decp .fest-type{
+  border: #fff solid 2px;
+  border-radius: 5px;
+  padding: 0 10px;
+  background: #5f376b;
+  margin-right: 20px;
+  margin-bottom: 8px;
+}
+section.festspecific-page .fest-decp .fest-type h4{
+  color: #fff;
+}
+section.festspecific-page .fest-decp .event-type{
+  background: #c9573a;
+}
+section.festspecific-page .sec4 .heading h3{
+  font-size: 1.5em;
+  text-transform: capitalize;
+  text-decoration: none;
+  margin-top: 10px;
+}
+section.festspecific-page .sec4 .heading .event-type h5{
+  color: #fff;
+}
+
 
 /* section.festspecific-page .fest-decp .sec1 {
   background: #f3f3f3;
@@ -1951,6 +1985,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable {
   text-align: center;
   background: #e6e6e6;
   margin-bottom: 25px;
+  border-radius: 10px;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable:hover {
@@ -1963,7 +1998,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingTable-header 
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading {
   display: block;
-  padding: 20px 0;
+  /* padding: 20px 0; */
   background: #fff;
 }
 
@@ -2001,6 +2036,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > 
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent {
   text-transform: capitalize;
   background: #fff;
+  padding:20px;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
@@ -2115,6 +2151,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up >
 
 section#contact {
   padding: 50px 0;
+  padding-top: 7%;
 }
 
 section#contact h3 {
