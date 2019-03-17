@@ -24,7 +24,7 @@ export class OrganizationheaderComponent implements OnInit {
         // this.router.navigate(['home']);
       } else {
 
-        this.organizationList = data["organization"];
+        this.organizationList = data;
         localStorage.setItem('organization', JSON.stringify(this.organizationList));
       }
     });

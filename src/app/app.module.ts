@@ -17,19 +17,20 @@ import {FestUploadFormComponent} from './components/fest-upload-form/fest-upload
 import {GrdFilterPipe} from './components/organizations/grd-filter.pipe';
 // import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,
 // } from "angular-6-social-login-v2";
-import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RECAPTCHA_SETTINGS, RecaptchaModule, RecaptchaSettings} from 'ng-recaptcha';
-import {RecaptchaFormsModule} from 'ng-recaptcha/forms';
-import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
-import {TimepickerModule} from 'ngx-bootstrap/timepicker';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { RecaptchaFormsModule  } from 'ng-recaptcha/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 // service
+import { FileUploadModule  } from 'ng2-file-upload';
 import {AppService} from './app.service';
 import {AuthGuardService} from './auth-guard.service';
 import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
-import {FileSelectDirective} from 'ng2-file-upload';
 import {OrganizationDashboardComponent} from './components/organization-dashboard/organization-dashboard.component';
 import {FestComponent} from './components/fest/fest.component';
 import {UserheaderComponent} from './userheader/userheader.component';
@@ -69,7 +70,6 @@ export function getAuthServiceConfigs() {
     PagenotfoundComponent,
     HeaderComponent,
     FooterComponent,
-    FileSelectDirective,
     FestUploadFormComponent,
     OrganizationsComponent,
     GrdFilterPipe,
@@ -98,6 +98,7 @@ export function getAuthServiceConfigs() {
     SlickCarouselModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    FileUploadModule
   ],
 
   providers: [{
