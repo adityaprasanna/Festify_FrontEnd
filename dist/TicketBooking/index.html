@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+    <title>Festify</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/screen.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/slimNav_sk78.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/other.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <app-root></app-root>
+
+    <script src="assets/js/jquery-2.2.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.slimNav_sk78.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/masonry.pkgd.min.js"></script>
+
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#navigation nav').slimNav_sk78();
+        });
+    </script>
+
+    <script>
+        function toggleIcon(e) {
+            $(e.target)
+                .prev('.panel-heading')
+                .find(".more-less")
+                .toggleClass('glyphicon-plus glyphicon-minus');
+        }
+        $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+        $('.panel-group').on('shown.bs.collapse', toggleIcon);
+    </script>
+    <!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//unpkg.com/slick-carousel@1.8.1/slick/slick.js"></script>-->
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="scripts.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+
+</html>

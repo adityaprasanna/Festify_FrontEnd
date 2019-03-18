@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormControl, EmailValida
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-
+import { RecaptchaFormsModule  } from 'ng-recaptcha/forms';
 
 @Component({
   selector: 'app-fest-upload-form',
@@ -13,7 +13,8 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 export class FestUploadFormComponent implements OnInit {
   festForm: FormGroup;
   submitted = false;
-  
+  loading = false;
+  model = new Date();
  
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   constructor(private formBuilder: FormBuilder, private appService: AppService, private router: Router) { // this.createForm();
@@ -88,24 +89,6 @@ export class FestUploadFormComponent implements OnInit {
           let imageUrl = myCanvas.toDataURL('image/jpeg');
           this.festForm.value[item] = imageUrl;
         }
-      } else if(item == "start_date"){
-        if (this.festForm.value[item] != null) {
-          var stringDateOne = new Date(this.festForm.value[item]);
-          let modifiedDateOne = stringDateOne.getFullYear()+'-' + (stringDateOne.getMonth()+1) + '-'+stringDateOne.getDate();
-          this.festForm.value[item] = modifiedDateOne;
-        }
-      } else if(item == "end_date"){
-        if (this.festForm.value[item] != null) {
-          var stringDateTwo = new Date(this.festForm.value[item]);
-          let modifiedDateTwo = stringDateTwo.getFullYear()+'-' + (stringDateTwo.getMonth()+1) + '-'+stringDateTwo.getDate();
-          this.festForm.value[item] = modifiedDateTwo;
-        }
-      } else if(item == "event_date"){
-        if (this.festForm.value[item] != null) {
-          var stringDateTwo = new Date(this.festForm.value[item]);
-          let modifiedDateTwo = stringDateTwo.getFullYear()+'-' + (stringDateTwo.getMonth()+1) + '-'+stringDateTwo.getDate();
-          this.festForm.value[item] = modifiedDateTwo;
-        }
       } else if (item == "event_sponser") {
         // for (let pic in this.festForm.value[item]) {
         this.festForm.value[item].map(x => {
@@ -119,8 +102,6 @@ export class FestUploadFormComponent implements OnInit {
             }
           }
         })
-
-        // }
       }
     }
     this.appService.createFest(this.festForm)
@@ -133,7 +114,7 @@ export class FestUploadFormComponent implements OnInit {
         this.router.navigate(['orgdashboard']);
       }
     });
-    //this.festFormData.push()
+    // this.festFormData.push()
   }
   // createForm() {
   //   this.festForm = this.formBuilder.group({
@@ -173,8 +154,6 @@ export class FestUploadFormComponent implements OnInit {
   //     recaptchaReactive: new FormControl(null, [Validators.required])
   //   });
   // }
-
-  
 
   
 
@@ -223,7 +202,7 @@ export class FestUploadFormComponent implements OnInit {
   }
 
   addEventPoint() {
-    this.eventPoints.push(this.formBuilder.group({ eventName: new FormControl(''), ticket_price: new FormControl(''), event_description: new FormControl('', [Validators.required]), event_coordinator: new FormControl('', [Validators.required]), event_date: new FormControl('', [Validators.required]), event_time: new FormControl('', [Validators.required]), event_type: ['', [Validators.required]], }));
+    this.eventPoints.push(this.formBuilder.group({ eventName: new FormControl(''), ticket_price: new FormControl(''), event_description: new FormControl('', [Validators.required]), event_coordinator: new FormControl('', [Validators.required]), event_date: new FormControl(Date, [Validators.required]), event_time: new FormControl('', [Validators.required]), event_type: ['', [Validators.required]], }));
 
   }
 

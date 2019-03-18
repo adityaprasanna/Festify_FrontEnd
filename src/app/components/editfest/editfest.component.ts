@@ -13,6 +13,7 @@ export class EditfestComponent implements OnInit {
   festEditData: any;
   festForm: FormGroup;
   can = 0;
+  submitted = false;
   constructor(private authenticationService: AuthenticationService, private router: Router, private formBuilder: FormBuilder, ) { }
 
   ngOnInit() {

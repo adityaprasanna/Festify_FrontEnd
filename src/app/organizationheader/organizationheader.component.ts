@@ -12,6 +12,10 @@ export class OrganizationheaderComponent implements OnInit {
 
   constructor(private appService: AppService, private authenticationService: AuthenticationService) { }
 
+  get authenticationServiceFn() {
+    return this.authenticationService;
+  }
+
   ngOnInit() {
     this.gettingFestData();
   }

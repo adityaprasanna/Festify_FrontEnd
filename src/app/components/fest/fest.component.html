@@ -1,11 +1,11 @@
-<div *ngIf="this.authenticationService.orgExist">
+<div *ngIf=" this.authenticationServicefn.orgExist">
     <app-organizationheader></app-organizationheader>
 </div>
-<div *ngIf=" this.authenticationService.userExist">
+<div *ngIf=" this.authenticationServicefn.userExist">
     <app-userheader></app-userheader>
 </div>
 
-<div *ngIf=" this.authenticationService.userExist == undefined &&  this.authenticationService.orgExist == undefined">
+<div *ngIf=" this.authenticationServicefn.userExist == undefined &&  this.authenticationServicefn.orgExist == undefined">
     <app-header></app-header>
 </div>
 
@@ -88,8 +88,8 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="this.commerce">
-                <div *ngFor="let commerceList of  this.commerce;let i=index">
+            <div *ngIf="this.commerse">
+                <div *ngFor="let commerceList of  this.commerse;let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter commerce">
                         <div class="item">
                             <div class="show-image">
