@@ -21,7 +21,7 @@
                     <!-- <img id="festImg" alt=""> -->
                     <div *ngIf="this.festDetails">
                         <div class="row text-center">
-                            <div class="col-md-12">
+                            <div class="col-md-12 contactus">
                             <h3>Contact Us</h3>
                             </div>
                         </div>
@@ -44,11 +44,9 @@
                         <div class="spon-img text-center">
                             <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
                                 <ul>
-                                    <li *ngIf="sponsorDetails.sponsor_name" >
-                                        <h5><span>{{sponsorDetails.sponsor_name}}</span></h5></li>
+                                    <li *ngIf="sponsorDetails.sponsor_name"><h5><span>{{sponsorDetails.sponsor_name}}</span></h5></li>
                                     <img [src]="sponsorDetails.sponsor_picture" alt="">
-                                    <li *ngIf="sponsorDetails.caption" >
-                                        <h5><span>{{sponsorDetails.caption}}</span></h5></li>
+                                    <li *ngIf="sponsorDetails.caption"><h5><span>{{sponsorDetails.caption}}</span></h5></li>
                                 </ul>
                             </div>
                         </div>

@@ -1809,9 +1809,13 @@ section.festspecific-page .left-sec ul li {
   text-transform: capitalize;
   margin-bottom: 12px;
 }
+section.festspecific-page .left-sec .contactus{
+  padding:0;
 
+}
 section.festspecific-page .left-sec h3 {
-  background: #ff9317;
+  /* background: #ff9317; */
+  background: linear-gradient(to bottom right,#b92b27,#1565C0);
   text-align: center;
   color: #fff;
   text-transform: capitalize;
@@ -1819,8 +1823,12 @@ section.festspecific-page .left-sec h3 {
   font-size: 18px;
   letter-spacing: 1px;
   font-weight: 600;
+  margin:0;
 }
-/* section.festspecific-page .left-sec .spon-img {
+section.festspecific-page .left-sec h4,h5{
+  color:#fff;
+}
+section.festspecific-page .left-sec .spon-img {
   padding-bottom: 40px;
 }
 section.festspecific-page .left-sec .spon-img img {
@@ -1828,8 +1836,10 @@ section.festspecific-page .left-sec .spon-img img {
   width: 55%;
   display: table;
   margin: 0 auto 15px;
-} */
-
+}
+section.festspecific-page .left-sec .spon-img h5{
+  color:#000;
+}
 section.festspecific-page .fest-decp {
   -webkit-box-shadow: 0 0 7px #ddd;
           box-shadow: 0 0 7px #ddd;
@@ -2050,6 +2060,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
 }
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent p{
   font-size: 0.9em;
+  font-weight: 500;
   color: #000;
   padding: 0 5px;
 }
