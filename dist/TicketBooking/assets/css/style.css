@@ -97,7 +97,6 @@ li, ol {
   /* Firefox 18- */
   color: #fff;
 }
-
 .log-in-pop {
   /* background: url(../images/log-bg.jpg); */
   padding: 0;
@@ -1797,7 +1796,8 @@ section.festspecific-page {
 
 section.festspecific-page .left-sec {
   -webkit-box-shadow: 0 0 7px #ddd;
-          box-shadow: 0 0 7px #ddd;
+          box-shadow: 5px 10px 8px #888888;
+
 }
 
 section.festspecific-page .left-sec ul {
@@ -1999,7 +1999,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable {
   background: #e6e6e6;
   margin-bottom: 25px;
   border-radius: 10px;
-  box-shadow:
+  box-shadow: 5px 10px 8px #888888;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable:hover {
@@ -2052,7 +2052,10 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent {
   background: #fff;
   padding:20px;
 }
-
+section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent .event_desc p{
+  overflow-y: scroll;
+  height: 90px;
+}
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
   margin: 0;
   text-transform: uppercase;

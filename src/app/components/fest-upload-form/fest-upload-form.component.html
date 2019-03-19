@@ -1,11 +1,11 @@
 <app-organizationheader></app-organizationheader>
-<div class="inner-ban">
+<!-- <div class="inner-ban">
     <img src="assets/images/inner-ban.jpg" alt="">
-</div>
+</div> -->
 <div class="registraion-page">
     <div class="container">
         <div class="col-md-12 text-center">
-            <h2>upload your fest</h2>
+            <h2>You're almost there!</h2>
         </div>
         <div class="col-md-6"></div>
         <div class="col-md-6"></div>
@@ -115,7 +115,7 @@
                     <label>Social Media Pages (optional)</label>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" placeholder="Enter Media Link" formControlName="social_media_pages" />
+                    <input type="text" class="form-control" placeholder="Ex: www.facebook.com/festpage/" formControlName="social_media_pages" />
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -205,7 +205,7 @@
                                         </div>
                                 </div>
                                 <div class="col-md-2">
-                                        <input type="text" class="form-control" placeholder="Enter Time" formControlName="event_time"
+                                        <input type="text" class="form-control" placeholder="Ex: 4:30" formControlName="event_time"
                                             [ngClass]="{ 'is-invalid': submitted && e.event_time?.errors }" />
                                             <!-- <timepicker [formControlName]="event_time"></timepicker> -->
                                         <div *ngIf="submitted && e.event_time?.errors" class="invalid-feedback">
@@ -220,7 +220,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-xs-12 pull-right">
-                                    <input type="text" class="form-control" placeholder="Enter Coordinator's name and phone number" formControlName="event_coordinator"
+                                    <input type="text" class="form-control" placeholder="Enter Coordinator's name and phone number (Ex: Adam 9645676547)" formControlName="event_coordinator"
                                         [ngClass]="{ 'is-invalid': submitted && e.event_coordinator?.errors }" />
                                     <div *ngIf="submitted && e.event_coordinator?.errors" class="invalid-feedback">
                                         <div *ngIf="e.event_coordinator?.errors.required" class="alert alert-danger"> Event Coordinator's name is required</div>

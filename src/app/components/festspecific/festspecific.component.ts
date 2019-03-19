@@ -29,14 +29,17 @@ export class FestspecificComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
       this.festDetails = (data[0]);
-      if (this.festDetails.image) {
-        let imgae = document.getElementById("festImg");
-        imgae.setAttribute('src', this.festDetails.image);
-      }
+      // if (this.festDetails.image) {
+      //   let imgae = document.getElementById("festImg");
+      //   imgae.setAttribute('src', this.festDetails.image);
+      // }
       this.festDetails.start_date = this.getReadableDate(this.festDetails.start_date);
+      this.festDetails.end_date = this.getReadableDate(this.festDetails.end_date);
       if(this.festDetails.events.length >= 1) {
           this.festDetails.events.map(x=>{
-          x.event_date = this.getReadableDate(x.event_date);
+          if(x.event_date){
+            x.event_date = this.getReadableDate(x.event_date);
+          }
           if(x.ticket_price){
             x.ticket_price=parseFloat(x.ticket_price).toFixed(2);
           }

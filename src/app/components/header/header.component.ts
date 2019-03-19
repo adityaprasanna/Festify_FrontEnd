@@ -86,7 +86,7 @@ export class HeaderComponent implements OnInit {
           this.authenticationService.userLogin(JSON.stringify(userData)).subscribe(data=>{
           if(data){
             $('#myModal2').modal('hide');
-            // localStorage.setItem('userDashboardData',JSON.stringify(data));
+            localStorage.setItem('userDashboardData',JSON.stringify(data));
             this.router.navigate(['userdashboard']);
           }
           else{

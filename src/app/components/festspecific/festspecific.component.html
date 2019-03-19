@@ -29,7 +29,6 @@
                     <div class="sec2">
                         <div class="row text-center">
                             <!-- <div class="col-md-9"> -->
-                            <h3>{{this.festDetails.start_date}}</h3>
                             <h3>description</h3>
                             <p></p>
                             <p>{{this.festDetails.description}}</p>
@@ -76,7 +75,7 @@
                                         </span>
                                     </div>
                                     <div class="row">
-                                        <img height=150 src="assets/images/{{eventDetails.event_type}}.png">
+                                        <img height=150 src="assets/images/event_icons/{{eventDetails.event_type}}.png">
                                     </div>
                                     <!-- <div class="pricingContent">
                                         <ul>
@@ -95,7 +94,7 @@
                                         </ul>
                                     </div> -->
                                     <div class="pricingContent">
-                                    <div class="row text-center">
+                                    <div class="row text-center event_desc">
                                         <p>{{eventDetails.event_description}}</p>
                                     </div>
                                     <hr>
@@ -107,7 +106,7 @@
                                             <p>{{eventDetails.event_coordinator}}</p>
                                     </div>
                                     <div class="row text-center">
-                                            <p>{{eventDetails.ticket_price}}</p>
+                                            <p><i class="fas fa-rupee-sign"></i>{{eventDetails.ticket_price}}</p>
                                     </div>
                                     <div class="pricingTable-sign-up">
                                         <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>
@@ -143,6 +142,11 @@
                                 <p></p>
                                 <h5>{{this.festDetails.sec_manager_name}}</h5>
                                 <h5>{{this.festDetails.sec_manager_phone}}</h5>
+                                <h4>Date:</h4>
+                                <p></p>
+                                <h5>{{this.festDetails.start_date}} till {{this.festDetails.end_date}}</h5>
+                    
+
                             </div>
                             <!-- <ul>
                                 <li>Date: {{this.festDetails.start_date}}</li>
