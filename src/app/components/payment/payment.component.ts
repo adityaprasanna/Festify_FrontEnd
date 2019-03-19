@@ -130,8 +130,7 @@ export class PaymentComponent implements OnInit {
               this.posted.PG = data[0].posted.PG,
               setTimeout(() => {
                 this.submitForm();
-                debugger
-              }, 1000);
+            }, 1000);
           }
           else {
             alert('payment is unSuccessfull');

@@ -99,14 +99,14 @@
                                     </div>
                                     <hr>
                                     <div class="row text-center">
-                                        <div class="col-md-6"><p>{{eventDetails.event_date}}</p></div>
-                                        <div class="col-md-6"><p>{{eventDetails.event_time}}</p></div>
+                                        <div class="col-md-6"><p><i class="fas fa-calendar-alt"></i>&nbsp;{{eventDetails.event_date}}</p></div>
+                                        <div class="col-md-6"><p><i class="fas fa-clock"></i>&nbsp;{{eventDetails.event_time}}</p></div>
                                     </div>
                                     <div class="row text-center">
-                                            <p>{{eventDetails.event_coordinator}}</p>
+                                            <p><i class="fas fa-male"></i>{{eventDetails.event_coordinator}}</p>
                                     </div>
                                     <div class="row text-center">
-                                            <p><i class="fas fa-rupee-sign"></i>{{eventDetails.ticket_price}}</p>
+                                            <p><i class="fas fa-rupee-sign"></i>&nbsp;{{eventDetails.ticket_price}}</p>
                                     </div>
                                     <div class="pricingTable-sign-up">
                                         <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>

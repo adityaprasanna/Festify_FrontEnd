@@ -23,7 +23,7 @@ export class FestUploadFormComponent implements OnInit {
 
   ngOnInit() {
     this.festForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required,Validators.maxLength(20)]],
       image: ['', [Validators.required]],
       fest_type: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -36,7 +36,7 @@ export class FestUploadFormComponent implements OnInit {
 
       event: this.formBuilder.array([
         this.formBuilder.group({
-          eventName: new FormControl('', [Validators.required]), 
+          eventName: new FormControl('', [Validators.required,Validators.maxLength(20)]), 
           ticket_price: ['', [Validators.required]], 
           event_description: ['', [Validators.required]],
           event_coordinator: ['', [Validators.required]], 
