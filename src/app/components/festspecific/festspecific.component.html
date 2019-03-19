@@ -29,6 +29,7 @@
                     <div class="sec2">
                         <div class="row text-center">
                             <!-- <div class="col-md-9"> -->
+                            <h3>{{this.festDetails.start_date}}</h3>
                             <h3>description</h3>
                             <p></p>
                             <p>{{this.festDetails.description}}</p>
@@ -104,6 +105,9 @@
                                     </div>
                                     <div class="row text-center">
                                             <p>{{eventDetails.event_coordinator}}</p>
+                                    </div>
+                                    <div class="row text-center">
+                                            <p>{{eventDetails.ticket_price}}</p>
                                     </div>
                                     <div class="pricingTable-sign-up">
                                         <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>

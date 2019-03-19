@@ -199,9 +199,9 @@
                                 </div>
                                 <div class="col-md-2">
                                         <input type="text" class="form-control" style="line-height: 1.4em;" (keydown)="onKeydown($event)"  placeholder="Enter Date" formControlName="event_date" bsDatepicker [bsConfig]="bsConfig"
-                                            [ngClass]="{ 'is-invalid': submitted && e.event_date.errors }" required/>
-                                        <div *ngIf="submitted && e.event_date.errors" class="invalid-feedback">
-                                            <div *ngIf="e.event_date.errors.required" class="alert alert-danger"> Event Date is required</div>
+                                            [ngClass]="{ 'is-invalid': submitted && e.event_date?.errors }" required/>
+                                        <div *ngIf="submitted && e.event_date?.errors" class="invalid-feedback">
+                                            <div *ngIf="e.event_date?.errors.required" class="alert alert-danger"> Event Date is required</div>
                                         </div>
                                 </div>
                                 <div class="col-md-2">
@@ -443,7 +443,7 @@
                 </div>
                 <div class="col-md-8">
                     <re-captcha formControlName="recaptchaReactive" required></re-captcha>
-                    <div *ngIf="this.festForm.errors.required" class="invalid-feedback" class="alert alert-danger">Please Check Capcha</div>
+                    <div *ngIf="submitted && e.recaptchaReactive.errors && e.recaptchaReactive.errors.required" class="invalid-feedback" class="alert alert-danger">Please Check Capcha</div>
                 </div>
             </div>
             <div class="form-group">

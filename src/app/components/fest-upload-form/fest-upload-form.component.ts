@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormControl, EmailValida
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { RecaptchaFormsModule  } from 'ng-recaptcha/forms';
 
 @Component({
   selector: 'app-fest-upload-form',
@@ -35,7 +34,16 @@ export class FestUploadFormComponent implements OnInit {
       promo_video: new FormControl(null),
       promo_video_thumbnail: new FormControl(null),
 
-      event: this.formBuilder.array([this.formBuilder.group({eventName: new FormControl('', [Validators.required]), ticket_price: ['', [Validators.required]], event_description: ['', [Validators.required]], event_coordinator: ['', [Validators.required]], event_date: new FormControl(Date, [Validators.required]), event_time: ['', [Validators.required]], event_type: ['', [Validators.required]] })]),
+      event: this.formBuilder.array([
+        this.formBuilder.group({
+          eventName: new FormControl('', [Validators.required]), 
+          ticket_price: ['', [Validators.required]], 
+          event_description: ['', [Validators.required]],
+          event_coordinator: ['', [Validators.required]], 
+          event_date: new FormControl(Date, [Validators.required]), 
+          event_time: ['', [Validators.required]], 
+          event_type: ['', [Validators.required]] 
+        })]),
       
       manager_name: ['', [Validators.required]], 
       manager_phone: ['', [Validators.required]], 
@@ -66,7 +74,6 @@ export class FestUploadFormComponent implements OnInit {
       || this.festForm.controls.account_number == this.festForm.controls.confirm_account
       || this.festForm.controls.ifsc == this.festForm.controls.confirm_ifsc
       || new Date(this.festForm.controls.start_date.value) > new Date(this.festForm.controls.end_date.value)) {
-      // alert('Please provide all the details correctly and check the checkbox');
       return;
     }
 
@@ -90,7 +97,6 @@ export class FestUploadFormComponent implements OnInit {
           this.festForm.value[item] = imageUrl;
         }
       } else if (item == "event_sponser") {
-        // for (let pic in this.festForm.value[item]) {
         this.festForm.value[item].map(x => {
           if (x.picture != null) {
             let id = 0;
@@ -109,54 +115,11 @@ export class FestUploadFormComponent implements OnInit {
       if (data == undefined) {
         this.router.navigate(['home']);
       } else {
-        // alert('Registration Successful');
         this.festForm.reset();
         this.router.navigate(['orgdashboard']);
       }
     });
-    // this.festFormData.push()
   }
-  // createForm() {
-  //   this.festForm = this.formBuilder.group({
-  //     name: new FormControl('', [Validators.required]),
-  //     image: new FormControl(null, [Validators.required]),
-  //     fest_type: ['', [Validators.required]],
-  //     description: new FormControl(null, [Validators.required]),
-  //     start_date: new FormControl(Date, [Validators.required]),
-  //     end_date: new FormControl(Date, [Validators.required]),
-  //     website: new FormControl(null),
-  //     social_media_pages: new FormControl(null),
-  //     promo_video: new FormControl(null),
-  //     promo_video_thumbnail: new FormControl(null),
-
-  //     event: this.formBuilder.array([this.formBuilder.group({eventName: new FormControl('', [Validators.required]), 
-  //     ticket_price: new FormControl('', [Validators.required]), 
-  //     event_description: new FormControl('', [Validators.required]), 
-  //     event_coordinator: new FormControl('', [Validators.required]), 
-  //     event_date: new FormControl('', [Validators.required]), 
-  //     event_time: new FormControl('', [Validators.required]), 
-  //     event_type: ['', [Validators.required]] })]),
-      
-  //     manager_name: new FormControl('', [Validators.required]),
-  //     manager_phone: new FormControl('', [Validators.required]),
-  //     manager_email: new FormControl('', [Validators.required, Validators.email]),
-
-  //     event_sponser: this.formBuilder.array([this.formBuilder.group({ evtSpnName: '', picture: new FormControl(null), caption: new FormControl('') })]),
-
-  //     sec_manager_name: new FormControl('', [Validators.required]),
-  //     sec_manager_phone: new FormControl('', [Validators.required]),
-  //     account_holder_name: new FormControl('', [Validators.required]),
-  //     account_number: new FormControl('', [Validators.required]),
-  //     ifsc: new FormControl('', [Validators.required]),
-  //     confirm_account: new FormControl('', [Validators.required]),
-  //     confirm_ifsc: new FormControl('', [Validators.required]),
-  //     checkbox: new FormControl(null, [Validators.required]),
-  //     recaptchaReactive: new FormControl(null, [Validators.required])
-  //   });
-  // }
-
-  
-
   onChange(e) {
     switch (e.target.name) {
       case "image":
