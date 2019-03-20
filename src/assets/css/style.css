@@ -1580,10 +1580,11 @@ section.orgdashboard .profile-sec {
 }
 
 section.orgdashboard .profile-sec img {
-  border-radius: 50%;
+  border-radius: 100%;
   margin: 25px auto;
   display: table;
-  width: 30%;
+  width: 150px;
+  height:150px;
 }
 
 section.orgdashboard .profile-sec h3 {
