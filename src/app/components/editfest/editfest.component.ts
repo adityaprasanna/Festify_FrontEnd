@@ -19,14 +19,18 @@ export class EditfestComponent implements OnInit {
   ngOnInit() {
     let selectedFest = localStorage.getItem('festspecific');
     this.festEditData = JSON.parse(selectedFest);
+    console.log(this.festEditData.events[1].event_name);
     for (let item in this.festEditData) {
       if (this.festEditData[item] == null) {
         this.festEditData[item] = ''
       }
     }
+    for (let obj in this.festEditData.events) {
     this.festForm = this.formBuilder.group({
+      fest_type: new FormControl(this.festEditData.fest_type, [Validators.required]),
       name: new FormControl(this.festEditData.name, [Validators.required]),
       image: new FormControl(null),
+      description: new FormControl(this.festEditData.description, [Validators.required]),
       start_date: new FormControl(this.festEditData.start_date, [Validators.required]),
       end_date: new FormControl(this.festEditData.end_date, [Validators.required]),
       website: new FormControl(this.festEditData.website),
@@ -35,12 +39,25 @@ export class EditfestComponent implements OnInit {
       promo_video_thumbnail: new FormControl(null),
       id: new FormControl(this.festEditData.id),
       event: this.formBuilder.array([this.formBuilder.group
-        ({ id: new FormControl(''), eventName: new FormControl('', [Validators.required]), rule: new FormControl('', [Validators.required]), ticket_price: new FormControl('', [Validators.required]) })]),
+        ({ 
+          id: new FormControl(''), 
+          eventName: new FormControl(this.festEditData.events[obj].event_name, [Validators.required]), 
+          ticket_price: new FormControl(this.festEditData.events[obj].ticket_price, [Validators.required]),
+          event_description: new FormControl(this.festEditData.events[obj].event_description, [Validators.required]),
+          event_coordinator: new FormControl(this.festEditData.events[obj].event_coordinator, [Validators.required]),
+          event_date: new FormControl(this.festEditData.events[obj].event_date, [Validators.required]), 
+          event_time: new FormControl(this.festEditData.events[obj].event_time, [Validators.required]), 
+          event_type: new FormControl(this.festEditData.events[obj].event_type, [Validators.required]) 
+          })]),
       manager_name: new FormControl(this.festEditData.manager_name, [Validators.required]),
       manager_phone: new FormControl(this.festEditData.manager_phone, [Validators.required]),
       manager_email: new FormControl(this.festEditData.manager_email, [Validators.required, Validators.email]),
       event_sponser: this.formBuilder.array([this.formBuilder.group
-        ({ id: new FormControl(''), evtSpnName: '', picture: new FormControl(null), caption: new FormControl('') })]),
+        ({ 
+          id: new FormControl(''), 
+          evtSpnName: '', picture: new FormControl(null), 
+          caption: new FormControl('') 
+          })]),
       sec_manager_name: new FormControl(this.festEditData.sec_manager_name, [Validators.required]),
       sec_manager_phone: new FormControl(this.festEditData.sec_manager_phone, [Validators.required]),
       account_holder_name: new FormControl(this.festEditData.account_holder_name, [Validators.required]),
@@ -49,6 +66,7 @@ export class EditfestComponent implements OnInit {
     });
     this.addEventPoint();
     this.addSponsorEventPoint();
+  }
   }
   get e() {
     return this.festForm.controls;

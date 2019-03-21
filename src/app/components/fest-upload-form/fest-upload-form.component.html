@@ -11,30 +11,30 @@
         <div class="col-md-6"></div>
         <div class="clearfix"></div>
         <form [formGroup]="festForm" (ngSubmit)="onFestSubmit()">
-                <div class="form-group">
-                        <div class="col-md-4">
-                            <label>Fest Type</label>
-                        </div>
-                        <div class="col-md-8">
-                            <select placeholder="Select Fest Type" formControlName="fest_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.fest_type.errors }" required>
-                                <option value="" disabled selected hidden>Select Fest Type</option>
-                                <option value="Annual">Annual</option>
-                                <option value="Cultural">Cultural</option>
-                                <option value="Commerce">Commerce</option>
-                                <option value="Tech">Tech</option>
-                                <option value="Dance">Dance</option>
-                                <option value="Conference">Conference</option>
-                                <option value="Entrepreneurship">Entrepreneurship</option>
-                                <option value="Literary">Literary</option>
-                                <option value="Media">Media</option>
-                                <option value="Mun">Mun</option>
-                            </select>
-                            <div *ngIf="submitted && e.fest_type.errors" class="invalid-feedback">
-                                <div *ngIf="e.fest_type.errors.required" class="alert alert-danger">Fest type is required</div>
-                            </div>
-                        </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>Fest Type</label>
+                </div>
+                <div class="col-md-8">
+                    <select placeholder="Select Fest Type" formControlName="fest_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.fest_type.errors }" required>
+                        <option value="" disabled selected hidden>Select Fest Type</option>
+                        <option value="Annual">Annual</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Literary">Literary</option>
+                        <option value="Media">Media</option>
+                        <option value="Mun">Mun</option>
+                    </select>
+                    <div *ngIf="submitted && e.fest_type.errors" class="invalid-feedback">
+                        <div *ngIf="e.fest_type.errors.required" class="alert alert-danger">Fest type is required</div>
                     </div>
-                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
             <div class="form-group">
                 <div class="col-md-4">
                     <label>Name of Fest * (Max length: 20)</label>
