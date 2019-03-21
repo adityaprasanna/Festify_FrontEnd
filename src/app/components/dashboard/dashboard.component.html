@@ -10,12 +10,12 @@
       </div>
       <div class="col-md-4">
         <div class="profile-sec">
-          <h3>your profile (Name)</h3>
+          <h3>your profile</h3>
           <img id="googleImg" alt="">
           <ul>
-            <li>{{socialData.email}}</li>
             <li>{{socialData.firstName}}</li>
             <li>{{socialData.lastName}}</li>
+            <li>{{socialData.email}}</li>
             <!--<li><a href="#">Edit</a></li>-->
           </ul>
         </div>
@@ -36,29 +36,26 @@
                     <div>
                       <div class="row eventDetailsCard">
                         <div class="col-md-5 text-center">
-                          <img width="150"
-                               src="https://cdn4.iconfinder.com/data/icons/let-s-party/756/dance_party_drunk_disco_birthday_celebrate_pub-512.png"
-                               alt="404">
+                          <img width="150" src="../../../assets/images/event_icons/{{bookFest.event_type}}.png" alt="">
                           <div>
                             <h3>{{bookFest.name}}</h3>
-                            <p class="eventDateVenue">SJBIT, Jayanagar 6th Block,Bangalore
-                              on {{bookFest.booking_date}}</p>
-                            <p class="eventTime">at 7:00 a.m.</p>
+                            <p class="eventDateVenue">{{bookFest.booking_date}}</p>
+                            <p class="eventTime">at {{bookFest.event_time}}</p>
                           </div>
                         </div>
                         <div class="col-md-7 eventFesterDetails">
-                          <h1 class="col-md-12">Swapnil Kumar</h1>
+                          <h1 class="col-md-12">{{socialData.firstName}} {{socialData.lastName}}</h1>
                           <dt class="col-md-6 col-sm-6 col-xs-6">Paid</dt>
                           <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; {{bookFest.ticket_price}}</dd>
 
                           <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
-                          <dd class="col-md-6 col-sm-6 col-xs-6">1523</dd>
+                          <dd class="col-md-6 col-sm-6 col-xs-6">{{bookFest.ticket_id}}</dd>
 
                           <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
-                          <dd class="col-md-6 col-sm-6 col-xs-6">Raghav, 910863783</dd>
+                          <dd class="col-md-6 col-sm-6 col-xs-6">{{bookFest.event_coordinator}}</dd>
 
-                          <dt class="col-md-6 col-sm-6 col-xs-6">Others</dt>
-                          <dd class="col-md-6 col-sm-6 col-xs-6">Bla bL bal</dd>
+                          <dt class="col-md-6 col-sm-6 col-xs-6">Date Booked:</dt>
+                          <dd class="col-md-6 col-sm-6 col-xs-6">{{bookFest.booking_date}}</dd>
                         </div>
                       </div>
                     </div>

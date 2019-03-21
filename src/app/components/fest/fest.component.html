@@ -40,17 +40,19 @@
                                 </div>
                             </div>
                             <h4> <span></span><span></span></h4>
-                            <div class="col-md-9">
+                            <div class ="row">
+                            <div class="col-md-8 col-xs-8">
                                 <h4>{{universityList.org_name}}</h4>
                                 <h4>{{universityList.fest_start_date|date:'d-M-y' }}</h4>
                                 <h4 style="font-weight:900">{{universityList.fest_name}}</h4>
                                 <!--</a>-->
                             </div>
-                            <div class="col-md-1 like-sec">
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span>{{universityList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{universityList.fest_id}} (click)="authenticationService.getLikesNo(universityList,$event)"></a>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -65,23 +67,21 @@
                                 <div class="img-wrap">
                                     <img [src]="engineeringList.fest_image" alt="" style="position: relative;float: left;width:  100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
                                     <div class="overlay">
-
                                         <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(engineeringList.fest_id)" />
                                     </div>
-                                </div>
-
-                                <h4> <span></span><span></span></h4>
-                                <div class="col-md-9">
+                                </div>                        
+                            </div>
+                            <h4> <span></span><span></span></h4>
+                            <div class="col-md-8 col-xs-8">
                                 <h4>{{engineeringList.org_name}}</h4>
                                 <h4>{{engineeringList.fest_start_date}}</h4>
                                 <h4 style="font-weight:900">{{engineeringList.fest_name}}</h4>
                                 <!--</a> -->
-                                </div>
                             </div>
-                            <div class="col-md-1 like-sec">
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span>{{engineeringList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{engineeringList.fest_id}} (click)="authenticationService.getLikesNo(engineeringList,$event)"></a>
                             </div>
                         </div>
@@ -97,23 +97,21 @@
                                 <div class="img-wrap">
                                     <img [src]="commerceList.fest_image" alt="" style="position: relative;float: left;width: 100%;height: 200px;background-position: 50% 50%;background-repeat:   no-repeat;background-size:cover;">
                                     <div class="overlay">
-
                                         <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(commerceList.fest_id)" />
                                     </div>
-                                </div>
-
-                                <h4> <span></span><span></span></h4>
-                                <div class="col-md-9">
+                                </div>                                
+                            </div>
+                            <h4> <span></span><span></span></h4>
+                            <div class="col-md-8 col-xs-8">
                                 <h4>{{commerceList.org_name}}</h4>
                                 <h4>{{commerceList.fest_name}}</h4>
                                 <h4 style="font-weight:900">{{commerceList.fest_start_date}}</h4>
                                 <!--</a> -->
-                                </div>
                             </div>
-                            <div class="col-md-1 like-sec">
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span>{{commerceList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{engineeringList.fest_id}} (click)="authenticationService.getLikesNo(commerceList,$event)"></a>
                             </div>
                         </div>
@@ -131,20 +129,19 @@
                                     <div class="overlay">
                                         <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(archList.fest_id)" />
                                     </div>
-                                </div>
-
-                                <h4> <span></span><span></span></h4>
-                                <div class="col-md-9">
+                                </div>                                
+                            </div>
+                            <h4> <span></span><span></span></h4>
+                            <div class="col-md-8 col-xs-8">
                                 <h4>{{archList.org_name}}</h4>
                                 <h4>{{archList.fest_name}}</h4>
                                 <h4 style="font-weight:900">{{archList.fest_start_date}}</h4>
                                 <!--</a> -->
                             </div>
-                            </div>
-                            <div class="col-md-2 like-sec">
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span>{{archList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{archList.fest_id}} (click)="authenticationService.getLikesNo(archList,$event)"></a>
                             </div>
                         </div>
@@ -162,20 +159,19 @@
                                     <div class="overlay">
                                         <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(preuniversityList.fest_id)" />
                                     </div>
-                                </div>
-
-                                <h4> <span></span><span></span></h4>
-                                <div class="col-md-9">
+                                </div>                               
+                            </div>
+                            <h4> <span></span><span></span></h4>
+                            <div class="col-md-8 col-xs-8">
                                 <h4>{{preuniversityList.org_name}}</h4>
                                 <h4>{{preuniversityList.fest_start_date}}</h4>
                                 <h4 style="font-weight:900">{{preuniversityList.fest_name}}</h4>
                                 <!--</a> -->
                             </div>
-                            </div>
-                            <div class="col-md-1 like-sec">
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span> {{preuniversityList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{preuniversityList.fest_id}} (click)="authenticationService.getLikesNo(preuniversityList,$event)"></a>
                             </div>
                         </div>
@@ -193,20 +189,19 @@
                                     <div class="overlay">
                                         <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(artsList.fest_id)" />
                                     </div>
-                                </div>
-
-                                <h4> <span></span><span></span></h4>
-                                <div class="col-md-9">
+                                </div>                               
+                            </div>
+                            <h4> <span></span><span></span></h4>
+                            <div class="col-md-8 col-xs-8">
                                 <h4>{{artsList.org_name}}</h4>
                                 <h4>{{artsList.fest_start_date}}</h4>
                                 <h4 style="font-weight:900">{{artsList.fest_name}}</h4>
                                 <!--</a> -->
                             </div>
-                            </div>
-                            <div class="col-md-1 like-sec">
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span>{{artsList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{artsList.fest_id}} (click)="authenticationService.getLikesNo(artsList,$event)"></a>
                             </div>
                         </div>
@@ -225,18 +220,19 @@
                                         <h4> <span></span><span></span></h4>
                                         <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(scienceList.fest_id)" />
                                     </div>
-                                </div>
-                                <div class="col-md-9">
+                                </div>                                
+                            </div>
+                            <h4> <span></span><span></span></h4>
+                            <div class="col-md-8 col-xs-8">
                                 <h4>{{scienceList.org_name}}</h4>
                                 <h4>{{scienceList.fest_name}}</h4>
                                 <h4 style="font-weight:900">{{scienceList.fest_start_date}}</h4>
                                 <!--</a> -->
-                                </div>
                             </div>
-                            <div class="col-md-1 like-sec">
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span>{{scienceList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{scienceList.fest_id}} (click)="authenticationService.getLikesNo(scienceList,$event)"></a>
                             </div>
                         </div>
@@ -254,20 +250,19 @@
                                     <div class="overlay">
                                         <input class="update" type="button" value="View Details" (click)="authenticationService.festDetailsWithspecific(youthList.fest_id)" />
                                     </div>
-                                </div>
-
-                                <h4> <span></span><span></span></h4>
-                                <div class="col-md-9">
-                                    <h4>{{youthList.org_name}}</h4>
-                                    <h4>{{youthList.fest_name}}</h4>
-                                    <h4 style="font-weight:900">{{youthList.fest_start_date}}</h4>
-                                    <!--</a> -->
-                                </div>
+                                </div>                               
                             </div>
-                            <div class="col-md-1 like-sec">
+                            <h4> <span></span><span></span></h4>
+                            <div class="col-md-8 col-xs-8">
+                                <h4>{{youthList.org_name}}</h4>
+                                <h4>{{youthList.fest_name}}</h4>
+                                <h4 style="font-weight:900">{{youthList.fest_start_date}}</h4>
+                                <!--</a> -->
+                            </div>
+                            <div class="col-md-2 col-xs-2 like-sec">
                                 <span>{{youthList.total_likes}}</span>
                             </div>
-                            <div class="col-md-1 like-sec2 pull-right">
+                            <div class="col-md-1 col-xs-1 like-sec2">
                                 <a role="button" class="heart" id={{youthList.fest_id}} (click)="authenticationService.getLikesNo(youthList,$event)"></a>
                             </div>
                         </div>

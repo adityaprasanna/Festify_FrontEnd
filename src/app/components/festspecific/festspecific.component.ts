@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-festspecific',
@@ -13,8 +14,8 @@ export class FestspecificComponent implements OnInit {
   public orgExist_global;
   public userExist_global;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
-    this.festID = localStorage.getItem('festID');
+  constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
+    this.festID = this.route.snapshot.paramMap.get("id");//localStorage.getItem('festID');
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
     this.orgExist_global = this.authenticationService.orgExist;
     this.authenticationService.userExist = sessionStorage.getItem('userData');
@@ -29,14 +30,17 @@ export class FestspecificComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
       this.festDetails = (data[0]);
-      if (this.festDetails.image) {
-        let imgae = document.getElementById("festImg");
-        imgae.setAttribute('src', this.festDetails.image);
-      }
+      // if (this.festDetails.image) {
+      //   let imgae = document.getElementById("festImg");
+      //   imgae.setAttribute('src', this.festDetails.image);
+      // }
       this.festDetails.start_date = this.getReadableDate(this.festDetails.start_date);
+      this.festDetails.end_date = this.getReadableDate(this.festDetails.end_date);
       if(this.festDetails.events.length >= 1) {
-        this.festDetails.events.map(x=>{
-          x.event_date = this.getReadableDate(x.event_date);
+          this.festDetails.events.map(x=>{
+          if(x.event_date){
+            x.event_date = this.getReadableDate(x.event_date);
+          }
           if(x.ticket_price){
             x.ticket_price=parseFloat(x.ticket_price).toFixed(2);
           }

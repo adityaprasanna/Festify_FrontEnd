@@ -97,7 +97,6 @@ li, ol {
   /* Firefox 18- */
   color: #fff;
 }
-
 .log-in-pop {
   /* background: url(../images/log-bg.jpg); */
   padding: 0;
@@ -1581,10 +1580,11 @@ section.orgdashboard .profile-sec {
 }
 
 section.orgdashboard .profile-sec img {
-  border-radius: 50%;
+  border-radius: 100%;
   margin: 25px auto;
   display: table;
-  width: 30%;
+  width: 150px;
+  height:150px;
 }
 
 section.orgdashboard .profile-sec h3 {
@@ -1797,7 +1797,8 @@ section.festspecific-page {
 
 section.festspecific-page .left-sec {
   -webkit-box-shadow: 0 0 7px #ddd;
-          box-shadow: 0 0 7px #ddd;
+          box-shadow: 5px 10px 8px #888888;
+
 }
 
 section.festspecific-page .left-sec ul {
@@ -1809,9 +1810,13 @@ section.festspecific-page .left-sec ul li {
   text-transform: capitalize;
   margin-bottom: 12px;
 }
+section.festspecific-page .left-sec .contactus{
+  padding:0;
 
+}
 section.festspecific-page .left-sec h3 {
-  background: #ff9317;
+  /* background: #ff9317; */
+  background: linear-gradient(to bottom right,#b92b27,#1565C0);
   text-align: center;
   color: #fff;
   text-transform: capitalize;
@@ -1819,8 +1824,12 @@ section.festspecific-page .left-sec h3 {
   font-size: 18px;
   letter-spacing: 1px;
   font-weight: 600;
+  margin:0;
 }
-/* section.festspecific-page .left-sec .spon-img {
+section.festspecific-page .left-sec h4,h5{
+  color:#fff;
+}
+section.festspecific-page .left-sec .spon-img {
   padding-bottom: 40px;
 }
 section.festspecific-page .left-sec .spon-img img {
@@ -1828,8 +1837,10 @@ section.festspecific-page .left-sec .spon-img img {
   width: 55%;
   display: table;
   margin: 0 auto 15px;
-} */
-
+}
+section.festspecific-page .left-sec .spon-img h5{
+  color:#000;
+}
 section.festspecific-page .fest-decp {
   -webkit-box-shadow: 0 0 7px #ddd;
           box-shadow: 0 0 7px #ddd;
@@ -1852,6 +1863,7 @@ section.festspecific-page .fest-decp h3 {
   color: #333;
   text-align: center;
   margin: 0 0 20px;
+  margin-bottom: 0;
   padding-bottom: 4px;
   text-transform: capitalize;
   text-decoration: underline;
@@ -1988,6 +2000,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable {
   background: #e6e6e6;
   margin-bottom: 25px;
   border-radius: 10px;
+  box-shadow: 5px 10px 8px #888888;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable:hover {
@@ -2040,7 +2053,11 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent {
   background: #fff;
   padding:20px;
 }
-
+section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent .event_desc p{
+  overflow-y: scroll;
+  height: 90px;
+  white-space: pre-wrap;
+}
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
   margin: 0;
   text-transform: uppercase;
@@ -2050,6 +2067,9 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
 }
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent p{
   font-size: 0.9em;
+  font-weight: 500;
+  color: #000;
+  padding: 0 5px;
 }
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul {
   list-style: none;

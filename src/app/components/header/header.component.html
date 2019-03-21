@@ -73,8 +73,8 @@
                     </ul>
                 </div>
                 <div class="col-md-6 col-xs-6 log-in text-right">
-                    <div *ngIf=" this.authenticationServiceFn.userExist == undefined &&  this.authenticationServiceFn.orgExist == undefined" data-toggle="modal" data-target="#myModal2">Sign In</div>
-                    <div *ngIf=" this.authenticationServiceFn.userExist ||  this.authenticationServiceFn.orgExist" (click)="this.authenticationServiceFn.logout()">Log Out</div>
+                    <div><a *ngIf=" this.authenticationServiceFn.userExist == undefined &&  this.authenticationServiceFn.orgExist == undefined" data-toggle="modal" data-target="#myModal2">Sign In</a></div>
+                    <a *ngIf=" this.authenticationServiceFn.userExist ||  this.authenticationServiceFn.orgExist" (click)="this.authenticationServiceFn.logout()">Log Out</a>
                 </div>
 
             </div>
@@ -102,21 +102,12 @@
                                     </li>
                                     <li class="nav-item"><a href="#contact">contact us</a></li>
                                     <li class="nav-item"><a href="#map-sec">location</a></li>
-                                    </ul>
-                                    </div>
-                                </nav>
-
+                                </ul>
                             </div>
-                            </div>
-                            <!--<div class="col-md-1 text-right">
-                    <ul>
-                        <ul class="serc">
-                            <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-search"></i></a></li>
-                        </ul>
-                    </ul>
-                </div>-->
-
+                        </nav>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </header>

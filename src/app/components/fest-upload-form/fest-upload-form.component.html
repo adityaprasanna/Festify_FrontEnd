@@ -1,48 +1,49 @@
 <app-organizationheader></app-organizationheader>
-<div class="inner-ban">
+<!-- <div class="inner-ban">
     <img src="assets/images/inner-ban.jpg" alt="">
-</div>
+</div> -->
 <div class="registraion-page">
     <div class="container">
         <div class="col-md-12 text-center">
-            <h2>upload your fest</h2>
+            <h2>You're almost there!</h2>
         </div>
         <div class="col-md-6"></div>
         <div class="col-md-6"></div>
         <div class="clearfix"></div>
         <form [formGroup]="festForm" (ngSubmit)="onFestSubmit()">
-                <div class="form-group">
-                        <div class="col-md-4">
-                            <label>Fest Type</label>
-                        </div>
-                        <div class="col-md-8">
-                            <select placeholder="Select Fest Type" formControlName="fest_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.fest_type.errors }" required>
-                                <option value="" disabled selected hidden>Select Fest Type</option>
-                                <option value="Annual">Annual</option>
-                                <option value="Cultural">Cultural</option>
-                                <option value="Commerce">Commerce</option>
-                                <option value="Tech">Tech</option>
-                                <option value="Dance">Dance</option>
-                                <option value="Conference">Conference</option>
-                                <option value="Entrepreneurship">Entrepreneurship</option>
-                                <option value="Literary">Literary</option>
-                                <option value="Media">Media</option>
-                                <option value="Mun">Mun</option>
-                            </select>
-                            <div *ngIf="submitted && e.fest_type.errors" class="invalid-feedback">
-                                <div *ngIf="e.fest_type.errors.required" class="alert alert-danger">Fest type is required</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
             <div class="form-group">
                 <div class="col-md-4">
-                    <label>Name of Fest *</label>
+                    <label>Fest Type</label>
+                </div>
+                <div class="col-md-8">
+                    <select placeholder="Select Fest Type" formControlName="fest_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.fest_type.errors }" required>
+                        <option value="" disabled selected hidden>Select Fest Type</option>
+                        <option value="Annual">Annual</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Literary">Literary</option>
+                        <option value="Media">Media</option>
+                        <option value="Mun">Mun</option>
+                    </select>
+                    <div *ngIf="submitted && e.fest_type.errors" class="invalid-feedback">
+                        <div *ngIf="e.fest_type.errors.required" class="alert alert-danger">Fest type is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>Name of Fest * (Max length: 20)</label>
                 </div>
                 <div class="col-md-8">
                     <input type="text" class="form-control" placeholder="Enter Fest Name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && e.name.errors }"/>
                     <div *ngIf="submitted && e.name.errors" class="invalid-feedback">
                         <div *ngIf="e.name.errors.required" class="alert alert-danger">Name is required</div>
+                        <div *ngIf="e.name.errors.maxLength" class="alert alert-danger">Maximum length is 20</div>
                     </div>
                 </div>
             </div>
@@ -115,7 +116,7 @@
                     <label>Social Media Pages (optional)</label>
                 </div>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" placeholder="Enter Media Link" formControlName="social_media_pages" />
+                    <input type="text" class="form-control" placeholder="Ex: www.facebook.com/festpage/" formControlName="social_media_pages" />
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -190,10 +191,12 @@
                                     </div>
                                 </div>                    
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" placeholder="Enter Event Name" formControlName="eventName"
+                                    <input type="text" class="form-control" placeholder="Name (Max length: 20)" formControlName="eventName"
                                         [ngClass]="{ 'is-invalid': submitted && e.eventName?.errors }" />
                                     <div *ngIf="submitted && e.eventName?.errors" class="invalid-feedback">
                                         <div *ngIf="e.eventName?.errors.required" class="alert alert-danger"> Event Name is required</div>
+                                        <div *ngIf="e.eventName?.errors.maxLength" class="alert alert-danger"> Maximum length is 20</div>
+
                                     </div>
 
                                 </div>
@@ -205,7 +208,7 @@
                                         </div>
                                 </div>
                                 <div class="col-md-2">
-                                        <input type="text" class="form-control" placeholder="Enter Time" formControlName="event_time"
+                                        <input type="text" class="form-control" placeholder="Ex: 4:30" formControlName="event_time"
                                             [ngClass]="{ 'is-invalid': submitted && e.event_time?.errors }" />
                                             <!-- <timepicker [formControlName]="event_time"></timepicker> -->
                                         <div *ngIf="submitted && e.event_time?.errors" class="invalid-feedback">
@@ -220,7 +223,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-xs-12 pull-right">
-                                    <input type="text" class="form-control" placeholder="Enter Coordinator's name and phone number" formControlName="event_coordinator"
+                                    <input type="text" class="form-control" placeholder="Enter Coordinator's name and phone number (Ex: Adam 9645676547)" formControlName="event_coordinator"
                                         [ngClass]="{ 'is-invalid': submitted && e.event_coordinator?.errors }" />
                                     <div *ngIf="submitted && e.event_coordinator?.errors" class="invalid-feedback">
                                         <div *ngIf="e.event_coordinator?.errors.required" class="alert alert-danger"> Event Coordinator's name is required</div>
@@ -250,7 +253,7 @@
                 <div *ngFor="let ctrlspon of festForm.get('event_sponser')['controls']; let pointIndex=index" [formGroupName]="pointIndex">
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Enter Sponsor Name and Picture</label>
+                            <label>Enter Sponsor Name and Picture (Max length: 20)</label>
                         </div>
                         
                         
@@ -265,11 +268,11 @@
                     </div>
                     <div class="row">         
                         <div class="col-md-4">
-                                        <label>Caption (optional)</label>
+                                        <label>Caption (optional) (Max length: 200)</label>
                         </div>
                         
                         <div class="col-md-8">
-                                <input type="text" class="form-control" name="caption" formControlName="caption"/>
+                                <input type="text" class="form-control" name="caption" placeholder="Enter caption" formControlName="caption"/>
                         </div>
                     </div>
                     <div class="row"> 
@@ -294,20 +297,20 @@
                     <label>Primary</label>
                 </div>
                 <div class="col-md-8">
-                    <div class="col-md-2">
-                        <label>Name * </label>
+                    <div class="col-md-4">
+                        <label>Name * (Max length: 20)</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Enter Manager Name" formControlName="manager_name"
                             [ngClass]="{ 'is-invalid': submitted && e.manager_name.errors }" required />
                         <div *ngIf="submitted && e.manager_name.errors" class="invalid-feedback">
                             <div *ngIf="e.manager_name.errors.required" class="alert alert-danger"> Manager Name is required</div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <label>Phone * </label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Enter Manager Phone" formControlName="manager_phone"
                             [ngClass]="{ 'is-invalid': submitted && e.manager_phone.errors }" required />
                         <div *ngIf="submitted && e.manager_phone.errors" class="invalid-feedback">
@@ -315,10 +318,10 @@
                         </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <label>Email * </label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Enter Manager Email" formControlName="manager_email"
                             [ngClass]="{ 'is-invalid': submitted && e.manager_email.errors }" required />
                         <div *ngIf="submitted && e.manager_email.errors" class="invalid-feedback">
@@ -333,10 +336,10 @@
                     <label>Secondary </label>
                 </div>
                 <div class="col-md-8">
-                    <div class="col-md-2">
-                        <label>Name * </label>
+                    <div class="col-md-4">
+                        <label>Name * (Max length: 20)</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Enter Secondary Manager Name"
                             formControlName="sec_manager_name" [ngClass]="{ 'is-invalid': submitted && e.sec_manager_name.errors }"
                             required />
@@ -344,10 +347,10 @@
                             <div *ngIf="e.sec_manager_name.errors.required" class="alert alert-danger">Manager Name is required</div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <label>Phone * </label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <input type="text" class="form-control" placeholder="Enter Secondary Manager Phone"
                             formControlName="sec_manager_phone" [ngClass]="{ 'is-invalid': submitted && e.sec_manager_phone.errors }"
                             required />
@@ -364,7 +367,7 @@
 
             <div class="form-group">
                 <div class="col-md-4">
-                    <label>account holders name * </label>
+                    <label>account holders name * (Max length: 20)</label>
                 </div>
                 <div class="col-md-8">
                     <input type="text" class="form-control" placeholder="Enter Account Holder Name" formControlName="account_holder_name"
@@ -433,7 +436,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-12">
-                    <p>I have read and agreed to the <a href="#">terms & conditions</a>
+                    <p>I authorize Festify Pvt Ltd to handle our transactions and agree to the <a href="#">Terms & Conditions</a>
                         <input class="form-control" type="checkbox" formControlName="checkbox" [ngClass]="{ 'is-invalid': submitted && e.checkbox.errors }"
                             required>
                     </p>
@@ -443,7 +446,7 @@
                 </div>
                 <div class="col-md-8">
                     <re-captcha formControlName="recaptchaReactive" required></re-captcha>
-                    <div *ngIf="this.festForm.errors.required" class="invalid-feedback" class="alert alert-danger">Please Check Capcha</div>
+                    <div *ngIf="submitted && e.recaptchaReactive.errors && e.recaptchaReactive.errors.required" class="invalid-feedback" class="alert alert-danger">Please Check Capcha</div>
                 </div>
             </div>
             <div class="form-group">

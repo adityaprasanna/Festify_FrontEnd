@@ -12,7 +12,7 @@
 <div class="banner-part">
     <div class="slider">
         <div class="item">
-            <img src="assets/images/banner1.jpg" alt="">
+            <img src="assets/images/banner1.jpg" alt="" width="100%">
             <div class="banner_text">
                 <div class="container">
                     <div class="row">
@@ -67,28 +67,26 @@
                     <div *ngIf="university">
                         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
                             <div ngxSlickItem *ngFor="let slide of university ;let i=index"   class="slide">
-                             <div class="show-image">
+                                <div class="show-image">
                                     <div class="img-wrap">
-                                            <img src="{{slide.fest_image}}" alt="" width="100%">
-                                            <div class="overlay">
-                                                    <input class="update" type="button" value="View Details"  (click)="authenticationService.festDetailsWithspecific(slide.fest_id)"/>
-                                            </div>
+                                        <img src="{{slide.fest_image}}" alt="" width="100%">
+                                        <div class="overlay">
+                                            <input class="update" type="button" value="View Details"  (click)="authenticationService.festDetailsWithspecific(slide.fest_id)"/>
                                         </div>
+                                    </div>
                                 </div>
                                  <h4> <span></span><span></span></h4>
-                                 <div class="col-md-9 col-xs-9">
-                                 <h4>{{slide.org_name}}</h4>
-                                 <h4>{{ slide.fest_start_date|date:'d-M-y' }}</h4>
-                                 <h4 style="font-weight:900">{{slide.fest_name}}</h4>
-                                </div>
-                                
+                                 <div class="col-md-9 col-xs-8">
+                                    <h4>{{slide.org_name}}</h4>
+                                    <h4>{{ slide.fest_start_date|date:'d-M-y' }}</h4>
+                                    <h4 style="font-weight:900">{{slide.fest_name}}</h4>
+                                </div>                                
                                 <div class="col-md-2 col-xs-2 like-sec">
                                      <span>{{slide.total_likes}}</span>
                                 </div>
                                 <div class="col-md-1 col-xs-1 like-sec2">
                                     <a role="button" class="heart" id={{i}} (click)="authenticationService.getLikesNo(slide,$event)"></a>
-                                </div>
-                                
+                                </div>                               
                             </div>
                         </ngx-slick-carousel>
                     </div>
@@ -100,20 +98,24 @@
                     <div *ngIf="preuniversity">
                         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
                             <div ngxSlickItem *ngFor="let preuniversityslide of preuniversity;let i=index" class="slide">
-                              <div class="show-image">
-                                <img src="{{ preuniversityslide.fest_image }}" alt="" width="100%">
-                                 <input class="update" type="button" value="View Details"  (click)="authenticationService.festDetailsWithspecific(preuniversityslide.fest_id)"/>
+                                <div class="show-image">
+                                    <div class="img-wrap">
+                                        <img src="{{ preuniversityslide.fest_image }}" alt="" width="100%">
+                                        <div class="overlay">
+                                            <input class="update" type="button" value="View Details"  (click)="authenticationService.festDetailsWithspecific(preuniversityslide.fest_id)"/>
+                                        </div>
+                                    </div>
                                 </div>
                                 <h4> <span></span><span></span></h4>
-                                <div class="col-md-9 col-cs-9">
-                                 <h4>{{preuniversityslide.org_name}}</h4>
-                                 <h4>{{preuniversityslide.fest_start_date|date:'d-M-y' }}</h4>
-                                 <h4  style="font-weight:900">{{preuniversityslide.fest_name}}</h4>
+                                <div class="col-md-9 col-xs-8">
+                                    <h4>{{preuniversityslide.org_name}}</h4>
+                                    <h4>{{preuniversityslide.fest_start_date}}</h4>
+                                    <h4  style="font-weight:900">{{preuniversityslide.fest_name}}</h4>
                                 </div>
-                                <div class="col-md-2 like-sec">
-                                     <span>{{preuniversityslide.total_likes}}</span>
+                                <div class="col-md-2 col-xs-2 like-sec">
+                                    <span>{{preuniversityslide.total_likes}}</span>
                                 </div>
-                                <div class="col-md-1 like-sec2 text-right">
+                                <div class="col-md-1 col-xs-1 like-sec2">
                                     <a role="button" class="heart" id={{i}} (click)="authenticationService.getLikesNo(slide,$event)"></a>
                                 </div>
                             </div>
