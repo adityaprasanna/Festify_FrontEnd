@@ -99,9 +99,7 @@ export class HeaderComponent implements OnInit {
         }
 
       }
-    ).catch((e) => {
-      console.log(e)
-    });
+    );
   }
 
 }

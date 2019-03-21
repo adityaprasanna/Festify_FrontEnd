@@ -73,7 +73,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6 col-xs-6 log-in text-right">
-                    <a *ngIf=" this.authenticationServiceFn.userExist == undefined &&  this.authenticationServiceFn.orgExist == undefined" data-toggle="modal" data-target="#myModal2">Sign In</a>
+                    <div><a *ngIf=" this.authenticationServiceFn.userExist == undefined &&  this.authenticationServiceFn.orgExist == undefined" data-toggle="modal" data-target="#myModal2">Sign In</a></div>
                     <a *ngIf=" this.authenticationServiceFn.userExist ||  this.authenticationServiceFn.orgExist" (click)="this.authenticationServiceFn.logout()">Log Out</a>
                 </div>
 

@@ -2056,6 +2056,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent {
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent .event_desc p{
   overflow-y: scroll;
   height: 90px;
+  white-space: pre-wrap;
 }
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
   margin: 0;
