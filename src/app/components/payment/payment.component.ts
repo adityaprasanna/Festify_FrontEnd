@@ -180,7 +180,7 @@ export class PaymentComponent implements OnInit {
     }
   }
 
-  confirm(profile: string) {
+  confirm() {
     if (this.mobile != undefined && this.email != undefined && this.firstName != undefined && this.lastName != undefined) {
       const credentials = {
         mobile: this.mobile,
