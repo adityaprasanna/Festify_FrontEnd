@@ -83,7 +83,10 @@ export class EditfestComponent implements OnInit {
         var myCanvas = <HTMLCanvasElement>document.getElementById("thumbmail");
         break;
       case "picture":
-        var myCanvas = <HTMLCanvasElement>document.getElementById(e.target.nextElementSibling.id.toString());
+        // var myCanvas = <HTMLCanvasElement>document.getElementById(e.target.nextElementSibling.id.toString());
+        let id = this.sponsorEventPoints.length;
+        id = id - 1;
+        var myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
         break;
 
     }
@@ -101,6 +104,7 @@ export class EditfestComponent implements OnInit {
   }
 
   onSubmitEditFest() {
+    this.submitted = true;
     if (this.festForm.status == "INVALID"
       || new Date(this.festForm.controls.start_date.value) > new Date(this.festForm.controls.end_date.value)) {
       alert('Please provide all the details correctly and start date value is less than end date');
@@ -190,9 +194,11 @@ export class EditfestComponent implements OnInit {
         ({ id: new FormControl(this.festEditData.sponsor[i].id), inputId: i, evtSpnName: new FormControl(this.festEditData.sponsor[i].sponsor_name), picture: new FormControl(null), caption: new FormControl(this.festEditData.sponsor[i].caption) }));
 
     }
-    this.sponsorEventPoints.removeAt(0);
+    // this.sponsorEventPoints.removeAt(0);
   }
-
+ deleteSponsorEventPoint(index) {
+    this.sponsorEventPoints.removeAt(index);
+  }
   onKeyDown(e) {
     e.preventDefault();
   }

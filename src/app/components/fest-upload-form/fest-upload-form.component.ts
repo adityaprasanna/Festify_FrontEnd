@@ -49,7 +49,7 @@ export class FestUploadFormComponent implements OnInit {
       manager_phone: ['', [Validators.required]], 
       manager_email: ['', [Validators.required]], 
 
-      event_sponser: this.formBuilder.array([this.formBuilder.group({ evtSpnName: '', picture: new FormControl(null), caption: new FormControl('') })]),
+      event_sponser: this.formBuilder.array([this.formBuilder.group({ evtSpnName: '', picture: ['', [Validators.required]], caption: new FormControl('') })]),
 
       sec_manager_name: ['', [Validators.required]], 
       sec_manager_phone: ['', [Validators.required]], 
@@ -174,8 +174,7 @@ export class FestUploadFormComponent implements OnInit {
   }
 
   addSponsorEventPoint() {
-    this.sponsorEventPoints.push(this.formBuilder.group
-      ({ evtSpnName: '', picture: new FormControl(null), caption: new FormControl('') }));
+    this.sponsorEventPoints.push(this.formBuilder.group({ evtSpnName: '', picture: ['', [Validators.required]], caption: new FormControl('') }));
   }
 
   deleteSponsorEventPoint(index) {

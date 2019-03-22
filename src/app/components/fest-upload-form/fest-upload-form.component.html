@@ -259,12 +259,13 @@
                         
                         
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Enter Event Sponser Name" formControlName="evtSpnName" />
-                            <canvas width="300" height="300" id={{pointIndex}} style="display: none;"></canvas>
+                            <input type="text" class="form-control" placeholder="Enter Event Sponsor Name" formControlName="evtSpnName" />
+                            
                         </div>
                         <div class="col-md-4" id="pic">
                             <input type="file" class="form-control" name="picture" (change)="onChange($event)" placeholder=""
                                 formControlName="picture" />
+                            <canvas width="150" height="150" id={{pointIndex}} style="display:none;" ></canvas>
                         </div>
                     </div>
                     <div class="row">         
@@ -277,12 +278,12 @@
                         </div>
                     </div>
                     <div class="row"> 
-                    <div class="col-md-2">
-                            <button class="eve" type="button" (click)="addSponsorEventPoint()">+Add Sponsor </button>
-                    </div>
-                    <div class="col-md-2">
-                            <button class="eve" type="button" *ngIf="pointIndex>0" (click)="deleteSponsorEventPoint(pointIndex)">-Remove</button>
-                    </div>
+                        <div class="col-md-2">
+                                <button class="eve" type="button" (click)="addSponsorEventPoint()">+Add Sponsor </button>
+                        </div>
+                        <div class="col-md-2">
+                                <button class="eve" type="button" *ngIf="pointIndex>0" (click)="deleteSponsorEventPoint(pointIndex)">-Remove</button>
+                        </div>
                     </div>
                 
                 </div>

@@ -1804,7 +1804,7 @@ section.festspecific-page .left-sec {
 }
 
 section.festspecific-page .left-sec ul {
-  /* margin: 15px; */
+  margin-top: 30px;
 }
 
 section.festspecific-page .left-sec ul li {
@@ -1888,6 +1888,7 @@ section.festspecific-page .fest-decp .fest-type h4{
 }
 section.festspecific-page .fest-decp .event-type{
   background: #c9573a;
+  padding:4px;
 }
 section.festspecific-page .sec4 .heading h3{
   font-size: 1.5em;
