@@ -20,6 +20,7 @@ export class AppService {
     } else {
       this._organizationUrl = 'https://www.festify.in/django/api/';
     }
+    this._organizationUrl = 'https://www.festify.in/django/api/';
   }
 
   private handleError(error: HttpErrorResponse) {

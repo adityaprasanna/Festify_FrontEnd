@@ -60,7 +60,8 @@ const routes: Routes = [
     canActivate: [OrgauthService]
   },
   {
-    path: 'success/:&fname:&lname:&email:&phone:&fest:&event:&price:&tid',
+    // path: 'success/:&fname:&lname:&email:&phone:&fest:&event:&price:&tid',
+    path: 'success/:successData',
     component: AftersuccessComponent,
   },
   {

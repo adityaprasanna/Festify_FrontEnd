@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-aftersuccess',
@@ -16,23 +15,24 @@ export class AftersuccessComponent implements OnInit {
   ticketPrice: any;
   phoneNo: any;
 
-  ticketId:any;
-  
+  ticketId: any;
+
 
   constructor(private route: ActivatedRoute) {
-    let url= window.location.href;
-    let currentURL=url.split('&');
-    this.firstName = currentURL[1];
-    this.lastName = currentURL[2];
-    this.email =currentURL[3];
-    this.phoneNo = currentURL[4];
-    this.festName = currentURL[5];
-    this.eventName = currentURL[6];
-    this.ticketPrice =  currentURL[7];
-    this.ticketId =  currentURL[8];
+    // let url= window.location.href;
+    // let currentURL=url.split('&');
+    const successInfo = JSON.parse(this.route.snapshot.paramMap.get('successData'));
+    this.firstName = successInfo.fname;
+    this.lastName = successInfo.lname;
+    this.email = successInfo.email;
+    this.phoneNo = successInfo.phone;
+    this.festName = successInfo.fest;
+    this.eventName = successInfo.event;
+    this.ticketPrice = successInfo.price;
+    this.ticketId = successInfo.tid;
   }
 
   ngOnInit() {
   }
-  
+
 }

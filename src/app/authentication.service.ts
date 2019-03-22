@@ -31,34 +31,35 @@ export class AuthenticationService {
     } else {
       this._organizationUrl = 'https://www.festify.in/django/api/';
     }
+    this._organizationUrl = 'https://www.festify.in/django/api/';
   }
 
 
   updateOrganization(members) {
     let object = [];
     object = eval(members);
-    let loggedInValue = sessionStorage.getItem('currentUserId');
-    let userName = (JSON.parse(loggedInValue)).email;
-    let loggedInUser = [];
+    const loggedInValue = sessionStorage.getItem('currentUserId');
+    const userName = (JSON.parse(loggedInValue)).email;
+    const loggedInUser = [];
     loggedInUser.push({'userid': userName});
     let fiinalvalue = [];
     fiinalvalue = loggedInUser.concat(object);
-    let headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
-    let requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
+    const headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
     return this.http.post(`${this._organizationUrl}organization/update/`, fiinalvalue, requestOptions).pipe(map(x => x.json()));
   }
 
   updateFest(members) {
     let object = [];
     object = eval(members);
-    let loggedInValue = sessionStorage.getItem('currentUserId');
-    let userName = (JSON.parse(loggedInValue)).email;
-    let loggedInUser = [];
+    const loggedInValue = sessionStorage.getItem('currentUserId');
+    const userName = (JSON.parse(loggedInValue)).email;
+    const loggedInUser = [];
     loggedInUser.push({'userid': userName});
     let fiinalvalue = [];
     fiinalvalue = loggedInUser.concat(object);
-    let headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
-    let requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
+    const headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
     return this.http.post(`${this._organizationUrl}fest/update/`, fiinalvalue, requestOptions).pipe(map(x => x.json()));
   }
 
@@ -94,8 +95,8 @@ export class AuthenticationService {
   }
 
   userLogin(fiinalvalue) {
-    let headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
-    let requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
+    const headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
     return this.http.post(`${this._organizationUrl}user/login/`, fiinalvalue, requestOptions).pipe(map(x => x.json()));
   }
 
@@ -108,12 +109,12 @@ export class AuthenticationService {
   }
 
   paymentDeatailsUser(finalvalue) {
-    let ipData = JSON.parse(localStorage.getItem('ip'));
-    let paymentRequireData = JSON.parse(localStorage.getItem('festPaymentDeatils'));
-    let userLoginData = JSON.parse(sessionStorage.getItem('userData'));
+    const ipData = JSON.parse(localStorage.getItem('ip'));
+    const paymentRequireData = JSON.parse(localStorage.getItem('festPaymentDeatils'));
+    const userLoginData = JSON.parse(sessionStorage.getItem('userData'));
 
 
-    let user = {
+    const user = {
       email: finalvalue.email,
       fest_id: localStorage.getItem('festID'),
       event_id: paymentRequireData.id,
@@ -123,9 +124,9 @@ export class AuthenticationService {
       firstname: finalvalue.firstName,
       lastname: finalvalue.lastName
     };
-    let data = JSON.stringify(user);
-    let headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
-    let requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
+    const data = JSON.stringify(user);
+    const headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
     return this.http.post(`${this._organizationUrl}payment/create/`, data, requestOptions).pipe(map(x => x.json()));
   }
 
@@ -133,7 +134,7 @@ export class AuthenticationService {
     let likeData = {};
 
     if (sessionStorage.getItem('userData')) {
-      let element = document.getElementById(e.srcElement.id);
+      const element = document.getElementById(e.srcElement.id);
       if (element.className == 'blast') {
         element.className = 'heart';
         this.isClick = false;
@@ -142,7 +143,7 @@ export class AuthenticationService {
         this.isClick = true;
       }
       if (sessionStorage.getItem('userData')) {
-        let email = JSON.parse(sessionStorage.getItem('userData')).email;
+        const email = JSON.parse(sessionStorage.getItem('userData')).email;
         likeData = {
           email: email,
           festData: festData,
@@ -150,8 +151,8 @@ export class AuthenticationService {
         };
       }
 
-      let headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
-      let requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
+      const headerOptions = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+      const requestOptions = new RequestOptions({method: RequestMethod.Post, headers: headerOptions});
       this.http.post(`${this._organizationUrl}fest/liked/`, likeData, requestOptions).subscribe();
 
     } else {
