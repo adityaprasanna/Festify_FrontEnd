@@ -108,6 +108,10 @@ export class AuthenticationService {
     return this.http.get('https://jsonip.com').pipe(map(x => x.json()));
   }
 
+  sendSMSAndEmail(txnid) {
+    return this.http.get(`${this._organizationUrl}payment/thankyou/`, {params: {txnid: txnid}}).pipe(map(x => x.json()));
+  }
+
   paymentDeatailsUser(finalvalue) {
     const ipData = JSON.parse(localStorage.getItem('ip'));
     const paymentRequireData = JSON.parse(localStorage.getItem('festPaymentDeatils'));
