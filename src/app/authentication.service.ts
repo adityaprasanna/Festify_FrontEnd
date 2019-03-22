@@ -157,7 +157,7 @@ export class AuthenticationService {
   }
 
   getSuccessData() {
-    return this.http.get(`${this._organizationUrl}user/login/`).pipe(map(x => x.json()));
+    return this.http.get(`${this._organizationUrl}user/dislike/`).pipe(map(x => x.json()));
 
   }
   getLikesBookedEvents(){

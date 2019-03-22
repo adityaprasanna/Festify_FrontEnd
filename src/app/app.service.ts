@@ -12,9 +12,16 @@ import { Observable, throwError } from 'rxjs';
 })
 
 export class AppService {
-
-  private _organizationUrl = "https://www.festify.in/django/api/";
+  // private _organizationUrl = '';
+  // const path = window.location.host.split(':');
+  // if(path[0] === 'localhost') {
+    // this._organizationUrl = "http://localhost:8000/api/";
+  // } 
+  // else {
+  //   let _organizationUrl = "https://www.festify.in/django/api/";
+  // }
   // private _organizationUrl = "http://localhost:8000/api/";
+  private _organizationUrl = "https://www.festify.in/django/api/";
 
   constructor(private http: Http, private _router: Router) { }
 

@@ -53,7 +53,8 @@ export class EditfestComponent implements OnInit {
       event_sponser: this.formBuilder.array([this.formBuilder.group
         ({ 
           id: new FormControl(''), 
-          evtSpnName: '', picture: new FormControl(null), 
+          evtSpnName: '', 
+          picture: new FormControl(null), 
           caption: new FormControl('') 
           })]),
       sec_manager_name: new FormControl(this.festEditData.sec_manager_name, [Validators.required]),
@@ -132,19 +133,17 @@ export class EditfestComponent implements OnInit {
           this.festForm.value[item] = this.festEditData.promo_video_thumbnail;
         }
       } else if (item == "event_sponser") {
-        let i = 0;
         this.festForm.value[item].map(x => {
           if (x.picture != null) {
-            var myCanvas = <HTMLCanvasElement>document.getElementById(i.toString());
-            let imageUrl = myCanvas.toDataURL('image/jpeg');
-            x.picture = imageUrl;
-
-          } else if (x.picture == null) {
-            x.picture = this.festEditData.sponsor[i].sponsor_picture
+            let id = 0;
+            if (id <= this.sponsorEventPoints.length - 1) {
+              var myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
+              let imageUrl = myCanvas.toDataURL('image/jpeg');
+              x.picture = imageUrl;
+              id++;
+            }
           }
-          i++;
         })
-
       }
     }
     this.authenticationService.updateFest(this.festForm.value).subscribe(data => {
