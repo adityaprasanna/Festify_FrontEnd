@@ -2,7 +2,7 @@
 <!-- <div class="inner-ban">
     <img src="assets/images/inner-ban.jpg" alt="">
 </div> -->
-<div class="registraion-page">
+<div class="registraion-page" *ngIf="!loading">
   <div class="container">
     <div class="col-md-12 text-center">
       <h2>fest edit form</h2>
@@ -129,7 +129,7 @@
       <div class="clearfix"></div>
       <div class="form-group">
         <div class="col-md-4">
-          <label for="">Upload thumbmail (optional)</label>
+          <label for="">Upload thumbnail (optional)</label>
         </div>
         <div class="col-md-8">
           <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="onChange($event)"
@@ -143,9 +143,9 @@
         <h5>Events</h5>
       </div>
       <div class="form-group" formArrayName="event">
-        <div *ngFor="let ctrl of festForm.get('event')['value']; let pointIndex=index" [formGroupName]="pointIndex">
+        <div *ngFor="let ctrl of festForm.get('event')['controls']; let pointIndex=index" [formGroupName]="pointIndex">
           <div class="col-md-2 " *ngIf="pointIndex>=0">
-            <button class="eve" type="button" (click)="deleteEventPoint(pointIndex, ctrl.id)">-Remove Event</button>
+            <button class="eve" type="button" (click)="deleteEventPoint(pointIndex, ctrl.value.id)">-Remove Event</button>
             <h4><span></span><span></span></h4>
             <hr>
           </div>
@@ -254,7 +254,7 @@
         <h5>Sponsors</h5>
       </div>
       <div class="form-group" formArrayName="event_sponser" style="padding:0 15px;">
-        <div *ngFor="let ctrlspon of festForm.get('event_sponser')['value']; let pointIndex=index ;"
+        <div *ngFor="let ctrlspon of festForm.get('event_sponser')['controls']; let pointIndex=index ;"
              [formGroupName]="pointIndex">
 
           <div class="row">
@@ -289,7 +289,7 @@
             </div>
             <div class="col-md-2">
               <button class="eve" type="button" *ngIf="pointIndex>=0"
-                      (click)="deleteSponsorEventPoint(pointIndex, ctrlspon.id)">-Remove
+                      (click)="deleteSponsorEventPoint(pointIndex, ctrlspon.value.id)">-Remove
               </button>
             </div>
           </div>
