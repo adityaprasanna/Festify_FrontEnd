@@ -22,7 +22,7 @@ export class EditfestComponent implements OnInit {
   this.appService.specificOrganizationList().subscribe(data => { 
     let selectedFest = data['fest']; //localStorage.getItem('festspecific');
     this.festEditData = selectedFest[0];//JSON.parse(selectedFest);
-    console.log(this.festEditData)
+    console.log(this.festEditData);
     for (let item in this.festEditData) {
       if (this.festEditData[item] == null) {
         this.festEditData[item] = ''

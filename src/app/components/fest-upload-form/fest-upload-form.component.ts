@@ -112,7 +112,7 @@ export class FestUploadFormComponent implements OnInit {
     }
     this.appService.createFest(this.festForm)
     .subscribe(data => {
-      console.log("create fest ------ upload data", data);
+      console.log('create fest ------ upload data', data);
       if (data == undefined) {
         this.router.navigate(['home']);
       } else {
@@ -151,37 +151,57 @@ export class FestUploadFormComponent implements OnInit {
   deleteSponsorEventPoint(index) {
     this.sponsorEventPoints.removeAt(index);
   }
+
+  imgBase64ToImage(canvasElem, targetElem) {
+    const img = new Image();
+    img.onload = function () {
+      canvasElem.width = img.width;
+      canvasElem.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      // console.log(myCanvas.toDataURL('image/jpeg'));
+    };
+    const ctx = canvasElem.getContext('2d');
+
+    img.src = URL.createObjectURL(targetElem.files[0]);
+    const dataURL = canvasElem.toDataURL('image/jpeg');
+    dataURL.replace(/^data:image\/(png|jpg);base64,/, '');
+  }
+
   onChange(e) {
+    // var myCanvas = '';
+    let myCanvas;
     switch (e.target.name) {
       case 'image':
-        let myCanvas = <HTMLCanvasElement>document.getElementById('display');
+        myCanvas = <HTMLCanvasElement>document.getElementById('display');
         break;
       case 'promo_video':
-        let myCanvas = <HTMLCanvasElement>document.getElementById('provideo');
+        myCanvas = <HTMLCanvasElement>document.getElementById('provideo');
         break;
       case 'promo_video_thumbnail':
-        let myCanvas = <HTMLCanvasElement>document.getElementById('thumbmail');
+        myCanvas = <HTMLCanvasElement>document.getElementById('thumbmail');
         break;
       case 'picture':
         let id = this.sponsorEventPoints.length;
         id = id - 1;
-        const myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
+        myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
         console.log(';;;;;;', id, myCanvas);
         break;
-
     }
-    const img = new Image();
-    img.onload = function () {
-      myCanvas.width = img.width;
-      myCanvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-     // console.log(myCanvas.toDataURL('image/jpeg'));
-    };
-    const ctx = myCanvas.getContext('2d');
-
-    img.src = URL.createObjectURL(e.target.files[0]);
-    const dataURL = myCanvas.toDataURL('image/jpeg');
-    dataURL.replace(/^data:image\/(png|jpg);base64,/, '');
+    if (myCanvas) {
+      this.imgBase64ToImage(myCanvas, e.target);
+    }
+    // const img = new Image();
+    // img.onload = function () {
+    //   myCanvas.width = img.width;
+    //   myCanvas.height = img.height;
+    //   ctx.drawImage(img, 0, 0);
+    //  // console.log(myCanvas.toDataURL('image/jpeg'));
+    // };
+    // const ctx = myCanvas.getContext('2d');
+    //
+    // img.src = URL.createObjectURL(e.target.files[0]);
+    // const dataURL = myCanvas.toDataURL('image/jpeg');
+    // dataURL.replace(/^data:image\/(png|jpg);base64,/, '');
   }
 }
 

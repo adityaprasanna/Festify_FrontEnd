@@ -185,7 +185,7 @@ export class PaymentComponent implements OnInit {
             };
 
 
-            console.log(boltRequestData)
+            console.log(boltRequestData);
             if (window['bolt']) {
               window['bolt'].launch(boltRequestData, this.paymentHandler);
             } else {

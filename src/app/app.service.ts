@@ -64,7 +64,6 @@ export class AppService {
     let loggedInValue = sessionStorage.getItem('currentUserId');
     let userName = (JSON.parse(loggedInValue)).email;
     return this.http.get(`${this._organizationUrl}organization/dashboard/`, {params: {userid: userName}}).pipe(map(x => x.json()));
-    ;
   }
 
   organizationLogin(logindata) {

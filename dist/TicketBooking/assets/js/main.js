@@ -16,7 +16,7 @@ $(window).load(function() {
 	});		
 	
 
-})
+});
 
 
 /* Others jQuery */
