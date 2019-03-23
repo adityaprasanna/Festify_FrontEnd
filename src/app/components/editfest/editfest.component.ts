@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../authentication.service';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl, EmailValidator } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/app.service';
+
 
 @Component({
   selector: 'app-editfest',
@@ -14,11 +16,13 @@ export class EditfestComponent implements OnInit {
   festForm: FormGroup;
   can = 0;
   submitted = false;
-  constructor(private authenticationService: AuthenticationService, private router: Router, private formBuilder: FormBuilder, ) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router, private formBuilder: FormBuilder, private appService: AppService ) { }
 
   ngOnInit() {
-    let selectedFest = localStorage.getItem('festspecific');
-    this.festEditData = JSON.parse(selectedFest);
+  this.appService.specificOrganizationList().subscribe(data => { 
+    let selectedFest = data['fest']; //localStorage.getItem('festspecific');
+    this.festEditData = selectedFest[0];//JSON.parse(selectedFest);
+    console.log(this.festEditData)
     for (let item in this.festEditData) {
       if (this.festEditData[item] == null) {
         this.festEditData[item] = ''
@@ -57,6 +61,7 @@ export class EditfestComponent implements OnInit {
           picture: new FormControl(null), 
           caption: new FormControl('') 
           })]),
+          
       sec_manager_name: new FormControl(this.festEditData.sec_manager_name, [Validators.required]),
       sec_manager_phone: new FormControl(this.festEditData.sec_manager_phone, [Validators.required]),
       account_holder_name: new FormControl(this.festEditData.account_holder_name, [Validators.required]),
@@ -64,7 +69,12 @@ export class EditfestComponent implements OnInit {
       ifsc: new FormControl(this.festEditData.IFSC, [Validators.required]),
     });
     this.addEventPoint();
+    // this.deleteSponsorEventPoint(0, 'head')
+    this.sponsorEventPoints.removeAt(0);
     this.addSponsorEventPoint();
+    console.log(this.sponsorEventPoints);
+    // this.sponsorEventPoints.removeAt(0);
+  });
   }
   
   get e() {
@@ -104,7 +114,6 @@ export class EditfestComponent implements OnInit {
   }
 
   onSubmitEditFest() {
-    this.submitted = true;
     if (this.festForm.status == "INVALID"
       || new Date(this.festForm.controls.start_date.value) > new Date(this.festForm.controls.end_date.value)) {
       alert('Please provide all the details correctly and start date value is less than end date');
@@ -184,21 +193,30 @@ export class EditfestComponent implements OnInit {
 
   }
 
-  deleteEventPoint(index) {
+  deleteEventPoint(index, id) {
     this.eventPoints.removeAt(index);
+    this.authenticationService.deleteEvent(id).subscribe(()=> alert("Event Deleted successfully"));
   }
 
   addSponsorEventPoint() {
     for (let i = 0; i < this.festEditData.sponsor.length; i++) {
       this.sponsorEventPoints.push(this.formBuilder.group
-        ({ id: new FormControl(this.festEditData.sponsor[i].id), inputId: i, evtSpnName: new FormControl(this.festEditData.sponsor[i].sponsor_name), picture: new FormControl(null), caption: new FormControl(this.festEditData.sponsor[i].caption) }));
-
+        ({ id: new FormControl(this.festEditData.sponsor[i].id), 
+          inputId: i, 
+          evtSpnName: new FormControl(this.festEditData.sponsor[i].sponsor_name), 
+          picture: new FormControl(null), 
+          caption: new FormControl(this.festEditData.sponsor[i].caption) 
+        })
+      );
     }
     // this.sponsorEventPoints.removeAt(0);
   }
- deleteSponsorEventPoint(index) {
+ deleteSponsorEventPoint(index, id) {
+  debugger;
     this.sponsorEventPoints.removeAt(index);
+    this.authenticationService.deleteSponsor(id).subscribe(()=> alert("Sponsor Deleted successfully"));
   }
+
   onKeyDown(e) {
     e.preventDefault();
   }

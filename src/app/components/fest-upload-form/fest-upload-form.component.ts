@@ -97,9 +97,9 @@ export class FestUploadFormComponent implements OnInit {
           this.festForm.value[item] = imageUrl;
         }
       } else if (item == "event_sponser") {
+        let id = 0;
         this.festForm.value[item].map(x => {
           if (x.picture != null) {
-            let id = 0;
             if (id <= this.sponsorEventPoints.length - 1) {
               var myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
               let imageUrl = myCanvas.toDataURL('image/jpeg');
@@ -120,37 +120,7 @@ export class FestUploadFormComponent implements OnInit {
       }
     });
   }
-  onChange(e) {
-    switch (e.target.name) {
-      case "image":
-        var myCanvas = <HTMLCanvasElement>document.getElementById("display");
-        break;
-      case "promo_video":
-        var myCanvas = <HTMLCanvasElement>document.getElementById("provideo");
-        break;
-      case "promo_video_thumbnail":
-        var myCanvas = <HTMLCanvasElement>document.getElementById("thumbmail");
-        break;
-      case "picture":
-        let id = this.sponsorEventPoints.length;
-        id = id - 1;
-        var myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
-        break;
-
-    }
-    var ctx = myCanvas.getContext('2d');
-    var img = new Image();
-    img.onload = function () {
-      myCanvas.width = img.width;
-      myCanvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-     // console.log(myCanvas.toDataURL('image/jpeg'));
-    };
-
-    img.src = URL.createObjectURL(e.target.files[0]);
-    var dataURL = myCanvas.toDataURL('image/jpeg');
-    dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-  }
+  
 
 
   onKeydown(e) {
@@ -179,6 +149,38 @@ export class FestUploadFormComponent implements OnInit {
 
   deleteSponsorEventPoint(index) {
     this.sponsorEventPoints.removeAt(index);
+  }
+  onChange(e) {
+    switch (e.target.name) {
+      case "image":
+        var myCanvas = <HTMLCanvasElement>document.getElementById("display");
+        break;
+      case "promo_video":
+        var myCanvas = <HTMLCanvasElement>document.getElementById("provideo");
+        break;
+      case "promo_video_thumbnail":
+        var myCanvas = <HTMLCanvasElement>document.getElementById("thumbmail");
+        break;
+      case "picture":
+        let id = this.sponsorEventPoints.length;
+        id = id - 1;
+        var myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
+        console.log(";;;;;;", id, myCanvas);  
+        break;
+
+    }
+    var img = new Image();
+    img.onload = function () {
+      myCanvas.width = img.width;
+      myCanvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+     // console.log(myCanvas.toDataURL('image/jpeg'));
+    };
+    var ctx = myCanvas.getContext('2d');
+
+    img.src = URL.createObjectURL(e.target.files[0]);
+    var dataURL = myCanvas.toDataURL('image/jpeg');
+    dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 }
 

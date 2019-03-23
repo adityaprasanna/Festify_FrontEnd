@@ -36,7 +36,10 @@ export class AppService {
 //     }
 //   }
 // >>>>>>> 18cf2efbecd8c73bfb06431500beca3f804bf23d
-  private _organizationUrl = "https://www.festify.in/django/api/";
+  // private _organizationUrl = "https://www.festify.in/django/api/";
+
+  private _organizationUrl = 'http://localhost:8000/api/';
+  
   constructor(private http: Http, private _router: Router) { }
 
   private handleError(error: HttpErrorResponse) {

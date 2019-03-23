@@ -24,13 +24,15 @@ export class AuthenticationService {
   isClick = false;
   orgExist: string;
   userExist: string;
-
+  private _organizationUrl = 'http://localhost:8000/api/';
   constructor(private http: Http, private _router: Router, private authServiceConfig: AuthService) {
     // if (window.location.host.includes('localhost')) {
     //   this._organizationUrl = 'http://localhost:8000/api/';
     // } else {
-      this._organizationUrl = 'https://www.festify.in/django/api/';
-    // }
+    //   this._organizationUrl = 'https://www.festify.in/django/api/';
+    // // }
+    //   private _organizationUrl = 'http://localhost:8000/api/';
+
   }
 
 
@@ -64,6 +66,14 @@ export class AuthenticationService {
 
   deleteFest(id) {
     return this.http.delete(`${this._organizationUrl}fest/delete/`, {params: {festid: id}}).pipe(map(x => x.json()));
+  }
+
+  deleteEvent(id) {
+    return this.http.delete(`${this._organizationUrl}fest/event/delete/`, {params: {event_id: id}}).pipe(map(x => x.json()));
+  }
+
+  deleteSponsor(id) {
+    return this.http.delete(`${this._organizationUrl}fest/sponsor/delete/`, {params: {sponsor_id: id}}).pipe(map(x => x.json()));
   }
 
   logout() {

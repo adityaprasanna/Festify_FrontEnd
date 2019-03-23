@@ -134,9 +134,9 @@
                 <h5>Events</h5>
             </div>
             <div class="form-group" formArrayName="event">
-                <div *ngFor="let ctrl of festForm.get('event')['controls']; let pointIndex=index" [formGroupName]="pointIndex">
-                    <div class="col-md-2 " *ngIf="pointIndex>0">
-                            <button class="eve" type="button" (click)="deleteEventPoint(pointIndex)">-Remove Event</button>
+                <div *ngFor="let ctrl of festForm.get('event')['value']; let pointIndex=index" [formGroupName]="pointIndex">
+                    <div class="col-md-2 " *ngIf="pointIndex>=0">
+                            <button class="eve" type="button" (click)="deleteEventPoint(pointIndex, ctrl.id)">-Remove Event</button>
                             <h4> <span></span><span></span></h4>
                             <hr>
                     </div>
@@ -236,7 +236,7 @@
                 <h5>Sponsors</h5>
             </div>
             <div class="form-group" formArrayName="event_sponser" style="padding:0 15px;">
-                <div *ngFor="let ctrlspon of festForm.get('event_sponser')['controls']; let pointIndex=index ;" [formGroupName]="pointIndex">
+                <div *ngFor="let ctrlspon of festForm.get('event_sponser')['value']; let pointIndex=index ;" [formGroupName]="pointIndex">
                 
                     <div class="row">
                         <div class="col-md-4">
@@ -267,7 +267,7 @@
                             <button class="eve" type="button" (click)="addSponsorEventPoint()">+Add Sponsor </button>
                     </div>
                     <div class="col-md-2">
-                            <button class="eve" type="button" *ngIf="pointIndex>0" (click)="deleteSponsorEventPoint(pointIndex)">-Remove</button>
+                            <button class="eve" type="button" *ngIf="pointIndex>=0" (click)="deleteSponsorEventPoint(pointIndex, ctrlspon.id)">-Remove</button>
                     </div>
                     </div>
                 
