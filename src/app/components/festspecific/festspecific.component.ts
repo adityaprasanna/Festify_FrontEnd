@@ -15,7 +15,7 @@ export class FestspecificComponent implements OnInit {
   public userExist_global;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
-    this.festID = this.route.snapshot.paramMap.get("id");//localStorage.getItem('festID');
+    this.festID = this.route.snapshot.paramMap.get('id'); // localStorage.getItem('festID');
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
     this.orgExist_global = this.authenticationService.orgExist;
     this.authenticationService.userExist = sessionStorage.getItem('userData');
@@ -36,15 +36,15 @@ export class FestspecificComponent implements OnInit {
       // }
       this.festDetails.start_date = this.getReadableDate(this.festDetails.start_date);
       this.festDetails.end_date = this.getReadableDate(this.festDetails.end_date);
-      if(this.festDetails.events.length >= 1) {
-          this.festDetails.events.map(x=>{
-          if(x.event_date){
+      if (this.festDetails.events.length >= 1) {
+          this.festDetails.events.map(x => {
+          if (x.event_date) {
             x.event_date = this.getReadableDate(x.event_date);
           }
-          if(x.ticket_price){
-            x.ticket_price=parseFloat(x.ticket_price).toFixed(2);
+          if (x.ticket_price) {
+            x.ticket_price = parseFloat(x.ticket_price).toFixed(2);
           }
-        })
+        });
        }
     });
   }
@@ -52,12 +52,12 @@ export class FestspecificComponent implements OnInit {
   get authenticationServicefn() {
     return this.authenticationService;
   }
-  
+
   festDeatils(e) {
-    console.log("Not getting used I think");
-    let data = JSON.stringify(e);
+    console.log('Not getting used I think');
+    const data = JSON.stringify(e);
     localStorage.setItem('festPaymentDeatils', data);
-    this.router.navigate(['/payment'])
+    this.router.navigate(['/payment']);
   }
 
 }

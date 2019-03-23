@@ -12,35 +12,15 @@ import {Observable, throwError} from 'rxjs';
 })
 
 export class AppService {
-// <<<<<<< HEAD
-//   // private _organizationUrl = '';
-//   // const path = window.location.host.split(':');
-//   // if(path[0] === 'localhost') {
-//     // this._organizationUrl = "http://localhost:8000/api/";
-//   // } 
-//   // else {
-//   //   let _organizationUrl = "https://www.festify.in/django/api/";
-//   // }
-//   // private _organizationUrl = "http://localhost:8000/api/";
-//   private _organizationUrl = "https://www.festify.in/django/api/";
 
-//   constructor(private http: Http, private _router: Router) { }
-// =======
-//   private _organizationUrl = '';
-
-//   constructor(private http: Http, private _router: Router) {
-//     if (window.location.host.includes('localhost')) {
-//       this._organizationUrl = 'http://localhost:8000/api/';
-//     } else {
-//       this._organizationUrl = 'https://www.festify.in/django/api/';
-//     }
-//   }
-// >>>>>>> 18cf2efbecd8c73bfb06431500beca3f804bf23d
-  // private _organizationUrl = "https://www.festify.in/django/api/";
-
-  private _organizationUrl = 'https://www.festify.in/django/api/';
-  
-  constructor(private http: Http, private _router: Router) { }
+  constructor(private http: Http, private _router: Router) {
+    if (window.location.host.includes('localhost')) {
+      this._organizationUrl = 'http://localhost:8000/api/';
+    } else {
+      this._organizationUrl = 'https://www.festify.in/django/api/';
+    }
+    // this._organizationUrl = 'https://www.festify.in/django/api/';
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

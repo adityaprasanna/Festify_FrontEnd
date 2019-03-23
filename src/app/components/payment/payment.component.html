@@ -48,7 +48,7 @@
 
 
 
-<form *ngIf="this.posted.amount" #form ngNoForm action="https://sandboxsecure.payu.in/_payment" method="post">
+<form *ngIf="false" #form ngNoForm action="https://sandboxsecure.payu.in/_payment" method="post">
      <input type="hidden" name="key" value="{{ MERCHANT_KEY }}" />
       <input type="hidden" name="hash_string" value="{{ hash_string }}" />
       <input type="hidden" name="hash" value="{{ hash }}"/>
@@ -140,4 +140,3 @@
 
   
  </form>
-               
