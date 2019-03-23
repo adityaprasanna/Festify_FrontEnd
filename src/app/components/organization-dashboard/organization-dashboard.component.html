@@ -9,10 +9,10 @@
                 <h2>dashboard</h2>
             </div>
             <div class="col-md-4">
-                <div class="profile-sec">
+                <div class="profile-sec" *ngIf="organizationList">
                     <h3>your profile</h3>
                     <img id="imgElem" alt="" [src]="organizationList.image">
-                    <ul *ngIf="organizationList">
+                    <ul>
                         <li>{{organizationList.name}}</li>
                         <li>{{organizationList.website}}</li>
                         <li>{{organizationList.address}}</li>
