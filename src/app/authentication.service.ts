@@ -31,7 +31,7 @@ export class AuthenticationService {
     } else {
       this._organizationUrl = 'https://www.festify.in/django/api/';
     }
-    this._organizationUrl = 'https://www.festify.in/django/api/';
+    // this._organizationUrl = 'https://www.festify.in/django/api/';
   }
 
 
