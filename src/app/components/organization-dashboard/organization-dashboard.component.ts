@@ -15,14 +15,16 @@ export class OrganizationDashboardComponent implements OnInit {
 
   organizationFestList: any;
   selectedRow: Number;
-  setClickedRow: Function;
   organizationList: any;
   paymentList: any;
+  festToEdit: any;
 
   constructor(private appService: AppService, private router: Router, private authenticationService: AuthenticationService) {
-    this.setClickedRow = function (index) {
-      this.selectedRow = index;
-    }
+  }
+
+  setClickedRow(index, fest) {
+    this.selectedRow = index;
+    this.festToEdit = fest;
   }
 
   ngOnInit() {
@@ -51,17 +53,15 @@ export class OrganizationDashboardComponent implements OnInit {
     $('input.chk').on('change', function () {
       $('input.chk').not(this).prop('checked', false);
     });
-    //console.log(this.organizationFestList[this.selectedRow.toString()]);
     if (this.selectedRow != undefined) {
       localStorage.setItem('festspecific', JSON.stringify(this.organizationFestList[this.selectedRow.toString()]));
     }
   }
 
   edit() {
-    if (this.selectedRow != undefined) {
-      this.router.navigate(['editfest'])
-    }
-    else {
+    if (this.selectedRow) {
+      this.router.navigate(['editfest', this.festToEdit.id]);
+    } else {
       alert('Please Select One Row');
     }
   }

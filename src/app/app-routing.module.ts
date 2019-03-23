@@ -55,7 +55,7 @@ const routes: Routes = [
     canActivate: [OrgauthService]
   },
   {
-    path: 'editfest',
+    path: 'editfest/:id',
     component: EditfestComponent,
     canActivate: [OrgauthService]
   },

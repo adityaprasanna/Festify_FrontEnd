@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../authentication.service';
-import {FormBuilder, FormGroup, FormArray, Validators, FormControl, EmailValidator} from '@angular/forms';
-import {Router} from '@angular/router';
-import {AppService} from 'src/app/app.service';
+import {FormBuilder, FormGroup, FormArray, Validators, FormControl} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
-
 
 @Component({
   selector: 'app-editfest',
@@ -17,21 +15,23 @@ export class EditfestComponent implements OnInit {
   festForm: FormGroup;
   loading = true;
   submitted = false;
+  festID: any;
+
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
 
-
   constructor(private authenticationService: AuthenticationService, private router: Router, private formBuilder: FormBuilder,
-              private appService: AppService) {
+              private route: ActivatedRoute) {
     this.bsConfig.containerClass = 'theme-red';
     this.bsConfig.dateInputFormat = 'YYYY-MM-DD';
+    this.festID = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-    this.appService.specificOrganizationList().subscribe(data => {
+    this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
       this.loading = false;
-      const selectedFest = data['fest']; // localStorage.getItem('festspecific');
-      this.festEditData = selectedFest[0]; // JSON.parse(selectedFest);
-      console.log('this.festEditData', this.festEditData);
+
+      this.festEditData = data[0];
+
       for (const item in this.festEditData) {
         if (this.festEditData[item] == null) {
           this.festEditData[item] = '';

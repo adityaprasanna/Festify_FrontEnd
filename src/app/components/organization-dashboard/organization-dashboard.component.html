@@ -41,7 +41,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let data of  organizationFestList ; let i=index;" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                                    <tr *ngFor="let data of  organizationFestList ; let i=index;" (click)="setClickedRow(i, data)" [class.active]="i == selectedRow">
                                         <td> {{i+1}}</td>
                                         <td> {{data.name}}</td>
                                         <td> {{data.start_date}}</td>
