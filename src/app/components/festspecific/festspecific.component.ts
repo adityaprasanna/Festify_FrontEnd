@@ -54,7 +54,6 @@ export class FestspecificComponent implements OnInit {
   }
 
   festDeatils(e) {
-    console.log('Not getting used I think');
     const data = JSON.stringify(e);
     localStorage.setItem('festPaymentDeatils', data);
     this.router.navigate(['/payment']);

@@ -131,6 +131,7 @@ export class AuthenticationService {
       email: finalvalue.email,
       fest_id: localStorage.getItem('festID'),
       event_id: paymentRequireData.id,
+      event_name: paymentRequireData.event_name,
       ticket_price: paymentRequireData.ticket_price,
       host: ipData.ip,
       mobile: finalvalue.mobile,

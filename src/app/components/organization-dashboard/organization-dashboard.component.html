@@ -62,31 +62,30 @@
                             <!--<div  *ngFor="let tickets of paymentList; let i=index;">-->
                             <!--<h3>{{ tickets.first_name }}</h3>-->
                             <!--</div>-->
-                          <div class="row participantsListCard" *ngFor="let bookFest of paymentList;">
-                            <div class="col-md-5 text-center">
-                              <img width="150" src="https://cdn4.iconfinder.com/data/icons/let-s-party/756/dance_party_drunk_disco_birthday_celebrate_pub-512.png" alt="404">
-                              <div>
-                                <!--<h2>{{bookFest.name}}</h2>-->
-                                <h3>Event Name, Type</h3>
-                                <p class="eventDateVenue">SJBIT, Jayanagar 6th Block,Bangalore on</p>
-                                <p class="eventTime">at 7:00 a.m.</p>
-                              </div>
-                            </div>
-                            <div class="col-md-7 eventFesterDetails">
-                              <h1 class="col-md-12">{{bookFest.first_name}} {{bookFest.last_name}}</h1>
-                              <dt class="col-md-6 col-sm-6 col-xs-6">Paid</dt>
-                              <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; 20</dd>
-
-                              <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
-                              <dd class="col-md-6 col-sm-6 col-xs-6">1523</dd>
-
-                              <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
-                              <dd class="col-md-6 col-sm-6 col-xs-6">Raghav, 910863783</dd>
-
-                              <dt class="col-md-6 col-sm-6 col-xs-6">Others</dt>
-                              <dd class="col-md-6 col-sm-6 col-xs-6">Bla bL bal </dd>
-                            </div>
-                          </div>
+                          
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Event</th>
+                                            <th>Ticket ID</th>
+                                            <th>Amount Paid</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let bookFest of paymentList;">
+                                            <td>{{bookFest.first_name}} {{bookFest.last_name}}</td>
+                                            <td>{{bookFest.email}}</td>
+                                            <td>{{bookFest.phone}}</td>
+                                            <td>{{bookFest.event_name}}</td>
+                                            <td>{{bookFest.ticket_id}}</td>
+                                            <td><i class="fas fa-rupee-sign"></i>&nbsp;{{bookFest.amount| number:0}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                          
                         </div>
                     </div>
                     
