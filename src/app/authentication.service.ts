@@ -18,13 +18,14 @@ declare var $: any;
 })
 export class AuthenticationService {
 
-  private _organizationUrl = '';
+  // private _organizationUrl = '';
 
   // private _organizationUrl = "http://localhost:8000/api/";
   isClick = false;
   orgExist: string;
   userExist: string;
-  private _organizationUrl = 'http://localhost:8000/api/';
+  // private _organizationUrl = 'http://localhost:8000/api/';
+  private _organizationUrl = 'https://www.festify.in/django/api/';
   constructor(private http: Http, private _router: Router, private authServiceConfig: AuthService) {
     // if (window.location.host.includes('localhost')) {
     //   this._organizationUrl = 'http://localhost:8000/api/';
