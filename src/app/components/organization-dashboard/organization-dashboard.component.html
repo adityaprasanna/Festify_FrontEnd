@@ -11,7 +11,7 @@
             <div class="col-md-4">
                 <div class="profile-sec">
                     <h3>your profile</h3>
-                    <img id="imgElem" alt="">
+                    <img id="imgElem" alt="" [src]="organizationList.image">
                     <ul *ngIf="organizationList">
                         <li>{{organizationList.name}}</li>
                         <li>{{organizationList.website}}</li>

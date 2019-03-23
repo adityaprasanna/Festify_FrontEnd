@@ -42,8 +42,8 @@ export class OrganizationDashboardComponent implements OnInit {
       this.organizationFestList = data['fest'];
       localStorage.setItem('organization', JSON.stringify(this.organizationList));
       localStorage.setItem('fest', JSON.stringify(this.organizationFestList));
-      const image = document.getElementById('imgElem');
-      image.setAttribute('src', this.organizationList.image);
+      // const image = document.getElementById('imgElem');
+      // image.setAttribute('src', this.organizationList.image);
     });
   }
 

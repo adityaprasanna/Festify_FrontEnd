@@ -14,16 +14,16 @@ export class FestUploadFormComponent implements OnInit {
   submitted = false;
   loading = false;
   model = new Date();
- 
+
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
   constructor(private formBuilder: FormBuilder, private appService: AppService, private router: Router) { // this.createForm();
     this.bsConfig.containerClass = 'theme-red';
-    this.bsConfig.dateInputFormat = "YYYY-MM-DD";
+    this.bsConfig.dateInputFormat = 'YYYY-MM-DD';
   }
 
   ngOnInit() {
     this.festForm = this.formBuilder.group({
-      name: ['', [Validators.required,Validators.maxLength(20)]],
+      name: ['', [Validators.required, Validators.maxLength(20)]],
       image: ['', [Validators.required]],
       fest_type: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -36,28 +36,28 @@ export class FestUploadFormComponent implements OnInit {
 
       event: this.formBuilder.array([
         this.formBuilder.group({
-          eventName: new FormControl('', [Validators.required,Validators.maxLength(20)]), 
-          ticket_price: ['', [Validators.required]], 
+          eventName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+          ticket_price: ['', [Validators.required]],
           event_description: ['', [Validators.required]],
-          event_coordinator: ['', [Validators.required]], 
-          event_date: new FormControl(Date, [Validators.required]), 
-          event_time: ['', [Validators.required]], 
-          event_type: ['', [Validators.required]] 
+          event_coordinator: ['', [Validators.required]],
+          event_date: new FormControl(Date, [Validators.required]),
+          event_time: ['', [Validators.required]],
+          event_type: ['', [Validators.required]]
         })]),
-      
-      manager_name: ['', [Validators.required]], 
-      manager_phone: ['', [Validators.required]], 
-      manager_email: ['', [Validators.required]], 
+
+      manager_name: ['', [Validators.required]],
+      manager_phone: ['', [Validators.required]],
+      manager_email: ['', [Validators.required]],
 
       event_sponser: this.formBuilder.array([this.formBuilder.group({ evtSpnName: '', picture: ['', [Validators.required]], caption: new FormControl('') })]),
 
-      sec_manager_name: ['', [Validators.required]], 
-      sec_manager_phone: ['', [Validators.required]], 
-      account_holder_name: ['', [Validators.required]], 
-      account_number: ['', [Validators.required]], 
-      ifsc: ['', [Validators.required]], 
-      confirm_account: ['', [Validators.required]], 
-      confirm_ifsc: ['', [Validators.required]], 
+      sec_manager_name: ['', [Validators.required]],
+      sec_manager_phone: ['', [Validators.required]],
+      account_holder_name: ['', [Validators.required]],
+      account_number: ['', [Validators.required]],
+      ifsc: ['', [Validators.required]],
+      confirm_account: ['', [Validators.required]],
+      confirm_ifsc: ['', [Validators.required]],
       checkbox: new FormControl(null, [Validators.required]),
       recaptchaReactive: new FormControl(null, [Validators.required])
     });
@@ -77,41 +77,42 @@ export class FestUploadFormComponent implements OnInit {
       return;
     }
 
-    for (let item in this.festForm.value) {
-      if (item == "image") {
+    for (const item in this.festForm.value) {
+      if (item == 'image') {
         if (this.festForm.value[item] != null) {
-          var myCanvas = <HTMLCanvasElement>document.getElementById("display");
-          let imageUrl = myCanvas.toDataURL('image/jpeg');
+          const myCanvas = <HTMLCanvasElement>document.getElementById('display');
+          const imageUrl = myCanvas.toDataURL('image/jpeg');
           this.festForm.value[item] = imageUrl;
         }
-      } else if (item == "promo_video") {
+      } else if (item == 'promo_video') {
         if (this.festForm.value[item] != null) {
-          var myCanvas = <HTMLCanvasElement>document.getElementById("provideo");
-          let imageUrl = myCanvas.toDataURL('image/jpeg');
+          const myCanvas = <HTMLCanvasElement>document.getElementById('provideo');
+          const imageUrl = myCanvas.toDataURL('image/jpeg');
           this.festForm.value[item] = imageUrl;
         }
-      } else if (item == "promo_video_thumbnail") {
+      } else if (item == 'promo_video_thumbnail') {
         if (this.festForm.value[item] != null) {
-          var myCanvas = <HTMLCanvasElement>document.getElementById("thumbmail");
-          let imageUrl = myCanvas.toDataURL('image/jpeg');
+          const myCanvas = <HTMLCanvasElement>document.getElementById('thumbmail');
+          const imageUrl = myCanvas.toDataURL('image/jpeg');
           this.festForm.value[item] = imageUrl;
         }
-      } else if (item == "event_sponser") {
+      } else if (item == 'event_sponser') {
         let id = 0;
         this.festForm.value[item].map(x => {
           if (x.picture != null) {
             if (id <= this.sponsorEventPoints.length - 1) {
-              var myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
-              let imageUrl = myCanvas.toDataURL('image/jpeg');
+              const myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
+              const imageUrl = myCanvas.toDataURL('image/jpeg');
               x.picture = imageUrl;
               id++;
             }
           }
-        })
+        });
       }
     }
     this.appService.createFest(this.festForm)
     .subscribe(data => {
+      console.log("create fest ------ upload data", data);
       if (data == undefined) {
         this.router.navigate(['home']);
       } else {
@@ -120,13 +121,13 @@ export class FestUploadFormComponent implements OnInit {
       }
     });
   }
-  
+
 
 
   onKeydown(e) {
     e.preventDefault();
   }
-  
+
   get eventPoints() {
     return this.festForm.get('event') as FormArray;
   }
@@ -152,35 +153,35 @@ export class FestUploadFormComponent implements OnInit {
   }
   onChange(e) {
     switch (e.target.name) {
-      case "image":
-        var myCanvas = <HTMLCanvasElement>document.getElementById("display");
+      case 'image':
+        let myCanvas = <HTMLCanvasElement>document.getElementById('display');
         break;
-      case "promo_video":
-        var myCanvas = <HTMLCanvasElement>document.getElementById("provideo");
+      case 'promo_video':
+        let myCanvas = <HTMLCanvasElement>document.getElementById('provideo');
         break;
-      case "promo_video_thumbnail":
-        var myCanvas = <HTMLCanvasElement>document.getElementById("thumbmail");
+      case 'promo_video_thumbnail':
+        let myCanvas = <HTMLCanvasElement>document.getElementById('thumbmail');
         break;
-      case "picture":
+      case 'picture':
         let id = this.sponsorEventPoints.length;
         id = id - 1;
-        var myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
-        console.log(";;;;;;", id, myCanvas);  
+        const myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
+        console.log(';;;;;;', id, myCanvas);
         break;
 
     }
-    var img = new Image();
+    const img = new Image();
     img.onload = function () {
       myCanvas.width = img.width;
       myCanvas.height = img.height;
       ctx.drawImage(img, 0, 0);
      // console.log(myCanvas.toDataURL('image/jpeg'));
     };
-    var ctx = myCanvas.getContext('2d');
+    const ctx = myCanvas.getContext('2d');
 
     img.src = URL.createObjectURL(e.target.files[0]);
-    var dataURL = myCanvas.toDataURL('image/jpeg');
-    dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    const dataURL = myCanvas.toDataURL('image/jpeg');
+    dataURL.replace(/^data:image\/(png|jpg);base64,/, '');
   }
 }
 
