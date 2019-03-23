@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, FormControl, EmailValidator } from '@angular/forms';
-import { AppService } from 'src/app/app.service';
-import { Router } from '@angular/router';
-import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, FormArray, Validators, FormControl, EmailValidator} from '@angular/forms';
+import {AppService} from 'src/app/app.service';
+import {Router} from '@angular/router';
+import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-fest-upload-form',
@@ -16,6 +16,7 @@ export class FestUploadFormComponent implements OnInit {
   model = new Date();
 
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
+
   constructor(private formBuilder: FormBuilder, private appService: AppService, private router: Router) { // this.createForm();
     this.bsConfig.containerClass = 'theme-red';
     this.bsConfig.dateInputFormat = 'YYYY-MM-DD';
@@ -49,7 +50,11 @@ export class FestUploadFormComponent implements OnInit {
       manager_phone: ['', [Validators.required]],
       manager_email: ['', [Validators.required]],
 
-      event_sponser: this.formBuilder.array([this.formBuilder.group({ evtSpnName: '', picture: ['', [Validators.required]], caption: new FormControl('') })]),
+      event_sponser: this.formBuilder.array([this.formBuilder.group({
+        evtSpnName: '',
+        picture: ['', [Validators.required]],
+        caption: new FormControl('')
+      })]),
 
       sec_manager_name: ['', [Validators.required]],
       sec_manager_phone: ['', [Validators.required]],
@@ -111,17 +116,12 @@ export class FestUploadFormComponent implements OnInit {
       }
     }
     this.appService.createFest(this.festForm)
-    .subscribe(data => {
-      console.log('create fest ------ upload data', data);
-      if (data == undefined) {
-        this.router.navigate(['home']);
-      } else {
+      .subscribe(data => {
+        console.log('create fest ------ upload data', data);
         this.festForm.reset();
         this.router.navigate(['orgdashboard']);
-      }
-    });
+      }, () => alert('Some error occurred, please try again!'));
   }
-
 
 
   onKeydown(e) {
@@ -131,12 +131,21 @@ export class FestUploadFormComponent implements OnInit {
   get eventPoints() {
     return this.festForm.get('event') as FormArray;
   }
+
   get sponsorEventPoints() {
     return this.festForm.get('event_sponser') as FormArray;
   }
 
   addEventPoint() {
-    this.eventPoints.push(this.formBuilder.group({ eventName: new FormControl(''), ticket_price: new FormControl(''), event_description: new FormControl('', [Validators.required]), event_coordinator: new FormControl('', [Validators.required]), event_date: new FormControl(Date, [Validators.required]), event_time: new FormControl('', [Validators.required]), event_type: ['', [Validators.required]], }));
+    this.eventPoints.push(this.formBuilder.group({
+      eventName: new FormControl(''),
+      ticket_price: new FormControl(''),
+      event_description: new FormControl('', [Validators.required]),
+      event_coordinator: new FormControl('', [Validators.required]),
+      event_date: new FormControl(Date, [Validators.required]),
+      event_time: new FormControl('', [Validators.required]),
+      event_type: ['', [Validators.required]],
+    }));
 
   }
 
@@ -145,7 +154,11 @@ export class FestUploadFormComponent implements OnInit {
   }
 
   addSponsorEventPoint() {
-    this.sponsorEventPoints.push(this.formBuilder.group({ evtSpnName: '', picture: ['', [Validators.required]], caption: new FormControl('') }));
+    this.sponsorEventPoints.push(this.formBuilder.group({
+      evtSpnName: '',
+      picture: ['', [Validators.required]],
+      caption: new FormControl('')
+    }));
   }
 
   deleteSponsorEventPoint(index) {
