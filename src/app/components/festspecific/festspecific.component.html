@@ -144,6 +144,9 @@
                                 <h5>{{this.festDetails.sec_manager_phone}}</h5>
                                 <h4>Date:</h4>
                                 <p></p>
+                                <h5 *ngIf="this.festDetails.website"><a href="{{this.festDetails.website}}">Check out our website</a></h5>
+                                <h5 *ngIf="this.festDetails.social_media_pages"><a href="{{this.festDetails.social_media_pages}}">Visit our social media!</a></h5>
+
                                 <h5>{{this.festDetails.start_date}} till {{this.festDetails.end_date}}</h5>
                     
 

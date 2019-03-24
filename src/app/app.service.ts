@@ -52,10 +52,10 @@ export class AppService {
     return this.http.get(`${this._organizationUrl}organization/list/`).pipe(map(x => x.json()));
   }
 
-  paymentList() {
+  paymentList(fest_id) {
     //  let headerOptions = new Headers({ 'Content-Type': 'application/json'});
     //  let requestOptions = new RequestOptions({ method: RequestMethod.Post, headers: headerOptions });
-    return this.http.get(`${this._organizationUrl}payment/list/`).pipe(map(x => x.json()));
+    return this.http.get(`${this._organizationUrl}payment/list/`, {params: {festid: fest_id}}).pipe(map(x => x.json()));
   }
 
   specificOrganizationList() {

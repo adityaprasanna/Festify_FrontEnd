@@ -29,15 +29,16 @@ export class OrganizationDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.gettingFestData();
-    this.gettingPaymentData();
+    // this.gettingPaymentData();
   }
 
-  gettingPaymentData() {
-    this.appService.paymentList().subscribe(data => {
-      this.paymentList = data;
-      localStorage.setItem('payment', JSON.stringify(this.paymentList));
-    });
-  }
+  // gettingPaymentData() {
+
+  //   this.appService.paymentList(JSON.parse(festId).fest_id).subscribe(data => {
+  //     this.paymentList = data;
+  //     localStorage.setItem('payment', JSON.stringify(this.paymentList));
+  //   });
+  // }
   gettingFestData() {
     this.appService.specificOrganizationList().subscribe(data => {
       this.organizationList = data['organization'];
@@ -65,7 +66,19 @@ export class OrganizationDashboardComponent implements OnInit {
       alert('Please Select One Row');
     }
   }
-
+  getList() {
+    if (this.selectedRow) {
+      let festId = localStorage.getItem('festspecific');
+      console.log(festId);
+      this.appService.paymentList(JSON.parse(festId).fest_id).subscribe(x => {
+        this.paymentList = x;
+        localStorage.setItem('payment', JSON.stringify(this.paymentList));
+        document.getElementById("participant").style.display ="block";
+      })
+    } else {
+      alert('Please Select One Row');
+    }
+  }
   // delete(){
   //   if(this.selectedRow){
   //     this.organizationFestList.splice(this.selectedRow, 1);
