@@ -35,6 +35,7 @@ export class PaymentComponent implements OnInit {
   paymentHandler: object;
   festDetails: any;
   currentfestID: any;
+  paymentFestInfo: any;
   posted = {
     amount: 0,
     firstname: '',
@@ -62,7 +63,8 @@ export class PaymentComponent implements OnInit {
     let ipData: any;
     this.eventData = JSON.parse(localStorage.getItem('festPaymentDeatils'));
     this.festDetails = JSON.parse(localStorage.getItem('festDetails'));
-    this.currentfestID = JSON.parse(localStorage.getItem('festID')) - 1;
+    this.currentfestID = JSON.parse(localStorage.getItem('festID'));
+    this.paymentFestInfo = this.festDetails.find((fest) => fest.fest_id === this.currentfestID);
     this.authenticationService.getIP()
       .subscribe(data => {
         ipData = JSON.stringify(data);
@@ -71,19 +73,21 @@ export class PaymentComponent implements OnInit {
 
     this.paymentHandler = {
       responseHandler: (resp) => {
-        console.log('bolt---------------', resp);
-        // navigate(['/festDetails', id]);
         if (resp.response.status.toLowerCase() === 'success') {
+          console.log(this.currentfestID);
+          console.log(this.festDetails[this.currentfestID]);
+          console.log(this.paymentFestInfo);
           const successData = {
             fname: resp.response.firstname,
             lname: resp.response.lastname,
             email: resp.response.email,
             phone: resp.response.phone,
-            fest: this.festDetails[this.currentfestID].fest_name,
+            fest: this.paymentFestInfo.fest_name,
             event: this.eventData.event_name,
             price: resp.response.net_amount_debit,
             tid: this.txnid
           };
+          
           this.authenticationService.sendSMSAndEmail(successData.tid).subscribe((data) => {
             console.log(data);
           });
