@@ -59,7 +59,7 @@ export class OrganizationDashboardComponent implements OnInit {
   }
 
   edit() {
-    if (this.selectedRow) {
+    if (this.festToEdit) {
       this.router.navigate(['editfest', this.festToEdit.id]);
     } else {
       alert('Please Select One Row');
