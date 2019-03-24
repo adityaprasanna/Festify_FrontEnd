@@ -57,6 +57,7 @@
                             </div>--> 
                             <button (click)="delete()" class="del">delete</button>
                             <button (click)="edit()" class="edit">edit</button>
+                            <button (click)="getList()" class="edit">Get Participant List</button>
                         </div>
                         <div id="pro-2" class="tab-pane fade">
                             <!--<div  *ngFor="let tickets of paymentList; let i=index;">-->
@@ -88,11 +89,37 @@
                           
                         </div>
                     </div>
-                    
+                    <div id="participant" class="container col-md-9" style="display:none;margin-top:50px;">
+                            <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Event</th>
+                                            <th>Ticket ID</th>
+                                            <th>Amount Paid</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let bookFest of paymentList;">
+                                            <td>{{bookFest.first_name}} {{bookFest.last_name}}</td>
+                                            <td>{{bookFest.email}}</td>
+                                            <td>{{bookFest.phone}}</td>
+                                            <td>{{bookFest.event_name}}</td>
+                                            <td>{{bookFest.ticket_id}}</td>
+                                            <td><i class="fas fa-rupee-sign"></i>&nbsp;{{bookFest.amount| number:0}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                    </div>
                 </div>
 
             </div>
+            
         </div>
+        
     </div>
+    
 </section>
 <app-footer></app-footer>
