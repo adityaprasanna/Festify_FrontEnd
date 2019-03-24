@@ -2,7 +2,7 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "festspecific.component.sass"
+        "festspecific.component.scss"
     ],
     "names": [],
     "file": "festspecific.component.css"

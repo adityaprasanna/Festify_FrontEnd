@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-festspecific',
   templateUrl: './festspecific.component.html',
-  styleUrls: ['./festspecific.component.sass']
+  styleUrls: ['./festspecific.component.scss']
 })
 export class FestspecificComponent implements OnInit {
   festDetails: any;
