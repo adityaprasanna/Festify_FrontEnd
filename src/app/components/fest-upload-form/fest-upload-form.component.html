@@ -263,9 +263,9 @@
                             
                         </div>
                         <div class="col-md-4" id="pic">
-                            <input type="file" class="form-control" name="picture" (change)="onChange($event)" placeholder=""
+                            <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control" name="picture" (change)="onChange($event)" placeholder=""
                                 formControlName="picture" />
-                            <canvas width="150" height="150" id={{pointIndex}}  ></canvas>
+                            <canvas width="150" height="150" id={{pointIndex}} style="display: none;" ></canvas>
                         </div>
                     </div>
                     <div class="row">         
