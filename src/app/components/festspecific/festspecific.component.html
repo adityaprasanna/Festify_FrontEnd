@@ -144,17 +144,11 @@
                                 <h5>{{this.festDetails.sec_manager_phone}}</h5>
                                 <h4>Date:</h4>
                                 <p></p>
-                                <h5 *ngIf="this.festDetails.website"><a href="{{this.festDetails.website}}">Check out our website</a></h5>
-                                <h5 *ngIf="this.festDetails.social_media_pages"><a href="{{this.festDetails.social_media_pages}}">Visit our social media!</a></h5>
+                                <h5 *ngIf="this.festDetails.website"><a href="this.festDetails.website" target="_blank">Check out our website</a></h5>
+                                <h5 *ngIf="this.festDetails.social_media_pages"><a href="this.festDetails.social_media_pages" target="_blank">Visit our social media!</a></h5>
 
                                 <h5>{{this.festDetails.start_date}} till {{this.festDetails.end_date}}</h5>
-                    
-
                             </div>
-                            <!-- <ul>
-                                <li>Date: {{this.festDetails.start_date}}</li>
-                                <li>website:{{this.festDetails.website}}</li>
-                            </ul> -->
                             <h3>sponsors</h3>
                             <div class="spon-img text-center">
                                 <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
