@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../authentication.service';
-import {FormBuilder, FormGroup, FormArray, Validators, FormControl} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
 
@@ -141,11 +141,12 @@ export class EditfestComponent implements OnInit {
     const ctx = canvasElem.getContext('2d');
 
     img.src = URL.createObjectURL(targetElem.files[0]);
+    console.log(targetElem.files, img.src)
     const dataURL = canvasElem.toDataURL('image/jpeg');
-    dataURL.replace(/^data:image\/(png|jpg);base64,/, '');
+    dataURL.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
   }
 
-  onChange(e) {
+  onChange(e, p_id) {
     let myCanvas;
     switch (e.target.name) {
       case 'image':
@@ -159,8 +160,9 @@ export class EditfestComponent implements OnInit {
         break;
       case 'picture':
         // var myCanvas = <HTMLCanvasElement>document.getElementById(e.target.nextElementSibling.id.toString());
-        const id = this.sponsorEventPoints.length - 1;
-        myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
+        // const id = this.sponsorEventPoints.length - 1;
+        // myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
+        myCanvas = <HTMLCanvasElement>document.getElementById(p_id);
         break;
     }
     if (myCanvas) {
@@ -212,13 +214,12 @@ export class EditfestComponent implements OnInit {
           this.festForm.value[item] = this.festEditData.promo_video_thumbnail;
         }
       } else if (item == 'event_sponser') {
+        let id = 0;
         this.festForm.value[item].map(x => {
           if (x.picture != null) {
-            let id = 0;
             if (id <= this.sponsorEventPoints.length - 1) {
               const myCanvas = <HTMLCanvasElement>document.getElementById(id.toString());
-              const imageUrl = myCanvas.toDataURL('image/jpeg');
-              x.picture = imageUrl;
+              x.picture = myCanvas.toDataURL('image/jpeg');
               id++;
             }
           }

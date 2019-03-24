@@ -266,10 +266,11 @@
             <div class="col-md-4">
               <input type="text" class="form-control" placeholder="Enter Event Sponser Name"
                      formControlName="evtSpnName"/>
-              <canvas width="300" height="300" id={{pointIndex}} style="display: none;"></canvas>
+              <canvas width="300" height="300" id={{pointIndex}}></canvas>
+              <!--<canvas width="300" height="300" id={{pointIndex}} style="display: none;"></canvas>-->
             </div>
             <div class="col-md-4" id="pic">
-              <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control" name="picture" (change)="onChange($event)" placeholder=""
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control" name="picture" (change)="onChange($event, pointIndex)" placeholder=""
                      formControlName="picture"/>
             </div>
           </div>
