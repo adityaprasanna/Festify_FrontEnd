@@ -7,10 +7,13 @@
         <div class="row">
          <h2 style="text-align: center;">Order Summary</h2>
             <div class="col-md-offset-3 col-md-6 payment-page">
-                <table class="table table-bordered" id="table">
+                <!-- <table class="table table-bordered" id="table">
                     <thead>
                         <tr>
-                            <th>Event Name</th>
+                            <th>Event</th>
+                            <th>Price</th>
+                            <th>Price</th>
+                            <th>Price</th>
                             <th>Price</th>
                         </tr>
                     </thead>
@@ -18,9 +21,37 @@
                         <tr>
                             <td>{{eventData.event_name}}</td>
                             <td>{{eventData.ticket_price}}</td>
+                            <td>{{eventData.event_coordinator}}</td>
+                            <td>{{eventData.event_date}}</td>
+                            <td>{{eventData.event_time}}</td>
+
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
+                <div class="row eventDetailsCard">
+                    <div class="col-md-5 text-center">
+                      <img width="150" src="../../../assets/images/event_icons/{{eventData.event_type}}.png" alt="">
+                      <div>
+                        <p class="eventDateVenue">{{eventData.event_date}}</p>
+                        <p class="eventTime">at {{eventData.event_time}}</p>
+                      </div>
+                    </div>
+                    <div class="col-md-7 eventFesterDetails">
+                      <!-- <h1 class="col-md-12">{{socialData.firstName}} {{socialData.lastName}}</h1> -->
+                      <h3>{{eventData.event_name}}</h3>
+                      <dt class="col-md-6 col-sm-6 col-xs-6">Payable</dt>
+                      <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; {{eventData.ticket_price}}</dd>
+
+                      <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
+                      <dd class="col-md-6 col-sm-6 col-xs-6">"Sent via email and sms"</dd> <!-- {{eventData.ticket_id}} -->
+
+                      <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
+                      <dd class="col-md-6 col-sm-6 col-xs-6">{{eventData.event_coordinator}}</dd>
+
+                      <dt class="col-md-6 col-sm-6 col-xs-6">Date Booked:</dt>
+                      <dd class="col-md-6 col-sm-6 col-xs-6">{{eventData.event_date}}</dd>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
@@ -30,15 +61,16 @@
         <div class="row">
 
             <div class="col-md-offset-3 col-md-6 payment-page">
+                <label>Enter First Name : </label>
+                <input type="text" [(ngModel)]="firstName">
+                 <label>Enter Last Name: </label>
+                <input type="text" [(ngModel)]="lastName">
                 <label>Enter Mobile No: </label>
                 <input type="text" [(ngModel)]="mobile" (keypress)="onKeyDown($event)">
                 <label>Enter Email Id: </label>
                 <input type="text" [(ngModel)]="email">
-                 <label>Enter First Name : </label>
-                <input type="text" [(ngModel)]="firstName">
-                 <label>Enter Last Name: </label>
-                <input type="text" [(ngModel)]="lastName">
-                <button (click)="confirm()">Confirm</button>
+
+                <button (click)="confirm()">Pay <i class="fas fa-rupee-sign"></i>{{eventData.ticket_price}}</button>
                 <button (click)="cancel()">Cancel</button>
             </div>
         </div>

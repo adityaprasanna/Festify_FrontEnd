@@ -75,7 +75,7 @@
                                         </span>
                                     </div>
                                     <div class="row">
-                                        <img height=150 src="assets/images/event_icons/{{eventDetails.event_type}}.png">
+                                        <img height=120 src="assets/images/event_icons/{{eventDetails.event_type}}.png">
                                     </div>
                                     <!-- <div class="pricingContent">
                                         <ul>
@@ -97,7 +97,7 @@
                                     <div class="row text-center event_desc">
                                         <p>{{eventDetails.event_description}}</p>
                                     </div>
-                                    <hr>
+                                    
                                     <div class="row text-center">
                                         <div class="col-md-6"><p><i class="fas fa-calendar-alt"></i>&nbsp;{{eventDetails.event_date}}</p></div>
                                         <div class="col-md-6"><p><i class="fas fa-clock"></i>&nbsp;{{eventDetails.event_time}}</p></div>
@@ -129,23 +129,23 @@
                         <div *ngIf="this.festDetails">
                             <div class="row text-center">
                                 <div class="col-md-12 contactus">
-                                <h3>Contact Us</h3>
+                                <h3>Contact</h3>
                                 </div>
                             </div>
                             <div class="col-md-10 col-md-offset-1 contact-details">
-                                <h4>Main Coordinator</h4>
+                                <!-- <h4>Main Coordinator</h4> -->
                                 <p></p>
-                                <h5>{{this.festDetails.manager_name}}</h5>
-                                <h5>{{this.festDetails.manager_phone}}</h5>
-                                <h5>{{this.festDetails.manager_email}}</h5>
-                                <h4>Secondary Coordinator</h4>
+                                <h5><i class="fas fa-address-book"></i>&nbsp;{{this.festDetails.manager_name}}</h5>
+                                <h5><i class="fas fa-phone"></i>&nbsp;{{this.festDetails.manager_phone}}</h5>
+                                <h5><i class="fas fa-paper-plane"></i>&nbsp;{{this.festDetails.manager_email}}</h5>
+                                <!-- <h4>Secondary Coordinator</h4> -->
                                 <p></p>
-                                <h5>{{this.festDetails.sec_manager_name}}</h5>
-                                <h5>{{this.festDetails.sec_manager_phone}}</h5>
-                                <h4>Date:</h4>
+                                <h5><i class="fas fa-address-book"></i>&nbsp;{{this.festDetails.sec_manager_name}}</h5>
+                                <h5><i class="fas fa-phone"></i>&nbsp;{{this.festDetails.sec_manager_phone}}</h5>
+                                <!-- <h4>Date:</h4> -->
                                 <p></p>
-                                <h5 *ngIf="this.festDetails.website"><a href="this.festDetails.website" target="_blank">Check out our website</a></h5>
-                                <h5 *ngIf="this.festDetails.social_media_pages"><a href="this.festDetails.social_media_pages" target="_blank">Visit our social media!</a></h5>
+                                <h5 *ngIf="this.festDetails.website"><a style="color:#fff;" href="{{this.festDetails.website}}" target="_blank">Check out our website</a></h5>
+                                <h5 *ngIf="this.festDetails.social_media_pages"><a style="color:#fff;" href="{{this.festDetails.social_media_pages}}" target="_blank">Visit our social media!</a></h5>
 
                                 <h5>{{this.festDetails.start_date}} till {{this.festDetails.end_date}}</h5>
                             </div>

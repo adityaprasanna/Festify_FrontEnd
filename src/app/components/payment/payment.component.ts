@@ -74,9 +74,6 @@ export class PaymentComponent implements OnInit {
     this.paymentHandler = {
       responseHandler: (resp) => {
         if (resp.response.status.toLowerCase() === 'success') {
-          console.log(this.currentfestID);
-          console.log(this.festDetails[this.currentfestID]);
-          console.log(this.paymentFestInfo);
           const successData = {
             fname: resp.response.firstname,
             lname: resp.response.lastname,
@@ -193,7 +190,7 @@ export class PaymentComponent implements OnInit {
             if (window['bolt']) {
               window['bolt'].launch(boltRequestData, this.paymentHandler);
             } else {
-              alert('Payment intiation error, please try agiain!');
+              alert('Payment initiation error, please try agiain!');
             }
 
           } else {
