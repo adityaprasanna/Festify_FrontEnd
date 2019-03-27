@@ -1793,7 +1793,7 @@ section.orgdashboard .profile-decp .edit {
 }
 
 section.festspecific-page {
-  padding: 60px 0;
+  padding: 30px 0;
   min-height: 100vh;
 }
 
@@ -1817,8 +1817,9 @@ section.festspecific-page .left-sec .contactus{
 
 }
 section.festspecific-page .left-sec h3 {
-  /* background: #ff9317; */
+  /* background: #5f376b; */
   background: linear-gradient(to bottom right,#b92b27,#1565C0);
+  /* background: #fff; */
   text-align: center;
   color: #fff;
   text-transform: capitalize;
@@ -1830,6 +1831,9 @@ section.festspecific-page .left-sec h3 {
 }
 section.festspecific-page .left-sec h4,h5{
   color:#fff;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin: 3px 0;
 }
 section.festspecific-page .left-sec .spon-img {
   padding-bottom: 40px;
@@ -1899,32 +1903,6 @@ section.festspecific-page .sec4 .heading h3{
 section.festspecific-page .sec4 .heading .event-type h5{
   color: #fff;
 }
-
-
-/* section.festspecific-page .fest-decp .sec1 {
-  background: #f3f3f3;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-
-section.festspecific-page .fest-decp .sec1 h4 {
-  margin: 0 0 15px;
-  text-transform: uppercase;
-  color: #111;
-  font-size: 16px;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-
-section.festspecific-page .fest-decp .sec1 p {
-  text-align: justify;
-  color: #111;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 27px;
-  letter-spacing: 0.5px;
-  font-style: italic;
-} */
 
 section.festspecific-page .fest-decp .sec2 {
   background: #f3f3f3;
@@ -2058,7 +2036,8 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent {
 }
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent .event_desc p{
   overflow-y: scroll;
-  height: 90px;
+  height: 120px;
+  padding: 0 20px;
   white-space: pre-wrap;
 }
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
@@ -2117,7 +2096,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul 
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up > .btn-block {
-  padding: 15px 0;
+  padding: 7px 0;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: bold;
@@ -2223,15 +2202,19 @@ section#contact .card p {
 
 .payment-page {
   background: #fff;
-  -webkit-box-shadow: 0 0 8px #ddd;
-          box-shadow: 0 0 8px #ddd;
+  /* -webkit-box-shadow: 0 0 8px #ddd;
+          box-shadow: 0 0 8px #ddd; */
   text-align: center;
+}
+.payment-page h3,dt,dd {
+  color: #000;
 }
 
 .payment-page input {
-  display: table;
+  /* display: table; */
   width: 100%;
   border: 1px solid #dbdbdb;
+  border-radius: 5px;
   padding: 11px;
   margin: 15px 0;
   color: #111;
@@ -2245,7 +2228,7 @@ section#contact .card p {
 
 .payment-page button {
   display: inline-block;
-  background: #f71769;
+  background: #5f376b;
   border: none;
   color: #fff;
   text-transform: uppercase;
