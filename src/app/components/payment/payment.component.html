@@ -68,7 +68,7 @@
                 <label>Enter Mobile No: </label>
                 <input type="text" [(ngModel)]="mobile" (keypress)="onKeyDown($event)">
                 <label>Enter Email Id: </label>
-                <input type="text" [(ngModel)]="email">
+                <input disabled type="text" [(ngModel)]="email">
 
                 <button (click)="confirm()">Pay <i class="fas fa-rupee-sign"></i>{{eventData.ticket_price}}</button>
                 <button (click)="cancel()">Cancel</button>
