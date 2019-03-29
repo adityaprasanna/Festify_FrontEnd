@@ -14,12 +14,12 @@ import {Observable, throwError} from 'rxjs';
 export class AppService {
   private _organizationUrl = 'https://www.festify.in/django/api/';
   constructor(private http: Http, private _router: Router) {
-    // if (window.location.host.includes('localhost')) {
-    //   this._organizationUrl = 'http://localhost:8000/api/';
-    // } else {
-    //   this._organizationUrl = 'https://www.festify.in/django/api/';
-    // }
-    // this._organizationUrl = 'https://www.festify.in/django/api/';
+    if (window.location.host.includes('localhost')) {
+      this._organizationUrl = 'http://localhost:8000/api/';
+    } else {
+      this._organizationUrl = 'https://www.festify.in/django/api/';
+    }
+    this._organizationUrl = 'https://www.festify.in/django/api/';
   }
 
   private handleError(error: HttpErrorResponse) {
