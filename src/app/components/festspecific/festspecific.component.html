@@ -4,18 +4,12 @@
 <div *ngIf=" this.authenticationServicefn.userExist">
     <app-userheader></app-userheader>
 </div>
-
 <div *ngIf=" this.authenticationServicefn.userExist == undefined &&  this.authenticationServicefn.orgExist == undefined">
     <app-header></app-header>
 </div>
-<!-- <div class="inner-ban">
-    <img src="assets/images/inner-ban.jpg" alt="">
-</div> -->
-
 <section class="festspecific-page">
     <div class="container">
-        <div class="row">
-            
+        <div class="row">           
             <div class="col-md-9" *ngIf="this.festDetails">
                 <div class="fest-decp">
                         <div class="row">
@@ -28,39 +22,11 @@
                     </div>
                     <div class="sec2">
                         <div class="row text-center">
-                            <!-- <div class="col-md-9"> -->
                             <h4>about</h4>
                             <p></p>
                             <p>{{this.festDetails.description}}</p>
                         </div>
                     </div>
-                    <!-- <div class="sec2">
-                        <div class="row text-center">
-                            <h3>Contact Details</h3>
-                            <p></p>
-                            <div class="col-md-6">
-                                <h4>Main Coordinator</h4>
-                                <p></p>
-                                <p>{{this.festDetails.manager_name}}</p>
-                                <p>{{this.festDetails.manager_phone}}</p>
-                                <p>{{this.festDetails.manager_email}}</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h4>Secondary Coordinator</h4>
-                                <p></p>
-                                <p>{{this.festDetails.sec_manager_name}}</p>
-                                <p>{{this.festDetails.sec_manager_phone}}</p>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!--<div class="sec2">
-            <h4>update</h4>
-          </div>-->
-                    <!-- <div class="sec3">
-            <img src="http://sckana.net/New%20Images/events.jpg" alt="">
-            <h4>Name</h4>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, necessitatibus quos. Impedit quae harum, omnis, ut, ex hic cupiditate voluptatem ab esse eaque eum libero asperiores dolorum et distinctio molestias.</p>
-          </div>-->
                     <div id="all-event-details" class="sec4">
                         <h4>events</h4>
                         <div *ngFor="let eventDetails of this.festDetails.events">
@@ -77,27 +43,10 @@
                                     <div class="row">
                                         <img height=120 src="assets/images/event_icons/{{eventDetails.event_type}}.png">
                                     </div>
-                                    <!-- <div class="pricingContent">
-                                        <ul>
-                                            <li>{{eventDetails.event_date}}, {{eventDetails.event_time}}</li>
-                                        </ul>
-                                        <h5>Description:</h5>
-                                        <ul>
-                                            <li>{{eventDetails.event_description}}</li>
-                                        </ul>
-                                        <ul>
-                                            <li>{{eventDetails.event_coordinator}}</li>
-                                        </ul>
-                                        <h5>Price:</h5>
-                                        <ul>
-                                            <li>{{eventDetails.ticket_price}}</li>
-                                        </ul>
-                                    </div> -->
                                     <div class="pricingContent">
                                     <div class="row text-center event_desc">
                                         <p>{{eventDetails.event_description}}</p>
-                                    </div>
-                                    
+                                    </div>                                    
                                     <div class="row text-center">
                                         <div class="col-md-6"><p><i class="fas fa-calendar-alt"></i>&nbsp;{{eventDetails.event_date}}</p></div>
                                         <div class="col-md-6"><p><i class="fas fa-clock"></i>&nbsp;{{eventDetails.event_time}}</p></div>
@@ -113,19 +62,14 @@
 
                                     </div>
                                     </div>
-                                    <!-- BUTTON BOX-->
                                 </div>
                             </div>
-                            <!-- <div class="clearfix"></div> -->
                         </div>
                     </div>
-                    <!--end event-->
                 </div>
             </div>
             <div class="col-md-3">
                     <div class="left-sec">
-                        <!--<img src="https://festevents.org/files/cache/c8c82a059994675fc46fb69d5ffbd02e_f3570.jpg" alt="">-->
-                        <!-- <img id="festImg" alt=""> -->
                         <div *ngIf="this.festDetails">
                             <div class="row text-center">
                                 <div class="col-md-12 contactus">
@@ -133,20 +77,16 @@
                                 </div>
                             </div>
                             <div class="col-md-10 col-md-offset-1 contact-details">
-                                <!-- <h4>Main Coordinator</h4> -->
                                 <p></p>
                                 <h5><i class="fas fa-address-book"></i>&nbsp;{{this.festDetails.manager_name}}</h5>
                                 <h5><i class="fas fa-phone"></i>&nbsp;{{this.festDetails.manager_phone}}</h5>
                                 <h5><i class="fas fa-paper-plane"></i>&nbsp;{{this.festDetails.manager_email}}</h5>
-                                <!-- <h4>Secondary Coordinator</h4> -->
                                 <p></p>
                                 <h5><i class="fas fa-address-book"></i>&nbsp;{{this.festDetails.sec_manager_name}}</h5>
                                 <h5><i class="fas fa-phone"></i>&nbsp;{{this.festDetails.sec_manager_phone}}</h5>
-                                <!-- <h4>Date:</h4> -->
                                 <p></p>
                                 <h5 *ngIf="this.festDetails.website"><a style="color:#fff;" href="{{this.festDetails.website}}" target="_blank">Check out our website</a></h5>
                                 <h5 *ngIf="this.festDetails.social_media_pages"><a style="color:#fff;" href="{{this.festDetails.social_media_pages}}" target="_blank">Visit our social media!</a></h5>
-
                                 <h5>{{this.festDetails.start_date}} till {{this.festDetails.end_date}}</h5>
                             </div>
                             <h3>sponsors</h3>
@@ -161,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
         </div>
     </div>
 </section>

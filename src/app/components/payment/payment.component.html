@@ -7,27 +7,6 @@
         <div class="row">
          <h2 style="text-align: center;">Order Summary</h2>
             <div class="col-md-offset-3 col-md-6 payment-page">
-                <!-- <table class="table table-bordered" id="table">
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Price</th>
-                            <th>Price</th>
-                            <th>Price</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{eventData.event_name}}</td>
-                            <td>{{eventData.ticket_price}}</td>
-                            <td>{{eventData.event_coordinator}}</td>
-                            <td>{{eventData.event_date}}</td>
-                            <td>{{eventData.event_time}}</td>
-
-                        </tr>
-                    </tbody>
-                </table> -->
                 <div class="row eventDetailsCard">
                     <div class="col-md-5 text-center">
                       <img width="150" src="../../../assets/images/event_icons/{{eventData.event_type}}.png" alt="">
@@ -59,7 +38,6 @@
 <section class="festspecific-page">
     <div class="container">
         <div class="row">
-
             <div class="col-md-offset-3 col-md-6 payment-page">
                 <label>Enter First Name : </label>
                 <input type="text" [(ngModel)]="firstName">
@@ -69,16 +47,12 @@
                 <input type="text" [(ngModel)]="mobile" (keypress)="onKeyDown($event)">
                 <label>Enter Email Id: </label>
                 <input disabled type="text" [(ngModel)]="email">
-
                 <button (click)="confirm()">Pay <i class="fas fa-rupee-sign"></i>{{eventData.ticket_price}}</button>
                 <button (click)="cancel()">Cancel</button>
             </div>
         </div>
     </div>
 </section>
-
-
-
 
 <form *ngIf="false" #form ngNoForm action="https://sandboxsecure.payu.in/_payment" method="post">
      <input type="hidden" name="key" value="{{ MERCHANT_KEY }}" />
@@ -162,13 +136,7 @@
           <td><input name="udf5" value="{{ posted.udf5 }}" /></td>
           <td>PG: </td>
           <td><input name="pg" value="{{ posted.PG }}" /></td>
-        </tr>
-        
-     <td colspan="4"><input type="submit" value="Submit" /></td>
-      
-    
-      </table>
-
-
-  
- </form>
+        </tr>        
+        <td colspan="4"><input type="submit" value="Submit" /></td>    
+      </table> 
+</form>
