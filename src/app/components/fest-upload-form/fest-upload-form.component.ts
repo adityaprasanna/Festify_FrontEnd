@@ -26,6 +26,7 @@ export class FestUploadFormComponent implements OnInit {
     this.festForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.maxLength(20)]],
       fest_image: ['', [Validators.required]],
+      image: new FormControl(null),
       fest_type: ['', [Validators.required]],
       description: ['', [Validators.required]],
       start_date: new FormControl(Date, [Validators.required]),
@@ -88,6 +89,7 @@ export class FestUploadFormComponent implements OnInit {
           const myCanvas = <HTMLCanvasElement>document.getElementById('display');
           const imageUrl = myCanvas.toDataURL('image/jpeg');
           this.festForm.value[item] = imageUrl;
+          this.festForm.value['image'] = imageUrl;
         }
       } else if (item == 'promo_video') {
         if (this.festForm.value[item] != null) {
