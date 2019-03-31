@@ -167,13 +167,13 @@ export class FestUploadFormComponent implements OnInit {
 
   imgBase64ToImage(canvasElem, targetElem) {
     const img = new Image();
+    const ctx = canvasElem.getContext('2d');
     img.onload = function () {
       canvasElem.width = img.width;
       canvasElem.height = img.height;
       ctx.drawImage(img, 0, 0);
       // console.log(myCanvas.toDataURL('image/jpeg'));
     };
-    const ctx = canvasElem.getContext('2d');
 
     img.src = URL.createObjectURL(targetElem.files[0]);
     const dataURL = canvasElem.toDataURL('image/jpeg');
