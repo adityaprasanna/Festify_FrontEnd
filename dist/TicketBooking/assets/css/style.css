@@ -2306,7 +2306,8 @@ button.eve {
 }
 
 .gallery_product .item {
-  border: 4px solid #eee;
+  border: 2px solid #eee;
+  border-radius: 13px;
   padding-bottom: 9px;
   display: table;
   width: 100%;
