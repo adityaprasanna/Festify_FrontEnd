@@ -76,8 +76,7 @@ export class FestUploadFormComponent implements OnInit {
   onFestSubmit() {
     this.submitted = true;
 
-    if (this.festForm.invalid
-      || this.festForm.controls.account_number == this.festForm.controls.confirm_account
+    if (this.festForm.controls.account_number == this.festForm.controls.confirm_account
       || this.festForm.controls.ifsc == this.festForm.controls.confirm_ifsc
       || new Date(this.festForm.controls.start_date.value) > new Date(this.festForm.controls.end_date.value)) {
       return;
