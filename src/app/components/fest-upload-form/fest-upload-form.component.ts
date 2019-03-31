@@ -25,7 +25,7 @@ export class FestUploadFormComponent implements OnInit {
   ngOnInit() {
     this.festForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.maxLength(20)]],
-      // image: ['', [Validators.required]],
+      fest_image: ['', [Validators.required]],
       fest_type: ['', [Validators.required]],
       description: ['', [Validators.required]],
       start_date: new FormControl(Date, [Validators.required]),
@@ -83,7 +83,7 @@ export class FestUploadFormComponent implements OnInit {
     }
 
     for (const item in this.festForm.value) {
-      if (false && item == 'image') {
+      if (false && item == 'fest_image') {
         if (this.festForm.value[item] != null) {
           const myCanvas = <HTMLCanvasElement>document.getElementById('display');
           const imageUrl = myCanvas.toDataURL('image/jpeg');
