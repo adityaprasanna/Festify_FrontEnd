@@ -83,7 +83,7 @@ export class FestUploadFormComponent implements OnInit {
     }
 
     for (const item in this.festForm.value) {
-      if (false && item == 'fest_image') {
+      if (item == 'fest_image') {
         if (this.festForm.value[item] != null) {
           const myCanvas = <HTMLCanvasElement>document.getElementById('display');
           const imageUrl = myCanvas.toDataURL('image/jpeg');
