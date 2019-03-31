@@ -64,7 +64,7 @@ export class FestUploadFormComponent implements OnInit {
       confirm_account: ['', [Validators.required]],
       confirm_ifsc: ['', [Validators.required]],
       checkbox: new FormControl(null, [Validators.required]),
-      recaptchaReactive: new FormControl(null, [Validators.required])
+      // recaptchaReactive: new FormControl(null, [Validators.required])
     });
   }
 
