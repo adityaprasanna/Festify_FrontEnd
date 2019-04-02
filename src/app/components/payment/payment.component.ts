@@ -97,6 +97,7 @@ export class PaymentComponent implements OnInit {
         // the code you use to handle the integration errors goes here
       }
     };
+    this.email = JSON.parse(sessionStorage.getItem('userData')).email;
   }
 
 
