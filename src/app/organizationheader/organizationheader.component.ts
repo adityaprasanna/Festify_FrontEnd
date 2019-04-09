@@ -9,7 +9,7 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class OrganizationheaderComponent implements OnInit {
   public organizationList: null;
-  private _opened: boolean = false;
+  public _opened: boolean = false;
   public _modeNum: number = 2;
 
   public _MODES: Array<string> = ['over', 'push', 'slide'];

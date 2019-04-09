@@ -15,7 +15,7 @@ declare var $: any;
 })
 
 export class HeaderComponent implements OnInit {
-  private _opened: boolean = false;
+  public _opened: boolean = false;
   public _modeNum: number = 2;
   loginForm: FormGroup;
   submitted = false;

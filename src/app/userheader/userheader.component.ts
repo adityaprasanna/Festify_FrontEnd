@@ -7,7 +7,7 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./userheader.component.sass']
 })
 export class UserheaderComponent implements OnInit {
-  private _opened: boolean = false;
+  public _opened: boolean = false;
   public _modeNum: number = 2;
   socialData: any;
 
@@ -17,6 +17,13 @@ export class UserheaderComponent implements OnInit {
 
   get authenticationServiceFn(){
   	return this.authenticationService;
+  }
+  alertBox(){
+    if(this._opened) {
+      document.body.style.overflow='hidden'
+    } else {
+      document.body.style.overflow='visible';
+    }
   }
   _toggleSidebar() {
     this._opened = !this._opened;
