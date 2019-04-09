@@ -1,1 +1,36 @@
-/* No CSS *//*# sourceMappingURL=organization-dashboard.component.css.map */
+.participantsListDetails {
+  background: #FFFFFF;
+}
+
+.participantsListDetails .participantsListCard {
+  border: 1px solid lightgrey;
+  background: #FFFFFF;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding: 10px 0 10px 0;
+  color: #000;
+  margin-top: 10px;
+}
+
+.participantsListDetails .participantsListCard .eventDateVenue {
+  margin-bottom: 0;
+}
+
+.participantsListDetails .participantsListCard .eventTime {
+  margin-bottom: 0;
+}
+
+.participantsListDetails .participantsListCard .eventUserDetails {
+  color: #1c1c1c;
+}
+
+.participantsListDetails .participantsListCard .eventFesterDetails > dt {
+  font-size: 16px;
+  padding-right: 0;
+}
+
+.participantsListDetails .participantsListCard .eventFesterDetails > dd {
+  font-size: 18px;
+  padding-right: 0;
+}
+/*# sourceMappingURL=organization-dashboard.component.css.map */

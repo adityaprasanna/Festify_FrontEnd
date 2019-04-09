@@ -1,0 +1,18 @@
+#all-event-details {
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+#all-event-details::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#all-event-details::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+#all-event-details::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/*# sourceMappingURL=festspecific.component.css.map */

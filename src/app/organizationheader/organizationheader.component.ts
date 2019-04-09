@@ -9,6 +9,10 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class OrganizationheaderComponent implements OnInit {
   public organizationList: null;
+  private _opened: boolean = false;
+  public _modeNum: number = 2;
+
+  public _MODES: Array<string> = ['over', 'push', 'slide'];
 
   constructor(private appService: AppService, private authenticationService: AuthenticationService) { }
 
@@ -18,6 +22,17 @@ export class OrganizationheaderComponent implements OnInit {
 
   ngOnInit() {
     this.gettingFestData();
+  }
+  alertBox(){
+    if(this._opened) {
+      document.body.style.overflow='hidden'
+    } else {
+      document.body.style.overflow='visible';
+    }
+  }
+  _toggleSidebar() {
+    this._opened = !this._opened;
+    this.alertBox();
   }
   gettingFestData = () => {
     this.appService.specificOrganizationList().subscribe(data => {

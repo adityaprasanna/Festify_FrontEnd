@@ -15,10 +15,13 @@ declare var $: any;
 })
 
 export class HeaderComponent implements OnInit {
-
+  private _opened: boolean = false;
+  public _modeNum: number = 2;
   loginForm: FormGroup;
   submitted = false;
 
+  public _MODES: Array<string> = ['over', 'push', 'slide'];
+  
   constructor(private formBuilder: FormBuilder, private socialAuthService: AuthService,
     private router: Router, private appService: AppService, private authenticationService: AuthenticationService) {
     this.loginForm = this.formBuilder.group({
@@ -27,10 +30,19 @@ export class HeaderComponent implements OnInit {
     });
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
     this.authenticationService.userExist = sessionStorage.getItem('userData');
+
   }
 
   ngOnInit() {
+  }
 
+
+  alertBox(){
+    if(this._opened) {
+      document.body.style.overflow='hidden'
+    } else {
+      document.body.style.overflow='visible';
+    }
   }
 
   // convenience getter for easy access to form fields
@@ -66,7 +78,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  
+  _toggleSidebar() {
+    this._opened = !this._opened;
+    this.alertBox();
+  }
+  // _toggleCloseOnClickOutside(): void {
+  //   this._closeOnClickOutside = !this._closeOnClickOutside;
+  // }
   organizationSignUp() {
     $('#myModal2').modal('hide');
     this.router.navigate(['signup']);
@@ -101,5 +119,6 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+
 
 }

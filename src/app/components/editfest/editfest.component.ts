@@ -247,8 +247,11 @@ export class EditfestComponent implements OnInit {
   }
 
   deleteEventPoint(index, id) {
-    this.eventPoints.removeAt(index);
-    this.authenticationService.deleteEvent(id).subscribe(() => alert('Event Deleted successfully'));
+    let result = confirm("Are you sure you to delete?");
+    if (result) {
+      this.eventPoints.removeAt(index);
+      this.authenticationService.deleteEvent(id).subscribe(() => alert('Event Deleted successfully'));
+    }
   }
 
   addSponsorEventPoint() {
@@ -260,8 +263,11 @@ export class EditfestComponent implements OnInit {
   }
 
   deleteSponsorEventPoint(index, id) {
-    this.sponsorEventPoints.removeAt(index);
-    this.authenticationService.deleteSponsor(id).subscribe(() => alert('Sponsor Deleted successfully'));
+    let result = confirm("Are you sure you to delete?");
+    if (result) {
+      this.sponsorEventPoints.removeAt(index);
+      this.authenticationService.deleteSponsor(id).subscribe(() => alert('Sponsor Deleted successfully'));
+    }
   }
 
   onKeyDown(e) {

@@ -9,15 +9,19 @@ body {
   color: #ccc;
   font-family: 'Roboto', sans-serif;
 }
+
 img {
   max-width: 100%;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
 }
 
-a, a:hover {
+a,
+a:hover {
   text-decoration: none;
 }
 
@@ -30,7 +34,8 @@ ul {
   margin: 0;
 }
 
-li, ol {
+li,
+ol {
   list-style: none;
 }
 
@@ -97,8 +102,9 @@ li, ol {
   /* Firefox 18- */
   color: #fff;
 }
+
 .log-in-pop {
-  /* background: url(../images/log-bg.jpg); */
+  background: url(../images/log-bg.jpg);
   padding: 0;
 }
 
@@ -275,35 +281,12 @@ li, ol {
   font-size: 13px;
   text-decoration: none;
 }
-.dropdown { /* change */
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-content { /* change */
-  display: none;
-  position: absolute;
-  background-color: #5f376b;
-  opacity: 0.8;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
-}
-.dropdown:hover .dropdown-content { /* change */
-  display: block;
-}
-.dd-item{
-  padding:8px 15px;
-  text-align: left;
-}
 .top-part {
   background: #5f376b;
   padding: 10px 0 5px;
 }
-nav ul{
-  padding: 0 15px;
-}
+
 .top-part ul.top-cont li {
   display: inline-block;
   color: #fff;
@@ -339,15 +322,73 @@ nav ul{
   margin-left: 14px;
 }
 
+.top-part .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.top-part .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #5f376b;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.top-part .dropdown .dropdown-content .dd-item {
+  padding: 8px 15px;
+  text-align: left;
+}
+
+.top-part .dropdown:hover .dropdown-content {
+  display: block;
+}
+
 .logo-sec {
   padding: 15px 0;
+  height: 100px;
 }
-.logo-part{
+
+.logo-sec .logo-part {
   padding: 10px 0;
   margin-left: 80px;
 }
+
+.logo-sec ng-sidebar-container {
+  z-index: 1;
+}
+
+.logo-sec ng-sidebar-container .ng-sidebar {
+  background: #5f376b;
+  width: 13rem;
+}
+
+.logo-sec ng-sidebar-container .ng-sidebar--right {
+  color: #5f376b !important;
+  background: #5f376b;
+  padding: 0 25px;
+  width: 170px;
+}
+
+.logo-sec ng-sidebar-container .profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #6b6464;
+  margin: 40px auto;
+}
+
+.logo-sec ng-sidebar-container .profile-pic i {
+  margin: 20px;
+  font-size: 44px;
+}
+
 .logo-sec #navigation ul {
   margin-top: 15px;
+  padding-right: 15px;
 }
 
 .logo-sec #navigation ul li {
@@ -364,6 +405,10 @@ nav ul{
 
 .logo-sec #navigation ul li.current-menu-item a {
   color: #f71769;
+}
+
+.logo-sec #navigation ul .toggle {
+  display: none;
 }
 
 .logo-sec ul.serc {
@@ -390,54 +435,6 @@ nav ul{
   width: 19px;
   border-radius: 50%;
   text-align: center;
-}
-
-footer.footer-bottom {
-  padding: 50px 0;
-  background: #f3f3f3;
-}
-
-footer.footer-bottom h3 {
-  color: #f71769;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 21px;
-}
-
-footer.footer-bottom p {
-  color: #1b1b1b;
-  font-size: 16px;
-  text-align: justify;
-}
-
-footer.footer-bottom ul.social li {
-  width: 33.33%;
-  position: relative;
-  float: left;
-}
-
-footer.footer-bottom ul.social li a {
-  display: table;
-  color: #1b1b1b;
-  font-size: 20px;
-  border-radius: 50%;
-  border: 1px solid #1b1b1b;
-  width: 40px;
-  height: 37px;
-  text-align: center;
-  line-height: 37px;
-  margin-bottom: 15px;
-}
-
-footer.footer-bottom ul.ft-menu li a {
-  color: #1b1b1b;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-weight: 500;
-  display: table;
-  margin-bottom: 9px;
 }
 
 .copy p {
@@ -513,20 +510,7 @@ footer.footer-bottom ul.ft-menu li a {
   font-size: 16px;
   letter-spacing: 0.5px;
 }
-section.body-cont10 .container{  /*change*/
-  background: url('../images/organizer.jpg');
-  padding: 80px 0;
-  background-size: cover;
-  width: 100%;
-}
-section.body-cont10 .container .btn{
-  background: transparent;
-  border: 2px solid #fff;
-  border-radius: 5px;
-}
-section.body-cont10 .container h2{
-  color: rgba(174, 95, 179, 1);
-}
+
 section.body-cont1 {
   background: #efefef;
   padding: 0 0 60px;
@@ -624,6 +608,23 @@ section.body-cont1 a.view {
   border-radius: 5px;
 }
 
+section.body-cont10 .container {
+  background: url("../images/organizer.jpg");
+  padding: 80px 0;
+  background-size: cover;
+  width: 100%;
+}
+
+section.body-cont10 .container .btn {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+
+section.body-cont10 .container h2 {
+  color: #ae5fb3;
+}
+
 section.body-cont2 {
   padding: 60px 0;
 }
@@ -678,7 +679,8 @@ section.body-cont2 h4 span {
   float: right;
 }
 
-section.body-cont2 .slick-prev:before, section.body-cont2 .slick-next:before {
+section.body-cont2 .slick-prev:before,
+section.body-cont2 .slick-next:before {
   font-size: 34px;
   color: #f71769;
 }
@@ -1125,7 +1127,7 @@ section.our-team .team .item {
 }
 
 section.our-team .team .item:hover .over-lay {
-  opacity: 0.7;
+  opacity: 1;
 }
 
 section.our-team .team .item img {
@@ -1153,7 +1155,8 @@ section.our-team .team .item .over-lay {
   transition: all 0.5s ease-in-out;
 }
 
-section.our-team .team .item .over-lay h3, section.our-team .team .item .over-lay h4 {
+section.our-team .team .item .over-lay h3,
+section.our-team .team .item .over-lay h4 {
   color: #fff;
   text-transform: uppercase;
   font-size: 17px;
@@ -1283,7 +1286,8 @@ section.contact-sec2 h2 span {
   font-weight: bold;
 }
 
-section.contact-sec2 input:not([type="submit"]), section.contact-sec2 textarea {
+section.contact-sec2 input:not([type="submit"]),
+section.contact-sec2 textarea {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -1360,22 +1364,7 @@ section.sup-sec a {
   font-weight: 600;
   padding: 9px 27px;
 }
-/* .fileUpload {
-  position: relative;
-  overflow: hidden;
-  margin: 10px;
-}
-.fileUpload input.upload {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0;
-  filter: alpha(opacity=0);
-} */
+
 .registraion-page {
   padding: 60px 0;
 }
@@ -1409,7 +1398,9 @@ section.sup-sec a {
   margin-top: 15px;
 }
 
-.registraion-page input:not([type="submit"]), .registraion-page textarea, .registraion-page select {
+.registraion-page input:not([type="submit"]),
+.registraion-page textarea,
+.registraion-page select {
   width: 100%;
   background: #eee;
   border: none;
@@ -1439,20 +1430,6 @@ section.sup-sec a {
   float: left;
   margin-top: 6px;
   margin-right: 15px;
-}
-
-.registraion-page button.eve {
-  display: inline-block;
-  margin: 25px auto 0;
-  background: #f71769;
-  color: #fff;
-  border-radius: 15px;
-  border: none;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 20px;
-  margin-left: 15px;
 }
 
 .registraion-page table {
@@ -1526,7 +1503,6 @@ section.sup-sec a {
 
 section.fest-page {
   padding: 60px 0;
-  min-height: 70vh;
 }
 
 section.fest-page button {
@@ -1581,11 +1557,10 @@ section.orgdashboard .profile-sec {
 }
 
 section.orgdashboard .profile-sec img {
-  border-radius: 100%;
+  border-radius: 50%;
   margin: 25px auto;
   display: table;
-  width: 150px;
-  height:150px;
+  width: 30%;
 }
 
 section.orgdashboard .profile-sec h3 {
@@ -1620,13 +1595,16 @@ section.orgdashboard .profile-decp {
   width: 100%;
   padding-bottom: 15px;
 }
-section.orgdashboard .profile-decp ul{
+
+section.orgdashboard .profile-decp ul {
   font-size: 0;
 }
-section.orgdashboard .profile-decp ul li{
+
+section.orgdashboard .profile-decp ul li {
   display: inline-block;
 }
-section.orgdashboard .profile-decp ul li a{
+
+section.orgdashboard .profile-decp ul li a {
   display: table;
   background: #333;
   color: #fff;
@@ -1634,9 +1612,11 @@ section.orgdashboard .profile-decp ul li a{
   font-size: 16px;
   padding: 12px 25px;
 }
-section.orgdashboard .profile-decp ul li.active a{
+
+section.orgdashboard .profile-decp ul li.active a {
   background: #f71769;
 }
+
 section.orgdashboard .profile-decp h3 {
   margin: 0;
   background: #f71769;
@@ -1793,18 +1773,16 @@ section.orgdashboard .profile-decp .edit {
 }
 
 section.festspecific-page {
-  padding: 30px 0;
-  min-height: 100vh;
+  padding: 60px 0;
 }
 
 section.festspecific-page .left-sec {
   -webkit-box-shadow: 0 0 7px #ddd;
-          box-shadow: 5px 10px 8px #888888;
-
+          box-shadow: 0 0 7px #ddd;
 }
 
 section.festspecific-page .left-sec ul {
-  margin-top: 30px;
+  margin: 15px;
 }
 
 section.festspecific-page .left-sec ul li {
@@ -1812,56 +1790,49 @@ section.festspecific-page .left-sec ul li {
   text-transform: capitalize;
   margin-bottom: 12px;
 }
-section.festspecific-page .left-sec .contactus{
-  padding:0;
 
-}
 section.festspecific-page .left-sec h3 {
-  /* background: #5f376b; */
-  background: linear-gradient(to bottom right,#b92b27,#1565C0);
-  /* background: #fff; */
+  background: #f71769;
   text-align: center;
   color: #fff;
-  text-transform: capitalize;
+  text-transform: uppercase;
   padding: 9px;
   font-size: 18px;
   letter-spacing: 1px;
   font-weight: 600;
-  margin:0;
 }
-section.festspecific-page .left-sec h4,h5{
-  color:#fff;
-  font-size: 1.2em;
-  line-height: 1.5em;
-  margin: 3px 0;
-}
-section.festspecific-page .left-sec .spon-img {
-  padding-bottom: 40px;
-}
+
 section.festspecific-page .left-sec .spon-img img {
   border-radius: 50%;
   width: 55%;
   display: table;
   margin: 0 auto 15px;
 }
-section.festspecific-page .left-sec .spon-img h5{
-  color:#000;
-}
+
 section.festspecific-page .fest-decp {
   -webkit-box-shadow: 0 0 7px #ddd;
           box-shadow: 0 0 7px #ddd;
   padding: 15px;
-  font-family: 'Roboto', sans-serif;
 }
 
-section.festspecific-page .fest-decp p{
-  font-size: 1.5em;
+section.festspecific-page .fest-decp .fest-type {
+  border: #fff solid 2px;
+  border-radius: 5px;
+  padding: 0 10px;
+  background: #5f376b;
+  margin-right: 20px;
+  margin-bottom: 8px;
 }
+
+section.festspecific-page .fest-decp .fest-type h4 {
+  color: #fff;
+}
+
 section.festspecific-page .fest-decp h2 {
-  margin: 5px 0 20px;
+  margin: 0 0 20px;
   text-align: center;
   color: #111;
-  text-transform: capitalize;
+  text-transform: uppercase;
   font-weight: bold;
 }
 
@@ -1871,37 +1842,33 @@ section.festspecific-page .fest-decp h3 {
   margin: 0 0 20px;
   margin-bottom: 0;
   padding-bottom: 4px;
-  text-transform: capitalize;
-  text-decoration: underline;
-  text-decoration-color: red;
   letter-spacing: 1px;
   font-weight: 400;
-  font-size: 18px;
 }
 
-section.festspecific-page .fest-decp .fest-type{
-  border: #fff solid 2px;
-  border-radius: 5px;
-  padding: 0 10px;
-  background: #5f376b;
-  margin-right: 20px;
-  margin-bottom: 8px;
+section.festspecific-page .fest-decp .sec1 {
+  background: #f3f3f3;
+  padding: 15px;
+  margin-bottom: 20px;
 }
-section.festspecific-page .fest-decp .fest-type h4{
-  color: #fff;
+
+section.festspecific-page .fest-decp .sec1 h4 {
+  margin: 0 0 15px;
+  text-transform: uppercase;
+  color: #111;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
-section.festspecific-page .fest-decp .event-type{
-  background: #c9573a;
-  padding:4px;
-}
-section.festspecific-page .sec4 .heading h3{
-  font-size: 1.5em;
-  text-transform: capitalize;
-  text-decoration: none;
-  margin-top: 10px;
-}
-section.festspecific-page .sec4 .heading .event-type h5{
-  color: #fff;
+
+section.festspecific-page .fest-decp .sec1 p {
+  text-align: justify;
+  color: #111;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 27px;
+  letter-spacing: 0.5px;
+  font-style: italic;
 }
 
 section.festspecific-page .fest-decp .sec2 {
@@ -1919,6 +1886,7 @@ section.festspecific-page .fest-decp .sec2 h4 {
   font-weight: 600;
   text-align: center;
 }
+
 section.festspecific-page .fest-decp .sec2 p {
   color: #000;
   padding: 0 4%;
@@ -1981,7 +1949,8 @@ section.festspecific-page .fest-decp .sec4 .pricingTable {
   background: #e6e6e6;
   margin-bottom: 25px;
   border-radius: 10px;
-  box-shadow: 5px 10px 8px #888888;
+  -webkit-box-shadow: 5px 10px 8px #888888;
+          box-shadow: 5px 10px 8px #888888;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable:hover {
@@ -1994,23 +1963,27 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingTable-header 
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading {
   display: block;
-  /* padding: 20px 0; */
   background: #fff;
 }
 
-section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading > h3 {
-  margin: 0 0 12px 0;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #111;
+section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading .event-type {
+  background: #c9573a;
+  padding: 4px;
 }
 
-section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading > h4 {
+section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading h3 {
+  font-size: 1.5em;
+  text-transform: capitalize;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading h4 {
   margin: 0;
-  color: #111;
+  color: #fff;
 }
 
-section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading > i {
+section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > .heading i {
   font-size: 70px;
   opacity: 0.5;
 }
@@ -2032,14 +2005,23 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-header > 
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent {
   text-transform: capitalize;
   background: #fff;
-  padding:20px;
+  padding: 20px;
 }
-section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent .event_desc p{
+
+section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent p {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #000;
+}
+
+section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent .event_desc p {
   overflow-y: scroll;
   height: 120px;
   padding: 0 20px;
   white-space: pre-wrap;
+  color: #000;
 }
+
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
   margin: 0;
   text-transform: uppercase;
@@ -2047,12 +2029,7 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent h5 {
   padding: 10px 0;
   font-weight: 800;
 }
-section.festspecific-page .fest-decp .sec4 .pricingTable .pricingContent p{
-  font-size: 0.9em;
-  font-weight: 500;
-  color: #000;
-  padding: 0 5px;
-}
+
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul {
   list-style: none;
   padding: 0;
@@ -2060,14 +2037,14 @@ section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul 
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul > li {
-  /* border-top: 1px solid #66535a; */
+  border-top: 1px solid #f71769;
   padding: 10px 0;
   position: relative;
   z-index: 1;
   overflow: hidden;
   color: #111;
-  /* text-transform: uppercase; */
-  /* font-style: italic; */
+  text-transform: uppercase;
+  font-style: italic;
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable > .pricingContent > ul > li:hover {
@@ -2101,7 +2078,6 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up >
   font-size: 16px;
   font-weight: bold;
   border-radius: 0px;
-  /* border: 1px solid #f71769; */
   color: #5f376b;
   background: #e6e6e6;
   position: relative;
@@ -2139,19 +2115,12 @@ section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up >
 }
 
 section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up > .btn-block:hover:before, section.festspecific-page .fest-decp .sec4 .pricingTable .pricingTable-sign-up > .btn-block:hover:after {
-  background: #5f376b;
+  background: #f71769;
   height: 50%;
 }
 
-@media screen and (max-width: 990px) {
-  .pricingTable {
-    margin-bottom: 20px;
-  }
-}
-.card{ /* change */
-  min-height: 230px;
-}
-#contact .card:hover i, #contact .card:hover h4 {
+#contact .card:hover i,
+#contact .card:hover h4 {
   color: #5f376b;
 }
 
@@ -2181,7 +2150,6 @@ section#contact .card {
   -webkit-box-shadow: 0 0 15px #e9e9e9;
           box-shadow: 0 0 15px #e9e9e9;
   padding: 24px;
-  margin-bottom: 24px;
 }
 
 section#contact .card i.fa {
@@ -2202,19 +2170,15 @@ section#contact .card p {
 
 .payment-page {
   background: #fff;
-  /* -webkit-box-shadow: 0 0 8px #ddd;
-          box-shadow: 0 0 8px #ddd; */
+  -webkit-box-shadow: 0 0 8px #ddd;
+          box-shadow: 0 0 8px #ddd;
   text-align: center;
-}
-.payment-page h3,dt,dd {
-  color: #000;
 }
 
 .payment-page input {
-  /* display: table; */
+  display: table;
   width: 100%;
   border: 1px solid #dbdbdb;
-  border-radius: 5px;
   padding: 11px;
   margin: 15px 0;
   color: #111;
@@ -2228,7 +2192,7 @@ section#contact .card p {
 
 .payment-page button {
   display: inline-block;
-  background: #5f376b;
+  background: #f71769;
   border: none;
   color: #fff;
   text-transform: uppercase;
@@ -2241,21 +2205,32 @@ button.eve {
   margin: 0;
   padding: 11px 16px;
   width: 100%;
+  color: #fff;
+  background-color: #5f376b;
 }
 
 .slick-dots {
   display: none !important;
 }
-.like-sec{
-  margin-top:30px;
+
+.like-sec {
+  margin-top: 30px;
 }
-.like-sec2{
-  margin-top:30px;
+
+.like-sec i.far.fa-thumbs-up {
+  font-size: 20px;
+  margin-right: 14px;
+  color: #4285f4;
 }
+
 .like-sec span {
   text-transform: capitalize;
   font-size: 20px;
   color: #4285f4;
+}
+
+.like-sec2 {
+  margin-top: 30px;
 }
 
 .like-sec2 a {
@@ -2268,9 +2243,10 @@ button.eve {
 }
 
 .slick-slide {
-  border: 3px solid #eee;
+  border: 2px solid #eee;
   border-radius: 10px;
   margin: 0 8px;
+  padding-bottom: 9px;
 }
 
 .slick-slide img {
@@ -2307,7 +2283,7 @@ button.eve {
 
 .gallery_product .item {
   border: 2px solid #eee;
-  border-radius: 13px;
+  border-radius: 10px;
   padding-bottom: 9px;
   display: table;
   width: 100%;
@@ -2334,7 +2310,7 @@ button.eve {
   font-weight: 500;
   padding: 10px 27px;
   text-transform: uppercase;
-  background:none;
+  background: none;
   border: 2px solid #fff;
   text-shadow: 2px 2px 0 #111;
 }

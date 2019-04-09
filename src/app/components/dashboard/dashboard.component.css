@@ -1,1 +1,36 @@
-/* No CSS *//*# sourceMappingURL=dashboard.component.css.map */
+.eventDetails {
+  background: #FFFFFF;
+}
+
+.eventDetails .eventDetailsCard {
+  border: 1px solid lightgrey;
+  background: #FFFFFF;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding: 10px 0 10px 0;
+  color: #000;
+  margin-top: 10px;
+}
+
+.eventDetails .eventDetailsCard .eventDateVenue {
+  margin-bottom: 0;
+}
+
+.eventDetails .eventDetailsCard .eventTime {
+  margin-bottom: 0;
+}
+
+.eventDetails .eventDetailsCard .eventUserDetails {
+  color: #1c1c1c;
+}
+
+.eventDetails .eventDetailsCard .eventFesterDetails > dt {
+  font-size: 16px;
+  padding-right: 0;
+}
+
+.eventDetails .eventDetailsCard .eventFesterDetails > dd {
+  font-size: 18px;
+  padding-right: 0;
+}
+/*# sourceMappingURL=dashboard.component.css.map */

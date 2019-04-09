@@ -150,7 +150,10 @@ export class FestUploadFormComponent implements OnInit {
   }
 
   deleteEventPoint(index) {
-    this.eventPoints.removeAt(index);
+    let result = confirm("Are you sure you to delete?");
+    if (result) {
+      this.eventPoints.removeAt(index);
+    }
   }
 
   addSponsorEventPoint() {
@@ -162,7 +165,10 @@ export class FestUploadFormComponent implements OnInit {
   }
 
   deleteSponsorEventPoint(index) {
-    this.sponsorEventPoints.removeAt(index);
+    let result = confirm("Are you sure you to delete?");
+    if (result) {
+      this.sponsorEventPoints.removeAt(index);
+    }
   }
 
   imgBase64ToImage(canvasElem, targetElem) {

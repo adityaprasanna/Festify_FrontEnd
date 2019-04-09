@@ -29,16 +29,8 @@ export class OrganizationDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.gettingFestData();
-    // this.gettingPaymentData();
   }
 
-  // gettingPaymentData() {
-
-  //   this.appService.paymentList(JSON.parse(festId).fest_id).subscribe(data => {
-  //     this.paymentList = data;
-  //     localStorage.setItem('payment', JSON.stringify(this.paymentList));
-  //   });
-  // }
   gettingFestData() {
     this.appService.specificOrganizationList().subscribe(data => {
       this.organizationList = data['organization'];
@@ -79,27 +71,18 @@ export class OrganizationDashboardComponent implements OnInit {
       alert('Please Select One Row');
     }
   }
-  // delete(){
-  //   if(this.selectedRow){
-  //     this.organizationFestList.splice(this.selectedRow, 1);
-  //   }
-  //   else{
-  //     alert('Please Select One Row');
-
-  //   }
-  // }
   delete() {
-    if (this.selectedRow != undefined) {
-      let festId = localStorage.getItem('festspecific');
-      this.authenticationService.deleteFest(JSON.parse(festId).id).subscribe(x => {
-        // if (x) {
-          alert("deleted Successfully");
-          this.gettingFestData();
-        // }
-      })
-    } else {
-      alert('Please Select One Row');
+    var result = confirm("Are you sure you to delete?");
+    if (result) {
+      if (this.selectedRow != undefined) {
+        let festId = localStorage.getItem('festspecific');
+        this.authenticationService.deleteFest(JSON.parse(festId).id).subscribe(x => {
+            alert("deleted Successfully");
+            this.gettingFestData();
+        })
+      } else {
+        alert('Please Select One Row');
+      }
     }
-
   }
 }

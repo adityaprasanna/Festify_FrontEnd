@@ -1,3 +1,77 @@
+@media (max-width: 1000px) { /*header only*/
+    .logo-sec{
+        background-image:linear-gradient(to right,#000,#5f376b);
+    }
+    div#navigation {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    .logo-sec #navigation ul li a {
+        display: none;
+    }   
+    .logo-sec #navigation ul .toggle{
+        display: block;
+        font-size: 20px;
+        padding:2px;
+        margin-right:15px;
+    }
+    .navbar-collapse{
+        padding-top:10px;
+    }
+    .logo-sec .logo-part{
+        margin-left: 10%;
+    }
+    .ng-sidebar li{
+        padding:0;
+    }
+    .navbar-nav>li>a,.profile-pic a{
+        color: #fff;
+    }
+    .navbar-nav hr {
+        margin: 15px 0;
+    }
+    .logo-sec #navigation ul {
+        margin-top: 0;
+    }
+    .logo-sec {
+        padding: 0;
+        height: 60px;
+    }
+    .profile-pic{
+        margin-bottom: 40px;
+    }
+    .logo-part{
+        padding: 0;
+        margin-left: 10%;
+    }
+    .logo-part a {
+        display: table;
+        position: relative;
+        z-index: 999999999;
+        margin-top:6px;
+    }
+    .top-part{
+        display:none;
+    }
+    .slider .item {
+        overflow: hidden;
+    }
+    .slider .item img{
+        width: 100%;
+        height: 160px;
+        object-fit: cover; 
+    }
+    
+}
+@media (min-width:520px) and (max-width:767px) {
+    .logo-part{
+        width:20%;
+    }
+}
+
+
 @media (max-width: 568px) {
     header .menu-part {
         background: none;
@@ -7,19 +81,14 @@
         right: 0;
         width: 100%;
     }
-    div#navigation {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
+    .body-cont3{
+        z-index: -8;
     }
-    .slider .item {
-        overflow: hidden;
+    .body-cont3 h2 p{
+        z-index: -5;
     }
-    .slider .item img{
-        transform: scale(1.7);
-        width:100%;
-
+    .slick-list{
+        z-index: -2;
     }
     .card{
         min-height: 180px;
@@ -62,60 +131,15 @@
         color: #fff;
         font-size:1.5em;
     }
-    .slim-container .slim-bar {
-        background: none !important;
-    }
-    .slim-container a.slimNav_sk78-reveal span {
-        background: #5f376b !important;
-    }
-    a.slimNav_sk78-reveal.slimclose {
-        color: #5f376b !important;
-    }
-    .slim-container .slim-nav {
-        background: #5f376b !important;
-        overflow: hidden;
-        margin-top: 26px !important;
-    }
-    .slim-container .slim-nav ul li a.slim-expand {
-        height: 27px !important;
-        font-size: 29px !important;
-        font-weight: 500 !important;
-        line-height: 29px;
-        z-index: 99999999 !important;
-    }
-    .slim-container a.slimNav_sk78-reveal {
-        padding: 0px 13px 11px 13px !important;
-    }
     .heart{
         margin-top: 26px;
     }
-    .logo-part{
-        padding: 0;
-        margin-left: 15px;
+    .dropdown:hover .dropdown-content{
+        display: none;
     }
-    .logo-part a {
-        display: table;
-        position: relative;
-        z-index: 999999999;
-    }
-    
     .search-hold {
         padding: 0 !important;
         z-index: 99999999999999999999999;
-    }
-    
-    .logo-sec {
-        padding: 6px 0;
-    }
-    .logo-sec #navigation ul li a {
-        margin-left: 0;
-        color: #fff;
-    }
-    .logo-sec #navigation ul li.current-menu-item a {
-        color: #fff;
-    }
-    .logo-sec #navigation ul {
-        margin-top: 0;
     }
     section.fest-page {
         padding: 15px 0;
@@ -146,6 +170,7 @@
     section.body-cont2 ul li a {
         font-size: 14px;
         padding: 5px 10px;
+        z-index: -100;
     }
     section.body-cont3 {
         padding: 35px 0;
@@ -155,6 +180,7 @@
         font-size: 18px;
     }
     section.body-cont3 p {
+        padding: 20px;
         font-size: 12px;
         line-height: 21px;
         margin-bottom: 28px;
@@ -255,10 +281,10 @@
     }
     .registraion-page button {
         margin-left: 0;
-    margin: 0 6px;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 13px 32px;
+        margin: 0 6px;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 13px 32px;
     }
     section.orgdashboard .profile-decp table th {
         font-size: 11px;
@@ -277,10 +303,14 @@
     }
     section.festspecific-page .fest-decp h2 {
         font-size: 18px;
+    }    
+}
+
+
+@media screen and (max-width: 990px) {
+    .pricingTable {
+      margin-bottom: 20px;
     }
-    
-    
-    }
-    
-    
+  }    
+
   

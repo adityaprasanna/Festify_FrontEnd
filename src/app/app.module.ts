@@ -44,7 +44,7 @@ import {FailureComponent} from './components/failure/failure.component';
 import {OrgauthService} from './orgauth.service';
 import {PrivatePolicyComponent} from './components/private-policy/private-policy.component';
 import {AftersuccessComponent} from './components/aftersuccess/aftersuccess.component';
-
+import { SidebarModule } from 'ng-sidebar';
 
 export function getAuthServiceConfigs() {
   return new AuthServiceConfig(
@@ -98,7 +98,8 @@ export function getAuthServiceConfigs() {
     SlickCarouselModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
-    FileUploadModule
+    FileUploadModule,
+    SidebarModule.forRoot()
   ],
 
   providers: [{
