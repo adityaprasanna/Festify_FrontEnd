@@ -358,7 +358,7 @@ ol {
 }
 
 .logo-sec ng-sidebar-container {
-  z-index: 1;
+  z-index: 99999999999999;
 }
 
 .logo-sec ng-sidebar-container .ng-sidebar {
@@ -2284,10 +2284,10 @@ button.eve {
 .gallery_product .item {
   border: 2px solid #eee;
   border-radius: 10px;
-  /* padding-bottom: 9px;
+  padding-bottom: 9px;
   display: table;
   width: 100%;
-  margin-bottom: 30px; */
+  margin-bottom: 30px;
 }
 
 .gallery_product .item:hover .overlay {

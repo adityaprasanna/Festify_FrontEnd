@@ -366,7 +366,7 @@ ol {
   }
 
   ng-sidebar-container {
-    z-index: 1;
+    z-index: 99999999999999;
 
     .ng-sidebar {
       background: #5f376b;
