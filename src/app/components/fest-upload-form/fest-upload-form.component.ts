@@ -25,7 +25,8 @@ export class FestUploadFormComponent implements OnInit {
   ngOnInit() {
     this.festForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.maxLength(20)]],
-      image: ['', [Validators.required]],
+      fest_image: ['', [Validators.required]],
+      image: new FormControl(null),
       fest_type: ['', [Validators.required]],
       description: ['', [Validators.required]],
       start_date: new FormControl(Date, [Validators.required]),
@@ -64,7 +65,7 @@ export class FestUploadFormComponent implements OnInit {
       confirm_account: ['', [Validators.required]],
       confirm_ifsc: ['', [Validators.required]],
       checkbox: new FormControl(null, [Validators.required]),
-      recaptchaReactive: new FormControl(null, [Validators.required])
+      // recaptchaReactive: new FormControl(null, [Validators.required])
     });
   }
 
@@ -75,19 +76,19 @@ export class FestUploadFormComponent implements OnInit {
   onFestSubmit() {
     this.submitted = true;
 
-    if (this.festForm.invalid
-      || this.festForm.controls.account_number == this.festForm.controls.confirm_account
+    if (this.festForm.controls.account_number == this.festForm.controls.confirm_account
       || this.festForm.controls.ifsc == this.festForm.controls.confirm_ifsc
       || new Date(this.festForm.controls.start_date.value) > new Date(this.festForm.controls.end_date.value)) {
       return;
     }
 
     for (const item in this.festForm.value) {
-      if (item == 'image') {
+      if (item == 'fest_image') {
         if (this.festForm.value[item] != null) {
           const myCanvas = <HTMLCanvasElement>document.getElementById('display');
           const imageUrl = myCanvas.toDataURL('image/jpeg');
           this.festForm.value[item] = imageUrl;
+          this.festForm.value['image'] = imageUrl;
         }
       } else if (item == 'promo_video') {
         if (this.festForm.value[item] != null) {
@@ -173,13 +174,13 @@ export class FestUploadFormComponent implements OnInit {
 
   imgBase64ToImage(canvasElem, targetElem) {
     const img = new Image();
+    const ctx = canvasElem.getContext('2d');
     img.onload = function () {
       canvasElem.width = img.width;
       canvasElem.height = img.height;
       ctx.drawImage(img, 0, 0);
       // console.log(myCanvas.toDataURL('image/jpeg'));
     };
-    const ctx = canvasElem.getContext('2d');
 
     img.src = URL.createObjectURL(targetElem.files[0]);
     const dataURL = canvasElem.toDataURL('image/jpeg');

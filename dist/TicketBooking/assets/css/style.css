@@ -2284,10 +2284,10 @@ button.eve {
 .gallery_product .item {
   border: 2px solid #eee;
   border-radius: 10px;
-  padding-bottom: 9px;
+  /* padding-bottom: 9px;
   display: table;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 30px; */
 }
 
 .gallery_product .item:hover .overlay {
