@@ -1199,6 +1199,7 @@ section.our-team .why p {
 
 section.contact-sec1 {
   padding: 60px 0;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 section.contact-sec1 h2 {
