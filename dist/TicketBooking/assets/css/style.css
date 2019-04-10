@@ -359,6 +359,7 @@ ol {
 
 .logo-sec ng-sidebar-container {
   z-index: 99999999999999;
+  -webkit-appearance: none;
 }
 
 .logo-sec ng-sidebar-container .ng-sidebar {
