@@ -366,8 +366,7 @@ ol {
   }
 
   ng-sidebar-container {
-    z-index: 99999999999999;
-    -webkit-appearance: none;
+    z-index: 1;
 
     .ng-sidebar {
       background: #5f376b;
@@ -462,7 +461,6 @@ ol {
 
 .banner-part {
   position: relative;
-
 
   .banner_text {
     position: absolute;
@@ -1228,6 +1226,7 @@ section.our-team {
 
 section.contact-sec1 {
   padding: 60px 0;
+
   h2 {
     margin: 0 0 25px;
     color: #000;
@@ -1821,9 +1820,9 @@ section.festspecific-page {
     }
 
     h3 {
-      background: #f71769;
+      background: #fff;
       text-align: center;
-      color: #fff;
+      color: #000;
       text-transform: uppercase;
       padding: 9px;
       font-size: 18px;
