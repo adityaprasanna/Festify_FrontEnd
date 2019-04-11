@@ -386,6 +386,7 @@ ol {
       border-radius: 50%;
       background-color: rgb(107, 100, 100);
       margin: 40px auto;
+      margin-bottom: 0;
 
       i {
         margin: 20px;
@@ -1819,9 +1820,9 @@ section.festspecific-page {
     }
 
     h3 {
-      background: #f71769;
+      background: #fff;
       text-align: center;
-      color: #fff;
+      color: #000;
       text-transform: uppercase;
       padding: 9px;
       font-size: 18px;

@@ -379,6 +379,7 @@ ol {
   border-radius: 50%;
   background-color: #6b6464;
   margin: 40px auto;
+  margin-bottom: 0;
 }
 
 .logo-sec ng-sidebar-container .profile-pic i {
@@ -1792,9 +1793,9 @@ section.festspecific-page .left-sec ul li {
 }
 
 section.festspecific-page .left-sec h3 {
-  background: #f71769;
+  background: #fff;
   text-align: center;
-  color: #fff;
+  color: #000;
   text-transform: uppercase;
   padding: 9px;
   font-size: 18px;

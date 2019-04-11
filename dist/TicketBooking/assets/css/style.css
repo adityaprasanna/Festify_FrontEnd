@@ -380,6 +380,7 @@ ol {
   border-radius: 50%;
   background-color: #6b6464;
   margin: 40px auto;
+  margin-bottom: 0;
 }
 
 .logo-sec ng-sidebar-container .profile-pic i {
@@ -447,7 +448,6 @@ ol {
 
 .banner-part {
   position: relative;
-  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .banner-part .banner_text {

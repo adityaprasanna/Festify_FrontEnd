@@ -39,10 +39,13 @@
         style="height:100%;position: fixed; right:0;">
         <ul class="navbar-nav navbar-right" id="nav">
           <li>
-            <div class="profile-pic text-center"><i class="fas fa-user"></i>
-              <a (click)="_toggleSidebar()" href="javascript:void(0);"
-                *ngIf=" this.authenticationServiceFn.userExist == undefined &&  this.authenticationServiceFn.orgExist == undefined"
-                data-toggle="modal" data-target="#myModal2">Sign In</a>
+            <div class="profile-pic">
+              <img style="border-radius: 50%;" id="googleImg" alt="">
+            </div>
+          </li>
+          <li>
+            <div class="text-center">
+              <p style="color:#fff;"><b>Hi, {{this.socialData.firstName}}</b></p>
             </div>
           </li>
           <li class="nav-item">
@@ -67,12 +70,8 @@
           <li class="nav-item"><a (click)="_toggleSidebar()" href="#map-sec"><i
                 class="fas fa-map-marker"></i>&nbsp;Location</a></li>
           <hr>
-          <li class="nav-item"><a class="nav-link" routerLink="/orgdashboard/" routerLinkActive="current-clikable-item"
+          <li class="nav-item"><a class="nav-link" routerLink="/dashboard/" routerLinkActive="current-clikable-item"
               [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
-          </li>
-          <hr>
-          <li class="nav-item"><a class="nav-link" routerLink="/fest-upload-form/"
-              routerLinkActive="current-clikable-item" [routerLinkActiveOptions]="{exact:true}">Create Fest</a>
           </li>
           <hr>
           <li class="nav-item"><a href="javascript:void(0);" class="nav-link" routerLinkActive="current-clikable-item"

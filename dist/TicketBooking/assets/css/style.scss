@@ -387,6 +387,7 @@ ol {
       border-radius: 50%;
       background-color: rgb(107, 100, 100);
       margin: 40px auto;
+      margin-bottom: 0;
 
       i {
         margin: 20px;
@@ -461,7 +462,6 @@ ol {
 
 .banner-part {
   position: relative;
-  -webkit-transform: translate3d(0,0,0);
 
 
   .banner_text {
