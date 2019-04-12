@@ -84,15 +84,6 @@
         right: 0;
         width: 100%;
     }
-    .body-cont3{
-        z-index: -8;
-    }
-    .body-cont3 h2 p{
-        z-index: -5;
-    }
-    .slick-list{
-        z-index: -2;
-    }
     .card{
         min-height: 180px;
     }
@@ -173,7 +164,6 @@
     section.body-cont2 ul li a {
         font-size: 14px;
         padding: 5px 10px;
-        z-index: -100;
     }
     section.body-cont3 {
         padding: 35px 0;
