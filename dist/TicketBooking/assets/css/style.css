@@ -358,11 +358,19 @@ ol {
 
 .logo-sec ng-sidebar-container {
   z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .logo-sec ng-sidebar-container .ng-sidebar {
   background: #5f376b;
   width: 13rem;
+  height: 100%;
+  position: absolute;
+  right: 0;
 }
 
 .logo-sec ng-sidebar-container .ng-sidebar--right {

@@ -52,7 +52,7 @@
     .logo-part a {
         display: table;
         position: relative;
-        z-index: 999999999;
+        /* z-index: 999999999; */
         margin-top:6px;
     }
     .top-part{
@@ -75,7 +75,7 @@
 }
 
 
-@media (max-width: 568px) {
+    @media (max-width: 568px) {
     header .menu-part {
         background: none;
         margin-top: 0;
@@ -131,10 +131,10 @@
     .dropdown:hover .dropdown-content{
         display: none;
     }
-    .search-hold {
+    /* .search-hold {
         padding: 0 !important;
         z-index: 99999999999999999999999;
-    }
+    } */
     section.fest-page {
         padding: 15px 0;
     }
