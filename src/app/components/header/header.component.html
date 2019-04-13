@@ -79,14 +79,12 @@
             *ngIf=" this.authenticationServiceFn.userExist ||  this.authenticationServiceFn.orgExist"
             (click)="this.authenticationServiceFn.logout()">Log Out</a>
         </div>
-
       </div>
     </div>
   </div>
   <div class="logo-sec">
     <ng-sidebar-container (click)='alertBox()'>
-      <ng-sidebar [(opened)]="_opened" [mode]="_MODES[_modeNum]" position="right"
-        style="height:100%;position: fixed; right:0;">
+      <ng-sidebar [(opened)]="_opened" [mode]="_MODES[_modeNum]" position="right">
         <ul class="navbar-nav navbar-right" id="nav">
           <li>
             <div class="profile-pic text-center"><i class="fas fa-user"></i>
@@ -133,7 +131,6 @@
                                             <div><a href="javascript:void(0);" *ngIf=" this.authenticationServiceFn.userExist == undefined &&  this.authenticationServiceFn.orgExist == undefined" data-toggle="modal" data-target="#myModal2">Sign In</a></div>
                                             <a href="javascript:void(0);" *ngIf=" this.authenticationServiceFn.userExist ||  this.authenticationServiceFn.orgExist" (click)="this.authenticationServiceFn.logout()">Log Out</a>
                                         </div> -->
-
               </div>
             </div>
           </div>

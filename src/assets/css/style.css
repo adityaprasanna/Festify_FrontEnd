@@ -363,6 +363,9 @@ ol {
 .logo-sec ng-sidebar-container .ng-sidebar {
   background: #5f376b;
   width: 13rem;
+  height: 100%;
+  position: fixed;
+  right: 0;
 }
 
 .logo-sec ng-sidebar-container .ng-sidebar--right {
