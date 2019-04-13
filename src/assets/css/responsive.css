@@ -75,7 +75,7 @@
 }
 
 
-@media (max-width: 568px) {
+    @media (max-width: 568px) {
     header .menu-part {
         background: none;
         margin-top: 0;
