@@ -344,6 +344,7 @@ ol {
 
 .top-part .dropdown:hover .dropdown-content {
   display: block;
+  z-index: 9999;
 }
 
 .logo-sec {

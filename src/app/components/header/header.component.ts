@@ -84,9 +84,7 @@ export class HeaderComponent implements OnInit {
     this._opened = !this._opened;
     this.alertBox();
   }
-  // _toggleCloseOnClickOutside(): void {
-  //   this._closeOnClickOutside = !this._closeOnClickOutside;
-  // }
+
   organizationSignUp() {
     $('#myModal2').modal('hide');
     this.router.navigate(['signup']);

@@ -347,12 +347,13 @@ ol {
       }
     }
   }
-
   .dropdown:hover {
     .dropdown-content {
       display: block;
+      z-index:9999;
     }
   }
+  
 }
 
 .logo-sec {
@@ -664,9 +665,6 @@ section.body-cont2 {
       color: #f71769;
       border-radius: 5px;
     }
-
-
-
   }
 
   h3 {
@@ -760,8 +758,6 @@ section.body-cont3 {
     font-weight: 600;
   }
 }
-
-
 
 section.body-cont4 {
   padding: 60px 0;
@@ -1800,7 +1796,6 @@ section.orgdashboard {
 
   }
 }
-
 
 section.festspecific-page {
   padding: 60px 0;
