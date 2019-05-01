@@ -1,34 +1,191 @@
-.participantsListDetails {
-  background: #FFFFFF;
-  .participantsListCard {
-    border: 1px solid lightgrey;
-    background: #FFFFFF;
-    margin-right: 15px;
-    margin-left: 15px;
-    padding: 10px 0 10px 0;
-    color: #000;
-    margin-top: 10px;
+.orgdashboard {
+  padding: 60px 0;
 
-    .eventDateVenue {
-      margin-bottom: 0;
+  h2 {
+    text-transform: uppercase;
+    font-size: 35px;
+    color: #111;
+    font-weight: 800;
+  }
+
+  .profile-sec {
+    margin-top: 35px;
+    box-shadow: 0 0 12px #e3e3e3;
+    text-align: center;
+
+    img {
+      border-radius: 50%;
+      margin: 25px auto;
+      display: table;
+      width: 30%;
     }
 
-    .eventTime {
-      margin-bottom: 0;
-    }
-
-    .eventUserDetails {
-      color: #1c1c1c;
-    }
-
-    .eventFesterDetails > dt{
-      font-size: 16px;
-      padding-right: 0;
-    }
-    .eventFesterDetails > dd{
+    h3 {
+      margin: 0;
+      background: #f71769;
+      color: #fff;
+      text-transform: uppercase;
       font-size: 18px;
-      padding-right: 0;
+      padding: 15px 15px;
+    }
+
+    ul {
+      li {
+        color: #111;
+        text-transform: uppercase;
+        font-size: 16px;
+        padding: 15px;
+        border-bottom: 1px solid #f71769;
+
+        a {
+          color: #f71769;
+          font-weight: 800;
+          font-size: 15px;
+          letter-spacing: 1px;
+        }
+      }
     }
   }
 
+  .profile-decp {
+    margin-top: 35px;
+    box-shadow: 0 0 12px #e3e3e3;
+    display: table;
+    width: 100%;
+    padding-bottom: 15px;
+
+    .participantsListDetails {
+      background: #FFFFFF;
+      .participantsListCard {
+        border: 1px solid lightgrey;
+        background: #FFFFFF;
+        margin-right: 15px;
+        margin-left: 15px;
+        padding: 10px 0 10px 0;
+        color: #000;
+        margin-top: 10px;
+    
+        .eventDateVenue {
+          margin-bottom: 0;
+        }
+    
+        .eventTime {
+          margin-bottom: 0;
+        }
+    
+        .eventUserDetails {
+          color: #1c1c1c;
+        }
+    
+        .eventFesterDetails > dt{
+          font-size: 16px;
+          padding-right: 0;
+        }
+        .eventFesterDetails > dd{
+          font-size: 18px;
+          padding-right: 0;
+        }
+      }
+    }
+
+    ul {
+      font-size: 0;
+
+      li {
+        display: inline-block;
+
+        a {
+          display: table;
+          background: #333;
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 16px;
+          padding: 12px 25px;
+        }
+      }
+
+      li.active a {
+        background: #f71769;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      background: #f71769;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 18px;
+      padding: 15px 15px;
+    }
+
+    h4 {
+      color: #111;
+      padding: 0 15px 15px;
+      text-transform: capitalize;
+
+      span {
+        float: right;
+        font-size: 15px;
+
+        a {
+          color: #333;
+        }
+      }
+    }
+
+    table {
+      width: 96%;
+      padding: 0 15px;
+      border: 1px solid #f71769;
+      margin: 0 auto;
+
+      th {
+        background: #f71769;
+        text-align: center;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 14px;
+        padding: 10px;
+        border-right: 1px solid #fff;
+      }
+
+      th:last-child {
+        border: none;
+      }
+
+      td {
+        color: #111;
+        font-size: 15px;
+        text-align: center;
+        padding: 10px;
+        border-right: 1px solid #f71769;
+      }
+    }
+
+    .del {
+      display: inline-block;
+      float: right;
+      background: #d0021b;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 7px 25px;
+      margin-right: 15px;
+      margin-top: 10px;
+      border: none;
+    }
+
+    .edit {
+      display: inline-block;
+      float: right;
+      background: #333;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 7px 25px;
+      margin-right: 15px;
+      margin-top: 10px;
+      border: none;
+    }
+  }
 }

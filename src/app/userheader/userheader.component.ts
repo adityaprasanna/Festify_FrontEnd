@@ -20,9 +20,17 @@ export class UserheaderComponent implements OnInit {
   }
   alertBox(){
     if(this._opened) {
-      document.body.style.overflow='hidden'
+      document.body.style.overflow='hidden';
+      document.getElementById('fullWidthOnToggle').style.bottom='0';
+      document.getElementById('fullWidthOnToggle').style.left='0';
+      document.getElementById('fullWidthOnToggle').style.right='0';
+      document.getElementById('fullWidthOnToggle').style.height='100%';
     } else {
       document.body.style.overflow='visible';
+      document.getElementById('fullWidthOnToggle').style.bottom='none';
+      document.getElementById('fullWidthOnToggle').style.left='none';
+      document.getElementById('fullWidthOnToggle').style.right='none';
+      document.getElementById('fullWidthOnToggle').style.height='100px';
     }
   }
   _toggleSidebar() {

@@ -33,12 +33,15 @@
   .navbar-collapse {
     padding-top: 10px;
   }
-  .navbar-nav>li{
-      float: none;
+
+  .navbar-nav>li {
+    float: none;
   }
+
   .navbar-right {
-    float: none!important;
-}
+    float: none !important;
+  }
+
   .logo-sec .logo-part {
     margin-left: 10%;
   }
@@ -97,9 +100,10 @@
   .logo-sec ng-sidebar-container {
     position: absolute;
     top: 0;
-    bottom: 0;
+    height:100px;
+    /* bottom: 0;
     right: 0;
-    left: 0;
+    left: 0; */
   }
 
   .logo-sec ng-sidebar-container .ng-sidebar {
@@ -107,7 +111,6 @@
     position: absolute;
     right: 0;
   }
-
 }
 
 @media screen and (max-width: 990px) {
@@ -121,9 +124,16 @@
     width: 20%;
   }
 }
-
+@media (max-width: 1200px) {
+  .like-sec {
+    width:14.9%;
+  }
+}
 
 @media (max-width: 568px) {
+  .goo-lig {
+    margin-top: 20px;
+  }
   .card {
     min-height: 180px;
   }
@@ -195,11 +205,6 @@
   .blast {
     -webkit-transform: translate(22%, -63%);
     transform: translate(22%, -63%);
-  }
-
-  .banner-part .banner_text h2 {
-    font-size: 15px;
-    margin: 18px 0 0;
   }
 
   section.body-cont2 {

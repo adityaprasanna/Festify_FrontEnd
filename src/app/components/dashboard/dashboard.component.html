@@ -2,7 +2,7 @@
 <div class="inner-ban">
   <img src="assets/images/inner-ban.jpg" alt="">
 </div>
-<section class="orgdashboard">
+<section class="userdashboard">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -19,7 +19,6 @@
             <!--<li><a href="#">Edit</a></li>-->
           </ul>
         </div>
-
       </div>
       <div class="col-md-8">
         <div class="profile-decp2">
@@ -49,7 +48,8 @@
                           <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; {{bookFest.ticket_price}}</dd>
 
                           <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
-                          <dd class="col-md-6 col-sm-6 col-xs-6">"Sent via email and sms"</dd> <!-- {{bookFest.ticket_id}} -->
+                          <dd class="col-md-6 col-sm-6 col-xs-6">"Sent via email and sms"</dd>
+                          <!-- {{bookFest.ticket_id}} -->
 
                           <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
                           <dd class="col-md-6 col-sm-6 col-xs-6">{{bookFest.event_coordinator}}</dd>
@@ -67,10 +67,12 @@
                     <div *ngFor="let likeFest of likedFest">
                       <div class="sec-1">
                         <div class="col-md-4">
-                          <h2>Fest Name </h2><h4>{{likeFest.name}} </h4>
+                          <h2>Fest Name </h2>
+                          <h4>{{likeFest.name}} </h4>
                         </div>
                         <div class="col-md-4 text-right">
-                          <h2>Start Date </h2> <h4> {{likeFest.date}}</h4>
+                          <h2>Start Date </h2>
+                          <h4> {{likeFest.date}}</h4>
                         </div>
                       </div>
                     </div>

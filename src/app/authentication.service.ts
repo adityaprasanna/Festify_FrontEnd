@@ -18,14 +18,13 @@ declare var $: any;
 })
 export class AuthenticationService {
 
-  // private _organizationUrl = '';
+  private _organizationUrl = '';
 
-  // private _organizationUrl = "http://localhost:8000/api/";
   isClick = false;
   orgExist: string;
   userExist: string;
   // private _organizationUrl = 'http://localhost:8000/api/';
-  private _organizationUrl = 'https://www.festify.in/django/api/';
+  // private _organizationUrl = 'https://www.festify.in/django/api/';
   constructor(private http: Http, private _router: Router, private authServiceConfig: AuthService) {
     if (window.location.host.includes('localhost')) {
       this._organizationUrl = 'http://localhost:8000/api/';
@@ -110,7 +109,7 @@ export class AuthenticationService {
   }
 
   festSepecificDetails(id) {
-    return this.http.get(`${this._organizationUrl}fest/details/`, {params: {festid: id}}).pipe(map(x => x.json()));
+    return this.http.get(`${this._organizationUrl}fest/details/`, {params: {festname: id}}).pipe(map(x => x.json()));
   }
 
   getIP(): Observable<any[]> {
@@ -176,7 +175,7 @@ export class AuthenticationService {
 
   festDetailsWithspecific(id) {
     localStorage.setItem('festID', id);
-    this._router.navigate(['/festDetails', id]);
+    this._router.navigate(['/', id.substring(0, id.indexOf(' '))]);
   }
 
   getSuccessData() {

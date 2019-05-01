@@ -11,10 +11,8 @@ export class AuthGuardService implements CanActivate {
           // logged in so return true
           return true;
       }
-      // not logged in so redirect to login page with the return url
-      this._router.navigate(['/home'], 
-      { queryParams: { returnUrl: state.url }});
-      alert('Please login with right Credentials ');
+      // not logged in so open Sign In modal to login
+      document.getElementById("signInButton").click();
       return false;
       }
 }

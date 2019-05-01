@@ -71,7 +71,7 @@
                     <div class="row text-center">
                       <p><i class="fas fa-rupee-sign"></i>&nbsp;{{eventDetails.ticket_price| number:0}}</p>
                     </div>
-                    <div class="pricingTable-sign-up">
+                    <div class="pricingTable-sign-up" *ngIf="!enableBookNow">
                       <a role="button" (click)="festDeatils(eventDetails)" class="btn btn-block btn-default">book</a>
 
                     </div>
@@ -103,20 +103,22 @@
                   target="_blank">Check out our website</a></h5>
               <h5 *ngIf="this.festDetails.social_media_pages"><a style="color:#fff;"
                   href="{{this.festDetails.social_media_pages}}" target="_blank">Visit our social media!</a></h5>
-              <h5>{{this.festDetails.start_date}} till {{this.festDetails.end_date}}</h5>
+              <h5>{{this.festDetails.start_date}} - {{this.festDetails.end_date}}</h5>
             </div>
-            <h3>sponsors</h3>
-            <div class="spon-img text-center">
-              <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
-                <ul>
-                  <li *ngIf="sponsorDetails.sponsor_name">
-                    <h5><span>{{sponsorDetails.sponsor_name}}</span></h5>
-                  </li>
-                  <img [src]="sponsorDetails.sponsor_picture" alt="">
-                  <li *ngIf="sponsorDetails.caption">
-                    <h5><span>{{sponsorDetails.caption}}</span></h5>
-                  </li>
-                </ul>
+            <div class="sponsor-details">
+              <h3>sponsors</h3>
+              <div class="spon-img text-center">
+                <div *ngFor="let sponsorDetails of this.festDetails.sponsor">
+                  <ul>
+                    <li *ngIf="sponsorDetails.sponsor_name">
+                      <h5><span>{{sponsorDetails.sponsor_name}}</span></h5>
+                    </li>
+                    <img [src]="sponsorDetails.sponsor_picture" alt="">
+                    <li *ngIf="sponsorDetails.caption">
+                      <h5><span>{{sponsorDetails.caption}}</span></h5>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

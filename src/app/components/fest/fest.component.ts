@@ -35,7 +35,6 @@ export class FestComponent implements OnInit, AfterViewInit {
               this.medical.push(x);
             } else if (x.org_category == "arts") {
               this.arts.push(x);
-
             } else if (x.org_category == "Science") {
               this.science.push(x);
             } else if (x.org_category == "arch") {

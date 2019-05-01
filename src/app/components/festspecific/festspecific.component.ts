@@ -11,15 +11,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class FestspecificComponent implements OnInit {
   festDetails: any;
   festID: string;
+  enableBookNow: string;
   public orgExist_global;
   public userExist_global;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
-    this.festID = this.route.snapshot.paramMap.get('id'); // localStorage.getItem('festID');
+    this.festID = this.route.snapshot.paramMap.get('id');
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
     this.orgExist_global = this.authenticationService.orgExist;
     this.authenticationService.userExist = sessionStorage.getItem('userData');
     this.userExist_global = this.authenticationService.userExist;
+    this.enableBookNow = localStorage.getItem("isOrganization")
   }
 
   getReadableDate(dateStr) {
@@ -30,10 +32,6 @@ export class FestspecificComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
       this.festDetails = (data[0]);
-      // if (this.festDetails.image) {
-      //   let imgae = document.getElementById("festImg");
-      //   imgae.setAttribute('src', this.festDetails.image);
-      // }
       this.festDetails.start_date = this.getReadableDate(this.festDetails.start_date);
       this.festDetails.end_date = this.getReadableDate(this.festDetails.end_date);
       if (this.festDetails.events.length >= 1) {
@@ -48,7 +46,6 @@ export class FestspecificComponent implements OnInit {
        }
     });
   }
-
   get authenticationServicefn() {
     return this.authenticationService;
   }
@@ -58,5 +55,4 @@ export class FestspecificComponent implements OnInit {
     localStorage.setItem('festPaymentDeatils', data);
     this.router.navigate(['/payment']);
   }
-
 }

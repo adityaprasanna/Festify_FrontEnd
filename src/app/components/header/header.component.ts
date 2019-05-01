@@ -5,6 +5,7 @@ import {FacebookLoginProvider, GoogleLoginProvider} from 'angularx-social-login'
 import {Router} from '@angular/router';
 import {AppService} from 'src/app/app.service';
 import {AuthenticationService} from '../../authentication.service';
+import { container } from '@angular/core/src/render3';
 
 declare var $: any;
 
@@ -40,9 +41,18 @@ export class HeaderComponent implements OnInit {
 
   alertBox(){
     if(this._opened) {
-      document.body.style.overflow='hidden'
+      document.body.style.overflow='hidden';
+      document.getElementById('fullWidthOnToggle').style.bottom='0';
+      document.getElementById('fullWidthOnToggle').style.left='0';
+      document.getElementById('fullWidthOnToggle').style.right='0';
+      document.getElementById('fullWidthOnToggle').style.height='100%';
+
     } else {
       document.body.style.overflow='visible';
+      document.getElementById('fullWidthOnToggle').style.bottom='none';
+      document.getElementById('fullWidthOnToggle').style.left='none';
+      document.getElementById('fullWidthOnToggle').style.right='none';
+      document.getElementById('fullWidthOnToggle').style.height='100px';
     }
   }
 
@@ -66,6 +76,7 @@ export class HeaderComponent implements OnInit {
         data => {
           if (data) {
             $('#myModal2').modal('hide');
+            localStorage.setItem("isOrganization", JSON.stringify(data));
             sessionStorage.setItem('currentUserId', JSON.stringify(this.loginForm.value));
             sessionStorage.setItem('currentUser', JSON.stringify(data));
             // alert('login Successful');

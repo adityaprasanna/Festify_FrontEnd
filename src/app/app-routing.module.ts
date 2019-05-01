@@ -74,7 +74,7 @@ const routes: Routes = [
     component: FestComponent
   },
   {
-    path: 'festDetails/:id',
+    path: ':id',
     component: FestspecificComponent,
   },
   {
@@ -82,10 +82,10 @@ const routes: Routes = [
     component: PaymentComponent,
     canActivate: [AuthGuardService]
   },
-  {
-    path: 'festspecific',
-    component: FestspecificComponent,
-  },
+  // {
+  //   path: 'festspecific',
+  //   component: FestspecificComponent,
+  // },
   {
     path: '**',
     component: PagenotfoundComponent

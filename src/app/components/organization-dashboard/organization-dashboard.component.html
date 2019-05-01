@@ -1,125 +1,121 @@
 <app-organizationheader></app-organizationheader>
 <div class="inner-ban">
-    <img src="assets/images/inner-ban.jpg" alt="">
+  <img src="assets/images/inner-ban.jpg" alt="">
 </div>
 <section class="orgdashboard">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>dashboard</h2>
-            </div>
-            <div class="col-md-4">
-                <div class="profile-sec" *ngIf="organizationList">
-                    <h3>your profile</h3>
-                    <img id="imgElem" alt="" [src]="organizationList.image">
-                    <ul>
-                        <li>{{organizationList.name}}</li>
-                        <li>{{organizationList.website}}</li>
-                        <li>{{organizationList.address}}</li>
-                        <li><a routerLink="/edit/">Edit</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="profile-decp">
-                    <ul>
-                        <li class="active"><a data-toggle="tab" href="#pro-1">Fest Dashboard</a></li>
-                        <li><a data-toggle="tab" href="#pro-2">Participants</a></li>
-                    </ul>
-                    <div class="tab-content participantsListDetails">
-                        <div id="pro-1" class="tab-pane fade in active">
-                            <h3>your events</h3>
-                            <h4>select Fest to edit <span><a routerLink="/fest-upload-form/">+create new fest</a></span></h4>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>no</th>
-                                        <th>fest</th>
-                                        <th>start date</th>
-                                        <th>end date</th>
-                                        <th>select</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let data of  organizationFestList ; let i=index;" (click)="setClickedRow(i, data)" [class.active]="i == selectedRow">
-                                        <td> {{i+1}}</td>
-                                        <td> {{data.name}}</td>
-                                        <td> {{data.start_date}}</td>
-                                        <td> {{data.end_date}}</td>
-                                        <td>
-                                            <input type="checkbox" class="chk" (change)="gettingSelectedValue($event)">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        <!--<div class="well well-lg">
-                                Selected Row : <strong>{{selectedRow}}</strong>
-                            </div>--> 
-                            <button (click)="delete()" class="del">delete</button>
-                            <button (click)="edit()" class="edit">edit</button>
-                            <button (click)="getList()" class="edit">Get Participant List</button>
-                        </div>
-                        <div id="pro-2" class="tab-pane fade">
-                            <!--<div  *ngFor="let tickets of paymentList; let i=index;">-->
-                            <!--<h3>{{ tickets.first_name }}</h3>-->
-                            <!--</div>-->
-                          
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Event</th>
-                                            <th>Ticket ID</th>
-                                            <th>Amount Paid</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let bookFest of paymentList;">
-                                            <td>{{bookFest.first_name}} {{bookFest.last_name}}</td>
-                                            <td>{{bookFest.email}}</td>
-                                            <td>{{bookFest.phone}}</td>
-                                            <td>{{bookFest.event_name}}</td>
-                                            <td>{{bookFest.ticket_id}}</td>
-                                            <td><i class="fas fa-rupee-sign"></i>&nbsp;{{bookFest.amount| number:0}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                          
-                        </div>
-                    </div>
-                    <div id="participant" class="container col-md-9" style="display:none;margin-top:50px;">
-                            <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Event</th>
-                                            <th>Ticket ID</th>
-                                            <th>Amount Paid</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let bookFest of paymentList;">
-                                            <td>{{bookFest.first_name}} {{bookFest.last_name}}</td>
-                                            <td>{{bookFest.email}}</td>
-                                            <td>{{bookFest.phone}}</td>
-                                            <td>{{bookFest.event_name}}</td>
-                                            <td>{{bookFest.ticket_id}}</td>
-                                            <td><i class="fas fa-rupee-sign"></i>&nbsp;{{bookFest.amount| number:0}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                    </div>
-                </div>
-
-            </div>
-            
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>dashboard</h2>
+      </div>
+      <div class="col-md-4">
+        <div class="profile-sec" *ngIf="organizationList">
+          <h3>your profile</h3>
+          <img id="imgElem" alt="" [src]="organizationList.image">
+          <ul>
+            <li>{{organizationList.name}}</li>
+            <li>{{organizationList.website}}</li>
+            <li>{{organizationList.address}}</li>
+            <li><a routerLink="/edit/">Edit</a></li>
+          </ul>
         </div>
-        
+      </div>
+      <div class="col-md-8">
+        <div class="profile-decp">
+          <ul>
+            <li class="active"><a data-toggle="tab" href="#pro-1">Fest Dashboard</a></li>
+            <li><a data-toggle="tab" href="#pro-2">Participants</a></li>
+          </ul>
+          <div class="tab-content participantsListDetails">
+            <div id="pro-1" class="tab-pane fade in active">
+              <h3>your events</h3>
+              <h4>select Fest to edit <span><a routerLink="/fest-upload-form/">+create new fest</a></span></h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>no</th>
+                    <th>fest</th>
+                    <th>start date</th>
+                    <th>end date</th>
+                    <th>select</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of  organizationFestList ; let i=index;" (click)="setClickedRow(i, data)"
+                    [class.active]="i == selectedRow">
+                    <td> {{i+1}}</td>
+                    <td> {{data.name}}</td>
+                    <td> {{data.start_date}}</td>
+                    <td> {{data.end_date}}</td>
+                    <td>
+                      <input type="checkbox" class="chk" (change)="gettingSelectedValue($event)">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--<div class="well well-lg">
+                                Selected Row : <strong>{{selectedRow}}</strong>
+                            </div>-->
+              <button (click)="delete()" class="del">delete</button>
+              <button (click)="edit()" class="edit">edit</button>
+              <button (click)="getList()" class="edit">Get Participant List</button>
+            </div>
+            <div id="pro-2" class="tab-pane fade">
+              <!--<div  *ngFor="let tickets of paymentList; let i=index;">-->
+              <!--<h3>{{ tickets.first_name }}</h3>-->
+              <!--</div>-->
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Event</th>
+                    <th>Ticket ID</th>
+                    <th>Amount Paid</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let bookFest of paymentList;">
+                    <td>{{bookFest.first_name}} {{bookFest.last_name}}</td>
+                    <td>{{bookFest.email}}</td>
+                    <td>{{bookFest.phone}}</td>
+                    <td>{{bookFest.event_name}}</td>
+                    <td>{{bookFest.ticket_id}}</td>
+                    <td><i class="fas fa-rupee-sign"></i>&nbsp;{{bookFest.amount| number:0}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="participant" class="container col-md-9" style="display:none;margin-top:50px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Event</th>
+                  <th>Ticket ID</th>
+                  <th>Amount Paid</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let bookFest of paymentList;">
+                  <td>{{bookFest.first_name}} {{bookFest.last_name}}</td>
+                  <td>{{bookFest.email}}</td>
+                  <td>{{bookFest.phone}}</td>
+                  <td>{{bookFest.event_name}}</td>
+                  <td>{{bookFest.ticket_id}}</td>
+                  <td><i class="fas fa-rupee-sign"></i>&nbsp;{{bookFest.amount| number:0}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
+  </div>
 </section>
 <app-footer></app-footer>
