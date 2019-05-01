@@ -25,7 +25,7 @@
               <div id="menu1" class="tab-pane fade">
                 <form id="Login" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
                   <div class="form-group">
-                    <input type="text" formControlName="email" class="org-input"
+                    <input type="text" formControlName="email" class="form-control org-input"
                       [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                       <div *ngIf="f.email.errors.required">User Id is required</div>

@@ -195,6 +195,10 @@
     font-size: 12px;
     padding: 1px 2px;
   }
+  
+  .inner-ban img{
+    height: 50%;
+  }
 
   .heart {
     margin-top: 26px;
