@@ -187,6 +187,22 @@ ol {
   padding: 70px 70px 90px 71px;
 }
 
+.log-in-pop .main-div .login-logo {
+  height: 100px;
+  width: 100px;
+  padding: 20px;
+  margin: 20px;
+  margin-left: 150px;
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.log-in-pop .main-div .login-logo img {
+  background-color: #000;
+  margin-top: 25px;
+}
+
 .log-in-pop .main-div ul {
   text-align: left;
   border-bottom: 2px solid #f71769;

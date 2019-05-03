@@ -109,7 +109,7 @@ export class AuthenticationService {
   }
 
   festSepecificDetails(id) {
-    return this.http.get(`${this._organizationUrl}fest/details/`, {params: {festname: id}}).pipe(map(x => x.json()));
+    return this.http.get(`${this._organizationUrl}fest/details/`, {params: {festid: id}}).pipe(map(x => x.json()));
   }
 
   getIP(): Observable<any[]> {
@@ -173,9 +173,9 @@ export class AuthenticationService {
     }
   }
 
-  festDetailsWithspecific(id) {
-    localStorage.setItem('festID', id);
-    this._router.navigate(['/', id.substring(0, id.indexOf(' '))]);
+  festDetailsWithspecific(id,name) {
+    sessionStorage.setItem("festID", id);
+    this._router.navigate(['/', name.substring(0, name.indexOf(' '))]);
   }
 
   getSuccessData() {

@@ -183,6 +183,21 @@ ol {
     max-width: 38%;
     padding: 70px 70px 90px 71px;
 
+    .login-logo {
+      height: 100px;
+      width: 100px;
+      padding: 20px;
+      margin: 20px;
+      margin-left: 150px;
+      background-color: #000; 
+      border: 1px solid #000;
+      border-radius: 50%;
+      img {
+        background-color: #000;
+        margin-top: 25px;
+      }
+    }
+
     ul {
       text-align: left;
       border-bottom: 2px solid #f71769;

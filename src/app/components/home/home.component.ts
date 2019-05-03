@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     "dots": true,
     "infinite": true,
     "autoplay": true,
-    "autoplaySpeed": 1000,
+    "autoplaySpeed": 2000,
     "arrows": true,
     "itemsMobile": [568, 1],
     "itemsTablet": [768, 1],
@@ -177,10 +177,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }, 1000);
       }
     });
-
-
-
   }
-
-
 }
