@@ -174,12 +174,9 @@ export class AuthenticationService {
     }
   }
 
-  festDetailsWithspecific(id,name) {
-    // sessionStorage.setItem("festID", id);
-    // this._router.navigate(['/', name.substring(0, name.indexOf(' '))]);
+  festDetailsWithspecific(name) {
     name = name.replace(" ","_")
     this._router.navigate(['/', name]);
-
   }
 
   getSuccessData() {
