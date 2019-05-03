@@ -16,8 +16,8 @@ export class FestspecificComponent implements OnInit {
   public userExist_global;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
-    // this.festID = this.route.snapshot.paramMap.get('id');
-    this.festID = sessionStorage.getItem('festID');
+    this.festID = this.route.snapshot.paramMap.get('id');
+    // this.festID = sessionStorage.getItem('festID');
     this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
     this.orgExist_global = this.authenticationService.orgExist;
     this.authenticationService.userExist = sessionStorage.getItem('userData');
