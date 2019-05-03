@@ -180,8 +180,7 @@ ol {
 }
 
 .log-in-pop .main-div {
-  background: #5f376b none repeat scroll 0 0;
-  opacity: 0.9;
+  background: #fff none repeat scroll 0 0;
   border-radius: 10px;
   margin: 10px auto 30px;
   max-width: 38%;
