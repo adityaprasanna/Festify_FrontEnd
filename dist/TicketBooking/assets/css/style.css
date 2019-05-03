@@ -180,7 +180,8 @@ ol {
 }
 
 .log-in-pop .main-div {
-  background: #ffffff none repeat scroll 0 0;
+  background: #5f376b none repeat scroll 0 0;
+  opacity: 0.9;
   border-radius: 10px;
   margin: 10px auto 30px;
   max-width: 38%;
@@ -191,8 +192,7 @@ ol {
   height: 100px;
   width: 100px;
   padding: 20px;
-  margin: 20px;
-  margin-left: 150px;
+  margin: 30px auto;
   background-color: #000;
   border: 1px solid #000;
   border-radius: 50%;
@@ -212,12 +212,15 @@ ol {
 
 .log-in-pop .main-div ul li {
   display: inline-block;
+  width: 50%;
 }
 
 .log-in-pop .main-div ul li a {
   display: table;
   color: #f71769;
   font-size: 16px;
+  width: 100%;
+  text-align: center;
   text-transform: uppercase;
   padding: 12px 35px;
 }

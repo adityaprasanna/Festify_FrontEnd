@@ -108,7 +108,8 @@ export class AuthenticationService {
     return this.http.post(`${this._organizationUrl}user/login/`, fiinalvalue, requestOptions).pipe(map(x => x.json()));
   }
 
-  festSepecificDetails(id) {
+  festSepecificDetails(id: string) {
+    id = id.replace("_"," ")
     return this.http.get(`${this._organizationUrl}fest/details/`, {params: {festid: id}}).pipe(map(x => x.json()));
   }
 
@@ -176,6 +177,7 @@ export class AuthenticationService {
   festDetailsWithspecific(id,name) {
     // sessionStorage.setItem("festID", id);
     // this._router.navigate(['/', name.substring(0, name.indexOf(' '))]);
+    name = name.replace(" ","_")
     this._router.navigate(['/', name]);
 
   }
