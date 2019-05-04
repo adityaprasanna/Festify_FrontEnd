@@ -65,6 +65,8 @@ export class PaymentComponent implements OnInit {
     this.festDetails = JSON.parse(localStorage.getItem('festDetails'));
     this.currentfestID = JSON.parse(localStorage.getItem('festID'));
     this.paymentFestInfo = this.festDetails.find((fest) => fest.fest_id === this.currentfestID);
+
+
     this.authenticationService.getIP()
       .subscribe(data => {
         ipData = JSON.stringify(data);
@@ -93,7 +95,6 @@ export class PaymentComponent implements OnInit {
         // your payment response Code goes here, BOLT is the response object
       },
       catchException: (err) => {
-        console.log('bolt+++++++', err);
         // the code you use to handle the integration errors goes here
       }
     };

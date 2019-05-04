@@ -33,6 +33,8 @@ export class FestspecificComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
       this.festDetails = (data[0]);
+      console.log(this.festDetails);
+      localStorage.setItem('festID',this.festDetails.id);
       this.festDetails.start_date = this.getReadableDate(this.festDetails.start_date);
       this.festDetails.end_date = this.getReadableDate(this.festDetails.end_date);
       if (this.festDetails.events.length >= 1) {
@@ -46,7 +48,6 @@ export class FestspecificComponent implements OnInit {
         });
        }
     });
-    sessionStorage.removeItem('festID');
   }
   get authenticationServicefn() {
     return this.authenticationService;
@@ -55,6 +56,7 @@ export class FestspecificComponent implements OnInit {
   festDeatils(e) {
     const data = JSON.stringify(e);
     localStorage.setItem('festPaymentDeatils', data);
+    // alert("Fuck off")
     this.router.navigate(['/payment']);
   }
 }

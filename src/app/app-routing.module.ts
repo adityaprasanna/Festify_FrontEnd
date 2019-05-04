@@ -74,7 +74,7 @@ const routes: Routes = [
     component: FestComponent
   },
   {
-    path: ':id',
+    path: 'fest/:id',
     component: FestspecificComponent,
   },
   {

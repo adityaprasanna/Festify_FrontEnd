@@ -175,8 +175,8 @@ export class AuthenticationService {
   }
 
   festDetailsWithspecific(name) {
-    name = name.replace(" ","_")
-    this._router.navigate(['/', name]);
+    name = name.replace(" ","_");
+    this._router.navigate(['/fest', name]);
   }
 
   getSuccessData() {
