@@ -24,6 +24,7 @@ export class EditfestComponent implements OnInit {
     this.bsConfig.containerClass = 'theme-red';
     this.bsConfig.dateInputFormat = 'YYYY-MM-DD';
     this.festID = this.route.snapshot.paramMap.get('id');
+    console.log(this.festID);
   }
 
   ngOnInit() {
@@ -247,7 +248,7 @@ export class EditfestComponent implements OnInit {
   }
 
   deleteEventPoint(index, id) {
-    let result = confirm("Are you sure you to delete?");
+    let result = confirm("Are you sure you want to delete this event?");
     if (result) {
       this.eventPoints.removeAt(index);
       this.authenticationService.deleteEvent(id).subscribe(() => alert('Event Deleted successfully'));
@@ -263,7 +264,7 @@ export class EditfestComponent implements OnInit {
   }
 
   deleteSponsorEventPoint(index, id) {
-    let result = confirm("Are you sure you to delete?");
+    let result = confirm("Are you sure you want to delete this event?");
     if (result) {
       this.sponsorEventPoints.removeAt(index);
       this.authenticationService.deleteSponsor(id).subscribe(() => alert('Sponsor Deleted successfully'));

@@ -27,7 +27,7 @@
                 <button class="filter-button" data-filter="arch">Arch</button>
             </div>
             <div *ngIf="this.university">
-                <div *ngFor="let universityList of  this.university ;let i=index">
+                <div *ngFor="let universityList of this.university.slice().reverse() ;let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter university">
                         <div class="item">
                             <div class="show-image">
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div *ngIf="this.engineering">
-                <div *ngFor="let engineeringList of  this.engineering ;let i=index">
+                <div *ngFor="let engineeringList of  this.engineering.slice().reverse() ;let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter engineering">
                         <div class="item">
                             <div class="show-image">
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div *ngIf="this.commerse">
-                <div *ngFor="let commerceList of  this.commerse;let i=index">
+                <div *ngFor="let commerceList of  this.commerse.slice().reverse();let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter commerce">
                         <div class="item">
                             <div class="show-image">
@@ -149,7 +149,7 @@
                 </div>
             </div>
             <div *ngIf="this.preuniversity">
-                <div *ngFor="let preuniversityList of  this.preuniversity;let i=index">
+                <div *ngFor="let preuniversityList of  this.preuniversity.slice().reverse();let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter pre-university">
                         <div class="item">
                             <div class="show-image">
@@ -179,7 +179,7 @@
                 </div>
             </div>
             <div *ngIf="this.arts">
-                <div *ngFor="let artsList of  this.arts ;let i=index">
+                <div *ngFor="let artsList of  this.arts.slice().reverse() ;let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter arts">
                         <div class="item">
                             <div class="show-image">
@@ -209,7 +209,7 @@
                 </div>
             </div>
             <div *ngIf="this.science">
-                <div *ngFor="let scienceList of  this.science ;let i=index">
+                <div *ngFor="let scienceList of  this.science.slice().reverse() ;let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter science">
                         <div class="item">
                             <div class="show-image">
@@ -239,7 +239,7 @@
                 </div>
             </div>
             <div *ngIf="this.youth">
-                <div *ngFor="let youthList of  this.youth ;let i=index">
+                <div *ngFor="let youthList of  this.youth.slice().reverse() ;let i=index">
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-12 filter youth">
                         <div class="item">
                             <div class="show-image">
