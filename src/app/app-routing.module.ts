@@ -6,6 +6,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OrganizationsComponent } from './components/organizations/organizations.component';
 import { FestUploadFormComponent } from './components/fest-upload-form/fest-upload-form.component';
+import { SEventUploadComponent } from './components/s-event-upload/s-event-upload.component';
+import { MunUploadComponent } from './components/mun-upload/mun-upload.component';
+import { BlogHomeComponent } from './components/blog-home/blog-home.component';
+import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 import { OrganizationDashboardComponent } from './components/organization-dashboard/organization-dashboard.component';
 import { FestComponent } from './components/fest/fest.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
@@ -41,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'fest-upload-form',
-    component: FestUploadFormComponent,
+    component: MunUploadComponent,
     canActivate: [OrgauthService]
   },
   {

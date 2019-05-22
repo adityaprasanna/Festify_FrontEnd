@@ -45,6 +45,10 @@ import {OrgauthService} from './orgauth.service';
 import {PrivatePolicyComponent} from './components/private-policy/private-policy.component';
 import {AftersuccessComponent} from './components/aftersuccess/aftersuccess.component';
 import { SidebarModule } from 'ng-sidebar';
+import { SEventUploadComponent } from './components/s-event-upload/s-event-upload.component';
+import { MunUploadComponent } from './components/mun-upload/mun-upload.component';
+import { BlogHomeComponent } from './components/blog-home/blog-home.component';
+import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 
 export function getAuthServiceConfigs() {
   return new AuthServiceConfig(
@@ -83,7 +87,11 @@ export function getAuthServiceConfigs() {
     FestspecificComponent,
     FailureComponent,
     PrivatePolicyComponent,
-    AftersuccessComponent
+    AftersuccessComponent,
+    SEventUploadComponent,
+    MunUploadComponent,
+    BlogHomeComponent,
+    BlogDetailsComponent
   ],
   imports: [
     BrowserModule,

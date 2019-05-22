@@ -1,0 +1,86 @@
+<app-organizationheader></app-organizationheader>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">General Details</li>
+                <li>Events Builder</li>
+                <li>Sponsors Builder</li>
+                <li>Social Media and Online Presense</li>
+                <li>Account Setup</li>
+                <li>Account Details</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">General Details</h2>
+                <h3 class="fs-subtitle">Tell us something more about you</h3>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Fest Type</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select placeholder="Select Fest Type" formControlName="fest_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.fest_type.errors }" required>
+                            <option value="" disabled selected hidden>Select Fest Type</option>
+                            <option value="Annual">Annual</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Tech">Tech</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Conference">Conference</option>
+                            <option value="Entrepreneurship">Entrepreneurship</option>
+                            <option value="Literary">Literary</option>
+                            <option value="Media">Media</option>
+                            <option value="Mun">Mun</option>
+                        </select>
+                        <div *ngIf="submitted && e.fest_type.errors" class="invalid-feedback">
+                            <div *ngIf="e.fest_type.errors.required" class="alert alert-danger">Fest type is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <input type="text" name="fname" placeholder="First Name"/>
+                <input type="text" name="lname" placeholder="Last Name"/>
+                <input type="text" name="phone" placeholder="Phone"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Events Builder</h2>
+                <h3 class="fs-subtitle">Your presence on the social network</h3>
+                <input type="text" name="twitter" placeholder="Twitter"/>
+                <input type="text" name="facebook" placeholder="Facebook"/>
+                <input type="text" name="gplus" placeholder="Google Plus"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Sponsors Builder</h2>
+                <h3 class="fs-subtitle">Fill in your credentials</h3>
+                <input type="text" name="email" placeholder="Email"/>
+                <input type="password" name="pass" placeholder="Password"/>
+                <input type="password" name="cpass" placeholder="Confirm Password"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Social Media and Online Presense</h2>
+                <h3 class="fs-subtitle">Fill in your credentials</h3>
+                <input type="text" name="email" placeholder="Email"/>
+                <input type="password" name="pass" placeholder="Password"/>
+                <input type="password" name="cpass" placeholder="Confirm Password"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Account Details</h2>
+                <h3 class="fs-subtitle">Fill in your credentials</h3>
+                <input type="text" name="email" placeholder="Email"/>
+                <input type="password" name="pass" placeholder="Password"/>
+                <input type="password" name="cpass" placeholder="Confirm Password"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+            </fieldset>
+        </form>
+    </div>
+</div>
