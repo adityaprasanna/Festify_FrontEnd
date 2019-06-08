@@ -1,0 +1,38 @@
+section.fest-page {
+  padding: 60px 0;
+
+  button {
+    margin: 0 6px 10px;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 300;
+    padding: 6px 28px;
+    border: none;
+    color: #f71769;
+    border-radius: 5px;
+    background: no-repeat;
+  }
+
+  h4 {
+    text-transform: capitalize;
+    color: #111;
+    padding: 0 15px;
+    font-size: 16px;
+    margin-bottom: 50px;
+
+    span {
+      float: right;
+    }
+  }
+
+  .gallery_product {
+    h4 {
+      margin-bottom: 10px;
+      padding: 0 15px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

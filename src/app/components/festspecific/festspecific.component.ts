@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/authentication.service';
-import { Router, ActivatedRoute } from '@angular/router';
-
+import { Component, OnInit } from "@angular/core";
+import { AuthenticationService } from "src/app/services/authentication.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-festspecific',
-  templateUrl: './festspecific.component.html',
-  styleUrls: ['./festspecific.component.scss']
+  selector: "app-festspecific",
+  templateUrl: "./festspecific.component.html",
+  styleUrls: ["./festspecific.component.scss"]
 })
 export class FestspecificComponent implements OnInit {
   festDetails: any;
@@ -15,39 +14,55 @@ export class FestspecificComponent implements OnInit {
   public orgExist_global;
   public userExist_global;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
-    this.festID = this.route.snapshot.paramMap.get('id');
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.festID = this.route.snapshot.paramMap.get("id");
     // this.festID = sessionStorage.getItem('festID');
-    this.authenticationService.orgExist = sessionStorage.getItem('currentUser');
+    this.authenticationService.orgExist = sessionStorage.getItem("currentUser");
     this.orgExist_global = this.authenticationService.orgExist;
-    this.authenticationService.userExist = sessionStorage.getItem('userData');
+    this.authenticationService.userExist = sessionStorage.getItem("userData");
     this.userExist_global = this.authenticationService.userExist;
-    this.enableBookNow = localStorage.getItem("isOrganization")
+    this.enableBookNow = localStorage.getItem("isOrganization");
   }
 
   getReadableDate(dateStr) {
-      const dateModified = new Date(dateStr.toString());
-      return dateModified.getDate() + '-' + (1 + dateModified.getMonth()) + '-' + dateModified.getFullYear();
+    const dateModified = new Date(dateStr.toString());
+    return (
+      dateModified.getDate() +
+      "-" +
+      (1 + dateModified.getMonth()) +
+      "-" +
+      dateModified.getFullYear()
+    );
   }
 
   ngOnInit() {
-    this.authenticationService.festSepecificDetails(this.festID).subscribe(data => {
-      this.festDetails = (data[0]);
-      console.log(this.festDetails);
-      localStorage.setItem('festID',this.festDetails.id);
-      this.festDetails.start_date = this.getReadableDate(this.festDetails.start_date);
-      this.festDetails.end_date = this.getReadableDate(this.festDetails.end_date);
-      if (this.festDetails.events.length >= 1) {
+    this.authenticationService
+      .festSepecificDetails(this.festID)
+      .subscribe(data => {
+        this.festDetails = data[0];
+        console.log(this.festDetails);
+        localStorage.setItem("festID", this.festDetails.id);
+        this.festDetails.start_date = this.getReadableDate(
+          this.festDetails.start_date
+        );
+        this.festDetails.end_date = this.getReadableDate(
+          this.festDetails.end_date
+        );
+        if (this.festDetails.events.length >= 1) {
           this.festDetails.events.map(x => {
-          if (x.event_date) {
-            x.event_date = this.getReadableDate(x.event_date);
-          }
-          if (x.ticket_price) {
-            x.ticket_price = parseFloat(x.ticket_price).toFixed(2);
-          }
-        });
-       }
-    });
+            if (x.event_date) {
+              x.event_date = this.getReadableDate(x.event_date);
+            }
+            if (x.ticket_price) {
+              x.ticket_price = parseFloat(x.ticket_price).toFixed(2);
+            }
+          });
+        }
+      });
   }
   get authenticationServicefn() {
     return this.authenticationService;
@@ -55,8 +70,8 @@ export class FestspecificComponent implements OnInit {
 
   festDeatils(e) {
     const data = JSON.stringify(e);
-    localStorage.setItem('festPaymentDeatils', data);
+    localStorage.setItem("festPaymentDeatils", data);
     // alert("Fuck off")
-    this.router.navigate(['/payment']);
+    this.router.navigate(["/payment"]);
   }
 }

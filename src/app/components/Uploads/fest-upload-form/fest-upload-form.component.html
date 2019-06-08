@@ -1,0 +1,321 @@
+<app-header></app-header>
+
+<body>
+  <div class="row h-80 justify-content-center align-items-center">
+    <div class="col-md-6 my-auto">
+      <form class="was-validated" id="msform" [formGroup]="festForm" (ngSubmit)="onFestSubmit()" novalidate>
+        <!-- progressbar -->
+        <ul id="progressbar">
+          <li class="active">General Details</li>
+          <li>Event Builder</li>
+          <li>Sponsor Builder</li>
+          <li>Social Media</li>
+          <li>Account Details</li>
+        </ul>
+
+        <!-- fieldsets -->
+        <fieldset>
+          <h2 class="fs-title">General Details</h2>
+          <h3 class="fs-subtitle">Tell us something more about you</h3>
+          <div class="form-group">
+            <div class="col-md-12">
+              <select class="form-control" placeholder="Fest Type" formControlName="type" required>
+                <option value="" disabled selected>Fest Type</option>
+                <option value="Annual">Annual</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Tech">Tech</option>
+                <option value="Dance">Dance</option>
+                <option value="Conference">Conference</option>
+                <option value="Entrepreneurship">Entrepreneurship</option>
+                <option value="Literary">Literary</option>
+                <option value="Media">Media</option>
+                <option value="Mun">Mun</option>
+              </select>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Fest Name" formControlName="name" required>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="form-group">
+            <div class="row px-3">
+              <div class="col-6">
+                <input type="text" class="form-control" placeholder="Start Date" bsDatepicker [bsConfig]="bsConfig"
+                  formControlName="start_date" required>
+              </div>
+              <div class="col-6">
+                <input type="text" class="form-control" placeholder="End Date" bsDatepicker [bsConfig]="bsConfig"
+                  formControlName="end_date" required>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <textarea rows="5" class="form-control" placeholder="Description" formControlName="description"
+                required></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <textarea rows="5" class="form-control" placeholder="Highlights" formControlName="highlights"
+                required></textarea>
+            </div>
+          </div>
+          <input type="button" name="next" class="next action-button" value="Next">
+        </fieldset>
+
+        <fieldset>
+          <h2 class="fs-title">Event Builder</h2>
+          <h3 class="fs-subtitle">Add as many events as you'd like.</h3>
+
+          <div class="form-group" formArrayName="event">
+            <div *ngFor="let ctrl of festForm.get('event')['controls']; let pointIndex=index"
+              [formGroupName]="pointIndex">
+              <div class="row">
+                <div class="col-md-1 my-auto" *ngIf="pointIndex>0">
+                  <button class="eve btn btn-danger" type="button" (click)="deleteEventPoint(pointIndex)">-</button>
+                </div>
+
+                <div class="col-md-10">
+                  <div class="row px-3">
+                    <div class="col-md-4">
+                      <select placeholder="Event Type" formControlName="event_type" class="form-control" required>
+                        <option value="" disabled selected>Select Event Type</option>
+                        <option value="Music">Music</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Theater">Theater</option>
+                        <option value="Mad Ads">Mad Ads</option>
+                        <option value="Debate">Debate</option>
+                        <option value="Hackathon">Hackathon</option>
+                        <option value="Ted Talk">Ted Talk</option>
+                        <option value="Quiz">Quiz</option>
+                        <option value="Treasure Hunt">Treasure Hunt</option>
+                        <option value="Literary">Literary</option>
+                        <option value="Art and Craft">Art and Craft</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Singing">Singing</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Coding">Coding</option>
+                        <option value="Photography">Photography</option>
+                        <option value="Air Crash">Air Crash</option>
+                        <option value="Personality">Personality</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="otherone">Other</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" placeholder="Name" formControlName="eventName" required>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" style="line-height: 1.4em;" placeholder="Date"
+                        formControlName="event_date" bsDatepicker [bsConfig]="bsConfig" required>
+                    </div>
+                  </div>
+
+                  <div class="row px-3">
+                    <div class="col-md-4">
+                      <timepicker formControlName="event_time"></timepicker>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                      <input type="text" class="form-control" placeholder="Ticket Price " formControlName="ticket_price"
+                        required>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                      <input type="text" class="form-control" placeholder="Slots Available"
+                        formControlName="ticket_price" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12 pull-right">
+                    <input type="text" class="form-control"
+                      placeholder="Coordinator's name and phone number (Ex: Adam 9645676547)"
+                      formControlName="event_coordinator" required>
+                  </div>
+                  <div class="col-md-12 col-xs-12 pull-right">
+                    <textarea rows="4" class="form-control" placeholder="Description and Rules"
+                      formControlName="event_description" required></textarea>
+                  </div>
+                </div>
+
+                <div class="col-md-1 my-auto">
+                  <button class="eve btn btn-primary" type="button" (click)="addEventPoint()">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="button" name="previous" class="previous action-button-previous" value="Previous">
+          <input type="button" name="next" class="next action-button" value="Next">
+        </fieldset>
+
+
+        <fieldset>
+          <h2 class="fs-title">Sponsor Builder</h2>
+          <h3 class="fs-subtitle">Add as many sponsors as you'd like.</h3>
+          <div class="form-group" formArrayName="sponsor" style="padding:0 15px;">
+            <div *ngFor="let ctrlspon of festForm.get('sponsor')['controls']; let pointIndex=index"
+              [formGroupName]="pointIndex">
+              <div class="row">
+                <div class="col-md-1">
+                  <button class="eve btn btn-danger" type="button" *ngIf="pointIndex>0"
+                    (click)="deleteSponsorEventPoint(pointIndex)">-</button>
+                </div>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" placeholder="Sponsor Name" formControlName="name">
+                </div>
+                <div class="col-md-3" id="pic">
+                  <input type="file" id="inputFile" (change)="previewFile()"><br>
+                  <img id="imagePreview" src="" height="200" alt="Image preview...">
+                </div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" name="caption" placeholder="Enter caption"
+                    formControlName="caption">
+                </div>
+                <div class="col-md-1">
+                  <button class="eve btn btn-primary" type="button" (click)="addSponsorEventPoint()">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="button" name="previous" class="previous action-button-previous" value="Previous">
+          <input type="button" name="next" class="next action-button" value="Next">
+        </fieldset>
+        <fieldset>
+          <h2 class="fs-title">Social Profiles</h2>
+          <h3 class="fs-subtitle">Add your social media presence.</h3>
+          <div class="clearfix"></div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Enter Website" formControlName="website">
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-md-12">
+            <h5>Facebook/Instagram pages</h5>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Ex: www.facebook.com/festpage/"
+                formControlName="facebook">
+            </div>
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Ex: www.instagram.com/festpage/"
+                formControlName="instagram">
+            </div>
+            <div class="col-md-12">
+              <h5>Promo Video</h5>
+            </div>
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Ex: www.youtube.com/festvid/"
+                formControlName="youtube">
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <input type="button" name="previous" class="previous action-button-previous" value="Previous">
+          <input type="button" name="next" class="next action-button" value="Next">
+        </fieldset>
+
+        <fieldset>
+          <h2 class="fs-title">Manager and Account Details</h2>
+          <h3 class="fs-subtitle">Well, who's in charge?</h3>
+          <div class="clearfix"></div>
+
+          <div class="row justify-content-center align-items-center px-3">
+            <div class="col-md-12">
+              <h5>Fest Manager</h5>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Enter Manager Name"
+                      formControlName="manager_name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Enter Manager Phone"
+                      formControlName="manager_phone" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="Enter Manager Email"
+                      formControlName="manager_email" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Enter Secondary Manager Name"
+                      formControlName="sec_manager_name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Enter Secondary Manager Phone"
+                      formControlName="sec_manager_phone" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+              <h5>account details of manager</h5>
+            </div>
+            <div class="col-md-8 md-auto">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Account Holder Name"
+                  formControlName="account_holder_name" required>
+              </div>
+            </div>
+            <div class="col-md-8 md-auto">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Account Number"
+                  formControlName="account_number" required>
+              </div>
+            </div>
+            <div class="col-md-8 md-auto">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter IFSC Code" formControlName="ifsc" required>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+              <h5>confirm account details</h5>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Confirm Account No"
+                  formControlName="confirm_account" required>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Confirm IFSC Code"
+                  formControlName="confirm_ifsc" required>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" formControlName="checkbox" type="checkbox" id="invalidCheck" required>
+                  <label class="form-check-label" for="invalidCheck">
+                    I authorize Festify Pvt Ltd to handle our transactions and <br>agree to the
+                    <a href="#">Terms & Conditions</a>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="button" name="previous" class="previous action-button-previous" value="Previous">
+          <button type="submit" class="submit action-button">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</body>

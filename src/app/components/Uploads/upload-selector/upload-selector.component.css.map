@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,IAAI,CAAC;EACH,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;CAcZ;;AAhBD,AAKI,IALA,CAIF,SAAS,CACP,CAAC,CAAC;EACA,KAAK,EAAE,IAAI;CACZ;;AAPL,AASI,IATA,CAIF,SAAS,CAKP,KAAK;AATT,IAAI,CAIF,SAAS,CAMP,OAAO;AAVX,IAAI,CAIF,SAAS,CAOP,IAAI,CAAC;EACH,MAAM,EAAE,GAAG,CAAC,KAAK,CAdN,OAAO;EAelB,UAAU,EAAE,oBAAoB;CACjC",
+    "sources": [
+        "upload-selector.component.scss"
+    ],
+    "names": [],
+    "file": "upload-selector.component.css"
+}

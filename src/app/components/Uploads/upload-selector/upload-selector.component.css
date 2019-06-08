@@ -1,0 +1,17 @@
+body {
+  height: 80vh;
+  width: 100%;
+}
+
+body .selector a {
+  color: #000;
+}
+
+body .selector .fest,
+body .selector .sevent,
+body .selector .mun {
+  border: 5px solid #5f376b;
+  -webkit-box-shadow: 5px 10px 8px #888888;
+          box-shadow: 5px 10px 8px #888888;
+}
+/*# sourceMappingURL=upload-selector.component.css.map */

@@ -1,0 +1,21 @@
+<app-userheader></app-userheader>
+
+<body>
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="selector col-md-5 col-sm-7 my-auto">
+      <a class="fest w-100 my-3 py-4 btn btn-default" [routerLink]="['/fest-upload']">
+        <strong> College Fest:</strong>
+        <p>Choose to create a single festival page with multiple events.</p>
+      </a>
+      <a class="sevent w-100 my-3 py-4 btn btn-default" [routerLink]="['/sevent-upload']">
+        <strong>Single-Page Event:</strong>
+        <p>Choose to create a single page event with no sub-events.</p>
+        <p>Example: Concerts, TED events, Conferences, Workshops</p>
+      </a>
+      <a class="mun w-100 my-3 py-4 btn btn-default" [routerLink]="['/mun-upload']">
+        <strong> MUN </strong>
+        <p>Model United Nations. You know what to do.</p>
+      </a>
+    </div>
+  </div>
+</body>
