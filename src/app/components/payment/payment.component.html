@@ -1,142 +1,142 @@
-<app-userheader></app-userheader>
+
 <div class="inner-ban">
-    <img src="assets/images/inner-ban.jpg" alt="">
+  <img src="assets/images/inner-ban.jpg" alt="">
 </div>
 <section class="registration-page" style="padding-bottom: 0px;">
-    <div class="container">
-        <div class="row">
-         <h2 style="text-align: center;">Order Summary</h2>
-            <div class="col-md-offset-3 col-md-6 payment-page">
-                <div class="row eventDetailsCard">
-                    <div class="col-md-5 text-center">
-                      <img width="150" src="../../../assets/images/event_icons/{{eventData.event_type}}.png" alt="">
-                      <div>
-                        <p class="eventDateVenue">{{eventData.event_date}}</p>
-                        <p class="eventTime">at {{eventData.event_time}}</p>
-                      </div>
-                    </div>
-                    <div class="col-md-7 eventFesterDetails">
-                      <!-- <h1 class="col-md-12">{{socialData.firstName}} {{socialData.lastName}}</h1> -->
-                      <h3>{{eventData.event_name}}</h3>
-                      <dt class="col-md-6 col-sm-6 col-xs-6">Payable</dt>
-                      <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; {{eventData.ticket_price}}</dd>
-
-                      <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
-                      <dd class="col-md-6 col-sm-6 col-xs-6">"Sent via email and sms"</dd> <!-- {{eventData.ticket_id}} -->
-
-                      <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
-                      <dd class="col-md-6 col-sm-6 col-xs-6">{{eventData.event_coordinator}}</dd>
-
-                      <dt class="col-md-6 col-sm-6 col-xs-6">Date Booked:</dt>
-                      <dd class="col-md-6 col-sm-6 col-xs-6">{{eventData.event_date}}</dd>
-                    </div>
-                  </div>
+  <div class="container">
+    <div class="row">
+      <h2 style="text-align: center;">Order Summary</h2>
+      <div class="col-md-offset-3 col-md-6 payment-page">
+        <div class="row eventDetailsCard">
+          <div class="col-md-5 text-center">
+            <img width="150" src="../../../assets/images/event_icons/{{eventData.event_type}}.png" alt="">
+            <div>
+              <p class="eventDateVenue">{{eventData.event_date}}</p>
+              <p class="eventTime">at {{eventData.event_time}}</p>
             </div>
+          </div>
+          <div class="col-md-7 eventFesterDetails">
+            <!-- <h1 class="col-md-12">{{socialData.firstName}} {{socialData.lastName}}</h1> -->
+            <h3>{{eventData.event_name}}</h3>
+            <dt class="col-md-6 col-sm-6 col-xs-6">Payable</dt>
+            <dd class="col-md-6 col-sm-6 col-xs-6"> &#8377; {{eventData.ticket_price}}</dd>
+
+            <dt class="col-md-6 col-sm-6 col-xs-6">Ticket ID</dt>
+            <dd class="col-md-6 col-sm-6 col-xs-6">"Sent via email and sms"</dd> <!-- {{eventData.ticket_id}} -->
+
+            <dt class="col-md-6 col-sm-6 col-xs-6">Coordinator</dt>
+            <dd class="col-md-6 col-sm-6 col-xs-6">{{eventData.event_coordinator}}</dd>
+
+            <dt class="col-md-6 col-sm-6 col-xs-6">Date Booked:</dt>
+            <dd class="col-md-6 col-sm-6 col-xs-6">{{eventData.event_date}}</dd>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 <section class="festspecific-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-3 col-md-6 payment-page">
-                <label>Enter First Name : </label>
-                <input type="text" [(ngModel)]="firstName">
-                 <label>Enter Last Name: </label>
-                <input type="text" [(ngModel)]="lastName">
-                <label>Enter Mobile No: </label>
-                <input type="text" [(ngModel)]="mobile" (keypress)="onKeyDown($event)">
-                <label>Enter Email Id: </label>
-                <input type="text" [(ngModel)]="email">
-                <button (click)="confirm()">Pay <i class="fas fa-rupee-sign"></i>{{eventData.ticket_price}}</button>
-                <button (click)="cancel()">Cancel</button>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6 payment-page">
+        <label>Enter First Name : </label>
+        <input type="text" [(ngModel)]="firstName">
+        <label>Enter Last Name: </label>
+        <input type="text" [(ngModel)]="lastName">
+        <label>Enter Mobile No: </label>
+        <input type="text" [(ngModel)]="mobile" (keypress)="onKeyDown($event)">
+        <label>Enter Email Id: </label>
+        <input type="text" [(ngModel)]="email">
+        <button (click)="confirm()">Pay <i class="fas fa-rupee-sign"></i>{{eventData.ticket_price}}</button>
+        <button (click)="cancel()">Cancel</button>
+      </div>
     </div>
+  </div>
 </section>
 
 <form *ngIf="false" #form ngNoForm action="https://sandboxsecure.payu.in/_payment" method="post">
-     <input type="hidden" name="key" value="{{ MERCHANT_KEY }}" />
-      <input type="hidden" name="hash_string" value="{{ hash_string }}" />
-      <input type="hidden" name="hash" value="{{ hash }}"/>
-       <input type="hidden" name="posted" value="{{ posted }}"/>
-      <input type="hidden" name="txnid" value="{{ txnid }}" />
-      <table>
-        <tr>
-          <td><b>Mandatory Parameters</b></td>
-        </tr>
-        <tr>
-         <td>Amount: </td>
-          <td><input name="amount" value="{{ posted.amount}}" /></td>
-          <td>First Name: </td>
-          <td><input name="firstname" id="firstname" value="{{ posted.firstname}}" /></td>
-        </tr>
-        <tr>
-          <td>Email: </td>
-          <td><input name="email" id="email" value="{{ posted.email}}" /></td>
-          <td>Phone: </td>
-          <td><input name="phone" value="{{ posted.phone}}" /></td>
-        </tr>
-        <tr>
-          <td>Product Info: </td>
-          <td colspan="3"><textarea name="productinfo">{{ posted.productinfo}}</textarea></td>
-        </tr>
-        <tr>
-          <td>Success URI: </td>
-          <td colspan="3"><input name="surl" value="{{ posted.surl }}" size="64" /></td>
-        </tr>
-        <tr>
-          <td>Failure URI: </td>
-          <td colspan="3"><input name="furl" value="{{ posted.furl }}" size="64" /></td>
-        </tr>
+  <input type="hidden" name="key" value="{{ MERCHANT_KEY }}" />
+  <input type="hidden" name="hash_string" value="{{ hash_string }}" />
+  <input type="hidden" name="hash" value="{{ hash }}" />
+  <input type="hidden" name="posted" value="{{ posted }}" />
+  <input type="hidden" name="txnid" value="{{ txnid }}" />
+  <table>
+    <tr>
+      <td><b>Mandatory Parameters</b></td>
+    </tr>
+    <tr>
+      <td>Amount: </td>
+      <td><input name="amount" value="{{ posted.amount}}" /></td>
+      <td>First Name: </td>
+      <td><input name="firstname" id="firstname" value="{{ posted.firstname}}" /></td>
+    </tr>
+    <tr>
+      <td>Email: </td>
+      <td><input name="email" id="email" value="{{ posted.email}}" /></td>
+      <td>Phone: </td>
+      <td><input name="phone" value="{{ posted.phone}}" /></td>
+    </tr>
+    <tr>
+      <td>Product Info: </td>
+      <td colspan="3"><textarea name="productinfo">{{ posted.productinfo}}</textarea></td>
+    </tr>
+    <tr>
+      <td>Success URI: </td>
+      <td colspan="3"><input name="surl" value="{{ posted.surl }}" size="64" /></td>
+    </tr>
+    <tr>
+      <td>Failure URI: </td>
+      <td colspan="3"><input name="furl" value="{{ posted.furl }}" size="64" /></td>
+    </tr>
 
-        <tr>
-          <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
-        </tr>
-             <tr>
-          <td><b>Optional Parameters</b></td>
-        </tr>
-        <tr>
-          <td>Last Name: </td>
-          <td><input name="lastname" id="lastname" value="{{ posted.lastname }}" /></td>
-          <td>Cancel URI: </td>
-          <td><input name="curl" value="" /></td>
-        </tr>
-        <tr>
-          <td>Address1: </td>
-          <td><input name="address1" value="{{ posted.address1 }}" /></td>
-          <td>Address2: </td>
-          <td><input name="address2" value="{{ posted.address2 }}" /></td>
-        </tr>
-        <tr>
-          <td>City: </td>
-          <td><input name="city" value="{{ posted.city }}" /></td>
-          <td>State: </td>
-          <td><input name="state" value="{{ posted.state }}" /></td>
-        </tr>
-        <tr>
-          <td>Country: </td>
-          <td><input name="country" value="{{ posted.country }}" /></td>
-          <td>Zipcode: </td>
-          <td><input name="zipcode" value="{{ posted.zipcode }}" /></td>
-        </tr>
-        <tr>
-          <td>UDF1: </td>
-          <td><input name="udf1" value="{{ posted.udf1 }}" /></td>
-          <td>UDF2: </td>
-          <td><input name="udf2" value="{{ posted.udf2 }}" /></td>
-        </tr>
-        <tr>
-          <td>UDF3: </td>
-          <td><input name="udf3" value="{{ posted.udf3 }}" /></td>
-          <td>UDF4: </td>
-          <td><input name="udf4" value="{{ posted.udf4 }}" /></td>
-        </tr>
-        <tr>
-          <td>UDF5: </td>
-          <td><input name="udf5" value="{{ posted.udf5 }}" /></td>
-          <td>PG: </td>
-          <td><input name="pg" value="{{ posted.PG }}" /></td>
-        </tr>        
-        <td colspan="4"><input type="submit" value="Submit" /></td>    
-      </table> 
+    <tr>
+      <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
+    </tr>
+    <tr>
+      <td><b>Optional Parameters</b></td>
+    </tr>
+    <tr>
+      <td>Last Name: </td>
+      <td><input name="lastname" id="lastname" value="{{ posted.lastname }}" /></td>
+      <td>Cancel URI: </td>
+      <td><input name="curl" value="" /></td>
+    </tr>
+    <tr>
+      <td>Address1: </td>
+      <td><input name="address1" value="{{ posted.address1 }}" /></td>
+      <td>Address2: </td>
+      <td><input name="address2" value="{{ posted.address2 }}" /></td>
+    </tr>
+    <tr>
+      <td>City: </td>
+      <td><input name="city" value="{{ posted.city }}" /></td>
+      <td>State: </td>
+      <td><input name="state" value="{{ posted.state }}" /></td>
+    </tr>
+    <tr>
+      <td>Country: </td>
+      <td><input name="country" value="{{ posted.country }}" /></td>
+      <td>Zipcode: </td>
+      <td><input name="zipcode" value="{{ posted.zipcode }}" /></td>
+    </tr>
+    <tr>
+      <td>UDF1: </td>
+      <td><input name="udf1" value="{{ posted.udf1 }}" /></td>
+      <td>UDF2: </td>
+      <td><input name="udf2" value="{{ posted.udf2 }}" /></td>
+    </tr>
+    <tr>
+      <td>UDF3: </td>
+      <td><input name="udf3" value="{{ posted.udf3 }}" /></td>
+      <td>UDF4: </td>
+      <td><input name="udf4" value="{{ posted.udf4 }}" /></td>
+    </tr>
+    <tr>
+      <td>UDF5: </td>
+      <td><input name="udf5" value="{{ posted.udf5 }}" /></td>
+      <td>PG: </td>
+      <td><input name="pg" value="{{ posted.PG }}" /></td>
+    </tr>
+    <td colspan="4"><input type="submit" value="Submit" /></td>
+  </table>
 </form>

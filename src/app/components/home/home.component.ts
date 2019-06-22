@@ -1,20 +1,18 @@
 import {
   Component,
   OnInit,
-  Output,
-  Input,
   Inject,
   PLATFORM_ID,
   AfterViewInit
 } from "@angular/core";
-import { AuthenticationService } from "src/app/services/authentication.service";
+import { AppService } from "src/app/app.service";
+import { AuthService } from "../../services/Authentication/auth.service";
 import { Router } from "@angular/router";
-
 declare var $: any;
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.sass"]
+  styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   university: any = [];
@@ -63,13 +61,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   likedFest: any;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private authService: AuthService,
+    private appService: AppService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router
   ) {
-    this.authenticationService.orgExist = sessionStorage.getItem("currentUser");
-    this.authenticationService.userExist = sessionStorage.getItem("userData");
-    this.authenticationService.festDetails().subscribe(data => {
+    this.authService.orgExist = sessionStorage.getItem("currentUser");
+    this.authService.userExist = sessionStorage.getItem("userData");
+    this.appService.festDetails().subscribe(data => {
       if (data) {
         data.filter(x => {
           if (x.org_type == "youth") {
@@ -88,10 +87,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.runCarouselHeader();
-    this.authenticationService.orgExist = sessionStorage.getItem("currentUser");
-    this.authenticationService.userExist = sessionStorage.getItem("userData");
-    if (this.authenticationService.userExist) {
-      this.authenticationService.getLikesBookedEvents().subscribe(data => {
+    this.authService.orgExist = sessionStorage.getItem("currentUser");
+    this.authService.userExist = sessionStorage.getItem("userData");
+    if (this.authService.userExist) {
+      this.appService.getLikesBookedEvents().subscribe(data => {
         this.likedFest = data.liked_fests;
       });
       setTimeout(() => {
@@ -108,7 +107,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   get authenticationServicefn() {
-    return this.authenticationService;
+    return this.authService;
   }
 
   createEvent() {

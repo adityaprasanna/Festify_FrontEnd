@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { AppService } from "src/app/app.service";
-import { AuthenticationService } from "src/app/services/authentication.service";
+import { AuthService } from "../../services/Authentication/auth.service";
 declare let $: any;
 
 @Component({
@@ -50,14 +50,14 @@ export class BlogComponent implements OnInit, AfterViewInit {
   };
   constructor(
     private appService: AppService,
-    private authenticationService: AuthenticationService
+    private authService: AuthService
   ) {
-    this.authenticationService.orgExist = sessionStorage.getItem("currentUser");
-    this.authenticationService.userExist = sessionStorage.getItem("userData");
+    this.authService.orgExist = sessionStorage.getItem("currentUser");
+    this.authService.userExist = sessionStorage.getItem("userData");
   }
 
   get authenticationServicefn() {
-    return this.authenticationService;
+    return this.authService;
   }
   ngOnInit() {
     this.runCarouselHeader();

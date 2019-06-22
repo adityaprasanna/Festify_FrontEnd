@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthenticationService } from "../../../services/authentication.service";
+import { AppService } from "src/app/app.service";
+import { AuthService } from "../../../services/Authentication/auth.service";
+
 import {
   FormArray,
   FormBuilder,
@@ -25,7 +27,8 @@ export class EditfestComponent implements OnInit {
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private appService: AppService,
+    private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
@@ -37,95 +40,92 @@ export class EditfestComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authenticationService
-      .festSepecificDetails(this.festID)
-      .subscribe(data => {
-        this.loading = false;
+    this.appService.festSpecificDetails(this.festID).subscribe(data => {
+      this.loading = false;
 
-        this.festEditData = data[0];
+      this.festEditData = data[0];
 
-        for (const item in this.festEditData) {
-          if (this.festEditData[item] == null) {
-            this.festEditData[item] = "";
-          }
+      for (const item in this.festEditData) {
+        if (this.festEditData[item] == null) {
+          this.festEditData[item] = "";
         }
+      }
 
-        this.festForm = this.formBuilder.group({
-          fest_type: new FormControl(this.festEditData.fest_type, [
-            Validators.required
-          ]),
-          name: new FormControl(this.festEditData.name, [Validators.required]),
-          image: new FormControl(null),
-          description: new FormControl(this.festEditData.description, [
-            Validators.required
-          ]),
-          start_date: new FormControl(this.festEditData.start_date, [
-            Validators.required
-          ]),
-          end_date: new FormControl(this.festEditData.end_date, [
-            Validators.required
-          ]),
-          website: new FormControl(this.festEditData.website),
-          social_media_pages: new FormControl(
-            this.festEditData.social_media_pages
-          ),
-          promo_video: new FormControl(null),
-          promo_video_thumbnail: new FormControl(null),
-          id: new FormControl(this.festEditData.id),
-          event: this.formBuilder.array([
-            this.formBuilder.group({
-              id: new FormControl(""),
-              eventName: new FormControl("", [Validators.required]),
-              ticket_price: new FormControl("", [Validators.required]),
-              event_description: new FormControl("", [Validators.required]),
-              event_coordinator: new FormControl("", [Validators.required]),
-              event_date: new FormControl("", [Validators.required]),
-              event_time: new FormControl("", [Validators.required]),
-              event_type: new FormControl("", [Validators.required])
-            })
-          ]),
-          manager_name: new FormControl(this.festEditData.manager_name, [
-            Validators.required
-          ]),
-          manager_phone: new FormControl(this.festEditData.manager_phone, [
-            Validators.required
-          ]),
-          manager_email: new FormControl(this.festEditData.manager_email, [
-            Validators.required,
-            Validators.email
-          ]),
-          event_sponser: this.formBuilder.array([
-            this.formBuilder.group({
-              id: new FormControl(""),
-              evtSpnName: "",
-              picture: new FormControl(null),
-              caption: new FormControl("")
-            })
-          ]),
-          sec_manager_name: new FormControl(
-            this.festEditData.sec_manager_name,
-            [Validators.required]
-          ),
-          sec_manager_phone: new FormControl(
-            this.festEditData.sec_manager_phone,
-            [Validators.required]
-          ),
-          account_holder_name: new FormControl(
-            this.festEditData.account_holder_name,
-            [Validators.required]
-          ),
-          account_number: new FormControl(this.festEditData.account_number, [
-            Validators.required
-          ]),
-          ifsc: new FormControl(this.festEditData.IFSC, [Validators.required])
-        });
-
-        this.eventPoints.removeAt(0);
-        this.initializeEvents();
-
-        this.sponsorEventPoints.removeAt(0);
-        this.initializeSponsors();
+      this.festForm = this.formBuilder.group({
+        fest_type: new FormControl(this.festEditData.fest_type, [
+          Validators.required
+        ]),
+        name: new FormControl(this.festEditData.name, [Validators.required]),
+        image: new FormControl(null),
+        description: new FormControl(this.festEditData.description, [
+          Validators.required
+        ]),
+        start_date: new FormControl(this.festEditData.start_date, [
+          Validators.required
+        ]),
+        end_date: new FormControl(this.festEditData.end_date, [
+          Validators.required
+        ]),
+        website: new FormControl(this.festEditData.website),
+        social_media_pages: new FormControl(
+          this.festEditData.social_media_pages
+        ),
+        promo_video: new FormControl(null),
+        promo_video_thumbnail: new FormControl(null),
+        id: new FormControl(this.festEditData.id),
+        event: this.formBuilder.array([
+          this.formBuilder.group({
+            id: new FormControl(""),
+            eventName: new FormControl("", [Validators.required]),
+            ticket_price: new FormControl("", [Validators.required]),
+            event_description: new FormControl("", [Validators.required]),
+            event_coordinator: new FormControl("", [Validators.required]),
+            event_date: new FormControl("", [Validators.required]),
+            event_time: new FormControl("", [Validators.required]),
+            event_type: new FormControl("", [Validators.required])
+          })
+        ]),
+        manager_name: new FormControl(this.festEditData.manager_name, [
+          Validators.required
+        ]),
+        manager_phone: new FormControl(this.festEditData.manager_phone, [
+          Validators.required
+        ]),
+        manager_email: new FormControl(this.festEditData.manager_email, [
+          Validators.required,
+          Validators.email
+        ]),
+        event_sponser: this.formBuilder.array([
+          this.formBuilder.group({
+            id: new FormControl(""),
+            evtSpnName: "",
+            picture: new FormControl(null),
+            caption: new FormControl("")
+          })
+        ]),
+        sec_manager_name: new FormControl(this.festEditData.sec_manager_name, [
+          Validators.required
+        ]),
+        sec_manager_phone: new FormControl(
+          this.festEditData.sec_manager_phone,
+          [Validators.required]
+        ),
+        account_holder_name: new FormControl(
+          this.festEditData.account_holder_name,
+          [Validators.required]
+        ),
+        account_number: new FormControl(this.festEditData.account_number, [
+          Validators.required
+        ]),
+        ifsc: new FormControl(this.festEditData.IFSC, [Validators.required])
       });
+
+      this.eventPoints.removeAt(0);
+      this.initializeEvents();
+
+      this.sponsorEventPoints.removeAt(0);
+      this.initializeSponsors();
+    });
   }
 
   get eventPoints() {
@@ -288,14 +288,12 @@ export class EditfestComponent implements OnInit {
         });
       }
     }
-    this.authenticationService
-      .updateFest(this.festForm.value)
-      .subscribe(data => {
-        if (data) {
-          localStorage.removeItem("festspecific");
-          this.router.navigate(["orgdashboard"]);
-        }
-      });
+    this.authService.updateFest(this.festForm.value).subscribe(data => {
+      if (data) {
+        localStorage.removeItem("festspecific");
+        this.router.navigate(["orgdashboard"]);
+      }
+    });
   }
 
   addEventPoint() {
@@ -316,7 +314,7 @@ export class EditfestComponent implements OnInit {
     let result = confirm("Are you sure you want to delete this event?");
     if (result) {
       this.eventPoints.removeAt(index);
-      this.authenticationService
+      this.authService
         .deleteEvent(id)
         .subscribe(() => alert("Event Deleted successfully"));
     }
@@ -336,7 +334,7 @@ export class EditfestComponent implements OnInit {
     let result = confirm("Are you sure you want to delete this event?");
     if (result) {
       this.sponsorEventPoints.removeAt(index);
-      this.authenticationService
+      this.authService
         .deleteSponsor(id)
         .subscribe(() => alert("Sponsor Deleted successfully"));
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "src/app/app.service";
 import { Router } from "@angular/router";
-import { AuthenticationService } from "../../../services/authentication.service";
+import { AuthService } from "../../../services/Authentication/auth.service";
 
 declare var $: any;
 
@@ -20,7 +20,7 @@ export class OrganizationDashboardComponent implements OnInit {
   constructor(
     private appService: AppService,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authService: AuthService
   ) {}
 
   setClickedRow(index, fest) {
@@ -85,12 +85,10 @@ export class OrganizationDashboardComponent implements OnInit {
     if (result) {
       if (this.selectedRow != undefined) {
         let festId = localStorage.getItem("festspecific");
-        this.authenticationService
-          .deleteFest(JSON.parse(festId).id)
-          .subscribe(x => {
-            alert("deleted Successfully");
-            this.gettingFestData();
-          });
+        this.authService.deleteFest(JSON.parse(festId).id).subscribe(x => {
+          alert("deleted Successfully");
+          this.gettingFestData();
+        });
       } else {
         alert("Please Select One Row");
       }

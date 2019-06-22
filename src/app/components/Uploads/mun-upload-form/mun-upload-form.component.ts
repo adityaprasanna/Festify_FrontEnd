@@ -4,10 +4,9 @@ import {
   FormGroup,
   FormArray,
   Validators,
-  FormControl,
-  EmailValidator
+  FormControl
 } from "@angular/forms";
-import { AppService } from "src/app/app.service";
+import { AuthService } from "../../../services/Authentication/auth.service";
 import { Router } from "@angular/router";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 declare let $: any;
@@ -25,7 +24,7 @@ export class MunUploadFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private appService: AppService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.bsConfig.containerClass = "theme-red";
@@ -216,7 +215,7 @@ export class MunUploadFormComponent implements OnInit {
   onFestSubmit() {
     this.submitted = true;
 
-    this.appService.createFest(this.festForm).subscribe(data => {
+    this.authService.createFest(this.festForm).subscribe(data => {
       if (data == undefined) {
         this.router.navigate(["home"]);
       } else {

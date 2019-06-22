@@ -5,7 +5,7 @@ import {
   FormBuilder,
   FormControl
 } from "@angular/forms";
-import { AppService } from "src/app/app.service";
+import { AuthService } from "../../../services/Authentication/auth.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -23,7 +23,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private appService: AppService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -103,7 +103,7 @@ export class RegistrationComponent implements OnInit {
       // alert("Please enter 10 digit mobile no and Filled all values properly");
       return;
     } else {
-      this.appService.createOrganization(this.registerForm).subscribe(data => {
+      this.authService.createOrganization(this.registerForm).subscribe(data => {
         console.log(data, this.registerForm.value);
         if (data) {
           // this.router.navigate(['home']);
@@ -116,7 +116,7 @@ export class RegistrationComponent implements OnInit {
               password: this.registerForm.value.org_password
             }
           };
-          this.appService.organizationLogin(postParams).subscribe(resp => {
+          this.authService.organizationLogin(postParams).subscribe(resp => {
             if (resp) {
               sessionStorage.setItem(
                 "currentUserId",

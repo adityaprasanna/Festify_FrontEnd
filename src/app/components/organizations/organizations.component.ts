@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "src/app/app.service";
-import { AuthenticationService } from "src/app/services/authentication.service";
+import { AuthService } from "../../services/Authentication/auth.service";
 
 @Component({
   selector: "app-organizations",
   templateUrl: "./organizations.component.html",
-  styleUrls: ["./organizations.component.sass"]
+  styleUrls: ["./organizations.component.scss"]
 })
 export class OrganizationsComponent implements OnInit {
   organizationList: any = [];
@@ -13,14 +13,14 @@ export class OrganizationsComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private authenticationService: AuthenticationService
+    private authService: AuthService
   ) {
-    this.authenticationService.orgExist = sessionStorage.getItem("currentUser");
-    this.authenticationService.userExist = sessionStorage.getItem("userData");
+    this.authService.orgExist = sessionStorage.getItem("currentUser");
+    this.authService.userExist = sessionStorage.getItem("userData");
   }
 
   get authenticationServicefn() {
-    return this.authenticationService;
+    return this.authService;
   }
   ngOnInit() {
     this.appService.organizationList().subscribe(data => {

@@ -1,8 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
-import { SlickCarouselModule } from "ngx-slick-carousel";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -10,40 +8,34 @@ import { RegistrationComponent } from "./components/Uploads/registration/registr
 import { DashboardComponent } from "./components/Dashboards/dashboard/dashboard.component";
 import { PagenotfoundComponent } from "./components/pagenotfound/pagenotfound.component";
 import { OrganizationsComponent } from "./components/organizations/organizations.component";
-import { HeaderComponent } from "./components/Headers/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { FestUploadFormComponent } from "./components/Uploads/fest-upload-form/fest-upload-form.component";
 import { GrdFilterPipe } from "./components/organizations/grd-filter.pipe";
-// import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider,
-// } from "angular-6-social-login-v2";
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from "angularx-social-login";
-
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-
+import { SlickCarouselModule } from "ngx-slick-carousel";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { TimepickerModule } from "ngx-bootstrap/timepicker";
+
 // service
 import { FileUploadModule } from "ng2-file-upload";
 import { AppService } from "./app.service";
-import { AuthGuardService } from "./services/auth-guard.service";
+import { UserAuthService } from "./services/User-Auth/user-guard.service";
+import { OrgAuthService } from "./services/Organization-Auth/org-guard.service";
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
 import { OrganizationDashboardComponent } from "./components/Dashboards/organization-dashboard/organization-dashboard.component";
 import { FestComponent } from "./components/fest/fest.component";
-import { UserheaderComponent } from "./components/Headers/userheader/userheader.component";
-import { OrganizationheaderComponent } from "./components/Headers/organizationheader/organizationheader.component";
 import { EditorgdashboardComponent } from "./components/Dashboards/editorgdashboard/editorgdashboard.component";
 import { EditfestComponent } from "./components/Uploads/editfest/editfest.component";
-import { AuthenticationService } from "./services/authentication.service";
+import { AuthService } from "./services/Authentication/auth.service";
 import { PaymentComponent } from "./components/payment/payment.component";
 import { FestspecificComponent } from "./components/festspecific/festspecific.component";
 import { FailureComponent } from "./components/failure/failure.component";
-import { OrgauthService } from "./services/orgauth.service";
-import { PrivatePolicyComponent } from "./components/private-policy/private-policy.component";
 import { AftersuccessComponent } from "./components/aftersuccess/aftersuccess.component";
 import { SidebarModule } from "ng-sidebar";
 import { UploadSelectorComponent } from "./components/Uploads/upload-selector/upload-selector.component";
@@ -73,21 +65,17 @@ export function getAuthServiceConfigs() {
     RegistrationComponent,
     DashboardComponent,
     PagenotfoundComponent,
-    HeaderComponent,
     FooterComponent,
     FestUploadFormComponent,
     OrganizationsComponent,
     GrdFilterPipe,
     OrganizationDashboardComponent,
     FestComponent,
-    UserheaderComponent,
-    OrganizationheaderComponent,
     EditorgdashboardComponent,
     EditfestComponent,
     PaymentComponent,
     FestspecificComponent,
     FailureComponent,
-    PrivatePolicyComponent,
     AftersuccessComponent,
     UploadSelectorComponent,
     SeventUploadFormComponent,
@@ -115,9 +103,9 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
     },
     AppService,
-    AuthGuardService,
-    AuthenticationService,
-    OrgauthService
+    UserAuthService,
+    OrgAuthService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

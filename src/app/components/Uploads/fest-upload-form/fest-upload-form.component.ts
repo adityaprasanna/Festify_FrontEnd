@@ -4,10 +4,9 @@ import {
   FormGroup,
   FormArray,
   Validators,
-  FormControl,
-  EmailValidator
+  FormControl
 } from "@angular/forms";
-import { AppService } from "src/app/app.service";
+import { AuthService } from "../../../services/Authentication/auth.service";
 import { Router } from "@angular/router";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 declare let $: any;
@@ -27,7 +26,7 @@ export class FestUploadFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private appService: AppService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.bsConfig.containerClass = "theme-red";
@@ -221,7 +220,7 @@ export class FestUploadFormComponent implements OnInit {
   onFestSubmit() {
     this.submitted = true;
 
-    this.appService.createFest(this.festForm).subscribe(data => {
+    this.authService.createFest(this.festForm).subscribe(data => {
       if (data == undefined) {
         this.router.navigate(["home"]);
       } else {
@@ -281,13 +280,26 @@ export class FestUploadFormComponent implements OnInit {
     let file = (<HTMLInputElement>document.getElementById("inputFile"))
       .files[0]; //sames as here
     let reader = new FileReader();
-
+    let form = new FormData();
+    form.append(
+      "file",
+      "/Users/adityaprasanna/Desktop/Screen Shot 2019-06-01 at 1.41.00 PM.png"
+    );
+    console.log(form);
+    let sub = this.formBuilder.group({
+      file:
+        "/Users/adityaprasanna/Desktop/Screen Shot 2019-06-01 at 1.41.00 PM.png"
+    });
+    this.authService.createFest(sub).subscribe();
     reader.onloadend = function() {
       preview.src = reader.result as string;
     };
 
     if (file) {
       reader.readAsDataURL(file); //reads the data as a URL
+
+      // let sub = this.formBuilder.group({});
+      // this.authService.createFest(sub).subscribe();
     } else {
       preview.src = "";
     }

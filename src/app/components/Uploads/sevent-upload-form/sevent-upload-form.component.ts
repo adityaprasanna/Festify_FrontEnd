@@ -4,10 +4,10 @@ import {
   FormGroup,
   FormArray,
   Validators,
-  FormControl,
-  EmailValidator
+  FormControl
 } from "@angular/forms";
-import { AppService } from "src/app/app.service";
+import { AuthService } from "../../../services/Authentication/auth.service";
+
 import { Router } from "@angular/router";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 declare var $: any;
@@ -24,7 +24,7 @@ export class SeventUploadFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private appService: AppService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.bsConfig.containerClass = "theme-red";
@@ -207,7 +207,7 @@ export class SeventUploadFormComponent implements OnInit {
   onFestSubmit() {
     this.submitted = true;
 
-    this.appService.createFest(this.seventForm).subscribe(data => {
+    this.authService.createFest(this.seventForm).subscribe(data => {
       if (data == undefined) {
         this.router.navigate(["home"]);
       } else {

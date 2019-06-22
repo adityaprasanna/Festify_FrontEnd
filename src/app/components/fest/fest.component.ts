@@ -1,11 +1,6 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  AfterViewChecked
-} from "@angular/core";
-import { AuthenticationService } from "src/app/services/authentication.service";
-import { Router } from "@angular/router";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { AppService } from "src/app/app.service";
+import { AuthService } from "../../services/Authentication/auth.service";
 declare var $: any;
 @Component({
   selector: "app-fest",
@@ -26,10 +21,10 @@ export class FestComponent implements OnInit, AfterViewInit {
   likedFest: any;
 
   constructor(
-    private authenticationService: AuthenticationService,
-    private router: Router
+    private appService: AppService,
+    private authService: AuthService
   ) {
-    this.authenticationService.festDetails().subscribe(data => {
+    this.appService.festDetails().subscribe(data => {
       if (data) {
         data.map(x => {
           if (x.org_type == "youth") {
@@ -57,10 +52,10 @@ export class FestComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.authenticationService.orgExist = sessionStorage.getItem("currentUser");
-    this.authenticationService.userExist = sessionStorage.getItem("userData");
-    if (this.authenticationService.userExist) {
-      this.authenticationService.getLikesBookedEvents().subscribe(data => {
+    this.authService.orgExist = sessionStorage.getItem("currentUser");
+    this.authService.userExist = sessionStorage.getItem("userData");
+    if (this.authService.userExist) {
+      this.appService.getLikesBookedEvents().subscribe(data => {
         this.likedFest = data.liked_fests;
       });
       setTimeout(() => {
@@ -77,7 +72,7 @@ export class FestComponent implements OnInit, AfterViewInit {
   }
 
   get authenticationServicefn() {
-    return this.authenticationService;
+    return this.authService;
   }
 
   ngAfterViewInit(): void {
@@ -86,11 +81,8 @@ export class FestComponent implements OnInit, AfterViewInit {
         var value = $(this).attr("data-filter");
 
         if (value == "all") {
-          //$('.filter').removeClass('hidden');
           $(".filter").show("1000");
         } else {
-          //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
-          //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
           $(".filter")
             .not("." + value)
             .hide("3000");

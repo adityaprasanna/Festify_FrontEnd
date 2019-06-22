@@ -1,19 +1,16 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { AuthenticationService } from "../../../services/authentication.service";
+import { AuthService } from "../../../services/Authentication/auth.service";
 import { Router } from "@angular/router";
 
 @Component({
   selector: "app-editorgdashboard",
   templateUrl: "./editorgdashboard.component.html",
-  styleUrls: ["./editorgdashboard.component.sass"]
+  styleUrls: ["./editorgdashboard.component.scss"]
 })
 export class EditorgdashboardComponent implements OnInit {
   editOrganizationList: any;
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     let editOrganizationList = localStorage.getItem("organization");
@@ -25,7 +22,7 @@ export class EditorgdashboardComponent implements OnInit {
 
   onSubmitTemplateBased() {
     console.log(this.editOrganizationList);
-    this.authenticationService
+    this.authService
       .updateOrganization(this.editOrganizationList)
       .subscribe(data => {
         if (data) {

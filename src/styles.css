@@ -1,1 +1,270 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+html,
+body {
+  height: 100%;
+  min-width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.bs-timepicker-field {
+  background-image: none !important;
+  padding-right: 0 !important;
+}
+
+ng-sidebar-container .ng-sidebar {
+  background: #5f376b;
+  width: 13rem;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+ng-sidebar-container .ng-sidebar--right {
+  color: #5f376b !important;
+  background: #5f376b;
+  padding: 0 25px;
+  width: 170px;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+ng-sidebar-container .profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #6b6464;
+  margin: 40px auto;
+  margin-bottom: 0;
+}
+
+ng-sidebar-container .profile-pic i {
+  margin: 20px;
+  font-size: 44px;
+}
+
+img {
+  max-width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+a,
+a:hover {
+  text-decoration: none !important;
+}
+
+a:focus {
+  outline: none !important;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+}
+
+li,
+ol {
+  list-style: none;
+}
+
+.banner-part {
+  position: relative;
+}
+
+#contact .card:hover i,
+#contact .card:hover h4 {
+  color: #5f376b;
+}
+
+section#contact {
+  padding: 50px 0;
+  padding-top: 7%;
+}
+
+section#contact h3 {
+  color: #111;
+  margin-bottom: 27px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 15px;
+}
+
+section#contact p {
+  width: 50%;
+  color: #111;
+  font-weight: 300;
+  font-size: 16px;
+  margin: 15px auto 30px;
+  line-height: 25px;
+}
+
+section#contact .card {
+  -webkit-box-shadow: 0 0 15px #e9e9e9;
+          box-shadow: 0 0 15px #e9e9e9;
+  padding: 24px;
+}
+
+section#contact .card i.fa {
+  color: #f71769;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+section#contact .card h4 {
+  color: #111;
+}
+
+section#contact .card p {
+  width: 100%;
+  margin: 0;
+  min-height: 56px;
+}
+
+button.eve {
+  margin: 0;
+  padding: 11px 16px;
+  width: 100%;
+  color: #fff;
+  background-color: #5f376b;
+}
+
+.slick-dots {
+  display: none !important;
+}
+
+.like-sec {
+  margin-top: 30px;
+}
+
+.like-sec i.far.fa-thumbs-up {
+  font-size: 20px;
+  margin-right: 14px;
+  color: #4285f4;
+}
+
+.like-sec span {
+  text-transform: capitalize;
+  font-size: 20px;
+  color: #4285f4;
+}
+
+.like-sec2 {
+  margin-top: 30px;
+}
+
+.like-sec2 a {
+  color: #ccc;
+  font-size: 20px;
+}
+
+.like-sec2.active a {
+  color: green;
+}
+
+.slick-slide {
+  border: 2px solid #eee;
+  border-radius: 10px;
+  margin: 0 8px;
+  padding-bottom: 9px;
+}
+
+.slick-slide img {
+  height: 240px;
+  margin-bottom: 0px;
+}
+
+.heart {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  -webkit-transform: translate(22%, -38%);
+          transform: translate(22%, -38%);
+  background: url(http://imagizer.imageshack.com/img923/4545/XdJDuY.png) no-repeat;
+  cursor: pointer;
+}
+
+.blast {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  -webkit-transform: translate(22%, -38%);
+          transform: translate(22%, -38%);
+  background: url(http://imagizer.imageshack.com/img923/4545/XdJDuY.png) no-repeat;
+  cursor: pointer;
+  background-position: -2800px 0;
+  -webkit-transition: background 1s steps(28);
+  transition: background 1s steps(28);
+}
+
+.gallery_product .item {
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding-bottom: 9px;
+  display: table;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.gallery_product .item:hover .overlay {
+  opacity: 1;
+}
+
+.slick-slide:hover .overlay {
+  opacity: 1;
+}
+
+.img-wrap {
+  position: relative;
+  display: table;
+  width: 100%;
+}
+
+.img-wrap input.update {
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 10px 27px;
+  text-transform: uppercase;
+  background: none;
+  border: 2px solid #fff;
+  text-shadow: 2px 2px 0 #111;
+}
+
+.img-wrap .overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/*# sourceMappingURL=styles.css.map */

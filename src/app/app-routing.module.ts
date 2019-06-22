@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
-import { AuthGuardService } from "./services/auth-guard.service";
+import { UserAuthService } from "./services/User-Auth/user-guard.service";
+import { OrgAuthService } from "./services/Organization-Auth/org-guard.service";
 import { RegistrationComponent } from "./components/Uploads/registration/registration.component";
 import { DashboardComponent } from "./components/Dashboards/dashboard/dashboard.component";
 import { OrganizationsComponent } from "./components/organizations/organizations.component";
@@ -15,7 +16,6 @@ import { AftersuccessComponent } from "./components/aftersuccess/aftersuccess.co
 import { FailureComponent } from "./components/failure/failure.component";
 import { PaymentComponent } from "./components/payment/payment.component";
 import { FestspecificComponent } from "./components/festspecific/festspecific.component";
-import { OrgauthService } from "./services/orgauth.service";
 import { UploadSelectorComponent } from "./components/Uploads/upload-selector/upload-selector.component";
 import { SeventUploadFormComponent } from "./components/Uploads/sevent-upload-form/sevent-upload-form.component";
 import { MunUploadFormComponent } from "./components/Uploads/mun-upload-form/mun-upload-form.component";
@@ -41,7 +41,7 @@ const routes: Routes = [
   {
     path: "userdashboard",
     component: DashboardComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [UserAuthService]
   },
   {
     path: "organizations",
@@ -50,37 +50,37 @@ const routes: Routes = [
   {
     path: "upload-selector",
     component: UploadSelectorComponent
-    // canActivate: [OrgauthService]
+    // canActivate: [OrgAuthService]
   },
   {
     path: "fest-upload",
     component: FestUploadFormComponent
-    // canActivate: [OrgauthService]
+    // canActivate: [OrgAuthService]
   },
   {
     path: "sevent-upload",
     component: SeventUploadFormComponent
-    // canActivate: [OrgauthService]
+    // canActivate: [OrgAuthService]
   },
   {
     path: "mun-upload",
     component: MunUploadFormComponent
-    // canActivate: [OrgauthService]
+    // canActivate: [OrgAuthService]
   },
   {
     path: "orgdashboard",
     component: OrganizationDashboardComponent,
-    canActivate: [OrgauthService]
+    canActivate: [OrgAuthService]
   },
   {
     path: "edit",
     component: EditorgdashboardComponent,
-    canActivate: [OrgauthService]
+    canActivate: [OrgAuthService]
   },
   {
     path: "editfest/:id",
     component: EditfestComponent,
-    canActivate: [OrgauthService]
+    canActivate: [OrgAuthService]
   },
   {
     // path: 'success/:&fname:&lname:&email:&phone:&fest:&event:&price:&tid',
@@ -90,7 +90,7 @@ const routes: Routes = [
   {
     path: "failure",
     component: FailureComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [UserAuthService]
   },
   {
     path: "fest",
@@ -103,7 +103,7 @@ const routes: Routes = [
   {
     path: "payment",
     component: PaymentComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [UserAuthService]
   },
   // {
   //   path: 'festspecific',

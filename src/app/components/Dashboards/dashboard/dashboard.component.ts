@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthenticationService } from "src/app/services/authentication.service";
+import { AppService } from "src/app/app.service";
 
 @Component({
   selector: "app-dashboard",
@@ -10,8 +10,8 @@ export class DashboardComponent implements OnInit {
   socialData: any;
   bookedEvents: any;
   likedFest: any;
-  constructor(private authenticationService: AuthenticationService) {
-    this.authenticationService.getLikesBookedEvents().subscribe(data => {
+  constructor(private appService: AppService) {
+    this.appService.getLikesBookedEvents().subscribe(data => {
       this.bookedEvents = data.booked_events;
       this.likedFest = data.liked_fests;
     });

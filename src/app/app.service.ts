@@ -1,78 +1,57 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "selenium-webdriver/http";
-import { Router } from "@angular/router";
-import { HttpClientModule, HttpErrorResponse } from "@angular/common/http";
-import {
-  Http,
-  Response,
-  Headers,
-  RequestOptions,
-  RequestMethod
-} from "@angular/http";
-import { catchError } from "rxjs/operators";
+import { Http, Headers, RequestOptions, RequestMethod } from "@angular/http";
 import { map } from "rxjs/operators";
-import { Observable, throwError } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class AppService {
   private _organizationUrl = "";
+  private headerOptions = new Headers({
+    "Content-Type": "application/json",
+    Accept: "application/json"
+  });
+  private requestOptions = new RequestOptions({
+    method: RequestMethod.Post,
+    headers: this.headerOptions
+  });
+  isClick = false;
+
   constructor(private http: Http, private _router: Router) {
     if (window.location.host.includes("localhost")) {
       this._organizationUrl = "http://localhost:8000/api/";
     } else {
       this._organizationUrl = "https://www.festify.in/django/api/";
     }
-    this._organizationUrl = "https://www.festify.in/django/api/";
+    this._organizationUrl = "http://98e9a6c2.ngrok.io/api/";
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error("An error occurred:", error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
-    }
-    // return an observable with a user-facing error message
-    return throwError("Something bad happened; please try again later.");
-  }
-
-  createOrganization(members) {
-    let object = {};
-    object = JSON.stringify(members.value);
-    let headerOptions = new Headers({
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    });
-    let requestOptions = new RequestOptions({
-      method: RequestMethod.Post,
-      headers: headerOptions
-    });
+  festDetails() {
     return this.http
-      .post(
-        `${this._organizationUrl}organization/create/`,
-        object,
-        requestOptions
-      )
+      .get(`${this._organizationUrl}fest/home/`)
       .pipe(map(x => x.json()));
   }
 
+  festSpecificDetails(id: string) {
+    id = id.replace("_", " ");
+    return this.http
+      .get(`${this._organizationUrl}fest/details/`, { params: { festid: id } })
+      .pipe(map(x => x.json()));
+  }
+
+  festDetailsWithspecific(name) {
+    name = name.replace(" ", "_");
+    this._router.navigate(["/fest", name]);
+  }
+
   organizationList() {
-    //  let headerOptions = new Headers({ 'Content-Type': 'application/json'});
-    //  let requestOptions = new RequestOptions({ method: RequestMethod.Post, headers: headerOptions });
     return this.http
       .get(`${this._organizationUrl}organization/list/`)
       .pipe(map(x => x.json()));
   }
 
   paymentList(fest_id) {
-    //  let headerOptions = new Headers({ 'Content-Type': 'application/json'});
-    //  let requestOptions = new RequestOptions({ method: RequestMethod.Post, headers: headerOptions });
     return this.http
       .get(`${this._organizationUrl}payment/list/`, {
         params: { festid: fest_id }
@@ -81,8 +60,6 @@ export class AppService {
   }
 
   specificOrganizationList() {
-    // let headerOptions = new Headers({ 'Content-Type': 'application/json'});
-    // let requestOptions = new RequestOptions({ method: RequestMethod.Post, headers: headerOptions });
     let loggedInValue = sessionStorage.getItem("currentUserId");
     let userName = JSON.parse(loggedInValue).email;
     return this.http
@@ -91,42 +68,49 @@ export class AppService {
       })
       .pipe(map(x => x.json()));
   }
+  getLikesNo(festData, e) {
+    let likeData = {};
 
-  organizationLogin(logindata) {
-    let body = JSON.stringify(logindata.value);
-    let headerOptions = new Headers({ "Content-Type": "application/json" });
-    let requestOptions = new RequestOptions({
-      method: RequestMethod.Post,
-      headers: headerOptions
-    });
-    return this.http
-      .post(
-        `${this._organizationUrl}organization/auth/login/`,
-        body,
-        requestOptions
-      )
-      .pipe(map(x => x.json()));
+    if (sessionStorage.getItem("userData")) {
+      const element = document.getElementById(e.srcElement.id);
+      if (element.className == "blast") {
+        element.className = "heart";
+        this.isClick = false;
+      } else if (element.className == "heart") {
+        element.className = "blast";
+        this.isClick = true;
+      }
+      if (sessionStorage.getItem("userData")) {
+        const email = JSON.parse(sessionStorage.getItem("userData")).email;
+        likeData = {
+          email: email,
+          festData: festData,
+          like: this.isClick
+        };
+      }
+      this.http
+        .post(
+          `${this._organizationUrl}fest/liked/`,
+          likeData,
+          this.requestOptions
+        )
+        .subscribe();
+    } else {
+      alert("Login to like");
+    }
   }
 
-  createFest(members) {
-    // let loggedInValue = sessionStorage.getItem("currentUserId");
-    // let userName = JSON.parse(loggedInValue).email;
-    let value = [];
-    // value.push({ userid: userName });
-    let member = [];
-    member.push(members.value);
-    let finalValue = value.concat(member);
-    let object = JSON.stringify(finalValue);
-    let headerOptions = new Headers({
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    });
-    let requestOptions = new RequestOptions({
-      method: RequestMethod.Post,
-      headers: headerOptions
-    });
+  getLikesBookedEvents() {
+    let email: any;
+    if (sessionStorage.getItem("userData")) {
+      email = JSON.parse(sessionStorage.getItem("userData")).email;
+    } else if (sessionStorage.getItem("currentUser")) {
+      email = JSON.parse(sessionStorage.getItem("currentUser")).userid;
+    }
     return this.http
-      .post(`${this._organizationUrl}fest/create/`, object, requestOptions)
+      .get(`${this._organizationUrl}user/dislike/`, {
+        params: { email: email }
+      })
       .pipe(map(x => x.json()));
   }
 }

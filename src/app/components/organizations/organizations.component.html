@@ -1,41 +1,34 @@
-<div *ngIf=" this.authenticationServicefn.orgExist">
-    <app-organizationheader></app-organizationheader>
-</div>
-<div *ngIf=" this.authenticationServicefn.userExist">
-    <app-userheader></app-userheader>
-</div>
 
-<div *ngIf=" this.authenticationServicefn.userExist == undefined &&  this.authenticationServicefn.orgExist == undefined">
-    <app-header></app-header>
-</div>
+
 
 <div class="inner-ban">
-    <img src="assets/images/inner-ban.jpg" alt="">
+  <img src="assets/images/inner-ban.jpg" alt="">
 </div>
 
 <section class="registraion-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>organizations</h2>
-                <input type="text" [(ngModel)]="searchText" placeholder="Search.." autofocus>
-                <table id="table">
-                    <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let data of  organizationList | grdFilter: {name: searchText, type:searchText,  blog: searchText}; let i=index;">
-                            <td> {{data.name}}</td>
-                            <td> {{data.type}}</td>
-                        </tr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>organizations</h2>
+        <input type="text" [(ngModel)]="searchText" placeholder="Search.." autofocus>
+        <table id="table">
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let data of  organizationList | grdFilter: {name: searchText, type:searchText,  blog: searchText}; let i=index;">
+              <td> {{data.name}}</td>
+              <td> {{data.type}}</td>
+            </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </section>
 <app-footer></app-footer>

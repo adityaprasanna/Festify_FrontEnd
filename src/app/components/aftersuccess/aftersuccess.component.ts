@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-aftersuccess',
-  templateUrl: './aftersuccess.component.html',
-  styleUrls: ['./aftersuccess.component.sass']
+  selector: "app-aftersuccess",
+  templateUrl: "./aftersuccess.component.html",
+  styleUrls: ["./aftersuccess.component.scss"]
 })
 export class AftersuccessComponent implements OnInit {
   firstName: any;
@@ -17,11 +17,12 @@ export class AftersuccessComponent implements OnInit {
 
   ticketId: any;
 
-
   constructor(private route: ActivatedRoute) {
     // let url= window.location.href;
     // let currentURL=url.split('&');
-    const successInfo = JSON.parse(this.route.snapshot.paramMap.get('successData'));
+    const successInfo = JSON.parse(
+      this.route.snapshot.paramMap.get("successData")
+    );
     this.firstName = successInfo.fname;
     this.lastName = successInfo.lname;
     this.email = successInfo.email;
@@ -32,7 +33,5 @@ export class AftersuccessComponent implements OnInit {
     this.ticketId = successInfo.tid;
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
