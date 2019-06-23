@@ -15,7 +15,7 @@ import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 @Component({
   selector: "app-editfest",
   templateUrl: "./editfest.component.html",
-  styleUrls: ["./editfest.component.sass"]
+  styleUrls: ["./editfest.component.scss"]
 })
 export class EditfestComponent implements OnInit {
   festEditData: any;
