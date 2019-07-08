@@ -35,7 +35,8 @@
       <li class="nav-item">
         <div class="top-part-sidebar">
           <div class="top-social">
-            <a (click)="_toggleSidebar()" href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
+            <a (click)="_toggleSidebar()" href="javascript:void(0);" style="margin-left:0;"><i
+                class="fab fa-facebook-f"></i></a>
             <a (click)="_toggleSidebar()" href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
             <a (click)="_toggleSidebar()" href="javascript:void(0);"><i class="fab fa-instagram"></i></a>
           </div>
@@ -61,11 +62,11 @@
                       <img src="assets/images/logo2.png" alt="">
                     </div>
                     <ul>
-                      <li class="active"><a data-toggle="tab" href="#home">USER</a></li>
-                      <li><a data-toggle="tab" href="#menu1">ORGANIZATIONS</a></li>
+                      <li class="active"><a data-toggle="tab" href="#user">USER</a></li>
+                      <li><a data-toggle="tab" href="#org">ORGANIZATIONS</a></li>
                     </ul>
                     <div class="tab-content">
-                      <div id="home" class="tab-pane fade in active">
+                      <div id="user" class="tab-pane active">
                         <div class="text-center">
                           <h2>Sign in with</h2>
                         </div>
@@ -78,7 +79,7 @@
                             &nbsp;Log In</button>
                         </div>
                       </div>
-                      <div id="menu1" class="tab-pane fade">
+                      <div id="org" class="tab-pane">
                         <form id="Login" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
                           <div class="form-group">
                             <input placeholder="User" type="text" formControlName="username"
@@ -107,7 +108,6 @@
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -191,8 +191,8 @@
                   <li class="nav-item"><a class="nav-link" routerLink="/blog/" routerLinkActive="current-clikable-item"
                       [routerLinkActiveOptions]="{exact:true}">Blog</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link" href="#contact">contact us</a></li>
-
+                  <li class="nav-item"><a class="nav-link" routerLink="/"
+                      routerLinkActive="current-clikable-item">contact us</a></li>
                   <li><button class="toggle pull-right" (click)="_toggleSidebar()"><i class="fas fa-bars"></i></button>
                   </li>
                 </ul>
@@ -209,70 +209,4 @@
 </ng-sidebar-container>
 
 <!-- *ngIf=" this.authenticator.userExist == undefined &&  this.authenticator.orgExist == undefined" -->
-<!--                 *ngIf=" this.authenticator.userExist == undefined &&  this.authenticator.orgExist == undefined"
- -->
-<!-- <router-outlet></router-outlet> -->
-<div class="modal fade log-in-pop" id="myModal2" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-
-        <div class="login-form">
-          <div class="main-div">
-            <div class="login-logo">
-              <img src="assets/images/logo2.png" alt="">
-            </div>
-            <ul>
-              <li class="active"><a data-toggle="tab" href="#home">USER</a></li>
-              <li><a data-toggle="tab" href="#menu1">ORGANIZATIONS</a></li>
-            </ul>
-            <div class="tab-content">
-              <div id="home" class="tab-pane fade in active">
-                <div class="text-center">
-                  <h2>Sign in with</h2>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                  <button (click)="socialSignIn('facebook')" class="fb-lig"><i class="fab fa-facebook-f"></i>
-                    &nbsp;&nbsp;Log In</button>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                  <button (click)="socialSignIn('google')" class="goo-lig"><i class="fab fa-google-plus-g"></i>
-                    &nbsp;Log In</button>
-                </div>
-              </div>
-              <div id="menu1" class="tab-pane fade">
-                <form id="Login" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-                  <div class="form-group">
-                    <input placeholder="User" type="text" formControlName="username" class="form-control org-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                      <div *ngIf="f.username.errors.required">User Id is required</div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input placeholder="Password" type="password" formControlName="password"
-                      class="form-control org-input" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                      <div *ngIf="f.password.errors.required">Password is required</div>
-                      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary" id=loginModalButton>Login</button>
-                  </div>
-                </form>
-                <button type="button" class="btn btn-primary btn-block btn-flat"
-                  (click)="organizationSignUp()">SignUp</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal End -->
+<!-- *ngIf=" this.authenticator.userExist == undefined &&  this.authenticator.orgExist == undefined" -->

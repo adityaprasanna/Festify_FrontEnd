@@ -1,13 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Inject,
-  PLATFORM_ID,
-  AfterViewInit
-} from "@angular/core";
-import { AppService } from "src/app/app.service";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { AuthService } from "../../services/Authentication/auth.service";
-import { Router } from "@angular/router";
 declare var $: any;
 @Component({
   selector: "app-home",
@@ -60,59 +52,32 @@ export class HomeComponent implements OnInit, AfterViewInit {
   };
   likedFest: any;
 
-  constructor(
-    private authService: AuthService,
-    private appService: AppService,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router
-  ) {
-    this.authService.orgExist = sessionStorage.getItem("currentUser");
-    this.authService.userExist = sessionStorage.getItem("userData");
-    this.appService.festDetails().subscribe(data => {
-      if (data) {
-        data.filter(x => {
-          if (x.org_type == "youth") {
-            this.youth.push(x);
-          } else if (x.org_type == "pre-university") {
-            this.preuniversity.push(x);
-          } else {
-            //if (x.org_type == "university")
-            this.university.push(x);
-          }
-        });
-        localStorage.setItem("festDetails", JSON.stringify(data));
-      }
+  constructor(private authService: AuthService) {
+    $(window).on("load", function() {
+      $(".loader").fadeOut("slow");
     });
-  }
-
-  ngOnInit() {
-    this.runCarouselHeader();
     this.authService.orgExist = sessionStorage.getItem("currentUser");
     this.authService.userExist = sessionStorage.getItem("userData");
-    if (this.authService.userExist) {
-      this.appService.getLikesBookedEvents().subscribe(data => {
-        this.likedFest = data.liked_fests;
-      });
-      setTimeout(() => {
-        if (this.likedFest) {
-          this.likedFest.map(x => {
-            let element = document.getElementById(x.id);
-            if (element != undefined) {
-              element.className = "blast";
-            }
-          });
-        }
-      }, 2000);
-    }
+
+    // this.appService.festDetails().subscribe(data => {
+    //   if (data) {
+    //     data.filter(x => {
+    //       if (x.org_type == "youth") {
+    //         this.youth.push(x);
+    //       } else if (x.org_type == "pre-university") {
+    //         this.preuniversity.push(x);
+    //       } else {
+    //         //if (x.org_type == "university")
+    //         this.university.push(x);
+    //       }
+    //     });
+    //     localStorage.setItem("festDetails", JSON.stringify(data));
+    //   }
+    // });
   }
 
-  get authenticationServicefn() {
-    return this.authService;
-  }
+  ngOnInit() {}
 
-  createEvent() {
-    this.router.navigate(["signup"]);
-  }
   mouseHovering() {
     this.isHovering = true;
   }
@@ -122,6 +87,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.runCarouselHeader();
+    setTimeout(() => {
+      if (this.likedFest) {
+        this.likedFest.map(x => {
+          let element = document.getElementById(x.id);
+          if (element != undefined) {
+            element.className = "blast";
+          }
+        });
+      }
+    }, 2000);
   }
 
   runCarouselHeader() {

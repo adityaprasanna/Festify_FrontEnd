@@ -29,18 +29,18 @@ export class OrganizationDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.createOrganization().subscribe();
     this.gettingFestData();
   }
 
   gettingFestData() {
     this.appService.specificOrganizationList().subscribe(data => {
-      this.organizationList = data["organization"];
-      this.organizationFestList = data["fest"];
-      localStorage.setItem(
-        "organization",
-        JSON.stringify(this.organizationList)
-      );
-      localStorage.setItem("fest", JSON.stringify(this.organizationFestList));
+      if (data) {
+        this.organizationList = data;
+        console.log(this.organizationList);
+        // this.organizationFestList = data["fest"];
+      }
+
       // const image = document.getElementById('imgElem');
       // image.setAttribute('src', this.organizationList.image);
     });
@@ -53,10 +53,6 @@ export class OrganizationDashboardComponent implements OnInit {
         .prop("checked", false);
     });
     if (this.selectedRow != undefined) {
-      localStorage.setItem(
-        "festspecific",
-        JSON.stringify(this.organizationFestList[this.selectedRow.toString()])
-      );
     }
   }
 
@@ -67,19 +63,19 @@ export class OrganizationDashboardComponent implements OnInit {
       alert("Please Select One Row");
     }
   }
+
   getList() {
     if (this.selectedRow) {
       let festId = localStorage.getItem("festspecific");
-      console.log(festId);
       this.appService.paymentList(JSON.parse(festId).fest_id).subscribe(x => {
         this.paymentList = x;
-        localStorage.setItem("payment", JSON.stringify(this.paymentList));
         document.getElementById("participant").style.display = "block";
       });
     } else {
       alert("Please Select One Row");
     }
   }
+
   delete() {
     var result = confirm("Are you sure you to delete?");
     if (result) {

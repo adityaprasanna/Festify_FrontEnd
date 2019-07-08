@@ -24,7 +24,7 @@ export class AppService {
     } else {
       this._organizationUrl = "https://www.festify.in/django/api/";
     }
-    this._organizationUrl = "http://98e9a6c2.ngrok.io/api/";
+    this._organizationUrl = "http://43e259f1.ngrok.io/api/";
   }
 
   festDetails() {
@@ -60,14 +60,12 @@ export class AppService {
   }
 
   specificOrganizationList() {
-    let loggedInValue = sessionStorage.getItem("currentUserId");
-    let userName = JSON.parse(loggedInValue).email;
+    let token = sessionStorage.getItem("token");
     return this.http
-      .get(`${this._organizationUrl}organization/dashboard/`, {
-        params: { userid: userName }
-      })
+      .get(`${this._organizationUrl}organization/v1/${token}`)
       .pipe(map(x => x.json()));
   }
+
   getLikesNo(festData, e) {
     let likeData = {};
 

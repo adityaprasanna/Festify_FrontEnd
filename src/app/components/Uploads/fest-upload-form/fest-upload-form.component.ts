@@ -19,8 +19,6 @@ declare let $: any;
 export class FestUploadFormComponent implements OnInit {
   festForm: FormGroup;
   submitted = false;
-  // loading = false;
-  // model = new Date();
 
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
 
@@ -209,9 +207,10 @@ export class FestUploadFormComponent implements OnInit {
           manager_email: ["", [Validators.required]]
         })
       ]),
-      manager: this.formBuilder.array([
+      account: this.formBuilder.array([
         this.formBuilder.group({
           account_holder_name: ["", [Validators.required]],
+          bank_name: ["", [Validators.required]],
           account_number: ["", [Validators.required]],
           ifsc: ["", [Validators.required]],
           confirm_account: ["", [Validators.required]],

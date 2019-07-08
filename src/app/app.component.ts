@@ -45,6 +45,9 @@ export class AppComponent {
   get authenticator() {
     return this.authService;
   }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   _toggleSidebar() {
     this._opened = !this._opened;
@@ -65,7 +68,7 @@ export class AppComponent {
       this.authService.organizationLogin(this.loginForm).subscribe(
         data => {
           if (data) {
-            sessionStorage.setItem("token", "Token " + data.token);
+            sessionStorage.setItem("token", data.organization_id);
             $("#myModal2").modal("hide");
             this.router.navigate(["orgdashboard"]);
           } else {

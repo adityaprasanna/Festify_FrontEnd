@@ -27,6 +27,7 @@ export class RegistrationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.authService.createCoordinators().subscribe();
     this.registerForm = this.formBuilder.group({
       type: ["", [Validators.required]],
       org_category: ["", [Validators.required]],
@@ -70,6 +71,7 @@ export class RegistrationComponent implements OnInit {
     return this.registerForm.controls;
   }
 
+
   onPaymentSubmit() {}
 
   // fileChange(e) {
@@ -82,6 +84,7 @@ export class RegistrationComponent implements OnInit {
   //     ctx.drawImage(img, 0, 0);
   //     //console.log(myCanvas.toDataURL('image/jpeg'));
   //   };
+
 
   //   img.src = URL.createObjectURL(e.target.files[0]);
   //   var dataURL = myCanvas.toDataURL("image/jpeg");
@@ -98,6 +101,7 @@ export class RegistrationComponent implements OnInit {
     //   }
     // }
     // stop here if form is invalid
+<<<<<<< Updated upstream
     // if (this.creds.invalid) {
     //   // alert("Please enter 10 digit mobile no and Filled all values properly");
     //   return;
