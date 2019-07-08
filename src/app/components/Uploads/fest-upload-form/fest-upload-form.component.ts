@@ -202,17 +202,22 @@ export class FestUploadFormComponent implements OnInit {
       instagram: new FormControl(null),
       youtube: new FormControl(null),
 
-      manager_name: ["", [Validators.required]],
-      manager_phone: ["", [Validators.required]],
-      manager_email: ["", [Validators.required]],
-
-      sec_manager_name: ["", [Validators.required]],
-      sec_manager_phone: ["", [Validators.required]],
-      account_holder_name: ["", [Validators.required]],
-      account_number: ["", [Validators.required]],
-      ifsc: ["", [Validators.required]],
-      confirm_account: ["", [Validators.required]],
-      confirm_ifsc: ["", [Validators.required]],
+      manager: this.formBuilder.array([
+        this.formBuilder.group({
+          manager_name: ["", [Validators.required]],
+          manager_phone: ["", [Validators.required]],
+          manager_email: ["", [Validators.required]]
+        })
+      ]),
+      manager: this.formBuilder.array([
+        this.formBuilder.group({
+          account_holder_name: ["", [Validators.required]],
+          account_number: ["", [Validators.required]],
+          ifsc: ["", [Validators.required]],
+          confirm_account: ["", [Validators.required]],
+          confirm_ifsc: ["", [Validators.required]]
+        })
+      ]),
       checkbox: new FormControl(null, [Validators.required])
     });
   }
@@ -276,32 +281,14 @@ export class FestUploadFormComponent implements OnInit {
   }
 
   previewFile() {
-    let preview = <HTMLImageElement>document.getElementById("imagePreview"); //selects the query named img
-    let file = (<HTMLInputElement>document.getElementById("inputFile"))
-      .files[0]; //sames as here
-    let reader = new FileReader();
-    let form = new FormData();
-    form.append(
-      "file",
-      "/Users/adityaprasanna/Desktop/Screen Shot 2019-06-01 at 1.41.00 PM.png"
-    );
-    console.log(form);
-    let sub = this.formBuilder.group({
-      file:
-        "/Users/adityaprasanna/Desktop/Screen Shot 2019-06-01 at 1.41.00 PM.png"
+    let file = <HTMLInputElement>document.getElementById("inputFile");
+
+    let formData = new FormData();
+    formData.append("file_name", file.files[0]);
+    formData.append("username", "Chris");
+
+    this.authService.fileUpload(formData).subscribe(data => {
+      console.log("image data", data);
     });
-    this.authService.createFest(sub).subscribe();
-    reader.onloadend = function() {
-      preview.src = reader.result as string;
-    };
-
-    if (file) {
-      reader.readAsDataURL(file); //reads the data as a URL
-
-      // let sub = this.formBuilder.group({});
-      // this.authService.createFest(sub).subscribe();
-    } else {
-      preview.src = "";
-    }
   }
 }

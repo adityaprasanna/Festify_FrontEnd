@@ -8,21 +8,13 @@ import { Observable } from "rxjs";
 })
 export class AuthService {
   private _organizationUrl = "";
-  private headerOptions = new Headers({
-    "Content-Type": "application/json"
-  });
-  private fileHeaderOptions = new Headers({
-    "Content-Type": "application/x-www-form-urlencoded",
-    Accept: "application/json"
-  });
-  private requestOptions = new RequestOptions({
-    method: RequestMethod.Post,
-    headers: this.headerOptions
-  });
-  private fileRequestOptions = new RequestOptions({
-    method: RequestMethod.Post,
-    headers: this.fileHeaderOptions
-  });
+  // private headerOptions = new Headers({
+  //   "Content-Type": "application/json"
+  // });
+  // private requestOptions = new RequestOptions({
+  //   method: RequestMethod.Post,
+  //   headers: this.headerOptions
+  // });
   orgExist: string;
   userExist: string;
 
@@ -32,19 +24,38 @@ export class AuthService {
     } else {
       this._organizationUrl = "https://www.festify.in/django/api/";
     }
-    this._organizationUrl = "http://d8381f91.ngrok.io/api/";
+    this._organizationUrl = "http://dfee0d9a.ngrok.io/api/";
   }
 
+  // Organization APIs
+  fileUpload(members) {
+    return this.http.post(`${this._organizationUrl}file/v1/`, members);
+  }
+  createOrgUser(members) {
+    return this.http.post(`${this._organizationUrl}user/create/v1/`, members);
+  }
+  createCoordinator(members) {
+    return this.http.post(`${this._organizationUrl}coordinator/v1/`, members);
+  }
   createOrganization(members) {
-    let object = {};
-    object = JSON.stringify(members.value);
-    return this.http
-      .post(
-        `${this._organizationUrl}user/login/v2/`,
-        object,
-        this.requestOptions
-      )
-      .pipe(map(x => x.json()));
+    return this.http.post(`${this._organizationUrl}organization/v1/`, members);
+  }
+  organizationLogin(logindata) {
+    return this.http.post(`${this._organizationUrl}user/login/v2/`, logindata);
+  }
+
+  // Fest APIs
+  createEvent(members) {
+    return this.http.post(`${this._organizationUrl}event/v1/`, members);
+  }
+  createSponsor(members) {
+    return this.http.post(`${this._organizationUrl}sponsor/v1/`, members);
+  }
+  createAccount(members) {
+    return this.http.post(
+      `${this._organizationUrl}accountDetails/v1/`,
+      members
+    );
   }
   createFest(members) {
     let value = [];
@@ -52,17 +63,10 @@ export class AuthService {
     member.push(members.value);
     let finalValue = value.concat(member);
     let object = JSON.stringify(finalValue);
-    return this.http
-      .post(`${this._organizationUrl}file/v1/`, object, this.fileRequestOptions)
-      .pipe(map(x => x.json()));
+    return this.http.post(`${this._organizationUrl}fest/v1/`, object);
   }
 
-  organizationLogin(logindata) {
-    let body = JSON.stringify(logindata.value);
-    return this.http
-      .post(`${this._organizationUrl}user/login/v2/`, body, this.requestOptions)
-      .pipe(map(x => x.json()));
-  }
+  // Ends Here
 
   updateOrganization(members) {
     let object = [];
@@ -75,13 +79,10 @@ export class AuthService {
     loggedInUser.push({ userid: userName });
     finalValue = loggedInUser.concat(object);
 
-    return this.http
-      .post(
-        `${this._organizationUrl}organization/update/`,
-        finalValue,
-        this.requestOptions
-      )
-      .pipe(map(x => x.json()));
+    return this.http.post(
+      `${this._organizationUrl}organization/update/`,
+      finalValue
+    );
   }
 
   updateFest(members) {
@@ -95,37 +96,25 @@ export class AuthService {
     loggedInUser.push({ userid: userName });
     finalValue = loggedInUser.concat(object);
 
-    return this.http
-      .post(
-        `${this._organizationUrl}fest/update/`,
-        finalValue,
-        this.requestOptions
-      )
-      .pipe(map(x => x.json()));
+    return this.http.post(`${this._organizationUrl}fest/update/`, finalValue);
   }
 
   deleteFest(id) {
-    return this.http
-      .delete(`${this._organizationUrl}fest/delete/`, {
-        params: { festid: id }
-      })
-      .pipe(map(x => x.json()));
+    return this.http.delete(`${this._organizationUrl}fest/delete/`, {
+      params: { festid: id }
+    });
   }
 
   deleteEvent(id) {
-    return this.http
-      .delete(`${this._organizationUrl}fest/event/delete/`, {
-        params: { event_id: id }
-      })
-      .pipe(map(x => x.json()));
+    return this.http.delete(`${this._organizationUrl}fest/event/delete/`, {
+      params: { event_id: id }
+    });
   }
 
   deleteSponsor(id) {
-    return this.http
-      .delete(`${this._organizationUrl}fest/sponsor/delete/`, {
-        params: { sponsor_id: id }
-      })
-      .pipe(map(x => x.json()));
+    return this.http.delete(`${this._organizationUrl}fest/sponsor/delete/`, {
+      params: { sponsor_id: id }
+    });
   }
 
   logout() {
@@ -146,13 +135,7 @@ export class AuthService {
   }
 
   userLogin(finalValue) {
-    return this.http
-      .post(
-        `${this._organizationUrl}user/login/`,
-        finalValue,
-        this.requestOptions
-      )
-      .pipe(map(x => x.json()));
+    return this.http.post(`${this._organizationUrl}user/login/`, finalValue);
   }
 
   getIP(): Observable<any[]> {
@@ -160,11 +143,9 @@ export class AuthService {
   }
 
   sendSMSAndEmail(txnid) {
-    return this.http
-      .get(`${this._organizationUrl}payment/thankyou/`, {
-        params: { txnid: txnid }
-      })
-      .pipe(map(x => x.json()));
+    return this.http.get(`${this._organizationUrl}payment/thankyou/`, {
+      params: { txnid: txnid }
+    });
   }
 
   makePayment(finalvalue) {
@@ -184,13 +165,7 @@ export class AuthService {
       lastname: finalvalue.lastName
     };
     const data = JSON.stringify(user);
-    return this.http
-      .post(
-        `${this._organizationUrl}payment/create/`,
-        data,
-        this.requestOptions
-      )
-      .pipe(map(x => x.json()));
+    return this.http.post(`${this._organizationUrl}payment/create/`, data);
   }
 
   // getSuccessData() {
@@ -199,3 +174,9 @@ export class AuthService {
   //     .pipe(map(x => x.json()));
   // }
 }
+
+// <<<<<< HEAD [code from branch pulling from ]
+// ... code
+// ========== [code on your local]
+// /... code
+// >>>>>> <commitid>
