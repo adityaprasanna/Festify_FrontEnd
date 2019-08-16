@@ -60,6 +60,9 @@ export class RegistrationComponent implements OnInit {
         ]
       ],
       sub_coordinator_email: ["", [Validators.required]]
+      // team: ['', [Validators.required]],
+      // manager_name: ['', [Validators.required]],
+      // manager_phone: ['', [Validators.required,Validators.pattern( /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
     });
   }
 
@@ -70,8 +73,36 @@ export class RegistrationComponent implements OnInit {
 
   onPaymentSubmit() {}
 
+  // fileChange(e) {
+  //   var myCanvas = <HTMLCanvasElement>document.getElementById("mycanvas");
+  //   var ctx = myCanvas.getContext("2d");
+  //   var img = new Image();
+  //   img.onload = function() {
+  //     myCanvas.width = img.width;
+  //     myCanvas.height = img.height;
+  //     ctx.drawImage(img, 0, 0);
+  //     //console.log(myCanvas.toDataURL('image/jpeg'));
+  //   };
+
+  //   img.src = URL.createObjectURL(e.target.files[0]);
+  //   var dataURL = myCanvas.toDataURL("image/jpeg");
+  //   dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  // }
+
   onRegistrationSubmit() {
     this.submitted = true;
+    // var myCanvas = <HTMLCanvasElement>document.getElementById("mycanvas");
+    // this.mydataURL = myCanvas.toDataURL("image/jpeg");
+    // for (let item in this.registerForm.value) {
+    //   if (item == "image") {
+    //     this.registerForm.value[item] = this.mydataURL;
+    //   }
+    // }
+    // stop here if form is invalid
+    // if (this.creds.invalid) {
+    //   // alert("Please enter 10 digit mobile no and Filled all values properly");
+    //   return;
+    // } else {
 
     const loginCreds = {
       username: this.registerForm.value.username,
@@ -86,6 +117,12 @@ export class RegistrationComponent implements OnInit {
         ),
         coordinator_email: this.registerForm.value.main_coordinator_email
       }
+      // {
+      //   coordinator_name: this.registerForm.value.sub_coordinator_name,
+      //   coordinator_phone: parseInt(
+      //     this.registerForm.value.sub_coordinator_phone
+      //   )
+      // }
     ];
 
     this.authService.createOrgUser(loginCreds).subscribe(data => {
@@ -131,3 +168,51 @@ export class RegistrationComponent implements OnInit {
     });
   }
 }
+// this.authService.fileUpload(image).subscribe(data2 => {
+//   if (data2) {
+//     console.log(data2);
+//   }
+// });
+
+// this.authService.createOrganization(this.registerForm).subscribe(data => {
+//   // console.log(data, this.registerForm.value);
+//   if (data) {
+//     // this.router.navigate(['home']);
+//     // 1st solution
+//     // alert('You are registered! Please login to continue now. ');
+//     // $('#myModal2').modal('show');
+//     const postParams = {
+//       value: {
+//         email: this.registerForm.value.org_id,
+//         password: this.registerForm.value.org_password
+//       }
+//     };
+//     this.authService.organizationLogin(postParams).subscribe(resp => {
+//       if (resp) {
+//         sessionStorage.setItem(
+//           "currentUserId",
+//           JSON.stringify(postParams.value)
+//         );
+//         sessionStorage.setItem("currentUser", JSON.stringify(resp));
+//         this.router.navigate(["orgdashboard"]);
+//       }
+//     });
+//   } else {
+//     // alert('Registration Successful');
+//     this.router.navigate(["organization-dashboard"]);
+//     this.registerForm.reset();
+//   }
+// });
+// }
+
+// previewFile() {
+//   let file = <HTMLInputElement>document.getElementById("inputFile");
+
+//   let formData = new FormData();
+//   formData.append("file_name", file.files[0]);
+//   formData.append("username", "Chris");
+
+//   this.authService.fileUpload(formData).subscribe(data => {
+//     console.log("image data", data);
+//   });
+// }

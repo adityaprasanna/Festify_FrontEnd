@@ -162,18 +162,18 @@ const routes: Routes = [
     BlogComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
     // ReactiveFormsModule,
     // FormsModule,
-    // SocialLoginModule,
+    SocialLoginModule,
     // HttpModule,
-    // HttpClientModule,
-    // SlickCarouselModule,
-    // BsDatepickerModule.forRoot(),
-    // TimepickerModule.forRoot(),
-    // FileUploadModule,
+    HttpClientModule,
+    SlickCarouselModule,
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
+    FileUploadModule,
     // SidebarModule.forRoot(),
-    // RouterModule.forChild(routes)
+    RouterModule.forChild(routes)
   ]
   // providers: [
   //   {

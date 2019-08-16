@@ -2,45 +2,61 @@ import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions, RequestMethod } from "@angular/http";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
-import { environment } from "src/environments/environment";
 // import { LazyModule } from "../../lazy.module";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: root
 })
 export class AuthService {
-  baseUrl: string = environment.baseUrl;
+  private _organizationUrl = "";
+  // private headerOptions = new Headers({
+  //   "Content-Type": "application/json"
+  // });
+  // private requestOptions = new RequestOptions({
+  //   method: RequestMethod.Post,
+  //   headers: this.headerOptions
+  // });
   orgExist: string;
   userExist: string;
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+    if (window.location.host.includes("localhost")) {
+      this._organizationUrl = "http://localhost:8000/api/";
+    } else {
+      this._organizationUrl = "https://www.festify.in/django/api/";
+    }
+    this._organizationUrl = "http://dfee0d9a.ngrok.io/api/";
+  }
 
   // Organization APIs
   fileUpload(members) {
-    return this.http.post(`${this.baseUrl}file/v1/`, members);
+    return this.http.post(`${this._organizationUrl}file/v1/`, members);
   }
   createOrgUser(members) {
-    return this.http.post(`${this.baseUrl}user/create/v1/`, members);
+    return this.http.post(`${this._organizationUrl}user/create/v1/`, members);
   }
   createCoordinator(members) {
-    return this.http.post(`${this.baseUrl}coordinator/v1/`, members);
+    return this.http.post(`${this._organizationUrl}coordinator/v1/`, members);
   }
   createOrganization(members) {
-    return this.http.post(`${this.baseUrl}organization/v1/`, members);
+    return this.http.post(`${this._organizationUrl}organization/v1/`, members);
   }
   organizationLogin(logindata) {
-    return this.http.post(`${this.baseUrl}user/login/v2/`, logindata);
+    return this.http.post(`${this._organizationUrl}user/login/v2/`, logindata);
   }
 
   // Fest APIs
   createEvent(members) {
-    return this.http.post(`${this.baseUrl}event/v1/`, members);
+    return this.http.post(`${this._organizationUrl}event/v1/`, members);
   }
   createSponsor(members) {
-    return this.http.post(`${this.baseUrl}sponsor/v1/`, members);
+    return this.http.post(`${this._organizationUrl}sponsor/v1/`, members);
   }
   createAccount(members) {
-    return this.http.post(`${this.baseUrl}accountDetails/v1/`, members);
+    return this.http.post(
+      `${this._organizationUrl}accountDetails/v1/`,
+      members
+    );
   }
   createFest(members) {
     let value = [];
@@ -48,7 +64,7 @@ export class AuthService {
     member.push(members.value);
     let finalValue = value.concat(member);
     let object = JSON.stringify(finalValue);
-    return this.http.post(`${this.baseUrl}fest/v1/`, object);
+    return this.http.post(`${this._organizationUrl}fest/v1/`, object);
   }
 
   // Ends Here
@@ -64,7 +80,10 @@ export class AuthService {
     loggedInUser.push({ userid: userName });
     finalValue = loggedInUser.concat(object);
 
-    return this.http.post(`${this.baseUrl}organization/update/`, finalValue);
+    return this.http.post(
+      `${this._organizationUrl}organization/update/`,
+      finalValue
+    );
   }
 
   updateFest(members) {
@@ -78,23 +97,23 @@ export class AuthService {
     loggedInUser.push({ userid: userName });
     finalValue = loggedInUser.concat(object);
 
-    return this.http.post(`${this.baseUrl}fest/update/`, finalValue);
+    return this.http.post(`${this._organizationUrl}fest/update/`, finalValue);
   }
 
   deleteFest(id) {
-    return this.http.delete(`${this.baseUrl}fest/delete/`, {
+    return this.http.delete(`${this._organizationUrl}fest/delete/`, {
       params: { festid: id }
     });
   }
 
   deleteEvent(id) {
-    return this.http.delete(`${this.baseUrl}fest/event/delete/`, {
+    return this.http.delete(`${this._organizationUrl}fest/event/delete/`, {
       params: { event_id: id }
     });
   }
 
   deleteSponsor(id) {
-    return this.http.delete(`${this.baseUrl}fest/sponsor/delete/`, {
+    return this.http.delete(`${this._organizationUrl}fest/sponsor/delete/`, {
       params: { sponsor_id: id }
     });
   }
@@ -113,11 +132,11 @@ export class AuthService {
     let headers = new Headers();
     headers.set("Authorization", authToken);
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.baseUrl}user/logout/v2/`, options);
+    return this.http.get(`${this._organizationUrl}user/logout/v2/`, options);
   }
 
   userLogin(finalValue) {
-    return this.http.post(`${this.baseUrl}user/login/`, finalValue);
+    return this.http.post(`${this._organizationUrl}user/login/`, finalValue);
   }
 
   getIP(): Observable<any[]> {
@@ -125,7 +144,7 @@ export class AuthService {
   }
 
   sendSMSAndEmail(txnid) {
-    return this.http.get(`${this.baseUrl}payment/thankyou/`, {
+    return this.http.get(`${this._organizationUrl}payment/thankyou/`, {
       params: { txnid: txnid }
     });
   }
@@ -147,12 +166,18 @@ export class AuthService {
       lastname: finalvalue.lastName
     };
     const data = JSON.stringify(user);
-    return this.http.post(`${this.baseUrl}payment/create/`, data);
+    return this.http.post(`${this._organizationUrl}payment/create/`, data);
   }
 
   // getSuccessData() {
   //   return this.http
-  //     .get(`${this.baseUrl}user/dislike/`)
+  //     .get(`${this._organizationUrl}user/dislike/`)
   //     .pipe(map(x => x.json()));
   // }
 }
+
+// <<<<<< HEAD [code from branch pulling from ]
+// ... code
+// ========== [code on your local]
+// /... code
+// >>>>>> <commitid>

@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
+import { HomeComponent } from "./components/home/home.component";
 import { UserAuthService } from "./services/User-Auth/user-guard.service";
 import { OrgAuthService } from "./services/Organization-Auth/org-guard.service";
 import { RegistrationComponent } from "./components/Uploads/registration/registration.component";
@@ -20,45 +21,15 @@ import { UploadSelectorComponent } from "./components/Uploads/upload-selector/up
 import { SeventUploadFormComponent } from "./components/Uploads/sevent-upload-form/sevent-upload-form.component";
 import { MunUploadFormComponent } from "./components/Uploads/mun-upload-form/mun-upload-form.component";
 import { BlogComponent } from "./components/blog/blog.component";
-import { HomeComponent } from "./components/home/home.component";
-
-import { FileUploadModule } from "ng2-file-upload";
-import { AppService } from "./app.service";
-import { HttpModule } from "@angular/http";
-import { HttpClientModule } from "@angular/common/http";
-import { GrdFilterPipe } from "./components/organizations/grd-filter.pipe";
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from "angularx-social-login";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { SlickCarouselModule } from "ngx-slick-carousel";
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
-import { TimepickerModule } from "ngx-bootstrap/timepicker";
-import { AuthService } from "./services/Authentication/auth.service";
-import { SidebarModule } from "ng-sidebar";
-
-export function getAuthServiceConfigs() {
-  return new AuthServiceConfig([
-    {
-      id: FacebookLoginProvider.PROVIDER_ID,
-      provider: new FacebookLoginProvider("541589206326432")
-    },
-    {
-      id: GoogleLoginProvider.PROVIDER_ID,
-      provider: new GoogleLoginProvider(
-        "394569857573-fl3pfejivfi6nvj2289u6s67o7ki3n1u.apps.googleusercontent.com"
-      )
-    }
-  ]);
-}
-
 const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent
-  },
+  // {
+  //   path: "",
+  //   component: HomeComponent
+  // },
+  // {
+  //   path: "home",
+  //   component: HomeComponent
+  // },
   {
     path: "blog",
     component: BlogComponent
@@ -112,6 +83,7 @@ const routes: Routes = [
     canActivate: [OrgAuthService]
   },
   {
+    // path: 'success/:&fname:&lname:&email:&phone:&fest:&event:&price:&tid',
     path: "success/:successData",
     component: AftersuccessComponent
   },
@@ -133,6 +105,10 @@ const routes: Routes = [
     component: PaymentComponent,
     canActivate: [UserAuthService]
   },
+  // {
+  //   path: 'festspecific',
+  //   component: FestspecificComponent,
+  // },
   {
     path: "**",
     component: PagenotfoundComponent
@@ -142,7 +118,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    GrdFilterPipe,
     RegistrationComponent,
     DashboardComponent,
     OrganizationsComponent,
@@ -161,28 +136,6 @@ const routes: Routes = [
     MunUploadFormComponent,
     BlogComponent
   ],
-  imports: [
-    CommonModule
-    // ReactiveFormsModule,
-    // FormsModule,
-    // SocialLoginModule,
-    // HttpModule,
-    // HttpClientModule,
-    // SlickCarouselModule,
-    // BsDatepickerModule.forRoot(),
-    // TimepickerModule.forRoot(),
-    // FileUploadModule,
-    // SidebarModule.forRoot(),
-    // RouterModule.forChild(routes)
-  ]
-  // providers: [
-  //   {
-  //     provide: AuthServiceConfig,
-  //     useFactory: getAuthServiceConfigs
-  //   },
-  //   AuthService,
-  //   UserAuthService,
-  //   OrgAuthService
-  // ]
+  imports: [CommonModule, RouterModule.forChild(routes)]
 })
 export class LazyModule {}

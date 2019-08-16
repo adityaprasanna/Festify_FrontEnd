@@ -29,7 +29,7 @@ export class OrganizationDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.authService.createOrganization().subscribe();
+    this.authService.createOrganization().subscribe();
     this.gettingFestData();
   }
 

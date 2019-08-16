@@ -24,8 +24,6 @@ export class AppComponent {
   submitted = false;
   loginFailed = "";
   public _MODES: Array<string> = ["over", "push", "slide"];
-  orgExist: any;
-  userExist: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,8 +35,8 @@ export class AppComponent {
       username: ["", [Validators.required]],
       password: ["", [Validators.required, Validators.minLength(6)]]
     });
-    this.orgExist = sessionStorage.getItem("token");
-    this.userExist = sessionStorage.getItem("userData");
+    this.authService.orgExist = sessionStorage.getItem("token");
+    this.authService.userExist = sessionStorage.getItem("userData");
   }
 
   ngOnInit() {}

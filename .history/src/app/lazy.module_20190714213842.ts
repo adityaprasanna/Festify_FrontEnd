@@ -162,27 +162,27 @@ const routes: Routes = [
     BlogComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
     // ReactiveFormsModule,
     // FormsModule,
     // SocialLoginModule,
     // HttpModule,
     // HttpClientModule,
-    // SlickCarouselModule,
-    // BsDatepickerModule.forRoot(),
-    // TimepickerModule.forRoot(),
-    // FileUploadModule,
+    SlickCarouselModule,
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
+    FileUploadModule,
     // SidebarModule.forRoot(),
-    // RouterModule.forChild(routes)
+    RouterModule.forChild(routes)
+  ],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
+    AuthService,
+    UserAuthService,
+    OrgAuthService
   ]
-  // providers: [
-  //   {
-  //     provide: AuthServiceConfig,
-  //     useFactory: getAuthServiceConfigs
-  //   },
-  //   AuthService,
-  //   UserAuthService,
-  //   OrgAuthService
-  // ]
 })
 export class LazyModule {}

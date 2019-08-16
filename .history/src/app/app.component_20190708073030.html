@@ -122,11 +122,11 @@
           <div class="col-md-6 log-in text-right">
             <a *ngIf=" this.authenticator.userExist == undefined &&  this.authenticator.orgExist == undefined"
               href="javascript:void(0);" id="signInButton" data-toggle="modal" data-target="#myModal2">Sign In</a>
-            <div class="dropdown" *ngIf="this.authenticator.userExist!=undefined">
+            <div class="dropdown" *ngIf="this.authenticator.orgExist!=undefined">
               <div style="display: flex; align-items: center;">
                 <i class="fas fa-user" style="font-size:24px;" *ngIf="socialData"></i>
                 <span style="font-size:20px;">
-                  <b>&nbsp;&nbsp;Hi, {{this.userExist.firstName}}</b>
+                  <b>&nbsp;&nbsp;Hi, {{this.socialData.firstName}}</b>
                 </span>
               </div>
               <div class="dropdown-content dropdown-menu-right">

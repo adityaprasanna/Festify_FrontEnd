@@ -39,21 +39,6 @@ import { TimepickerModule } from "ngx-bootstrap/timepicker";
 import { AuthService } from "./services/Authentication/auth.service";
 import { SidebarModule } from "ng-sidebar";
 
-export function getAuthServiceConfigs() {
-  return new AuthServiceConfig([
-    {
-      id: FacebookLoginProvider.PROVIDER_ID,
-      provider: new FacebookLoginProvider("541589206326432")
-    },
-    {
-      id: GoogleLoginProvider.PROVIDER_ID,
-      provider: new GoogleLoginProvider(
-        "394569857573-fl3pfejivfi6nvj2289u6s67o7ki3n1u.apps.googleusercontent.com"
-      )
-    }
-  ]);
-}
-
 const routes: Routes = [
   {
     path: "",
@@ -162,27 +147,19 @@ const routes: Routes = [
     BlogComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
     // ReactiveFormsModule,
     // FormsModule,
-    // SocialLoginModule,
-    // HttpModule,
-    // HttpClientModule,
-    // SlickCarouselModule,
-    // BsDatepickerModule.forRoot(),
-    // TimepickerModule.forRoot(),
-    // FileUploadModule,
+    SocialLoginModule,
+    HttpModule,
+    HttpClientModule,
+    SlickCarouselModule,
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
+    FileUploadModule,
     // SidebarModule.forRoot(),
-    // RouterModule.forChild(routes)
-  ]
-  // providers: [
-  //   {
-  //     provide: AuthServiceConfig,
-  //     useFactory: getAuthServiceConfigs
-  //   },
-  //   AuthService,
-  //   UserAuthService,
-  //   OrgAuthService
-  // ]
+    RouterModule.forChild(routes)
+  ],
+  providers: [AppService, UserAuthService, OrgAuthService, AuthService]
 })
 export class LazyModule {}

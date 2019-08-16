@@ -2,13 +2,12 @@ import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions, RequestMethod } from "@angular/http";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
-import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class AppService {
-  baseUrl: string = environment.baseUrl;
+  private _organizationUrl = "";
   private headerOptions = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json"
@@ -19,16 +18,25 @@ export class AppService {
   });
   isClick = false;
 
-  constructor(private http: Http, private _router: Router) {}
+  constructor(private http: Http, private _router: Router) {
+    if (window.location.host.includes("localhost")) {
+      this._organizationUrl = "http://localhost:8000/api/";
+    } else {
+      this._organizationUrl = "https://www.festify.in/django/api/";
+    }
+    this._organizationUrl = "http://43e259f1.ngrok.io/api/";
+  }
 
   festDetails() {
-    return this.http.get(`${this.baseUrl}fest/home/`).pipe(map(x => x.json()));
+    return this.http
+      .get(`${this._organizationUrl}fest/home/`)
+      .pipe(map(x => x.json()));
   }
 
   festSpecificDetails(id: string) {
     id = id.replace("_", " ");
     return this.http
-      .get(`${this.baseUrl}fest/details/`, { params: { festid: id } })
+      .get(`${this._organizationUrl}fest/details/`, { params: { festid: id } })
       .pipe(map(x => x.json()));
   }
 
@@ -39,13 +47,13 @@ export class AppService {
 
   organizationList() {
     return this.http
-      .get(`${this.baseUrl}organization/list/`)
+      .get(`${this._organizationUrl}organization/list/`)
       .pipe(map(x => x.json()));
   }
 
   paymentList(fest_id) {
     return this.http
-      .get(`${this.baseUrl}payment/list/`, {
+      .get(`${this._organizationUrl}payment/list/`, {
         params: { festid: fest_id }
       })
       .pipe(map(x => x.json()));
@@ -54,7 +62,7 @@ export class AppService {
   specificOrganizationList() {
     let token = sessionStorage.getItem("token");
     return this.http
-      .get(`${this.baseUrl}organization/v1/${token}`)
+      .get(`${this._organizationUrl}organization/v1/${token}`)
       .pipe(map(x => x.json()));
   }
 
@@ -79,7 +87,11 @@ export class AppService {
         };
       }
       this.http
-        .post(`${this.baseUrl}fest/liked/`, likeData, this.requestOptions)
+        .post(
+          `${this._organizationUrl}fest/liked/`,
+          likeData,
+          this.requestOptions
+        )
         .subscribe();
     } else {
       alert("Login to like");
@@ -94,7 +106,7 @@ export class AppService {
       email = JSON.parse(sessionStorage.getItem("currentUser")).userid;
     }
     return this.http
-      .get(`${this.baseUrl}user/dislike/`, {
+      .get(`${this._organizationUrl}user/dislike/`, {
         params: { email: email }
       })
       .pipe(map(x => x.json()));
