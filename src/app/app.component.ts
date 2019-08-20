@@ -32,16 +32,16 @@ export class AppComponent {
     private socialAuthService: AuthService,
     private router: Router,
     private authService: authService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ["", [Validators.required]],
-      password: ["", [Validators.required, Validators.minLength(6)]]
+      username: [""],
+      password: [""]
     });
     this.orgExist = sessionStorage.getItem("token");
     this.userExist = sessionStorage.getItem("userData");
   }
-
-  ngOnInit() {}
 
   // Added Getter for easy access in html
   get authenticator() {
@@ -62,30 +62,16 @@ export class AppComponent {
   }
 
   onLoginSubmit() {
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      alert("Please Enter All values Properly");
-      return;
-    } else {
-      this.authService.organizationLogin(this.loginForm).subscribe(
-        data => {
-          if (data) {
-            // sessionStorage.setItem("token", data);
-            $("#myModal2").modal("hide");
-            this.router.navigate(["orgdashboard"]);
-          } else {
-            alert("Login Unsuccessful");
-            this.router.navigate(["home"]);
-          }
-        },
-        err => {
-          this.loginFailed = err.json().message;
-          alert("LOGIN FAILED: Invalid login credentials.");
-        }
-      );
-    }
+    this.authService.organizationLogin(this.loginForm).subscribe(data => {
+      if (data) {
+        // sessionStorage.setItem("token", data);
+        $("#myModal2").modal("hide");
+        this.router.navigate(["orgdashboard"]);
+      } else {
+        alert("Login Unsuccessful");
+      }
+    });
   }
-
   organizationSignUp() {
     $("#myModal2").modal("hide");
     this.router.navigate(["signup"]);
