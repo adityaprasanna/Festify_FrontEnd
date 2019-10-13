@@ -8,13 +8,13 @@
         <h2>dashboard</h2>
       </div>
       <div class="col-md-4">
-        <div class="profile-sec" *ngIf="organizationList">
+        <div class="profile-sec" *ngIf="orgDetails">
           <h3>your profile</h3>
-          <img id="imgElem" alt="" [src]="organizationList.image">
+          <!-- <img id="imgElem" alt="" [src]="orgDetails.image"> -->
           <ul>
-            <li>{{organizationList.org_name}}</li>
-            <li>{{organizationList.org_website}}</li>
-            <li>{{organizationList.org_address}}</li>
+            <li>{{orgDetails.username}}</li>
+            <li>{{orgDetails.email}}</li>
+            <!-- <li>{{orgDetails.org_address}}</li> -->
             <li><a routerLink="/edit/">Edit</a></li>
           </ul>
         </div>
@@ -26,9 +26,8 @@
             <li><a data-toggle="tab" href="#pro-2">Participants</a></li>
           </ul>
           <div class="tab-content participantsListDetails">
-            <div id="pro-1" class="tab-pane fade in active">
+            <div id="pro-1" class="tab-pane fade in active show">
               <h3>your events</h3>
-              <h4>select Fest to edit <span><a routerLink="/upload-selector/">+create new fest</a></span></h4>
               <table>
                 <thead>
                   <tr>
@@ -55,9 +54,45 @@
               <!--<div class="well well-lg">
                                 Selected Row : <strong>{{selectedRow}}</strong>
                             </div>-->
-              <button (click)="delete()" class="del">delete</button>
-              <button (click)="edit()" class="edit">edit</button>
-              <button (click)="getList()" class="edit">Get Participant List</button>
+                            
+              <button (click)="delete()" class="btn btn-dark del">Delete</button>
+              <button (click)="edit()" class="btn btn-dark edit">Edit</button>
+              <button (click)="getList()" class="btn btn-danger edit">Get Participant List</button>
+              <button class="btn btn-warning edit float-left" data-toggle="modal"
+                    data-target="#festTypeSelector">+create new
+                    fest</button>
+                    <div class="modal fade log-in-pop" id="festTypeSelector" role="dialog">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="row h-100 justify-content-center align-items-center">
+                              <div class="col-md-4">
+                                <a class="fest btn btn-default box d-flex flex-column" [routerLink]="['/fest-upload']"
+                                  (click)="$('#myModal2').modal('hide');">
+                                  <strong> College Fest:</strong>
+                                  <p>Choose to create a single festival page with multiple events.</p>
+                                </a>
+                              </div>
+                              <div class="col-md-4">
+                                <a class="sevent btn btn-default box d-flex flex-column" [routerLink]="['/sevent-upload']"
+                                  (click)="$('#myModal2').modal('hide');">
+                                  <strong>Single-Page Event:</strong>
+                                  <p>Choose to create a single page event with no sub-events.</p>
+                                  <p>Example: Concerts, TED events, Conferences, Workshops</p>
+                                </a>
+                              </div>
+                              <div class="col-md-4">
+                                <a class="mun btn btn-default box d-flex flex-column" [routerLink]="['/mun-upload']"
+                                  (click)="$('#myModal2').modal('hide');">
+                                  <strong> MUN </strong>
+                                  <p>Model United Nations. You know what to do.</p>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             </div>
             <div id="pro-2" class="tab-pane fade">
               <!--<div  *ngFor="let tickets of paymentList; let i=index;">-->

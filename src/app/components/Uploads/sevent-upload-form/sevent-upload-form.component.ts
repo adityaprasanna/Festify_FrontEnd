@@ -206,7 +206,14 @@ export class SeventUploadFormComponent implements OnInit {
 
   onFestSubmit() {
     this.submitted = true;
-
+    let formData = new FormData();
+    let file = <HTMLInputElement>document.getElementById("inputFile");
+    let file2 = <HTMLInputElement>document.getElementById("sponsor_image");
+    
+    formData.append("file_name", file.files[0]);
+    formData.append("file_name", file2.files[0]);
+    this.authService.fileUpload(formData).subscribe(data => {
+      console.log("image data", data);
     this.authService.createFest(this.seventForm).subscribe(data => {
       if (data == undefined) {
         this.router.navigate(["home"]);
@@ -215,6 +222,7 @@ export class SeventUploadFormComponent implements OnInit {
         this.seventForm.reset();
       }
     });
+  });
   }
 
   get e() {

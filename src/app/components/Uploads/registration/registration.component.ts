@@ -27,14 +27,12 @@ export class RegistrationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.authService.createCoordinator().subscribe();
     this.registerForm = this.formBuilder.group({
       type: ["", [Validators.required]],
       org_category: ["", [Validators.required]],
       username: ["", [Validators.required]],
       password: ["", [Validators.required]],
       name: ["", [Validators.required]],
-      // image: new FormControl(null, [Validators.required]),
       address: ["", [Validators.required]],
       description: ["", [Validators.required]],
       website: ["", [Validators.required]],
@@ -48,18 +46,18 @@ export class RegistrationComponent implements OnInit {
           )
         ]
       ],
-      main_coordinator_email: ["", [Validators.required]],
-      sub_coordinator_name: ["", [Validators.required]],
-      sub_coordinator_phone: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(
-            /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-          )
-        ]
-      ],
-      sub_coordinator_email: ["", [Validators.required]]
+      main_coordinator_email: ["", [Validators.required]]
+      // sub_coordinator_name: ["", [Validators.required]],
+      // sub_coordinator_phone: [
+      //   "",
+      //   [
+      //     Validators.required,
+      //     Validators.pattern(
+      //       /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+      //     )
+      //   ]
+      // ],
+      // sub_coordinator_email: ["", [Validators.required]]
     });
   }
 
@@ -67,8 +65,6 @@ export class RegistrationComponent implements OnInit {
   get r() {
     return this.registerForm.controls;
   }
-
-  onPaymentSubmit() {}
 
   onRegistrationSubmit() {
     this.submitted = true;
@@ -108,7 +104,7 @@ export class RegistrationComponent implements OnInit {
                     org_image: data2.json().data.id,
                     org_description: regFormValue.org_description,
                     org_website: regFormValue.org_website,
-                    org_coordinator: data1.json().map(items => items.id),
+                    org_coordinator: data1.json().id,
                     org_user: data.json().id
                   };
                   this.authService.createOrganization(obj).subscribe(data3 => {

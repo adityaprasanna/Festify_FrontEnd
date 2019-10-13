@@ -51,13 +51,6 @@ export class AppService {
       .pipe(map(x => x.json()));
   }
 
-  specificOrganizationList() {
-    let token = sessionStorage.getItem("token");
-    return this.http
-      .get(`${this.baseUrl}organization/v1/${token}`)
-      .pipe(map(x => x.json()));
-  }
-
   getLikesNo(festData, e) {
     let likeData = {};
 

@@ -1,7 +1,7 @@
 <body>
   <div class="row h-80 justify-content-center align-items-center">
     <div class="col-md-6 my-auto">
-      <form class="was-validated" id="msform" [formGroup]="seventForm" (ngSubmit)="onFestSubmit()" novalidate>
+      <form class="was-validated" id="msform" [formGroup]="seventForm" novalidate>
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">General Details</li>
@@ -79,7 +79,13 @@
           <div class="row px-3">
             <div class="clearfix"></div>
             <div class="col-md-6">
-              <input type="file" id="inputFile" (change)="previewFile()"><br>
+              <div class="row">
+                <div class="file btn btn-sm btn-primary">
+                    <label>Upload an Image </label>
+                    <input class="attachment btn btn-primary" type="file" id="inputFile">
+                </div>
+              </div>
+              <br>
               <img id="imagePreview" src="" height="200" alt="Image preview...">
             </div>
             <div class="col-md-12">
@@ -120,7 +126,7 @@
                 </div>
                 <div class="col-md-3" id="pic">
                   <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control" name="picture"
-                    (change)="onChange($event)" placeholder="" formControlName="image">
+                    id="sponsor_image" placeholder="" formControlName="image">
                   <canvas width="150" height="150" id={{pointIndex}} style="display: none;"></canvas>
                 </div>
                 <div class="col-md-4">
@@ -264,7 +270,7 @@
 
           </div>
           <input type="button" name="previous" class="previous action-button-previous" value="Previous">
-          <button type="submit" class="btn submit action-button">Submit</button>
+          <button type="submit" class="btn submit action-button" (click)="onFestSubmit()">Submit</button>
         </fieldset>
       </form>
     </div>

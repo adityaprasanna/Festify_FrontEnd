@@ -48,7 +48,8 @@
             <option value="Liberal Arts">Liberal Arts</option>
           </select>
           <div *ngIf="submitted && r.type.errors" class="invalid-feedback">
-            <div *ngIf="r.org_category.errors.required" class="alert alert-danger">Organization Category is required
+            <div *ngIf="r.org_category.errors.required" class="alert alert-danger">
+              Organization Category is required
             </div>
           </div>
         </div>
@@ -171,7 +172,7 @@
       <div class="col-md-12">
         <h5>Contact Details</h5>
       </div>
-      <div class="form-group" style="height: 60px;">
+      <div class="form-group">
         <div class="col-md-4">
           <label for=""> Main Coordinator: </label>
         </div>
@@ -254,11 +255,10 @@
           </div>
         </div>
       </div> -->
-      <div class="clearfix"></div>
 
       <div class="form-group">
-        <div class="col-md-offset-2 col-md-2" style="margin-top:20px;">
-          <button [disabled]="loading" class="btn btn-primary">Register</button>
+        <div class="col-md-2">
+          <button class="btn btn-primary">Register</button>
         </div>
       </div>
     </form>

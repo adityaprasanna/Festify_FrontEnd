@@ -1,5 +1,4 @@
 <ng-sidebar-container>
-
   <!-- Begin sidebar view -->
   <ng-sidebar [(opened)]="_opened" [mode]="_MODES[_modeNum]" position="right" [closeOnClickOutside]="true">
     <ul class="navbar-nav navbar-right" id="nav">
@@ -52,49 +51,46 @@
         <div class="modal fade log-in-pop" id="myModal2" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
               <div class="modal-body">
                 <div class="login-form">
                   <div class="main-div">
                     <div class="login-logo">
                       <img src="assets/images/logo2.png" alt="">
                     </div>
-                    <ul>
+                    <ul class="nav nav-pills">
                       <li class="active"><a data-toggle="tab" href="#user">USER</a></li>
-                      <li><a data-toggle="tab" href="#org">ORGANIZATIONS</a></li>
+                      <li><a data-toggle="tab" href="#org">ORGANIZATION</a></li>
                     </ul>
                     <div class="tab-content">
                       <div id="user" class="tab-pane active">
                         <div class="text-center">
-                          <h2>Sign in with</h2>
+                          <h2>Login</h2>
                         </div>
                         <div class="col-md-12 col-xs-12">
-                          <button (click)="socialSignIn('facebook')" class="fb-lig"><i class="fab fa-facebook-f"></i>
-                            &nbsp;&nbsp;Log In</button>
+                          <button (click)="socialSignIn('facebook')" class="fb-lig"><i
+                              class="fab fa-facebook-f"></i></button>
                         </div>
-                        <div class="col-md-12 col-xs-12">
-                          <button (click)="socialSignIn('google')" class="goo-lig"><i class="fab fa-google-plus-g"></i>
-                            &nbsp;Log In</button>
+                        <div class="col-md-12 col-xs-12 mt-4">
+                          <button (click)="socialSignIn('google')" class="goo-lig"><i
+                              class="fab fa-google-plus-g"></i></button>
                         </div>
                       </div>
                       <div id="org" class="tab-pane">
                         <form id="Login" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
                           <div class="form-group">
-                            <input placeholder="User" type="text" formControlName="username"
+                            <input placeholder="Username" type="text" formControlName="username"
                               class="form-control org-input" />
                           </div>
                           <div class="form-group">
                             <input placeholder="Password" type="password" formControlName="password"
                               class="form-control org-input" />
+                            <hr>
+                            <a routerLink="" (click)="organizationSignUp()">Don't have an account? Sign up.</a>
                           </div>
                           <div class="form-group">
                             <button type="submit" class="btn btn-primary">Login</button>
                           </div>
                         </form>
-                        <button type="button" class="btn btn-primary btn-block btn-flat"
-                          (click)="organizationSignUp()">SignUp</button>
                       </div>
                     </div>
                   </div>
@@ -111,9 +107,9 @@
             <a href="https://www.instagram.com/festify_india/"><i class="fab fa-instagram"></i></a>
           </div>
           <div class="col-md-6 log-in text-right">
-            <a *ngIf=" this.authenticator.userExist == undefined &&  this.authenticator.orgExist == undefined"
+            <a *ngIf=" this.authService.userExist == undefined &&  this.authService.orgExist == undefined"
               href="javascript:void(0);" id="signInButton" data-toggle="modal" data-target="#myModal2">Sign In</a>
-            <div class="dropdown" *ngIf="this.authenticator.userExist!=undefined">
+            <div class="dropdown" *ngIf="this.authService.userExist!=undefined">
               <div style="display: flex; align-items: center;">
                 <i class="fas fa-user" style="font-size:24px;" *ngIf="socialData"></i>
                 <span style="font-size:20px;">
@@ -131,11 +127,11 @@
                 </li>
               </div>
             </div>
-            <div class="dropdown" *ngIf="this.authenticator.orgExist !=undefined">
-              <div style="display: flex;align-items: center;" *ngIf="organizationList">
+            <div class="dropdown" *ngIf="this.authService.orgExist!=undefined">
+              <div style="display: flex;align-items: center;" *ngIf="orgDetails">
                 <i class="fas fa-users" style="font-size:24px;"></i>
                 <span style="font-size:20px;">
-                  <b>&nbsp;&nbsp;Hi, {{organizationList.name }}</b>
+                  <b>&nbsp;&nbsp;Hi, {{ orgDetails.user.username }}</b>
                 </span>
               </div>
               <div class="dropdown-content dropdown-menu-right">
@@ -144,7 +140,7 @@
                     [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
                 </li>
                 <li class="dd-item">
-                  <a class="nav-link" routerLink="/fest-upload-form/" routerLinkActive="current-clikable-item"
+                  <a class="nav-link" routerLink="/upload-selector/" routerLinkActive="current-clikable-item"
                     [routerLinkActiveOptions]="{exact:true}">Create Fest</a>
                 </li>
                 <li class="dd-item">
@@ -199,5 +195,4 @@
 
 </ng-sidebar-container>
 
-<!-- *ngIf=" this.authenticator.userExist == undefined &&  this.authenticator.orgExist == undefined" -->
-<!-- *ngIf=" this.authenticator.userExist == undefined &&  this.authenticator.orgExist == undefined" -->
+<!-- *ngIf=" this.authService.userExist == undefined &&  this.authService.orgExist == undefined" -->

@@ -12,8 +12,8 @@ export class DashboardComponent implements OnInit {
   likedFest: any;
   constructor(private appService: AppService) {
     this.appService.getLikesBookedEvents().subscribe(data => {
-      this.bookedEvents = data.booked_events;
-      this.likedFest = data.liked_fests;
+      // this.bookedEvents = data.booked_events;
+      // this.likedFest = data.liked_fests;
     });
   }
 

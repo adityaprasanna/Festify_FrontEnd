@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from "@angular/forms";
 import { AuthService } from "angularx-social-login";
 import {
   FacebookLoginProvider,
@@ -24,8 +29,7 @@ export class AppComponent {
   submitted = false;
   loginFailed = "";
   public _MODES: Array<string> = ["over", "push", "slide"];
-  orgExist: any;
-  userExist: any;
+  orgDetails: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,11 +40,12 @@ export class AppComponent {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: [""],
-      password: [""]
+      username: new FormControl(),
+      password: new FormControl()
     });
-    this.orgExist = sessionStorage.getItem("token");
-    this.userExist = sessionStorage.getItem("userData");
+    this.authService.orgExist = sessionStorage.getItem("token");
+    this.authService.userExist = sessionStorage.getItem("userData");
+    this.orgDetails = JSON.parse(JSON.parse(this.authService.orgExist)._body);
   }
 
   // Added Getter for easy access in html
@@ -62,14 +67,10 @@ export class AppComponent {
   }
 
   onLoginSubmit() {
-    this.authService.organizationLogin(this.loginForm).subscribe(data => {
-      if (data) {
-        // sessionStorage.setItem("token", data);
-        $("#myModal2").modal("hide");
-        this.router.navigate(["orgdashboard"]);
-      } else {
-        alert("Login Unsuccessful");
-      }
+    this.authService.organizationLogin(this.loginForm.value).subscribe(data => {
+      sessionStorage.setItem("token", JSON.stringify(data));
+      $("#myModal2").modal("hide");
+      this.router.navigate(["orgdashboard"]);
     });
   }
   organizationSignUp() {

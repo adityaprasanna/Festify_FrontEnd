@@ -24,31 +24,29 @@ export class FestComponent implements OnInit, AfterViewInit {
     private appService: AppService,
     private authService: AuthService
   ) {
-    this.appService.festDetails().subscribe(data => {
-      if (data) {
-        data.map(x => {
-          if (x.org_type == "youth") {
-            this.youth.push(x);
-          } else if (x.org_type == "pre-university") {
-            this.preuniversity.push(x);
-          } else if (x.org_type == "university") {
-            this.university.push(x);
-          } else if (x.org_category == "medical") {
-            this.medical.push(x);
-          } else if (x.org_category == "arts") {
-            this.arts.push(x);
-          } else if (x.org_category == "Science") {
-            this.science.push(x);
-          } else if (x.org_category == "arch") {
-            this.arch.push(x);
-          } else if (x.org_category == "engineering") {
-            this.engineering.push(x);
-          } else if (x.org_category == "commerce") {
-            this.commerse.push(x);
-          }
-        });
-      }
-    });
+    // this.appService.festDetails().subscribe(data => {
+    //   if (data) {
+    //     if (data.org_type == "youth") {
+    //       this.youth.push(data);
+    //     } else if (data.org_type == "pre-university") {
+    //       this.preuniversity.push(data);
+    //     } else if (data.org_type == "university") {
+    //       this.university.push(data);
+    //     } else if (data.org_category == "medical") {
+    //       this.medical.push(data);
+    //     } else if (data.org_category == "arts") {
+    //       this.arts.push(data);
+    //     } else if (data.org_category == "Science") {
+    //       this.science.push(data);
+    //     } else if (data.org_category == "arch") {
+    //       this.arch.push(data);
+    //     } else if (data.org_category == "engineering") {
+    //       this.engineering.push(data);
+    //     } else if (data.org_category == "commerce") {
+    //       this.commerse.push(data);
+    //     }
+    //   }
+    // });
   }
 
   ngOnInit() {
@@ -56,7 +54,7 @@ export class FestComponent implements OnInit, AfterViewInit {
     this.authService.userExist = sessionStorage.getItem("userData");
     if (this.authService.userExist) {
       this.appService.getLikesBookedEvents().subscribe(data => {
-        this.likedFest = data.liked_fests;
+        // this.likedFest = data.liked_fests;
       });
       setTimeout(() => {
         if (this.likedFest) {

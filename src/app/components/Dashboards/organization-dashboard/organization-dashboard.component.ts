@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AppService } from "src/app/app.service";
 import { Router } from "@angular/router";
 import { AuthService } from "../../../services/Authentication/auth.service";
+import { ToastrService } from "ngx-toastr";
 
 declare var $: any;
 
@@ -16,11 +17,13 @@ export class OrganizationDashboardComponent implements OnInit {
   organizationList: any;
   paymentList: any;
   festToEdit: any;
+  orgDetails: any;
 
   constructor(
     private appService: AppService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {}
 
   setClickedRow(index, fest) {
@@ -29,18 +32,18 @@ export class OrganizationDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.authService.createOrganization().subscribe();
+    this.orgDetails = JSON.parse(
+      JSON.parse(sessionStorage.getItem("token"))._body
+    ).user;
     this.gettingFestData();
   }
 
   gettingFestData() {
-    this.appService.specificOrganizationList().subscribe(data => {
+    this.authService.specificOrganizationList().subscribe(data => {
       if (data) {
         this.organizationList = data;
-        console.log(this.organizationList);
         // this.organizationFestList = data["fest"];
       }
-
       // const image = document.getElementById('imgElem');
       // image.setAttribute('src', this.organizationList.image);
     });
@@ -60,7 +63,7 @@ export class OrganizationDashboardComponent implements OnInit {
     if (this.festToEdit) {
       this.router.navigate(["editfest", this.festToEdit.id]);
     } else {
-      alert("Please Select One Row");
+      this.toastr.warning("Please select an event to Edit.");
     }
   }
 
@@ -72,7 +75,9 @@ export class OrganizationDashboardComponent implements OnInit {
         document.getElementById("participant").style.display = "block";
       });
     } else {
-      alert("Please Select One Row");
+      this.toastr.warning(
+        "Please select an event to get the participant list."
+      );
     }
   }
 
@@ -82,11 +87,11 @@ export class OrganizationDashboardComponent implements OnInit {
       if (this.selectedRow != undefined) {
         let festId = localStorage.getItem("festspecific");
         this.authService.deleteFest(JSON.parse(festId).id).subscribe(x => {
-          alert("deleted Successfully");
+          this.toastr.success("Deleted Successfully");
           this.gettingFestData();
         });
       } else {
-        alert("Please Select One Row");
+        this.toastr.warning("Please select an event to Delete.");
       }
     }
   }

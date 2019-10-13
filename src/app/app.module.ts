@@ -1,5 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -38,7 +41,6 @@ import { FestspecificComponent } from "./components/festspecific/festspecific.co
 import { FailureComponent } from "./components/failure/failure.component";
 import { AftersuccessComponent } from "./components/aftersuccess/aftersuccess.component";
 import { SidebarModule } from "ng-sidebar";
-import { UploadSelectorComponent } from "./components/Uploads/upload-selector/upload-selector.component";
 import { SeventUploadFormComponent } from "./components/Uploads/sevent-upload-form/sevent-upload-form.component";
 import { MunUploadFormComponent } from "./components/Uploads/mun-upload-form/mun-upload-form.component";
 import { BlogComponent } from "./components/blog/blog.component";
@@ -77,7 +79,6 @@ export function getAuthServiceConfigs() {
     FestspecificComponent,
     FailureComponent,
     AftersuccessComponent,
-    UploadSelectorComponent,
     SeventUploadFormComponent,
     MunUploadFormComponent,
     BlogComponent
@@ -94,7 +95,11 @@ export function getAuthServiceConfigs() {
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     FileUploadModule,
-    SidebarModule.forRoot()
+    SidebarModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    DlDateTimeDateModule,  // <--- Determines the data type of the model
+    DlDateTimePickerModule,
   ],
 
   providers: [

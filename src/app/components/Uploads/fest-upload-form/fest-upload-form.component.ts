@@ -18,10 +18,13 @@ declare let $: any;
 })
 export class FestUploadFormComponent implements OnInit {
   festForm: FormGroup;
+  eventForm: FormGroup;
+  sponsorForm: FormGroup;
+
   submitted = false;
 
   public bsConfig: Partial<BsDatepickerConfig> = new BsDatepickerConfig();
-
+  selectedDate: any;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -164,57 +167,67 @@ export class FestUploadFormComponent implements OnInit {
     //jQuery ends here
 
     this.festForm = this.formBuilder.group({
-      type: ["", [Validators.required]],
-      name: ["", [Validators.required, Validators.maxLength(20)]],
-      fest_image: ["", [Validators.required]],
-      start_date: new FormControl(Date, [Validators.required]),
-      end_date: new FormControl(Date, [Validators.required]),
-      image: new FormControl(null),
-      description: ["", [Validators.required]],
-      highlights: ["", [Validators.required]],
+      fest_type: ["", [Validators.required]],
+      fest_organizer: JSON.parse(
+        JSON.parse(window.sessionStorage.getItem("token"))._body
+      ).organization_id,
+      fest_name: ["", [Validators.required, Validators.maxLength(20)]],
+      // fest_image: ["", [Validators.required]],
+      fest_start_date: new FormControl(
+        new Date(new Date().toLocaleString()).getTime(),
+        [Validators.required]
+      ),
+      fest_end_date: new FormControl(
+        new Date(new Date().toLocaleString()).getTime(),
+        [Validators.required]
+      ),
+      // fest_image: new FormControl(null),
+      fest_description: ["", [Validators.required]],
+      // highlights: ["", [Validators.required]],
 
-      event: this.formBuilder.array([
+      fest_events: this.formBuilder.array([
         this.formBuilder.group({
-          eventName: new FormControl("", [
+          event_name: new FormControl("", [
             Validators.required,
             Validators.maxLength(20)
           ]),
           ticket_price: ["", [Validators.required]],
+          total_slots: ["", [Validators.required]],
           event_description: ["", [Validators.required]],
-          event_coordinator: ["", [Validators.required]],
-          event_date: new FormControl(Date, [Validators.required]),
-          event_time: new FormControl(new Date()),
+          event_category: ["", [Validators.required]],
+          event_coordinator: [[], [Validators.required]],
+          event_date_time: new FormControl(
+            new Date(new Date().toLocaleString()).getTime(),
+            [Validators.required]
+          ),
           event_type: ["", [Validators.required]]
         })
       ]),
 
-      sponsor: this.formBuilder.array([
+      fest_sponsor: this.formBuilder.array([
         this.formBuilder.group({
-          name: "",
-          image: ["", [Validators.required]],
-          caption: new FormControl("")
+          sponsor_name: ["", [Validators.required]],
+          sponsor_picture: [[""], [Validators.required]],
+          sponsor_caption: ["", [Validators.required]]
         })
       ]),
-      website: new FormControl(null),
-      facebook: new FormControl(null),
-      instagram: new FormControl(null),
-      youtube: new FormControl(null),
+      fest_website: new FormControl(null),
+      // facebook: new FormControl(null),
+      // instagram: new FormControl(null),
+      // youtube: new FormControl(null),
 
-      manager: this.formBuilder.array([
+      fest_coordinator: this.formBuilder.array([
         this.formBuilder.group({
-          manager_name: ["", [Validators.required]],
-          manager_phone: ["", [Validators.required]],
-          manager_email: ["", [Validators.required]]
+          coordinator_name: ["", [Validators.required]],
+          coordinator_phone: ["", [Validators.required]]
         })
       ]),
-      account: this.formBuilder.array([
+      fest_account_details: this.formBuilder.array([
         this.formBuilder.group({
-          account_holder_name: ["", [Validators.required]],
-          bank_name: ["", [Validators.required]],
+          account_bank_name: ["", [Validators.required]],
           account_number: ["", [Validators.required]],
-          ifsc: ["", [Validators.required]],
-          confirm_account: ["", [Validators.required]],
-          confirm_ifsc: ["", [Validators.required]]
+          account_ifsc: ["", [Validators.required]],
+          account_holder_name: ["", [Validators.required]]
         })
       ]),
       checkbox: new FormControl(null, [Validators.required])
@@ -223,14 +236,19 @@ export class FestUploadFormComponent implements OnInit {
 
   onFestSubmit() {
     this.submitted = true;
+    let file = <HTMLInputElement>document.getElementById("inputFile");
 
-    this.authService.createFest(this.festForm).subscribe(data => {
-      if (data == undefined) {
-        this.router.navigate(["home"]);
-      } else {
-        this.router.navigate(["organization-dashboard"]);
-        this.festForm.reset();
-      }
+    let formData = new FormData();
+    formData.append("file_name", file.files[0]);
+    this.authService.fileUpload(formData).subscribe(data => {
+      this.authService.createFest(this.festForm.value).subscribe(data => {
+        if (data == undefined) {
+          this.router.navigate(["home"]);
+        } else {
+          this.router.navigate(["organization-dashboard"]);
+          this.festForm.reset();
+        }
+      });
     });
   }
 
@@ -279,15 +297,12 @@ export class FestUploadFormComponent implements OnInit {
     this.sponsorEventPoints.removeAt(index);
   }
 
-  previewFile() {
-    let file = <HTMLInputElement>document.getElementById("inputFile");
+  // previewFile() {
+  //   let file = <HTMLInputElement>document.getElementById("inputFile");
 
-    let formData = new FormData();
-    formData.append("file_name", file.files[0]);
-    formData.append("username", "Chris");
+  //   let formData = new FormData();
+  //   formData.append("file_name", file.files[0]);
+  //   formData.append("username", "Chris");
 
-    this.authService.fileUpload(formData).subscribe(data => {
-      console.log("image data", data);
-    });
-  }
+  // }
 }

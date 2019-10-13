@@ -31,24 +31,35 @@ export class AuthService {
   organizationLogin(logindata) {
     return this.http.post(`${this.baseUrl}user/login/v2/`, logindata);
   }
+  specificOrganizationList() {
+    let headers = new Headers({
+      Authorization:
+        "Bearer " + JSON.parse(window.sessionStorage.getItem("token")).token
+    });
+    let options = { headers: headers };
+    const id = JSON.parse(
+      JSON.parse(window.sessionStorage.getItem("token"))._body
+    ).organization_id;
+    return this.http.get(`${this.baseUrl}organization/v1/${id}/`, options);
+  }
 
   // Fest APIs
-  createEvent(members) {
-    return this.http.post(`${this.baseUrl}event/v1/`, members);
-  }
-  createSponsor(members) {
-    return this.http.post(`${this.baseUrl}sponsor/v1/`, members);
-  }
-  createAccount(members) {
-    return this.http.post(`${this.baseUrl}accountDetails/v1/`, members);
-  }
+  // createEvent(members) {
+  //   return this.http.post(`${this.baseUrl}event/v1/`, members);
+  // }
+  // createSponsor(members) {
+  //   return this.http.post(`${this.baseUrl}sponsor/v1/`, members);
+  // }
+  // createAccount(members) {
+  //   return this.http.post(`${this.baseUrl}accountDetails/v1/`, members);
+  // }
   createFest(members) {
-    let value = [];
-    let member = [];
-    member.push(members.value);
-    let finalValue = value.concat(member);
-    let object = JSON.stringify(finalValue);
-    return this.http.post(`${this.baseUrl}fest/v1/`, object);
+    // let value = [];
+    // let member = [];
+    // member.push(members.value);
+    // let finalValue = value.concat(member);
+    // let object = JSON.stringify(finalValue);
+    return this.http.post(`${this.baseUrl}fest/v2/`, members);
   }
 
   // Ends Here

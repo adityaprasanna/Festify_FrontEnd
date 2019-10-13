@@ -16,7 +16,6 @@ import { AftersuccessComponent } from "./components/aftersuccess/aftersuccess.co
 import { FailureComponent } from "./components/failure/failure.component";
 import { PaymentComponent } from "./components/payment/payment.component";
 import { FestspecificComponent } from "./components/festspecific/festspecific.component";
-import { UploadSelectorComponent } from "./components/Uploads/upload-selector/upload-selector.component";
 import { SeventUploadFormComponent } from "./components/Uploads/sevent-upload-form/sevent-upload-form.component";
 import { MunUploadFormComponent } from "./components/Uploads/mun-upload-form/mun-upload-form.component";
 import { BlogComponent } from "./components/blog/blog.component";
@@ -47,11 +46,6 @@ const routes: Routes = [
   {
     path: "organizations",
     component: OrganizationsComponent
-  },
-  {
-    path: "upload-selector",
-    component: UploadSelectorComponent
-    // canActivate: [OrgAuthService]
   },
   {
     path: "fest-upload",
